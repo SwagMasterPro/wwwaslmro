@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import {
   ArrowRight,
   Calendar,
@@ -132,29 +133,13 @@ export default function EvenimentePage() {
                   </a>
                 </div>
                 
-                <div className="p-8 md:p-12 flex items-center justify-center" style={{ backgroundColor: 'rgba(0,0,0,0.2)' }}>
-                  <div className="text-center">
-                    <div className="text-6xl md:text-8xl font-bold mb-2" style={{ color: '#74C69D' }}>
-                      10-12
-                    </div>
-                    <div className="text-2xl font-semibold text-white mb-4">Mai 2026</div>
-                    <div className="flex items-center justify-center gap-6 text-white/70">
-                      <div className="text-center">
-                        <div className="text-2xl font-bold text-white">500+</div>
-                        <div className="text-sm">Participanți</div>
-                      </div>
-                      <div className="w-px h-10 bg-white/20" />
-                      <div className="text-center">
-                        <div className="text-2xl font-bold text-white">30+</div>
-                        <div className="text-sm">Speakeri</div>
-                      </div>
-                      <div className="w-px h-10 bg-white/20" />
-                      <div className="text-center">
-                        <div className="text-2xl font-bold text-white">3</div>
-                        <div className="text-sm">Zile</div>
-                      </div>
-                    </div>
-                  </div>
+                <div className="relative min-h-[300px] lg:min-h-full">
+                  <Image
+                    src="/images/banner-congres-2026.png"
+                    alt="Congresul Inaugural ASLM 2026 - Interdisciplinaritate în medicina stilului de viață"
+                    fill
+                    className="object-cover"
+                  />
                 </div>
               </div>
             </motion.div>

@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import {
   BookOpen,
   ExternalLink,
@@ -97,19 +98,13 @@ export default function PublicatiiPage() {
               transition={{ duration: 0.5 }}
               className="flex justify-center"
             >
-              <div 
-                className="w-full max-w-md aspect-[3/4] rounded-2xl shadow-2xl flex items-center justify-center"
-                style={{ backgroundColor: '#1B4332' }}
-              >
-                <div className="text-center p-8">
-                  <BookOpen className="w-16 h-16 mx-auto mb-6" style={{ color: '#74C69D' }} />
-                  <h3 className="font-heading text-2xl font-bold text-white mb-2">
-                    LMRR
-                  </h3>
-                  <p className="text-white/70">
-                    Lifestyle Medicine Romania Review
-                  </p>
-                </div>
+              <div className="relative w-full max-w-md aspect-[3/4] rounded-2xl shadow-2xl overflow-hidden">
+                <Image
+                  src="/images/revista-lmrr.jpg"
+                  alt="Lifestyle Medicine Romania Review - LMRR"
+                  fill
+                  className="object-cover"
+                />
               </div>
             </motion.div>
           </div>
