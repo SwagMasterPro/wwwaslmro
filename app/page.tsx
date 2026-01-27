@@ -63,8 +63,7 @@ const memberBenefits = [
 
 // Statistics
 const stats = [
-  { value: "150+", label: "Membri activi" },
-  { value: "10+", label: "Evenimente anuale" },
+  { value: "1", label: "Eveniment anual" },
   { value: "6", label: "Piloni fundamentali" },
   { value: "2026", label: "Primul congres" },
 ];
@@ -205,7 +204,7 @@ export default function Home() {
         style={{ backgroundColor: '#0f2b1d' }}
       >
         <div className="container-wide py-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+          <div className="grid grid-cols-3 gap-8 text-center">
             {stats.map((stat, index) => (
               <motion.div
                 key={stat.label}
