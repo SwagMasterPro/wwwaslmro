@@ -30,13 +30,13 @@ const upcomingEvents = [
 const pastEvents = [
   {
     title: "Webinar: Introducere în MSV",
-    date: "Martie 2025",
+    date: "Ianuarie 2026",
     type: "Webinar",
-    description: "Webinar introductiv despre principiile de bază ale medicinii stilului de viață."
+    description: "Webinar introductiv despre principiile de bază ale medicinei stilului de viață."
   },
   {
     title: "Workshop: Nutriție Plant-Based",
-    date: "Februarie 2025",
+    date: "Decembrie 2025",
     type: "Workshop",
     description: "Workshop practic despre alimentația bazată pe plante în practica clinică."
   }
@@ -62,7 +62,7 @@ export default function EvenimentePage() {
             </h1>
             <p className="text-lg text-white/70 leading-relaxed">
               Descoperă evenimentele organizate de ASLM - congrese, conferințe, 
-              webinarii și workshop-uri dedicat medicinii stilului de viață.
+              webinarii și workshop-uri dedicate medicinei stilului de viață.
             </p>
           </motion.div>
         </div>

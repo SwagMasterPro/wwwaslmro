@@ -26,7 +26,7 @@ const objectives = [
   {
     icon: TrendingUp,
     title: "Cercetare",
-    description: "Sprijinirea și publicarea cercetărilor în domeniul medicinii stilului de viață."
+    description: "Sprijinirea și publicarea cercetărilor în domeniul medicinei stilului de viață."
   },
   {
     icon: Users,
@@ -126,18 +126,15 @@ export default function MisiunePage() {
                 Viziunea Noastră
               </h3>
               <p className="text-white/80 leading-relaxed mb-6">
-                Ne imaginăm o Românie în care medicina stilului de viață este 
-                integrată în toate nivelurile sistemului de sănătate.
-              </p>
-              <p className="text-white/80 leading-relaxed mb-6">
-                Un viitor în care fiecare cetățean are acces la informații 
-                și servicii care îi permit să facă alegeri informate pentru 
-                un stil de viață sănătos.
+                Viziunea ASLM este dezvoltarea unui sistem de sănătate românesc în care 
+                medicina stilului de viață este integrată în toate nivelurile de îngrijire 
+                medicală, de la prevenție primară până la tratament și recuperare.
               </p>
               <p className="text-white/80 leading-relaxed">
-                Un sistem medical în care prevenția este la fel de valorificată 
-                ca și tratamentul, iar profesioniștii din sănătate sunt 
-                pregătiți să consilieze bazat pe dovezi științifice.
+                Suntem de părere că fiecare cetățean trebuie să beneficieze de informații 
+                și servicii care să susțină alegeri informate pentru un stil de viață sănătos, 
+                iar profesioniștii din domeniul medical să fie pregătiți pentru consiliere 
+                bazată pe dovezi științifice.
               </p>
             </motion.div>
           </div>

@@ -255,7 +255,7 @@ export default function Footer() {
             </p>
             <div className="flex items-center gap-4 text-sm">
               <span style={{ color: '#9CA3AF' }}>
-                CIF: xxxxxxxx | Nr. Reg.: xx/xxxx
+                CIF: 52379030
               </span>
             </div>
           </div>

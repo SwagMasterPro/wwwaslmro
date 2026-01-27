@@ -42,7 +42,7 @@ const membershipBenefits = [
   {
     icon: Users,
     title: "Comunitate Profesională",
-    description: "Networking cu specialiști din domeniul medicinii stilului de viață din România și internațional.",
+    description: "Networking cu specialiști din domeniul medicinei stilului de viață din România și internațional.",
   },
   {
     icon: BookOpen,
@@ -51,8 +51,8 @@ const membershipBenefits = [
   },
   {
     icon: Award,
-    title: "Certificări",
-    description: "Oportunități de certificare în medicina stilului de viață și credite EMC pentru evenimente.",
+    title: "Recunoaștere profesională",
+    description: "Oportunități de perfecționare și specializare în medicina stilului de viață și credite EMC pentru evenimente.",
   },
   {
     icon: Calendar,
@@ -61,8 +61,8 @@ const membershipBenefits = [
   },
   {
     icon: Globe,
-    title: "Reprezentare",
-    description: "Fii parte din vocea comunității medicale care promovează medicina stilului de viață în România.",
+    title: "Impact profesional și social",
+    description: "Posibilitatea de a contribui activ la inițiative și programe naționale care promovează medicina stilului de viață și prevenția bolilor cronice.",
   },
 ];
 
@@ -146,7 +146,7 @@ const membershipCategories = [
       "Acces la resurse premium",
       "Prioritate la evenimente"
     ],
-    note: "Membrii titulari au drepturi depline în AGA și pot fi aleși în orice structură ASLM.",
+    note: "Membrii titulari au dreptul de a vota și de a fi aleși în AGA, în toate structurile ASLM.",
     highlighted: true,
     color: "primary"
   },
@@ -276,7 +276,7 @@ export default function MembriiPage() {
                 <div className="absolute -top-3 left-1/2 -translate-x-1/2">
                   <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-semibold bg-[var(--color-primary-600)] text-white">
                     <Star className="w-3 h-3" />
-                    {category.id === 'afiliati' ? 'Recomandat' : 'Drepturi depline'}
+                    {category.id === 'afiliati' ? 'Recomandat' : 'Drepturi de vot'}
                   </span>
                 </div>
                 
@@ -409,7 +409,7 @@ export default function MembriiPage() {
             transition={{ duration: 0.5 }}
             className="text-center mb-12"
           >
-            <p className="text-overline mb-3">Comparație</p>
+            <p className="text-overline mb-3">STRUCTURĂ</p>
             <h2 className="text-headline text-[var(--text-primary)] mb-4">
               Drepturi per Categorie
             </h2>

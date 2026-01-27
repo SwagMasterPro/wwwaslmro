@@ -34,7 +34,7 @@ export default function PublicatiiPage() {
             </h1>
             <p className="text-lg text-white/70 leading-relaxed">
               Explorează resursele științifice și publicațiile ASLM în domeniul 
-              medicinii stilului de viață.
+              medicinei stilului de viață.
             </p>
           </motion.div>
         </div>
@@ -59,11 +59,11 @@ export default function PublicatiiPage() {
               <p className="text-body mb-6">
                 LMRR este revista oficială a Societății Academice de Medicina 
                 Stilului de Viață din România. Publicăm articole originale, 
-                review-uri și studii de caz în domeniul medicinii stilului de viață.
+                review-uri și studii de caz în domeniul medicinei stilului de viață.
               </p>
               <ul className="space-y-3 mb-8">
                 {[
-                  "Articole peer-reviewed",
+                  "Articole evaluate de experți",
                   "Studii de caz clinice",
                   "Review-uri sistematice",
                   "Ghiduri de bună practică"

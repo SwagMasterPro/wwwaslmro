@@ -328,7 +328,7 @@ export default function ContactPage() {
               Vrei să devii membru?
             </h2>
             <p className="text-body mb-8">
-              Alătură-te comunității de profesioniști dedicați medicinii stilului de viață.
+              Alătură-te comunității de profesioniști dedicați medicinei stilului de viață.
             </p>
             <Link
               href="/membri"

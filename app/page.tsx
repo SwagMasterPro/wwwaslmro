@@ -47,7 +47,7 @@ const memberBenefits = [
   {
     icon: Users,
     title: "Comunitate Profesională",
-    description: "Networking cu specialiști din domeniul medicinii stilului de viață",
+    description: "Networking cu specialiști din domeniul medicinei stilului de viață",
   },
   {
     icon: BookOpen,
@@ -56,8 +56,8 @@ const memberBenefits = [
   },
   {
     icon: Award,
-    title: "Certificări",
-    description: "Oportunități de certificare în medicina stilului de viață",
+    title: "Recunoaștere profesională",
+    description: "Oportunități de perfecționare și specializare în medicina stilului de viață",
   },
 ];
 
@@ -107,7 +107,7 @@ export default function Home() {
                 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight"
                 style={{ color: '#FFFFFF' }}
               >
-                Transformăm sănătatea prin
+                Construim sănătatea prin
                 <span style={{ color: '#74C69D' }}> stilul de viață</span>
               </h1>
               
@@ -116,7 +116,7 @@ export default function Home() {
                 style={{ color: 'rgba(255,255,255,0.8)' }}
               >
                 ASLM reunește profesioniști din domeniul sănătății dedicați promovării 
-                medicinii stilului de viață în România. Împreună construim un viitor 
+                medicinei stilului de viață în România. Împreună construim un viitor 
                 mai sănătos prin educație, cercetare și colaborare.
               </p>
               
@@ -556,7 +556,7 @@ export default function Home() {
               className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold mb-6"
               style={{ color: '#FFFFFF' }}
             >
-              Alătură-te mișcării pentru sănătate
+              Alătură-te comunității medicinei stilului de viață
             </h2>
             <p 
               className="text-lg mb-10 max-w-2xl mx-auto leading-relaxed"

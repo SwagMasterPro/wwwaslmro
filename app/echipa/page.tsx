@@ -530,7 +530,7 @@ export default function EchipaPage() {
               style={{ color: '#D1D5DB' }}
             >
               Devino membru ASLM și contribuie la dezvoltarea medicinei stilului de viață în România. 
-              Poți fi implicat în divizii și departamente conform expertizei tale.
+              Te poți implica în activitățile și proiectele ASLM, corespunzător domeniului tău de competență profesională.
             </p>
             <Link
               href="/membri"

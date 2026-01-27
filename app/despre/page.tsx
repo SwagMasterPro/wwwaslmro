@@ -105,7 +105,7 @@ export default function DespreNoi() {
               Societatea Academică de Medicina Stilului de Viață
             </h1>
             <p className="text-lg text-white/70 leading-relaxed">
-              Suntem o organizație dedicată promovării medicinii stilului de viață în 
+              Suntem o organizație dedicată promovării medicinei stilului de viață în 
               România, reunind profesioniști din sănătate pentru un viitor mai sănătos.
             </p>
           </motion.div>
@@ -162,15 +162,15 @@ export default function DespreNoi() {
               </div>
               <h2 className="text-title text-[var(--text-primary)] mb-4">Viziunea Noastră</h2>
               <p className="text-body leading-relaxed">
-                Ne imaginăm un sistem de sănătate românesc în care medicina stilului de 
-                viață este integrată în toate nivelurile de îngrijire medicală, de la 
-                prevenție primară până la tratament și recuperare.
+                Viziunea ASLM este dezvoltarea unui sistem de sănătate românesc în care 
+                medicina stilului de viață este integrată în toate nivelurile de îngrijire 
+                medicală, de la prevenție primară până la tratament și recuperare.
               </p>
               <p className="text-body leading-relaxed mt-4">
-                Credem într-o Românie în care fiecare cetățean are acces la informații 
-                și servicii care îi permit să facă alegeri informate pentru un stil de 
-                viață sănătos, iar medicii sunt pregătiți să ofere consiliere bazată pe 
-                dovezi științifice.
+                Suntem de părere că fiecare cetățean trebuie să beneficieze de informații 
+                și servicii care să susțină alegeri informate pentru un stil de viață sănătos, 
+                iar profesioniștii din domeniul medical să fie pregătiți pentru consiliere 
+                bazată pe dovezi științifice.
               </p>
             </motion.div>
           </div>
@@ -189,7 +189,7 @@ export default function DespreNoi() {
           >
             <p className="text-overline mb-3">Fundament</p>
             <h2 className="text-headline text-[var(--text-primary)] mb-4">
-              Cei Șase Piloni ai Medicinii Stilului de Viață
+              Cei Șase Piloni ai Medicinei Stilului de Viață
             </h2>
             <p className="text-subtitle max-w-3xl mx-auto">
               Medicina stilului de viață se bazează pe șase domenii fundamentale, 
