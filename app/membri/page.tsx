@@ -191,7 +191,7 @@ export default function MembriiPage() {
             <h1 className="text-display text-white mb-6" style={{ fontSize: "clamp(2.5rem, 5vw, 3.5rem)" }}>
               Devino Membru ASLM
             </h1>
-            <p className="text-lg text-white/70 leading-relaxed">
+            <p className="text-lg leading-relaxed" style={{ color: 'rgba(255, 255, 255, 0.85)' }}>
               Fii parte din comunitatea de profesioniști și pasionați care transformă 
               medicina românească prin abordarea stilului de viață.
             </p>

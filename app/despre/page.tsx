@@ -104,7 +104,7 @@ export default function DespreNoi() {
             <h1 className="text-display text-white mb-6" style={{ fontSize: "clamp(2.5rem, 5vw, 3.5rem)" }}>
               Societatea Academică de Medicina Stilului de Viață
             </h1>
-            <p className="text-lg text-white/70 leading-relaxed">
+            <p className="text-lg leading-relaxed" style={{ color: 'rgba(255, 255, 255, 0.85)' }}>
               Suntem o organizație dedicată promovării medicinei stilului de viață în 
               România, reunind profesioniști din sănătate pentru un viitor mai sănătos.
             </p>

@@ -33,7 +33,7 @@ export default function PublicatiiPage() {
             <h1 className="text-display text-white mb-6" style={{ fontSize: "clamp(2.5rem, 5vw, 3.5rem)" }}>
               Publicații
             </h1>
-            <p className="text-lg text-white/70 leading-relaxed">
+            <p className="text-lg leading-relaxed" style={{ color: 'rgba(255, 255, 255, 0.85)' }}>
               Explorează resursele științifice și publicațiile ASLM în domeniul 
               medicinei stilului de viață.
             </p>

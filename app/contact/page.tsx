@@ -85,7 +85,7 @@ export default function ContactPage() {
             <h1 className="text-display text-white mb-6" style={{ fontSize: "clamp(2.5rem, 5vw, 3.5rem)" }}>
               Contact
             </h1>
-            <p className="text-lg text-white/70 leading-relaxed">
+            <p className="text-lg leading-relaxed" style={{ color: 'rgba(255, 255, 255, 0.85)' }}>
               Ai întrebări despre ASLM sau medicina stilului de viață? Echipa noastră 
               este aici să te ajute. Trimite-ne un mesaj și îți vom răspunde cât mai curând.
             </p>

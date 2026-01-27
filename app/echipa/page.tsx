@@ -184,7 +184,7 @@ export default function EchipaPage() {
             <h1 className="text-display text-white mb-6" style={{ fontSize: "clamp(2.5rem, 5vw, 3.5rem)" }}>
               Echipa ASLM
             </h1>
-            <p className="text-lg text-white/70 leading-relaxed">
+            <p className="text-lg leading-relaxed" style={{ color: 'rgba(255, 255, 255, 0.85)' }}>
               Cunoaște echipa de profesioniști care conduce și dezvoltă Societatea 
               Academică de Medicina Stilului de Viață din România.
             </p>

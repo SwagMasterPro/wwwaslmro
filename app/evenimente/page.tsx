@@ -61,7 +61,7 @@ export default function EvenimentePage() {
             <h1 className="text-display text-white mb-6" style={{ fontSize: "clamp(2.5rem, 5vw, 3.5rem)" }}>
               Evenimente ASLM
             </h1>
-            <p className="text-lg text-white/70 leading-relaxed">
+            <p className="text-lg leading-relaxed" style={{ color: 'rgba(255, 255, 255, 0.85)' }}>
               Descoperă evenimentele organizate de ASLM - congrese, conferințe, 
               webinarii și workshop-uri dedicate medicinei stilului de viață.
             </p>
