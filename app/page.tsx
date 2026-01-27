@@ -153,8 +153,8 @@ export default function Home() {
               <div className="relative">
                 {/* Central logo */}
                 <div 
-                  className="w-48 h-48 rounded-full flex items-center justify-center"
-                  style={{ backgroundColor: 'rgba(255,255,255,0.1)', backdropFilter: 'blur(10px)' }}
+                  className="w-48 h-48 rounded-full flex items-center justify-center shadow-xl"
+                  style={{ backgroundColor: 'rgba(255,255,255,0.95)' }}
                 >
                   <div className="relative w-32 h-32">
                     <Image
@@ -179,12 +179,11 @@ export default function Home() {
                       initial={{ opacity: 0, scale: 0 }}
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{ duration: 0.4, delay: 0.4 + index * 0.1 }}
-                      className="absolute w-16 h-16 rounded-xl flex items-center justify-center"
+                      className="absolute w-16 h-16 rounded-xl flex items-center justify-center shadow-lg"
                       style={{ 
                         left: `calc(50% + ${x}px - 32px)`,
                         top: `calc(50% + ${y}px - 32px)`,
-                        backgroundColor: 'rgba(255,255,255,0.15)',
-                        backdropFilter: 'blur(8px)'
+                        backgroundColor: 'rgba(255,255,255,0.95)'
                       }}
                     >
                       <pillar.icon className="w-7 h-7" style={{ color: pillar.color }} />
