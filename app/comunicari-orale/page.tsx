@@ -229,6 +229,62 @@ export default function ComunicariOralePage() {
                 </div>
               </div>
 
+              {/* Redactarea rezumatului */}
+              <div className="card p-8">
+                <div className="flex items-start gap-4 mb-6">
+                  <div className="w-12 h-12 rounded-xl bg-[var(--color-accent-100)] flex items-center justify-center flex-shrink-0">
+                    <FileText className="w-6 h-6 text-[var(--color-accent-600)]" />
+                  </div>
+                  <div>
+                    <h2 className="text-title text-[var(--text-primary)]">
+                      Redactarea rezumatului pentru Comunicări Orale
+                    </h2>
+                  </div>
+                </div>
+
+                <div className="space-y-4 text-body ml-16">
+                  <p>
+                    Pentru publicare, textul va fi redactat în limbile <strong>română</strong> (folosind 
+                    diacriticele românești) sau <strong>engleză</strong>.
+                  </p>
+
+                  <div className="space-y-4 mt-6">
+                    <div className="flex gap-3">
+                      <span className="font-semibold text-[var(--color-primary-600)] flex-shrink-0">1.</span>
+                      <p>
+                        Articolele se trimit în format <strong>Word (extensia *.DOC)</strong>, cu corp de 
+                        literă de mărimea <strong>12</strong>, spațiate la <strong>un rând și jumătate</strong>.
+                      </p>
+                    </div>
+
+                    <div className="flex gap-3">
+                      <span className="font-semibold text-[var(--color-primary-600)] flex-shrink-0">2.</span>
+                      <p>
+                        Manuscrisul va fi redactat cu respectarea următoarei succesiuni:{" "}
+                        <strong>titlul, autorii, afiliațiile, rezumatul</strong>.
+                      </p>
+                    </div>
+
+                    <div className="flex gap-3">
+                      <span className="font-semibold text-[var(--color-primary-600)] flex-shrink-0">3.</span>
+                      <p>
+                        Autorii vor furniza <strong>numele și prenumele complete</strong>, instituția 
+                        la care profesează, orașul și țara de reședință la data redactării manuscrisului, 
+                        precum și un <strong>e-mail de contact</strong> (standard internațional ISI).
+                      </p>
+                    </div>
+
+                    <div className="flex gap-3">
+                      <span className="font-semibold text-[var(--color-primary-600)] flex-shrink-0">4.</span>
+                      <p>
+                        Rezumatul trebuie să se încadreze în limita a{" "}
+                        <strong>1.500 de semne tipografice</strong>.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
               {/* Sfaturi */}
               <div className="card p-8 bg-[var(--color-primary-50)]">
                 <h3 className="text-title text-[var(--text-primary)] mb-4">Sfaturi</h3>
