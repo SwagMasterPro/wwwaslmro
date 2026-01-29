@@ -125,12 +125,12 @@ export default function MisiunePage() {
               <h3 className="font-heading text-2xl font-semibold text-white mb-4">
                 Viziunea Noastră
               </h3>
-              <p className="text-white/80 leading-relaxed mb-6">
+              <p className="leading-relaxed mb-6" style={{ color: 'rgba(255, 255, 255, 0.9)' }}>
                 Viziunea ASLM este dezvoltarea unui sistem de sănătate românesc în care 
                 medicina stilului de viață este integrată în toate nivelurile de îngrijire 
                 medicală, de la prevenție primară până la tratament și recuperare.
               </p>
-              <p className="text-white/80 leading-relaxed">
+              <p className="leading-relaxed" style={{ color: 'rgba(255, 255, 255, 0.9)' }}>
                 Suntem de părere că fiecare cetățean trebuie să beneficieze de informații 
                 și servicii care să susțină alegeri informate pentru un stil de viață sănătos, 
                 iar profesioniștii din domeniul medical să fie pregătiți pentru consiliere 
