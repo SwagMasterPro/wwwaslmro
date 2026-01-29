@@ -32,6 +32,15 @@ const navItems = [
   },
   { href: "/publicatii", label: "Publicații" },
   { href: "/evenimente", label: "Evenimente" },
+  { 
+    href: "#", 
+    label: "Congres",
+    children: [
+      { href: "/comunicari-orale", label: "Comunicări Orale" },
+      { href: "/conferinte", label: "Conferințe" },
+      { href: "https://congres.aslm.ro", label: "Site Congres 2026" },
+    ]
+  },
   { href: "/contact", label: "Contact" },
 ];
 
@@ -128,6 +137,7 @@ export default function Header() {
                               key={child.href}
                               href={child.href}
                               className="block px-4 py-2 text-sm text-gray-700 hover:bg-green-50 hover:text-green-700 transition-colors"
+                              {...(child.href.startsWith('http') ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                             >
                               {child.label}
                             </Link>
@@ -221,6 +231,7 @@ export default function Header() {
                           href={child.href}
                           onClick={() => setIsMobileMenuOpen(false)}
                           className="block px-4 py-2 pl-8 rounded-lg text-gray-700"
+                          {...(child.href.startsWith('http') ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                         >
                           {child.label}
                         </Link>
