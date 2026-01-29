@@ -23,6 +23,10 @@ export const metadata: Metadata = {
   description: "Societatea Academică de Medicina Stilului de Viață (ASLM) promovează excelența în medicina stilului de viață prin educație, cercetare și colaborare profesională în România.",
   keywords: ["medicina stilului de viață", "lifestyle medicine", "ASLM", "România", "sănătate", "prevenție", "boli cronice"],
   authors: [{ name: "ASLM" }],
+  icons: {
+    icon: "/icon.png",
+    apple: "/icon.png",
+  },
   openGraph: {
     title: "ASLM | Societatea Academică de Medicina Stilului de Viață",
     description: "Promovăm excelența în medicina stilului de viață prin educație, cercetare și colaborare profesională.",
