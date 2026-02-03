@@ -32,7 +32,7 @@ const consiliulStiintific = [
   { name: "Prof. Dr. Lorena Dima", image: "/images/prof-dr-lorena-dima.png" },
   { name: "Conf. Dr. Gindrovel Dumitra", image: "/images/conf-dr-gindrovel-dumitra.png" },
   { name: "Prof. Dr. Roxana Folescu", image: "/images/prof-dr-roxana-folescu.png" },
-  { name: "Prof. Dr. Alexandra Ghement", image: null },
+  { name: "Prof. Dr. Alexandra Ghement", image: "/images/prof-dr-alexandra-ghement.png" },
   { name: "Conf. Dr. Daniela Gurgus", image: "/images/conf-dr-daniela-gurgus.png" },
   { name: "Prof. Dr. Adela Golea Iancu", image: "/images/prof-dr-adela-iancu.png" },
   { name: "Conf. Dr. Irina Irimia", image: "/images/conf-dr-irina-irimia.png" },
