@@ -36,7 +36,7 @@ const consiliulStiintific = [
   { name: "Conf. Dr. Daniela Gurgus", image: "/images/conf-dr-daniela-gurgus.png" },
   { name: "Prof. Dr. Adela Golea Iancu", image: "/images/prof-dr-adela-iancu.png" },
   { name: "Conf. Dr. Irina Irimia", image: "/images/conf-dr-irina-irimia.png" },
-  { name: "Conf. Dr. Kamal Kamel", image: null },
+  { name: "Conf. Dr. Constantin Kamal", image: null },
   { name: "Prof. Dr. Poliana Leru", image: "/images/prof-dr-poliana-leru.png" },
   { name: "Prof. Dr. Roxana Miclăuș", image: "/images/prof-dr-roxana-miclaus.png" },
   { name: "Psih. Mihaela Naidin", image: null },
