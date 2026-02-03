@@ -25,8 +25,8 @@ const president = {
 const consiliulStiintific = [
   { name: "Prof. Dr. Doina Todea", image: "/images/prof-dr-doina-todea.png" },
   { name: "Prof. Dr. Monica Tarcea", image: "/images/prof-dr-monica-tarcea.png" },
-  { name: "Conf. Dr. Adorata Coman", image: "/images/conf-dr-adorata-coman.png" },
-  { name: "Șef Lucr. Dr. Adriana Cioca", image: "/images/sef-lucr-dr-adriana-cioca.png" },
+  { name: "Conf. Dr. Adorata Elena Coman", image: "/images/conf-dr-adorata-coman.png" },
+  { name: "Șef Lucr. Dr. Adriana Lavinia Cioca", image: "/images/sef-lucr-dr-adriana-cioca.png" },
   { name: "Șef Lucr. Dr. Dan Constantin", image: null },
   { name: "Prof. Dr. Mihai Craiu", image: "/images/prof-dr-mihai-craiu.png" },
   { name: "Prof. Dr. Lorena Dima", image: "/images/prof-dr-lorena-dima.png" },
@@ -37,12 +37,12 @@ const consiliulStiintific = [
   { name: "Prof. Dr. Adela Golea Iancu", image: "/images/prof-dr-adela-iancu.png" },
   { name: "Conf. Dr. Irina Irimia", image: "/images/conf-dr-irina-irimia.png" },
   { name: "Conf. Dr. Constantin Kamal", image: null },
-  { name: "Prof. Dr. Poliana Leru", image: "/images/prof-dr-poliana-leru.png" },
+  { name: "Prof. Dr. Polliana Mihaela Leru", image: "/images/prof-dr-poliana-leru.png" },
   { name: "Prof. Dr. Roxana Miclăuș", image: "/images/prof-dr-roxana-miclaus.png" },
   { name: "Psih. Mihaela Naidin", image: null },
   { name: "Conf. Dr. Aida Puia", image: "/images/conf-dr-aida-puia.png" },
   { name: "Prof. Dr. Carina Voinescu", image: "/images/prof-dr-carina-voinescu.png" },
-  { name: "Șef Lucr. Dr. Laura Condur", image: "/images/sef-lucr-dr-laura-condur.png" },
+  { name: "Șef Lucr. Dr. Laura Maria Condur", image: "/images/sef-lucr-dr-laura-condur.png" },
 ];
 
 // Team Member Card Component
