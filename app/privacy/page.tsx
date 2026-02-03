@@ -46,7 +46,7 @@ export default function PrivacyPolicy() {
                 <h2 className="text-title text-[var(--text-primary)] mb-4">1. Introducere</h2>
                 <p className="text-body mb-4">
                   Societatea Academică de Medicina Stilului de Viață (ASLM), cu sediul în Brașov, 
-                  România, CIF 52379030, respectă confidențialitatea datelor dumneavoastră personale 
+                  România, respectă confidențialitatea datelor dumneavoastră personale 
                   și se angajează să le protejeze în conformitate cu Regulamentul General privind 
                   Protecția Datelor (GDPR) și legislația română în vigoare.
                 </p>

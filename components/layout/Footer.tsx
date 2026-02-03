@@ -262,16 +262,11 @@ export default function Footer() {
       {/* Bottom Bar */}
       <div style={{ borderTop: '1px solid #E5E7EB', backgroundColor: '#F9FAFB' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+          <div className="flex flex-col md:flex-row items-center justify-center gap-4">
             <p className="text-sm" style={{ color: '#6B7280' }}>
               © {new Date().getFullYear()} Societatea Academică de Medicina Stilului de Viață.
               Toate drepturile rezervate.
             </p>
-            <div className="flex items-center gap-4 text-sm">
-              <span style={{ color: '#9CA3AF' }}>
-                CIF: 52379030
-              </span>
-            </div>
           </div>
         </div>
       </div>

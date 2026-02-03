@@ -47,7 +47,7 @@ export default function TermsOfService() {
                 <p className="text-body mb-4">
                   Acest site web este operat de Societatea Academică de Medicina Stilului de Viață 
                   (ASLM), o asociație non-profit înregistrată în România, cu sediul în Brașov, 
-                  str. Iuliu Maniu 41A, CIF 52379030.
+                  str. Iuliu Maniu 41A.
                 </p>
                 <p className="text-body">
                   Prin accesarea și utilizarea acestui site web, acceptați să fiți obligat de acești 
