@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import {
   ArrowRight,
   Heart,
@@ -319,13 +320,25 @@ export default function DespreNoi() {
 
           <div className="flex justify-center">
             <div 
-              className="inline-flex items-center gap-3 px-6 py-4 rounded-xl"
-              style={{ backgroundColor: 'rgba(27, 67, 50, 0.1)' }}
+              className="inline-flex items-center gap-4 px-8 py-6 rounded-xl"
+              style={{ backgroundColor: 'rgba(27, 67, 50, 0.05)' }}
             >
-              <Award className="w-6 h-6 text-[var(--color-primary-700)]" />
-              <span className="font-semibold text-[var(--text-primary)]">
-                Membru afiliat AMR
-              </span>
+              <div className="relative w-16 h-16 flex-shrink-0">
+                <Image
+                  src="/images/amr-logo.png"
+                  alt="AMR Logo"
+                  fill
+                  className="object-contain"
+                />
+              </div>
+              <div className="text-left">
+                <span className="font-bold text-[var(--text-primary)] block text-lg">
+                  Membru afiliat AMR
+                </span>
+                <span className="text-sm text-[var(--text-secondary)]">
+                  Asociația Medicilor din România
+                </span>
+              </div>
             </div>
           </div>
         </div>

@@ -231,15 +231,29 @@ export default function Footer() {
             {/* AMR Affiliation */}
             <div className="mt-6 pt-6" style={{ borderTop: '1px solid #E5E7EB' }}>
               <p 
-                className="text-xs font-bold uppercase tracking-wider mb-2"
+                className="text-xs font-bold uppercase tracking-wider mb-3"
                 style={{ color: '#166534' }}
               >
                 Afiliere
               </p>
-              <p className="text-sm" style={{ color: '#4B5563' }}>
-                Membru afiliat AMR<br />
-                (Asociația Medicilor din România)
-              </p>
+              <div className="flex items-center gap-3">
+                <div className="relative w-12 h-12 flex-shrink-0">
+                  <Image
+                    src="/images/amr-logo.png"
+                    alt="AMR Logo"
+                    fill
+                    className="object-contain"
+                  />
+                </div>
+                <div>
+                  <p className="text-sm font-semibold" style={{ color: '#111827' }}>
+                    AMR
+                  </p>
+                  <p className="text-xs" style={{ color: '#6B7280' }}>
+                    Asociația Medicilor din România
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
