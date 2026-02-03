@@ -17,7 +17,7 @@ import {
 const president = {
   name: "Prof. Dr. Andrea Elena Neculau",
   title: "Președinte",
-  image: "/images/prof-dr-andrea-neculau.webp"
+  image: "/images/andreea-neculau.jpeg"
 };
 
 // Scientific Council Members
