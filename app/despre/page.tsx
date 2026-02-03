@@ -312,7 +312,7 @@ export default function DespreNoi() {
               Conexiuni Internaționale
             </h2>
             <p className="text-body max-w-2xl mx-auto">
-              ASLM este afiliată la Asociația Medicilor din România (AMR) 
+              ASLM este afiliată la Asociația Medicală Română (AMR) 
               și colaborează cu organizații internaționale pentru promovarea medicinii 
               stilului de viață la nivel global.
             </p>
@@ -336,7 +336,7 @@ export default function DespreNoi() {
                   Membru afiliat AMR
                 </span>
                 <span className="text-sm text-[var(--text-secondary)]">
-                  Asociația Medicilor din România
+                  Asociația Medicală Română
                 </span>
               </div>
             </div>

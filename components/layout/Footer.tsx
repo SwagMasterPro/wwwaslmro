@@ -250,7 +250,7 @@ export default function Footer() {
                     AMR
                   </p>
                   <p className="text-xs" style={{ color: '#6B7280' }}>
-                    Asociația Medicilor din România
+                    Asociația Medicală Română
                   </p>
                 </div>
               </div>
