@@ -228,7 +228,7 @@ export default function Footer() {
               </li>
             </ul>
 
-            {/* ELMO Affiliation */}
+            {/* AMR Affiliation */}
             <div className="mt-6 pt-6" style={{ borderTop: '1px solid #E5E7EB' }}>
               <p 
                 className="text-xs font-bold uppercase tracking-wider mb-2"
@@ -237,8 +237,8 @@ export default function Footer() {
                 Afiliere
               </p>
               <p className="text-sm" style={{ color: '#4B5563' }}>
-                Membru afiliat ELMO<br />
-                (European Lifestyle Medicine Organization)
+                Membru afiliat AMR<br />
+                (Asociația Medicilor din România)
               </p>
             </div>
           </div>

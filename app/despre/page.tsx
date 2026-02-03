@@ -281,7 +281,7 @@ export default function DespreNoi() {
               Conexiuni Internaționale
             </h2>
             <p className="text-body max-w-2xl mx-auto">
-              ASLM este afiliată la European Lifestyle Medicine Organization (ELMO) 
+              ASLM este afiliată la Asociația Medicilor din România (AMR) 
               și colaborează cu organizații internaționale pentru promovarea medicinii 
               stilului de viață la nivel global.
             </p>
@@ -294,7 +294,7 @@ export default function DespreNoi() {
             >
               <Award className="w-6 h-6 text-[var(--color-primary-700)]" />
               <span className="font-semibold text-[var(--text-primary)]">
-                Membru afiliat ELMO
+                Membru afiliat AMR
               </span>
             </div>
           </div>
