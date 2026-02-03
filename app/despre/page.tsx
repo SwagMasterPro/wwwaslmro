@@ -266,8 +266,38 @@ export default function DespreNoi() {
         </div>
       </section>
 
-      {/* Affiliations */}
+      {/* Statute Section */}
       <section className="section-lg surface-tertiary">
+        <div className="container-default">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="text-center mb-8"
+          >
+            <p className="text-overline mb-3">Document</p>
+            <h2 className="text-headline text-[var(--text-primary)] mb-4">
+              Statutul ASLM
+            </h2>
+            <p className="text-body max-w-2xl mx-auto mb-6">
+              Consultați Statutul Societății Academice de Medicina Stilului de Viață pentru detalii complete despre organizare, membri și funcționare.
+            </p>
+            <a
+              href="/documents/Statutul-ASLM.docx"
+              download
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all shadow-md hover:shadow-lg"
+              style={{ backgroundColor: '#2D6A4F', color: '#FFFFFF' }}
+            >
+              <BookOpen className="w-5 h-5" />
+              Descarcă Statutul ASLM
+            </a>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Affiliations */}
+      <section className="section-lg surface-primary">
         <div className="container-default">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

@@ -37,7 +37,6 @@ const navItems = [
     label: "Congres",
     children: [
       { href: "/comunicari-orale", label: "Comunicări Orale" },
-      { href: "/conferinte", label: "Conferințe" },
       { href: "https://congres.aslm.ro", label: "Site Congres 2026" },
     ]
   },

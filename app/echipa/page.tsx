@@ -13,30 +13,40 @@ import {
  * Consiliul Științific
  */
 
+// President
+const president = {
+  name: "Prof. Dr. Andrea Elena Neculau",
+  title: "Președinte",
+  image: "/images/prof-dr-andrea-neculau.png"
+};
+
 // Scientific Council Members
+// Order: Doina Todea, Monica Tarcea first, then alphabetical
 const consiliulStiintific = [
   { name: "Prof. Dr. Doina Todea", image: "/images/prof-dr-doina-todea.png" },
   { name: "Prof. Dr. Monica Tarcea", image: "/images/prof-dr-monica-tarcea.png" },
-  { name: "Prof. Dr. Mihai Craiu", image: "/images/prof-dr-mihai-craiu.png" },
-  { name: "Prof. Dr. Lorena Dima", image: "/images/prof-dr-lorena-dima.png" },
-  { name: "Prof. Dr. Roxana Miclăuș", image: "/images/prof-dr-roxana-miclaus.png" },
-  { name: "Prof. Dr. Adela Iancu", image: "/images/prof-dr-adela-iancu.png" },
-  { name: "Prof. Dr. Poliana Leru", image: "/images/prof-dr-poliana-leru.png" },
-  { name: "Prof. Dr. Carina Voinescu", image: "/images/prof-dr-carina-voinescu.png" },
-  { name: "Prof. Dr. Roxana Folescu", image: "/images/prof-dr-roxana-folescu.png" },
-  { name: "Conf. Dr. Daniela Gurgus", image: "/images/conf-dr-daniela-gurgus.png" },
-  { name: "Conf. Dr. Gindrovel Dumitra", image: "/images/conf-dr-gindrovel-dumitra.png" },
-  { name: "Conf. Dr. Costache Kamal", image: null },
-  { name: "Conf. Dr. Aida Puia", image: "/images/conf-dr-aida-puia.png" },
   { name: "Conf. Dr. Adorata Coman", image: "/images/conf-dr-adorata-coman.png" },
-  { name: "Conf. Dr. Irina Irimia", image: "/images/conf-dr-irina-irimia.png" },
-  { name: "Șef Lucr. Dr. Laura Condur", image: "/images/sef-lucr-dr-laura-condur.png" },
   { name: "Șef Lucr. Dr. Adriana Cioca", image: "/images/sef-lucr-dr-adriana-cioca.png" },
   { name: "Șef Lucr. Dr. Dan Constantin", image: null },
+  { name: "Prof. Dr. Mihai Craiu", image: "/images/prof-dr-mihai-craiu.png" },
+  { name: "Prof. Dr. Lorena Dima", image: "/images/prof-dr-lorena-dima.png" },
+  { name: "Conf. Dr. Gindrovel Dumitra", image: "/images/conf-dr-gindrovel-dumitra.png" },
+  { name: "Prof. Dr. Roxana Folescu", image: "/images/prof-dr-roxana-folescu.png" },
+  { name: "Prof. Dr. Alexandra Ghement", image: null },
+  { name: "Conf. Dr. Daniela Gurgus", image: "/images/conf-dr-daniela-gurgus.png" },
+  { name: "Prof. Dr. Adela Golea Iancu", image: "/images/prof-dr-adela-iancu.png" },
+  { name: "Conf. Dr. Irina Irimia", image: "/images/conf-dr-irina-irimia.png" },
+  { name: "Conf. Dr. Kamal Kamel", image: null },
+  { name: "Prof. Dr. Poliana Leru", image: "/images/prof-dr-poliana-leru.png" },
+  { name: "Prof. Dr. Roxana Miclăuș", image: "/images/prof-dr-roxana-miclaus.png" },
+  { name: "Psih. Mihaela Naidin", image: null },
+  { name: "Conf. Dr. Aida Puia", image: "/images/conf-dr-aida-puia.png" },
+  { name: "Prof. Dr. Carina Voinescu", image: "/images/prof-dr-carina-voinescu.png" },
+  { name: "Șef Lucr. Dr. Laura Condur", image: "/images/sef-lucr-dr-laura-condur.png" },
 ];
 
 // Team Member Card Component
-function TeamMemberCard({ name, image, index }: { name: string; image?: string | null; index: number }) {
+function TeamMemberCard({ name, image, index, title }: { name: string; image?: string | null; index: number; title?: string }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -70,6 +80,11 @@ function TeamMemberCard({ name, image, index }: { name: string; image?: string |
           <h3 className="font-semibold text-[var(--text-primary)] text-lg">
             {name}
           </h3>
+          {title && (
+            <p className="text-sm text-[var(--color-primary-600)] font-medium mt-1">
+              {title}
+            </p>
+          )}
         </div>
       </div>
     </motion.div>
@@ -100,6 +115,35 @@ export default function EchipaPage() {
               academică a activităților societății.
             </p>
           </motion.div>
+        </div>
+      </section>
+
+      {/* Președinte Section */}
+      <section className="section-lg surface-secondary">
+        <div className="container-default">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="text-center mb-8"
+          >
+            <h2 className="text-headline text-[var(--text-primary)] mb-2">
+              Președinte ASLM
+            </h2>
+          </motion.div>
+
+          {/* President Card - Centered and larger */}
+          <div className="flex justify-center">
+            <div className="w-full max-w-xs">
+              <TeamMemberCard
+                name={president.name}
+                title={president.title}
+                image={president.image}
+                index={0}
+              />
+            </div>
+          </div>
         </div>
       </section>
 
