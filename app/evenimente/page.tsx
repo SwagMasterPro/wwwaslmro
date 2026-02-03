@@ -62,8 +62,8 @@ export default function EvenimentePage() {
               Evenimente ASLM
             </h1>
             <p className="text-lg leading-relaxed" style={{ color: 'rgba(255, 255, 255, 0.85)' }}>
-              Descoperă evenimentele organizate de ASLM - congrese, conferințe, 
-              webinarii și workshop-uri dedicate medicinei stilului de viață.
+              Descoperă evenimentele organizate de ASLM - congrese, conferințe și workshop-uri 
+              dedicate medicinei stilului de viață.
             </p>
           </motion.div>
         </div>

@@ -19,6 +19,7 @@ const navItems = [
       { href: "/despre", label: "Ce este ASLM" },
       { href: "/misiune", label: "Misiune & Viziune" },
       { href: "/echipa", label: "Echipa ASLM" },
+      { href: "/despre#statutul-aslm", label: "Statutul ASLM" },
     ]
   },
   { 
@@ -37,7 +38,6 @@ const navItems = [
     label: "Congres",
     children: [
       { href: "/comunicari-orale", label: "Comunicări Orale" },
-      { href: "/conferinte", label: "Conferințe" },
       { href: "https://congres.aslm.ro", label: "Site Congres 2026" },
     ]
   },

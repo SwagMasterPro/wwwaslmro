@@ -55,7 +55,7 @@ export default function PublicatiiPage() {
                 Revista Oficială
               </span>
               <h2 className="text-headline text-[var(--text-primary)] mb-6">
-                Lifestyle Medicine Romania Review
+                Lifestyle Medicine Research & Reviews
               </h2>
               <p className="text-body mb-6">
                 LMRR este revista oficială a Societății Academice de Medicina 

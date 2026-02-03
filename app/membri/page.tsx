@@ -464,6 +464,47 @@ export default function MembriiPage() {
         </div>
       </section>
 
+      {/* Payment Information */}
+      <section className="section-lg surface-tertiary">
+        <div className="container-default">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="card-elevated p-8 md:p-10 text-center max-w-3xl mx-auto"
+          >
+            <h2 className="text-title text-[var(--text-primary)] mb-4">
+              Cotizație anuală
+            </h2>
+            <h3 className="text-lg font-semibold text-[var(--text-primary)] mb-4">
+              Societatea Academică de Medicina Stilului de Viață
+            </h3>
+            <div className="bg-[var(--surface-secondary)] rounded-xl p-6 mb-6">
+              <p className="text-body mb-4">
+                Cotizația de „membru" al Societății ASLM, se achită anual în contul AMR 
+                (Asociația Medicală Română, CUI 8345234)
+              </p>
+              <div className="bg-white rounded-lg p-4 border-2 border-[var(--color-primary-200)]">
+                <p className="font-mono text-sm text-[var(--text-primary)] font-semibold">
+                  RO24 BACX 0000 0027 1132 4000
+                </p>
+                <p className="text-sm text-[var(--text-secondary)] mt-1">
+                  Unicredit Bank
+                </p>
+                <p className="text-sm text-[var(--color-primary-700)] font-semibold mt-2">
+                  Mențiunea: "Cotizație ASLM"
+                </p>
+              </div>
+            </div>
+            <p className="text-body-sm text-[var(--text-secondary)] italic">
+              * După efectuarea plății, vă rugăm să ne trimiteți dovada de plată și datele dumneavoastră 
+              prin formularul de contact.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
       {/* How to Join */}
       <section className="section-lg surface-secondary">
         <div className="container-default">
@@ -490,12 +531,12 @@ export default function MembriiPage() {
               {
                 step: "2",
                 title: "Completează formularul",
-                description: "Trimite-ne datele tale prin formularul online de adeziune."
+                description: "Trimite-ne datele tale prin formularul special de înscriere."
               },
               {
                 step: "3",
                 title: "Achită cotizația",
-                description: "Efectuează plata cotizației anuale pentru categoria aleasă."
+                description: "Efectuează plata cotizației anuale conform detaliilor de mai sus."
               },
               {
                 step: "4",
