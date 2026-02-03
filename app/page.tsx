@@ -106,8 +106,8 @@ export default function Home() {
                 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight"
                 style={{ color: '#FFFFFF' }}
               >
-                Construim sănătatea prin
-                <span style={{ color: '#74C69D' }}> stilul de viață</span>
+                Împreună pentru sănătate prin
+                <span style={{ color: '#74C69D' }}> medicina stilului de viață</span>
               </h1>
               
               <p 
