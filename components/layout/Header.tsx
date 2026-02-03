@@ -19,6 +19,7 @@ const navItems = [
       { href: "/despre", label: "Ce este ASLM" },
       { href: "/misiune", label: "Misiune & Viziune" },
       { href: "/echipa", label: "Echipa ASLM" },
+      { href: "/despre#statutul-aslm", label: "Statutul ASLM" },
     ]
   },
   { 

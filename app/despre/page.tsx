@@ -267,7 +267,7 @@ export default function DespreNoi() {
       </section>
 
       {/* Statute Section */}
-      <section className="section-lg surface-tertiary">
+      <section id="statutul-aslm" className="section-lg surface-tertiary">
         <div className="container-default">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
