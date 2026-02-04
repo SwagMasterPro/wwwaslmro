@@ -199,8 +199,8 @@ export default function Home() {
                         className="w-20 h-20 rounded-full flex flex-col items-center justify-center shadow-lg p-1"
                         style={{ backgroundColor: `${pillar.color}` }}
                       >
-                        <pillar.icon className="w-8 h-8 text-white mb-1" />
-                        <p className="text-[7px] font-bold text-center leading-tight text-white whitespace-pre-line">
+                        <pillar.icon className="w-8 h-8 mb-1" style={{ color: '#FFFFFF' }} />
+                        <p className="text-[7px] font-bold text-center leading-tight whitespace-pre-line" style={{ color: '#FFFFFF' }}>
                           {pillar.label}
                         </p>
                       </div>
