@@ -63,9 +63,13 @@ const memberBenefits = [
 
 // Statistics
 const stats = [
-  { value: "1", label: "Eveniment anual" },
+  { value: "1", label: "Congres național" },
+  { value: "4", label: "Conferințe regionale" },
+  { value: "1", label: "Școală de vară" },
   { value: "6", label: "Piloni fundamentali" },
-  { value: "2026", label: "Primul congres" },
+  { value: "1", label: "Manual de practică" },
+  { value: "1", label: "Revistă oficială" },
+  { value: "2026", label: "Congres inaugural" },
 ];
 
 export default function Home() {
@@ -73,9 +77,10 @@ export default function Home() {
     <div className="overflow-hidden">
       {/* Hero Section */}
       <section 
-        className="relative min-h-[90vh] flex items-center"
+        className="relative min-h-[75vh] flex items-center"
         style={{ 
-          paddingTop: '100px',
+          paddingTop: '80px',
+          paddingBottom: '40px',
           background: 'linear-gradient(135deg, #081C15 0%, #1B4332 50%, #2D6A4F 100%)'
         }}
       >
@@ -152,10 +157,10 @@ export default function Home() {
               <div className="relative">
                 {/* Central logo */}
                 <div 
-                  className="w-48 h-48 rounded-full flex items-center justify-center shadow-xl"
+                  className="w-48 h-48 rounded-full flex flex-col items-center justify-center shadow-xl"
                   style={{ backgroundColor: 'rgba(255,255,255,0.95)' }}
                 >
-                  <div className="relative w-32 h-32">
+                  <div className="relative w-24 h-24 mb-2">
                     <Image
                       src="/images/aslm-logo.png"
                       alt="ASLM Logo"
@@ -163,12 +168,15 @@ export default function Home() {
                       className="object-contain"
                     />
                   </div>
+                  <p className="text-xs font-bold text-center leading-tight px-4" style={{ color: '#1B4332' }}>
+                    Cei 6 piloni<br/>ai MSV
+                  </p>
                 </div>
                 
                 {/* Orbiting pillars */}
                 {pillars.map((pillar, index) => {
                   const angle = (index * 60 - 90) * (Math.PI / 180);
-                  const radius = 160;
+                  const radius = 180;
                   const x = Math.cos(angle) * radius;
                   const y = Math.sin(angle) * radius;
                   
@@ -178,14 +186,22 @@ export default function Home() {
                       initial={{ opacity: 0, scale: 0 }}
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{ duration: 0.4, delay: 0.4 + index * 0.1 }}
-                      className="absolute w-16 h-16 rounded-xl flex items-center justify-center shadow-lg"
+                      className="absolute flex flex-col items-center"
                       style={{ 
-                        left: `calc(50% + ${x}px - 32px)`,
-                        top: `calc(50% + ${y}px - 32px)`,
-                        backgroundColor: 'rgba(255,255,255,0.95)'
+                        left: `calc(50% + ${x}px - 40px)`,
+                        top: `calc(50% + ${y}px - 50px)`,
+                        width: '80px'
                       }}
                     >
-                      <pillar.icon className="w-7 h-7" style={{ color: pillar.color }} />
+                      <div 
+                        className="w-20 h-20 rounded-2xl flex items-center justify-center shadow-lg mb-1"
+                        style={{ backgroundColor: `${pillar.color}` }}
+                      >
+                        <pillar.icon className="w-10 h-10 text-white" />
+                      </div>
+                      <p className="text-[9px] font-semibold text-center leading-tight text-white whitespace-pre-line">
+                        {pillar.label}
+                      </p>
                     </motion.div>
                   );
                 })}
@@ -203,20 +219,20 @@ export default function Home() {
         transition={{ duration: 0.5 }}
         style={{ backgroundColor: '#0f2b1d' }}
       >
-        <div className="container-wide py-8">
-          <div className="grid grid-cols-3 gap-8 text-center">
+        <div className="container-wide py-6">
+          <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-7 gap-4 md:gap-6 text-center">
             {stats.map((stat, index) => (
               <motion.div
                 key={stat.label}
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.3, delay: index * 0.1 }}
+                transition={{ duration: 0.3, delay: index * 0.05 }}
               >
-                <span className="block text-3xl md:text-4xl font-bold mb-1" style={{ color: '#74C69D' }}>
+                <span className="block text-2xl md:text-3xl font-bold mb-1" style={{ color: '#74C69D' }}>
                   {stat.value}
                 </span>
-                <span className="text-sm" style={{ color: 'rgba(255,255,255,0.7)' }}>
+                <span className="text-xs md:text-sm leading-tight" style={{ color: 'rgba(255,255,255,0.8)' }}>
                   {stat.label}
                 </span>
               </motion.div>
