@@ -77,10 +77,11 @@ export default function Home() {
     <div className="overflow-hidden">
       {/* Hero Section */}
       <section 
-        className="relative min-h-[75vh] flex items-center"
+        className="relative flex items-center"
         style={{ 
-          paddingTop: '80px',
-          paddingBottom: '40px',
+          paddingTop: '90px',
+          paddingBottom: '30px',
+          minHeight: 'calc(100vh - 100px)',
           background: 'linear-gradient(135deg, #081C15 0%, #1B4332 50%, #2D6A4F 100%)'
         }}
       >
@@ -93,22 +94,22 @@ export default function Home() {
           }}
         />
         
-        <div className="container-wide relative z-10">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div className="container-wide relative z-10 py-6">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
               <span 
-                className="inline-block px-4 py-2 rounded-full text-sm font-semibold mb-6"
+                className="inline-block px-3 py-1.5 rounded-full text-xs font-semibold mb-4"
                 style={{ backgroundColor: 'rgba(255,255,255,0.1)', color: '#95D5B2' }}
               >
                 Societatea Academică de Medicina Stilului de Viață
               </span>
               
               <h1 
-                className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight"
+                className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold mb-4 leading-tight"
                 style={{ color: '#FFFFFF' }}
               >
                 Împreună pentru sănătate prin
@@ -116,7 +117,7 @@ export default function Home() {
               </h1>
               
               <p 
-                className="text-lg md:text-xl mb-8 leading-relaxed max-w-xl"
+                className="text-base md:text-lg mb-6 leading-relaxed max-w-xl"
                 style={{ color: 'rgba(255,255,255,0.8)' }}
               >
                 ASLM reunește profesioniști din domeniul sănătății dedicați promovării 
@@ -124,10 +125,10 @@ export default function Home() {
                 mai sănătos prin educație, cercetare și colaborare.
               </p>
               
-              <div className="flex flex-col sm:flex-row gap-4">
+              <div className="flex flex-col sm:flex-row gap-3">
                 <Link
                   href="/membri"
-                  className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-semibold transition-all shadow-lg hover:shadow-xl group"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all shadow-lg hover:shadow-xl group"
                   style={{ backgroundColor: '#FFFFFF', color: '#1B4332' }}
                 >
                   Devino Membru
@@ -135,7 +136,7 @@ export default function Home() {
                 </Link>
                 <Link
                   href="/despre"
-                  className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-semibold transition-all"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all"
                   style={{ 
                     backgroundColor: 'transparent', 
                     color: '#FFFFFF',
@@ -154,13 +155,13 @@ export default function Home() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="hidden lg:flex items-center justify-center"
             >
-              <div className="relative">
+              <div className="relative scale-90 lg:scale-100">
                 {/* Central logo */}
                 <div 
-                  className="w-48 h-48 rounded-full flex flex-col items-center justify-center shadow-xl"
+                  className="w-44 h-44 rounded-full flex flex-col items-center justify-center shadow-xl"
                   style={{ backgroundColor: 'rgba(255,255,255,0.95)' }}
                 >
-                  <div className="relative w-24 h-24 mb-2">
+                  <div className="relative w-20 h-20 mb-1">
                     <Image
                       src="/images/aslm-logo.png"
                       alt="ASLM Logo"
@@ -168,15 +169,15 @@ export default function Home() {
                       className="object-contain"
                     />
                   </div>
-                  <p className="text-xs font-bold text-center leading-tight px-4" style={{ color: '#1B4332' }}>
-                    Cei 6 piloni<br/>ai MSV
+                  <p className="text-[9px] font-bold text-center leading-tight px-2" style={{ color: '#1B4332' }}>
+                    Cei 6 piloni ai<br/>medicinei<br/>stilului de viață
                   </p>
                 </div>
                 
                 {/* Orbiting pillars */}
                 {pillars.map((pillar, index) => {
                   const angle = (index * 60 - 90) * (Math.PI / 180);
-                  const radius = 180;
+                  const radius = 165;
                   const x = Math.cos(angle) * radius;
                   const y = Math.sin(angle) * radius;
                   
@@ -188,18 +189,18 @@ export default function Home() {
                       transition={{ duration: 0.4, delay: 0.4 + index * 0.1 }}
                       className="absolute flex flex-col items-center"
                       style={{ 
-                        left: `calc(50% + ${x}px - 40px)`,
-                        top: `calc(50% + ${y}px - 50px)`,
-                        width: '80px'
+                        left: `calc(50% + ${x}px - 36px)`,
+                        top: `calc(50% + ${y}px - 46px)`,
+                        width: '72px'
                       }}
                     >
                       <div 
-                        className="w-20 h-20 rounded-2xl flex items-center justify-center shadow-lg mb-1"
+                        className="w-18 h-18 rounded-xl flex items-center justify-center shadow-lg mb-1"
                         style={{ backgroundColor: `${pillar.color}` }}
                       >
-                        <pillar.icon className="w-10 h-10 text-white" />
+                        <pillar.icon className="w-9 h-9 text-white" />
                       </div>
-                      <p className="text-[9px] font-semibold text-center leading-tight text-white whitespace-pre-line">
+                      <p className="text-[8px] font-semibold text-center leading-tight text-white whitespace-pre-line">
                         {pillar.label}
                       </p>
                     </motion.div>
@@ -217,10 +218,10 @@ export default function Home() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
-        style={{ backgroundColor: '#0f2b1d' }}
+        style={{ backgroundColor: '#0f2b1d', minHeight: '100px' }}
       >
-        <div className="container-wide py-6">
-          <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-7 gap-4 md:gap-6 text-center">
+        <div className="container-wide py-5">
+          <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-7 gap-3 md:gap-5 text-center">
             {stats.map((stat, index) => (
               <motion.div
                 key={stat.label}
