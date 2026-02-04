@@ -161,7 +161,10 @@ export default function Home() {
                   className="w-44 h-44 rounded-full flex flex-col items-center justify-center shadow-xl"
                   style={{ backgroundColor: 'rgba(255,255,255,0.95)' }}
                 >
-                  <div className="relative w-20 h-20 mb-1">
+                  <p className="text-[9px] font-bold text-center leading-tight px-2 mb-1" style={{ color: '#1B4332' }}>
+                    Cei <span style={{ color: '#2D6A4F' }}>6 piloni</span> ai<br/>medicinei<br/>stilului de viață
+                  </p>
+                  <div className="relative w-16 h-16">
                     <Image
                       src="/images/aslm-logo.png"
                       alt="ASLM Logo"
@@ -169,9 +172,6 @@ export default function Home() {
                       className="object-contain"
                     />
                   </div>
-                  <p className="text-[9px] font-bold text-center leading-tight px-2" style={{ color: '#1B4332' }}>
-                    Cei 6 piloni ai<br/>medicinei<br/>stilului de viață
-                  </p>
                 </div>
                 
                 {/* Orbiting pillars */}
@@ -187,22 +187,23 @@ export default function Home() {
                       initial={{ opacity: 0, scale: 0 }}
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{ duration: 0.4, delay: 0.4 + index * 0.1 }}
-                      className="absolute flex flex-col items-center"
+                      className="absolute"
                       style={{ 
-                        left: `calc(50% + ${x}px - 36px)`,
-                        top: `calc(50% + ${y}px - 46px)`,
-                        width: '72px'
+                        left: `calc(50% + ${x}px - 40px)`,
+                        top: `calc(50% + ${y}px - 40px)`,
+                        width: '80px',
+                        height: '80px'
                       }}
                     >
                       <div 
-                        className="w-18 h-18 rounded-xl flex items-center justify-center shadow-lg mb-1"
+                        className="w-20 h-20 rounded-full flex flex-col items-center justify-center shadow-lg p-1"
                         style={{ backgroundColor: `${pillar.color}` }}
                       >
-                        <pillar.icon className="w-9 h-9 text-white" />
+                        <pillar.icon className="w-8 h-8 text-white mb-1" />
+                        <p className="text-[7px] font-bold text-center leading-tight text-white whitespace-pre-line">
+                          {pillar.label}
+                        </p>
                       </div>
-                      <p className="text-[8px] font-semibold text-center leading-tight text-white whitespace-pre-line">
-                        {pillar.label}
-                      </p>
                     </motion.div>
                   );
                 })}
