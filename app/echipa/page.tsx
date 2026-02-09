@@ -63,7 +63,7 @@ function TeamMemberCard({ name, image, index, title }: { name: string; image?: s
               src={image}
               alt={name}
               fill
-              className="object-cover group-hover:scale-105 transition-transform duration-500"
+              className="object-contain group-hover:scale-105 transition-transform duration-500"
             />
           ) : (
             <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-[var(--color-primary-600)] to-[var(--color-primary-800)]">
