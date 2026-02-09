@@ -27,7 +27,7 @@ const consiliulStiintific = [
   { name: "Prof. Dr. Monica Tarcea", image: "/images/prof-dr-monica-tarcea.png" },
   { name: "Conf. Dr. Adorata Elena Coman", image: "/images/conf-dr-adorata-coman.png" },
   { name: "Șef Lucr. Dr. Adriana Lavinia Cioca", image: "/images/sef-lucr-dr-adriana-cioca.png" },
-  { name: "Șef Lucr. Dr. Dan Constantin", image: null },
+  { name: "Șef Lucr. Dr. Dan Constantin", image: "/images/sef-lucr-dr-dan-constantin.jpg" },
   { name: "Prof. Dr. Lorena Dima", image: "/images/prof-dr-lorena-dima.png" },
   { name: "Conf. Dr. Gindrovel Dumitra", image: "/images/conf-dr-gindrovel-dumitra.png" },
   { name: "Prof. Dr. Roxana Folescu", image: "/images/prof-dr-roxana-folescu.png" },
