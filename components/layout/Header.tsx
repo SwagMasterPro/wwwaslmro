@@ -28,19 +28,11 @@ const navItems = [
     children: [
       { href: "/membri", label: "Categorii de membri" },
       { href: "/membri#beneficii", label: "Beneficii" },
-      { href: "/contact", label: "Înscrie-te" },
+      { href: "/membri", label: "Înscrie-te" },
     ]
   },
   { href: "/publicatii", label: "Publicații" },
   { href: "/evenimente", label: "Evenimente" },
-  { 
-    href: "#", 
-    label: "Congres",
-    children: [
-      { href: "/comunicari-orale", label: "Comunicări Orale" },
-      { href: "https://congres.aslm.ro", label: "Site Congres 2026" },
-    ]
-  },
   { href: "/contact", label: "Contact" },
 ];
 

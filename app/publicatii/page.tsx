@@ -135,12 +135,12 @@ export default function PublicatiiPage() {
               {
                 icon: FileText,
                 title: "Ghiduri Clinice",
-                description: "Ghiduri practice pentru implementarea MSV în practica clinică"
+                description: "Ghiduri practice pentru implementarea Medicinei Stilului de Viață în practica clinică"
               },
               {
                 icon: BookOpen,
-                title: "Prezentări Webinarii",
-                description: "Arhiva prezentărilor din webinariile anterioare"
+                title: "Webinarii Tematice",
+                description: "Acces la webinarii tematice și la beneficii exclusive pentru membri"
               },
               {
                 icon: Download,

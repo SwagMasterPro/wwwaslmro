@@ -29,7 +29,7 @@ const pillars = [
   { 
     icon: Salad, 
     title: "Alimentație Echilibrată", 
-    description: "O dietă bazată preponderent pe plante, bogată în nutrienți, care previne și poate inversa bolile cronice.",
+    description: "O dietă bazată preponderent pe alimente din plante, bogată în nutrienți, care previne bolile cronice și ajută la regresia acestora.",
     color: "#40916C" 
   },
   { 

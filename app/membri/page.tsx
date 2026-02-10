@@ -316,12 +316,12 @@ export default function MembriiPage() {
                   </p>
                 )}
                 
-                <Link
-                  href="/contact"
+                <a
+                  href="#payment-details"
                   className="block w-full text-center px-6 py-3 rounded-xl font-semibold transition-all bg-[var(--color-primary-700)] text-white hover:bg-[var(--color-primary-800)]"
                 >
                   Solicită înscriere
-                </Link>
+                </a>
               </motion.div>
             ))}
           </div>
@@ -387,12 +387,21 @@ export default function MembriiPage() {
                   </p>
                 )}
                 
-                <Link
-                  href="/contact"
-                  className="block w-full text-center px-4 py-2 rounded-lg font-medium transition-all text-sm bg-[var(--color-primary-100)] text-[var(--color-primary-800)] hover:bg-[var(--color-primary-200)]"
-                >
-                  {category.id === 'asociati-pj' ? 'Contactează-ne' : 'Solicită înscriere'}
-                </Link>
+                {category.id === 'asociati-pj' ? (
+                  <Link
+                    href="/contact"
+                    className="block w-full text-center px-4 py-2 rounded-lg font-medium transition-all text-sm bg-[var(--color-primary-100)] text-[var(--color-primary-800)] hover:bg-[var(--color-primary-200)]"
+                  >
+                    Contactează-ne
+                  </Link>
+                ) : (
+                  <a
+                    href="#payment-details"
+                    className="block w-full text-center px-4 py-2 rounded-lg font-medium transition-all text-sm bg-[var(--color-primary-100)] text-[var(--color-primary-800)] hover:bg-[var(--color-primary-200)]"
+                  >
+                    Solicită înscriere
+                  </a>
+                )}
               </motion.div>
             ))}
           </div>
@@ -465,7 +474,7 @@ export default function MembriiPage() {
       </section>
 
       {/* Payment Information */}
-      <section className="section-lg surface-tertiary">
+      <section id="payment-details" className="section-lg surface-tertiary">
         <div className="container-default">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
