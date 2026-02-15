@@ -32,7 +32,9 @@ const consiliulStiintific = [
   { name: "Prof. Dr. Lorena Dima", image: "/images/prof-dr-lorena-dima.png" },
   { name: "Conf. Dr. Gindrovel Dumitra", image: "/images/conf-dr-gindrovel-dumitra.png" },
   { name: "Prof. Dr. Roxana Folescu", image: "/images/prof-dr-roxana-folescu.png" },
+  { name: "Prof. Dr. Mihai Craiu", image: "/images/prof-dr-mihai-craiu.png" },
   { name: "Conf. Dr. Daniela Gurgus", image: "/images/conf-dr-daniela-gurgus.png" },
+  { name: "Dr. Ioan Haneș", image: "/images/dr-ioan-hanes.png" },
   { name: "Prof. Dr. Adela Mihaela Iancu", image: "/images/prof-dr-adela-iancu.png" },
   { name: "Conf. Dr. Irina Eremia", image: "/images/conf-dr-irina-eremia.jpg" },
   { name: "Conf. Dr. Constantin Kamal", image: null },
@@ -40,7 +42,7 @@ const consiliulStiintific = [
   { name: "Prof. Dr. Roxana Miclăuș", image: "/images/prof-dr-roxana-miclaus.png" },
   { name: "Psih. Mihaela Naidin", image: "/images/psih-mihaela-naidin.png" },
   { name: "Conf. Dr. Aida Puia", image: "/images/conf-dr-aida-puia.png" },
-  { name: "Prof. Dr. Carina Voinescu", image: "/images/prof-dr-carina-voinescu.png" },
+  { name: "Prof. Dr. Doina Carina Voinescu", image: "/images/prof-dr-carina-voinescu.png" },
   { name: "Șef Lucr. Dr. Laura Maria Condur", image: "/images/sef-lucr-dr-laura-condur.png" },
 ];
 
