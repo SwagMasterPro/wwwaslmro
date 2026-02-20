@@ -2,87 +2,17 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import Image from "next/image";
 import { ArrowRight, Users } from "lucide-react";
 
 const consiliulDirector = [
-  {
-    name: "Prof. Dr. Andrea Elena Neculau",
-    role: "Președinte",
-    image: null,
-  },
-  {
-    name: "Dr. Mihai-Cristian Popescu",
-    role: "Secretar General",
-    image: null,
-  },
-  {
-    name: "Dr. Alexandra Ghement",
-    role: "Coordonator Relații Academice și Cooperare Științifică",
-    image: null,
-  },
-  {
-    name: "Ștefan Ionescu",
-    role: "Coordonator Tehnologie și Inovație Digitală",
-    image: null,
-  },
-  {
-    name: "Psih. Mihaela Naidin",
-    role: "Coordonator Psihologie Aplicată și Managementul Stresului",
-    image: null,
-  },
-  {
-    name: "Elena Iuliana Nistoroiu",
-    role: "Coordonator Strategie, Dezvoltare și Comunicare",
-    image: null,
-  },
-  {
-    name: "Armand-Gabriel Popescu",
-    role: "Coordonator Proiecte Speciale",
-    image: null,
-  },
+  { name: "Andrea Elena Neculau", role: "Președinte" },
+  { name: "Mihai-Cristian Popescu", role: "Secretar General" },
+  { name: "Alexandra Ghement", role: "Coordonator Relații Academice și Cooperare Științifică" },
+  { name: "Ștefan Ionescu", role: "Coordonator Tehnologie și Inovație Digitală" },
+  { name: "Mihaela Naidin", role: "Coordonator Psihologie Aplicată și Managementul Stresului" },
+  { name: "Elena Iuliana Nistoroiu", role: "Coordonator Strategie, Dezvoltare și Comunicare" },
+  { name: "Armand-Gabriel Popescu", role: "Coordonator Proiecte Speciale" },
 ];
-
-function DirectorCard({ name, role, image, index }: { name: string; role: string; image?: string | null; index: number }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.3, delay: index * 0.05 }}
-      className="group"
-    >
-      <div className="card overflow-hidden hover:shadow-xl transition-all duration-300">
-        <div className="aspect-square bg-gradient-to-br from-[var(--color-primary-100)] to-[var(--color-primary-200)] relative overflow-hidden">
-          {image ? (
-            <Image
-              src={image}
-              alt={name}
-              fill
-              className="object-contain group-hover:scale-105 transition-transform duration-500"
-            />
-          ) : (
-            <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-[var(--color-primary-600)] to-[var(--color-primary-800)]">
-              <div className="w-20 h-20 rounded-full bg-white/20 flex items-center justify-center backdrop-blur-sm">
-                <span className="font-heading text-2xl font-bold text-white">
-                  {name.split(" ").filter((_, i) => i > 0 && i < 4).map(n => n[0]).join("")}
-                </span>
-              </div>
-            </div>
-          )}
-        </div>
-        <div className="p-5 text-center bg-white">
-          <h3 className="font-semibold text-[var(--text-primary)] text-lg">
-            {name}
-          </h3>
-          <p className="text-sm text-[var(--color-primary-600)] font-medium mt-1">
-            {role}
-          </p>
-        </div>
-      </div>
-    </motion.div>
-  );
-}
 
 export default function ConsiliulDirectorPage() {
   return (
@@ -112,7 +42,7 @@ export default function ConsiliulDirectorPage() {
 
       {/* Members */}
       <section className="section-lg surface-primary">
-        <div className="container-wide">
+        <div className="container-default">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -132,15 +62,23 @@ export default function ConsiliulDirectorPage() {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
+          <div className="flex flex-col items-center gap-6 max-w-2xl mx-auto">
             {consiliulDirector.map((member, index) => (
-              <DirectorCard
-                key={`cd-${index}`}
-                name={member.name}
-                role={member.role}
-                image={member.image}
-                index={index}
-              />
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.3, delay: index * 0.05 }}
+                className="text-center"
+              >
+                <h3 className="text-lg font-semibold text-[var(--text-primary)]">
+                  {member.name}
+                </h3>
+                <p className="text-[var(--color-primary-600)] italic mt-1">
+                  {member.role}
+                </p>
+              </motion.div>
             ))}
           </div>
         </div>
