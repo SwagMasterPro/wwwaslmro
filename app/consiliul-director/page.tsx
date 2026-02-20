@@ -9,17 +9,17 @@ const consiliulDirector = [
   {
     name: "Prof. Dr. Andrea Elena Neculau",
     role: "Președinte",
-    image: "/images/andreea-neculau.jpeg",
+    image: null,
   },
   {
     name: "Dr. Mihai-Cristian Popescu",
     role: "Secretar General",
-    image: "/images/dr-mihai-cristian-popescu.png",
+    image: null,
   },
   {
     name: "Dr. Alexandra Ghement",
     role: "Coordonator Relații Academice și Cooperare Științifică",
-    image: "/images/prof-dr-alexandra-ghement.png",
+    image: null,
   },
   {
     name: "Ștefan Ionescu",
@@ -29,7 +29,7 @@ const consiliulDirector = [
   {
     name: "Psih. Mihaela Naidin",
     role: "Coordonator Psihologie Aplicată și Managementul Stresului",
-    image: "/images/psih-mihaela-naidin.png",
+    image: null,
   },
   {
     name: "Elena Iuliana Nistoroiu",

@@ -23,8 +23,8 @@ const president = {
 
 // Honorary Presidents
 const presedintiiDeOnoare = [
-  { name: "Acad. Prof. Dr. Constantin Ionescu Târgoviște", image: null },
-  { name: "†Prof. Dr. Adrian Restian", image: null },
+  { name: "Acad. Constantin Ionescu-Tîrgoviște" },
+  { name: "†Prof. Dr. Adrian Restian" },
 ];
 
 // Scientific Council Members
@@ -43,7 +43,6 @@ const consiliulStiintific = [
   { name: "Prof. Dr. Roxana Folescu", image: "/images/prof-dr-roxana-folescu.png" },
   { name: "Dr. Alexandra Ghement", image: "/images/prof-dr-alexandra-ghement.png" },
   { name: "Conf. Dr. Daniela Gurgus", image: "/images/conf-dr-daniela-gurgus-new.png" },
-  { name: "Dr. Ioan Haneș", image: "/images/dr-ioan-hanes.png" },
   { name: "Prof. Dr. Adela Mihaela Iancu", image: "/images/prof-dr-adela-iancu.png" },
   { name: "Conf. Dr. Constantin Kamal", image: "/images/conf-dr-constantin-kamal.png" },
   { name: "Prof. Dr. Polliana Mihaela Leru", image: "/images/prof-dr-poliana-leru.png" },
