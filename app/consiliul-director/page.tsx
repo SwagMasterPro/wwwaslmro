@@ -3,50 +3,47 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
-import {
-  ArrowRight,
-  GraduationCap
-} from "lucide-react";
+import { ArrowRight, Users } from "lucide-react";
 
-/**
- * Team Page - ASLM NGO Website
- * Consiliul Științific
- */
-
-// President
-const president = {
-  name: "Prof. Dr. Andrea Elena Neculau",
-  title: "Președinte",
-  image: "/images/andreea-neculau.jpeg"
-};
-
-// Scientific Council Members
-// Order: Doina Todea, Monica Tarcea, Alexandra Ghement (founding members) first, then alphabetical
-const consiliulStiintific = [
-  { name: "Prof. Dr. Doina Todea", image: "/images/prof-dr-doina-todea.png" },
-  { name: "Prof. Dr. Monica Tarcea", image: "/images/prof-dr-monica-tarcea.png" },
-  { name: "Prof. Dr. Alexandra Ghement", image: "/images/prof-dr-alexandra-ghement.png" },
-  { name: "Conf. Dr. Adorata Elena Coman", image: "/images/conf-dr-adorata-coman.png" },
-  { name: "Șef Lucr. Dr. Adriana Lavinia Cioca", image: "/images/sef-lucr-dr-adriana-cioca.png" },
-  { name: "Șef Lucr. Dr. Dan Constantin", image: "/images/sef-lucr-dr-dan-constantin.png" },
-  { name: "Prof. Dr. Lorena Dima", image: "/images/prof-dr-lorena-dima.png" },
-  { name: "Conf. Dr. Gindrovel Dumitra", image: "/images/conf-dr-gindrovel-dumitra.png" },
-  { name: "Prof. Dr. Roxana Folescu", image: "/images/prof-dr-roxana-folescu.png" },
-  { name: "Prof. Dr. Mihai Craiu", image: "/images/prof-dr-mihai-craiu.png" },
-  { name: "Conf. Dr. Daniela Gurgus", image: "/images/conf-dr-daniela-gurgus.png" },
-  { name: "Prof. Dr. Adela Mihaela Iancu", image: "/images/prof-dr-adela-iancu.png" },
-  { name: "Conf. Dr. Irina Eremia", image: "/images/conf-dr-irina-eremia.jpg" },
-  { name: "Conf. Dr. Constantin Kamal", image: null },
-  { name: "Prof. Dr. Polliana Mihaela Leru", image: "/images/prof-dr-poliana-leru.png" },
-  { name: "Prof. Dr. Roxana Miclăuș", image: "/images/prof-dr-roxana-miclaus.png" },
-  { name: "Psih. Mihaela Naidin", image: "/images/psih-mihaela-naidin.png" },
-  { name: "Conf. Dr. Aida Puia", image: "/images/conf-dr-aida-puia.png" },
-  { name: "Prof. Dr. Doina Carina Voinescu", image: "/images/prof-dr-carina-voinescu.png" },
-  { name: "Șef Lucr. Dr. Laura Maria Condur", image: "/images/sef-lucr-dr-laura-condur.png" },
+const consiliulDirector = [
+  {
+    name: "Prof. Dr. Andrea Elena Neculau",
+    role: "Președinte",
+    image: "/images/andreea-neculau.jpeg",
+  },
+  {
+    name: "Mihai-Cristian Popescu",
+    role: "Secretar General",
+    image: null,
+  },
+  {
+    name: "Prof. Dr. Alexandra Ghement",
+    role: "Coordonator Relații Academice și Cooperare Științifică",
+    image: "/images/prof-dr-alexandra-ghement.png",
+  },
+  {
+    name: "Ștefan Ionescu",
+    role: "Coordonator Tehnologie și Inovație Digitală",
+    image: null,
+  },
+  {
+    name: "Psih. Mihaela Naidin",
+    role: "Coordonator Psihologie Aplicată și Managementul Stresului",
+    image: "/images/psih-mihaela-naidin.png",
+  },
+  {
+    name: "Elena Iuliana Nistoroiu",
+    role: "Coordonator Strategie, Dezvoltare și Comunicare",
+    image: null,
+  },
+  {
+    name: "Armand-Gabriel Popescu",
+    role: "Coordonator Proiecte Speciale",
+    image: null,
+  },
 ];
 
-// Team Member Card Component
-function TeamMemberCard({ name, image, index, title }: { name: string; image?: string | null; index: number; title?: string }) {
+function DirectorCard({ name, role, image, index }: { name: string; role: string; image?: string | null; index: number }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -56,7 +53,6 @@ function TeamMemberCard({ name, image, index, title }: { name: string; image?: s
       className="group"
     >
       <div className="card overflow-hidden hover:shadow-xl transition-all duration-300">
-        {/* Photo */}
         <div className="aspect-square bg-gradient-to-br from-[var(--color-primary-100)] to-[var(--color-primary-200)] relative overflow-hidden">
           {image ? (
             <Image
@@ -69,29 +65,26 @@ function TeamMemberCard({ name, image, index, title }: { name: string; image?: s
             <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-[var(--color-primary-600)] to-[var(--color-primary-800)]">
               <div className="w-20 h-20 rounded-full bg-white/20 flex items-center justify-center backdrop-blur-sm">
                 <span className="font-heading text-2xl font-bold text-white">
-                  {name.split(" ").filter((n, i) => i > 0 && i < 4).map(n => n[0]).join("")}
+                  {name.split(" ").filter((_, i) => i > 0 && i < 4).map(n => n[0]).join("")}
                 </span>
               </div>
             </div>
           )}
         </div>
-        {/* Info */}
         <div className="p-5 text-center bg-white">
           <h3 className="font-semibold text-[var(--text-primary)] text-lg">
             {name}
           </h3>
-          {title && (
-            <p className="text-sm text-[var(--color-primary-600)] font-medium mt-1">
-              {title}
-            </p>
-          )}
+          <p className="text-sm text-[var(--color-primary-600)] font-medium mt-1">
+            {role}
+          </p>
         </div>
       </div>
     </motion.div>
   );
 }
 
-export default function EchipaPage() {
+export default function ConsiliulDirectorPage() {
   return (
     <div className="pt-20">
       {/* Page Header */}
@@ -107,18 +100,17 @@ export default function EchipaPage() {
               Despre ASLM
             </span>
             <h1 className="text-display text-white mb-6" style={{ fontSize: "clamp(2.5rem, 5vw, 3.5rem)" }}>
-              Consiliul Științific
+              Consiliul Director
             </h1>
             <p className="text-lg leading-relaxed" style={{ color: 'rgba(255, 255, 255, 0.85)' }}>
-              Consiliul Științific al ASLM reunește experți de renume din domeniul medicinei 
-              stilului de viață, care ghidează direcțiile de cercetare și asigură excelența 
-              academică a activităților societății.
+              Consiliul Director al ASLM asigură conducerea operațională a societății,
+              coordonând activitățile și proiectele strategice ale organizației.
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Consiliul Științific */}
+      {/* Members */}
       <section className="section-lg surface-primary">
         <div className="container-wide">
           <motion.div
@@ -129,23 +121,23 @@ export default function EchipaPage() {
             className="text-center mb-12"
           >
             <div className="w-14 h-14 mx-auto mb-4 rounded-2xl bg-[var(--color-primary-100)] flex items-center justify-center">
-              <GraduationCap className="w-7 h-7 text-[var(--color-primary-600)]" />
+              <Users className="w-7 h-7 text-[var(--color-primary-600)]" />
             </div>
             <h2 className="text-headline text-[var(--text-primary)] mb-4">
-              Membrii Consiliului Științific
+              Membrii Consiliului Director
             </h2>
             <p className="text-subtitle max-w-3xl mx-auto">
-              Echipa de profesori universitari, conferențiari și cercetători care asigură 
-              fundamentul științific al activităților ASLM în domeniul medicinei stilului de viață.
+              Echipa de conducere a ASLM, responsabilă de implementarea strategiei
+              și coordonarea activităților societății.
             </p>
           </motion.div>
 
-          {/* Members Grid */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
-            {consiliulStiintific.map((member, index) => (
-              <TeamMemberCard
-                key={`cs-${index}`}
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
+            {consiliulDirector.map((member, index) => (
+              <DirectorCard
+                key={`cd-${index}`}
                 name={member.name}
+                role={member.role}
                 image={member.image}
                 index={index}
               />
@@ -155,7 +147,7 @@ export default function EchipaPage() {
       </section>
 
       {/* CTA */}
-      <section 
+      <section
         className="py-20 md:py-24"
         style={{ backgroundColor: '#0f2b1d' }}
       >
@@ -166,18 +158,17 @@ export default function EchipaPage() {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <h2 
+            <h2
               className="font-heading text-3xl md:text-4xl font-bold mb-6"
               style={{ color: '#FFFFFF' }}
             >
               Vrei să faci parte din echipă?
             </h2>
-            <p 
+            <p
               className="text-lg mb-8 max-w-2xl mx-auto"
               style={{ color: '#D1D5DB' }}
             >
-              Devino membru ASLM și contribuie la dezvoltarea medicinei stilului de viață în România. 
-              Te poți implica în activitățile și proiectele ASLM, corespunzător domeniului tău de competență profesională.
+              Devino membru ASLM și contribuie la dezvoltarea medicinei stilului de viață în România.
             </p>
             <Link
               href="/membri"

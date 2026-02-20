@@ -18,7 +18,8 @@ const navItems = [
     children: [
       { href: "/despre", label: "Ce este ASLM" },
       { href: "/misiune", label: "Misiune & Viziune" },
-      { href: "/echipa", label: "Echipa ASLM" },
+      { href: "/echipa", label: "Consiliul Științific" },
+      { href: "/consiliul-director", label: "Consiliul Director" },
       { href: "/despre#statutul-aslm", label: "Statutul ASLM" },
     ]
   },
