@@ -78,7 +78,9 @@ export default function Footer() {
             
             <div className="flex items-center gap-3">
               <a
-                href="#"
+                href="https://www.facebook.com/profile.php?id=61587670614129"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-10 h-10 rounded-xl flex items-center justify-center transition-colors hover:bg-green-100"
                 style={{ backgroundColor: '#F3F4F6', color: '#374151' }}
                 aria-label="Facebook"
@@ -86,15 +88,9 @@ export default function Footer() {
                 <Facebook className="w-5 h-5" />
               </a>
               <a
-                href="#"
-                className="w-10 h-10 rounded-xl flex items-center justify-center transition-colors hover:bg-green-100"
-                style={{ backgroundColor: '#F3F4F6', color: '#374151' }}
-                aria-label="LinkedIn"
-              >
-                <Linkedin className="w-5 h-5" />
-              </a>
-              <a
-                href="#"
+                href="https://www.instagram.com/aslm.lifestylemedicine/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-10 h-10 rounded-xl flex items-center justify-center transition-colors hover:bg-green-100"
                 style={{ backgroundColor: '#F3F4F6', color: '#374151' }}
                 aria-label="Instagram"
