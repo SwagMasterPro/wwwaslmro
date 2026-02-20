@@ -34,7 +34,6 @@ const consiliulStiintific = [
   { name: "Prof. Dr. Roxana Folescu", image: "/images/prof-dr-roxana-folescu.png" },
   { name: "Prof. Dr. Mihai Craiu", image: "/images/prof-dr-mihai-craiu.png" },
   { name: "Conf. Dr. Daniela Gurgus", image: "/images/conf-dr-daniela-gurgus.png" },
-  { name: "Dr. Ioan Haneș", image: "/images/dr-ioan-hanes.png" },
   { name: "Prof. Dr. Adela Mihaela Iancu", image: "/images/prof-dr-adela-iancu.png" },
   { name: "Conf. Dr. Irina Eremia", image: "/images/conf-dr-irina-eremia.jpg" },
   { name: "Conf. Dr. Constantin Kamal", image: null },
