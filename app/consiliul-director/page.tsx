@@ -12,12 +12,12 @@ const consiliulDirector = [
     image: "/images/andreea-neculau.jpeg",
   },
   {
-    name: "Mihai-Cristian Popescu",
+    name: "Dr. Mihai-Cristian Popescu",
     role: "Secretar General",
-    image: null,
+    image: "/images/dr-mihai-cristian-popescu.png",
   },
   {
-    name: "Prof. Dr. Alexandra Ghement",
+    name: "Dr. Alexandra Ghement",
     role: "Coordonator Relații Academice și Cooperare Științifică",
     image: "/images/prof-dr-alexandra-ghement.png",
   },

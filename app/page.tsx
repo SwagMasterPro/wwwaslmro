@@ -148,65 +148,21 @@ export default function Home() {
               </div>
             </motion.div>
 
-            {/* Hero visual - Logo and pillars */}
+            {/* Hero visual - Pillar infographic */}
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               className="hidden lg:flex items-center justify-center"
             >
-              <div className="relative scale-90 lg:scale-100">
-                {/* Central logo */}
-                <div 
-                  className="w-44 h-44 rounded-full flex flex-col items-center justify-center shadow-xl"
-                  style={{ backgroundColor: 'rgba(255,255,255,0.95)' }}
-                >
-                  <p className="text-[9px] font-bold text-center leading-tight px-2 mb-1" style={{ color: '#1B4332' }}>
-                    Cei <span style={{ color: '#2D6A4F' }}>6 piloni</span> ai<br/>medicinei<br/>stilului de viață
-                  </p>
-                  <div className="relative w-16 h-16">
-                    <Image
-                      src="/images/aslm-logo.png"
-                      alt="ASLM Logo"
-                      fill
-                      className="object-contain"
-                    />
-                  </div>
-                </div>
-                
-                {/* Orbiting pillars */}
-                {pillars.map((pillar, index) => {
-                  const angle = (index * 60 - 90) * (Math.PI / 180);
-                  const radius = 165;
-                  const x = Math.cos(angle) * radius;
-                  const y = Math.sin(angle) * radius;
-                  
-                  return (
-                    <motion.div
-                      key={pillar.label}
-                      initial={{ opacity: 0, scale: 0 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      transition={{ duration: 0.4, delay: 0.4 + index * 0.1 }}
-                      className="absolute"
-                      style={{ 
-                        left: `calc(50% + ${x}px - 40px)`,
-                        top: `calc(50% + ${y}px - 40px)`,
-                        width: '80px',
-                        height: '80px'
-                      }}
-                    >
-                      <div 
-                        className="w-20 h-20 rounded-full flex flex-col items-center justify-center shadow-lg p-1"
-                        style={{ backgroundColor: `${pillar.color}` }}
-                      >
-                        <pillar.icon className="w-8 h-8 mb-1" style={{ color: '#FFFFFF' }} />
-                        <p className="text-[7px] font-bold text-center leading-tight whitespace-pre-line" style={{ color: '#FFFFFF' }}>
-                          {pillar.label}
-                        </p>
-                      </div>
-                    </motion.div>
-                  );
-                })}
+              <div className="relative w-full max-w-lg">
+                <Image
+                  src="/images/piloni-msv.png"
+                  alt="Cei 6 piloni ai medicinei stilului de viață"
+                  width={500}
+                  height={500}
+                  className="object-contain drop-shadow-2xl"
+                />
               </div>
             </motion.div>
           </div>
