@@ -142,7 +142,7 @@ export default function Header() {
                 ) : (
                   <Link
                     href={item.href}
-                    className="px-3 py-2 text-sm font-semibold rounded-lg transition-all duration-200"
+                    className="px-3 py-2 text-sm font-semibold rounded-lg transition-all duration-200 flex items-center"
                     style={{ color: '#374151' }}
                     onMouseEnter={(e) => {
                       e.currentTarget.style.color = '#166534';
