@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
+import Script from "next/script";
 import {
   ArrowRight,
   Heart,
@@ -281,19 +282,25 @@ export default function DespreNoi() {
             <h2 className="text-headline text-[var(--text-primary)] mb-4">
               Statutul ASLM
             </h2>
-            <p className="text-body max-w-2xl mx-auto mb-6">
+            <p className="text-body max-w-2xl mx-auto mb-8">
               Consultați Statutul Societății Academice de Medicina Stilului de Viață pentru detalii complete despre organizare, membri și funcționare.
             </p>
-            <a
-              href="https://view.publitas.com/amaltea/statut-aslm-2025-extrase/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all shadow-md hover:shadow-lg"
-              style={{ backgroundColor: '#2D6A4F', color: '#FFFFFF' }}
-            >
-              <BookOpen className="w-5 h-5" />
-              Statutul ASLM
-            </a>
+            <div className="max-w-4xl mx-auto">
+              <div id="publitas-embed-bmqr6zksv6g"></div>
+              <Script
+                src="https://view.publitas.com/embed.js"
+                data-cfasync="false"
+                data-height=""
+                data-publication="https://view.publitas.com/amaltea/statut-aslm-2025-extrase/"
+                data-publication-aspect-ratio="0.7071503680336488"
+                data-publication-title="Statut ASLM 2025 [extrase]"
+                data-responsive="true"
+                data-width=""
+                data-wrapper-id="publitas-embed-bmqr6zksv6g"
+                publitas-embed="true"
+                strategy="afterInteractive"
+              />
+            </div>
           </motion.div>
         </div>
       </section>
