@@ -33,6 +33,7 @@ const navItems = [
     ]
   },
   { href: "/publicatii", label: "Publicații" },
+  { href: "/blog", label: "Blog" },
   { href: "/evenimente", label: "Evenimente" },
   { href: "/contact", label: "Contact" },
 ];
