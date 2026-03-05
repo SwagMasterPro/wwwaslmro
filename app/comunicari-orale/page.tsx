@@ -2,7 +2,9 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Script from "next/script";
 import { ArrowLeft, Mic, Calendar, FileText, Users, CheckCircle, Clock, Presentation } from "lucide-react";
+import { generateWebPageSchema } from "@/lib/structured-data";
 
 /**
  * Oral Communications Page - Comunicări Orale
@@ -317,6 +319,25 @@ export default function ComunicariOralePage() {
           </motion.div>
         </div>
       </section>
+
+      {/* Structured Data for AI Search Optimization */}
+      <Script
+        id="comunicari-orale-structured-data"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            generateWebPageSchema(
+              "https://aslm.ro/comunicari-orale",
+              "Comunicări Orale ASLM",
+              "Instrucțiuni pentru autorii de comunicări orale la evenimentele ASLM: cerințe de structură, format prezentare PowerPoint, limită de timp, evaluare și credite EMC.",
+              [
+                { name: "Acasă", path: "/" },
+                { name: "Comunicări Orale", path: "/comunicari-orale" },
+              ]
+            )
+          ),
+        }}
+      />
     </div>
   );
 }

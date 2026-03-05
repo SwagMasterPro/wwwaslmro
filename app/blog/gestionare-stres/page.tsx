@@ -2,9 +2,11 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Script from "next/script";
 import { ChevronRight, ArrowLeft } from "lucide-react";
 import { getCategoryBySlug, getArticlesByCategory } from "@/data/blog-articles";
 import BlogCard from "@/components/blog/BlogCard";
+import { generateWebPageSchema } from "@/lib/structured-data";
 
 export default function GestionareStresPage() {
   const category = getCategoryBySlug("gestionare-stres")!;
@@ -78,6 +80,26 @@ export default function GestionareStresPage() {
           </div>
         </div>
       </section>
+
+      {/* Structured Data for AI Search Optimization */}
+      <Script
+        id="category-structured-data"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            generateWebPageSchema(
+              "https://aslm.ro/blog/gestionare-stres",
+              "Gestionare Stres | Blog ASLM",
+              "Articole despre gestionarea stresului în medicina stilului de viață: stresul cronic și riscul cardiovascular, managementul stresului la locul de muncă, conștientizarea emoțiilor și gândirea pozitivă.",
+              [
+                { name: "Acasă", path: "/" },
+                { name: "Blog", path: "/blog" },
+                { name: "Gestionare Stres", path: "/blog/gestionare-stres" },
+              ]
+            )
+          ),
+        }}
+      />
     </div>
   );
 }

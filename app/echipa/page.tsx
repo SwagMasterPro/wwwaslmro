@@ -3,11 +3,13 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
+import Script from "next/script";
 import {
   ArrowRight,
   GraduationCap,
   Award
 } from "lucide-react";
+import { generateWebPageSchema } from "@/lib/structured-data";
 
 /**
  * Team Page - ASLM NGO Website
@@ -280,6 +282,25 @@ export default function EchipaPage() {
           </motion.div>
         </div>
       </section>
+
+      {/* Structured Data for AI Search Optimization */}
+      <Script
+        id="echipa-structured-data"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            generateWebPageSchema(
+              "https://aslm.ro/echipa",
+              "Consiliul Științific ASLM",
+              "Echipa ASLM: Prof. Dr. Andrea Elena Neculau (Președinte), Președinți de Onoare (Acad. Constantin Ionescu-Tîrgoviște, Prof. Dr. Adrian Restian), și Consiliul Științific format din experți în medicina stilului de viață.",
+              [
+                { name: "Acasă", path: "/" },
+                { name: "Consiliul Științific", path: "/echipa" },
+              ]
+            )
+          ),
+        }}
+      />
     </div>
   );
 }

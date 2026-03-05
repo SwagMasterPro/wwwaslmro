@@ -2,9 +2,11 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Script from "next/script";
 import { ChevronRight, ArrowLeft } from "lucide-react";
 import { getCategoryBySlug, getArticlesByCategory } from "@/data/blog-articles";
 import BlogCard from "@/components/blog/BlogCard";
+import { generateWebPageSchema } from "@/lib/structured-data";
 
 export default function ActivitateFizicaPage() {
   const category = getCategoryBySlug("activitate-fizica")!;
@@ -78,6 +80,26 @@ export default function ActivitateFizicaPage() {
           </div>
         </div>
       </section>
+
+      {/* Structured Data for AI Search Optimization */}
+      <Script
+        id="category-structured-data"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            generateWebPageSchema(
+              "https://aslm.ro/blog/activitate-fizica",
+              "Activitate Fizică | Blog ASLM",
+              "Articole despre activitatea fizică în medicina stilului de viață: tehnici de automotivare, activități în aer liber pentru reducerea stresului, beneficiile înotului pentru sănătatea pulmonară.",
+              [
+                { name: "Acasă", path: "/" },
+                { name: "Blog", path: "/blog" },
+                { name: "Activitate Fizică", path: "/blog/activitate-fizica" },
+              ]
+            )
+          ),
+        }}
+      />
     </div>
   );
 }

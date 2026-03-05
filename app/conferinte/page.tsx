@@ -2,7 +2,9 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Script from "next/script";
 import { ArrowLeft, Presentation, Clock, Calendar, Users, Award, CheckCircle } from "lucide-react";
+import { generateWebPageSchema } from "@/lib/structured-data";
 
 /**
  * Conferences Page - Conferințe
@@ -190,6 +192,25 @@ export default function ConferintePage() {
           </motion.div>
         </div>
       </section>
+
+      {/* Structured Data for AI Search Optimization */}
+      <Script
+        id="conferinte-structured-data"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            generateWebPageSchema(
+              "https://aslm.ro/conferinte",
+              "Conferințe ASLM",
+              "Conferințe științifice ASLM despre medicina stilului de viață: prezentări susținute de personalități de prestigiu, teme medicale de actualitate, 4 conferințe regionale anuale cu credite EMC.",
+              [
+                { name: "Acasă", path: "/" },
+                { name: "Conferințe", path: "/conferinte" },
+              ]
+            )
+          ),
+        }}
+      />
     </div>
   );
 }

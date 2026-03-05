@@ -2,9 +2,11 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Script from "next/script";
 import { ChevronRight, ArrowLeft } from "lucide-react";
 import { getCategoryBySlug, getArticlesByCategory } from "@/data/blog-articles";
 import BlogCard from "@/components/blog/BlogCard";
+import { generateWebPageSchema } from "@/lib/structured-data";
 
 export default function CalitateSomnPage() {
   const category = getCategoryBySlug("calitate-somn")!;
@@ -78,6 +80,26 @@ export default function CalitateSomnPage() {
           </div>
         </div>
       </section>
+
+      {/* Structured Data for AI Search Optimization */}
+      <Script
+        id="category-structured-data"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            generateWebPageSchema(
+              "https://aslm.ro/blog/calitate-somn",
+              "Calitate Somn | Blog ASLM",
+              "Articole despre somnul de calitate în medicina stilului de viață: impactul somnului asupra sănătății fizice și mentale, ritmul circadian, somnul fragmentat și inflamația sistemică.",
+              [
+                { name: "Acasă", path: "/" },
+                { name: "Blog", path: "/blog" },
+                { name: "Calitate Somn", path: "/blog/calitate-somn" },
+              ]
+            )
+          ),
+        }}
+      />
     </div>
   );
 }

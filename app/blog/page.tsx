@@ -1,11 +1,13 @@
 "use client";
 
 import Link from "next/link";
+import Script from "next/script";
 import { BookOpen, ArrowRight } from "lucide-react";
 import { getAllCategories, articles, getArticlesByCategory } from "@/data/blog-articles";
 import CategoryCard from "@/components/blog/CategoryCard";
 import BlogCard from "@/components/blog/BlogCard";
 import { motion } from "framer-motion";
+import { generateWebPageSchema } from "@/lib/structured-data";
 
 export default function BlogPage() {
   const categories = getAllCategories();
@@ -179,6 +181,25 @@ export default function BlogPage() {
           </motion.div>
         </div>
       </section>
+
+      {/* Structured Data for AI Search Optimization */}
+      <Script
+        id="blog-structured-data"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            generateWebPageSchema(
+              "https://aslm.ro/blog",
+              "Blog ASLM - Medicina Stilului de Viață",
+              "Descoperă articole educaționale despre cei șase piloni ai medicinei stilului de viață: alimentație echilibrată, activitate fizică, somn de calitate, gestionare stres, relații sociale, evitare substanțe nocive.",
+              [
+                { name: "Acasă", path: "/" },
+                { name: "Blog", path: "/blog" },
+              ]
+            )
+          ),
+        }}
+      />
     </div>
   );
 }

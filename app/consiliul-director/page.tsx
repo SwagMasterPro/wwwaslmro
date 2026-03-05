@@ -2,7 +2,9 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Script from "next/script";
 import { ArrowRight, Users } from "lucide-react";
+import { generateWebPageSchema } from "@/lib/structured-data";
 
 const consiliulDirector = [
   { name: "Andrea Elena Neculau", role: "Președinte" },
@@ -119,6 +121,25 @@ export default function ConsiliulDirectorPage() {
           </motion.div>
         </div>
       </section>
+
+      {/* Structured Data for AI Search Optimization */}
+      <Script
+        id="consiliul-director-structured-data"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            generateWebPageSchema(
+              "https://aslm.ro/consiliul-director",
+              "Consiliul Director ASLM",
+              "Consiliul Director ASLM: Andrea Elena Neculau (Președinte), Mihai-Cristian Popescu (Secretar General), și coordonatori pentru relații academice, tehnologie, psihologie, strategie și proiecte speciale.",
+              [
+                { name: "Acasă", path: "/" },
+                { name: "Consiliul Director", path: "/consiliul-director" },
+              ]
+            )
+          ),
+        }}
+      />
     </div>
   );
 }

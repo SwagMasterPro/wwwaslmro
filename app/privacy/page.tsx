@@ -2,7 +2,9 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Script from "next/script";
 import { ArrowLeft, Shield } from "lucide-react";
+import { generateWebPageSchema } from "@/lib/structured-data";
 
 /**
  * Privacy Policy Page - Politica de Confidențialitate
@@ -185,6 +187,25 @@ export default function PrivacyPolicy() {
           </motion.div>
         </div>
       </section>
+
+      {/* Structured Data for AI Search Optimization */}
+      <Script
+        id="privacy-structured-data"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            generateWebPageSchema(
+              "https://aslm.ro/privacy",
+              "Politica de Confidențialitate ASLM",
+              "Politica de confidențialitate și protecția datelor personale pentru Societatea Academică de Medicina Stilului de Viață. GDPR compliant.",
+              [
+                { name: "Acasă", path: "/" },
+                { name: "Politica de Confidențialitate", path: "/privacy" },
+              ]
+            )
+          ),
+        }}
+      />
     </div>
   );
 }

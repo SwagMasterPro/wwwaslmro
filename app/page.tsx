@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
+import Script from "next/script";
 import {
   ArrowRight,
   Heart,
@@ -21,6 +22,8 @@ import {
   Globe,
   Target
 } from "lucide-react";
+import FAQSection from "@/components/seo/FAQSection";
+import { generateFAQSchema, generateWebPageSchema } from "@/lib/structured-data";
 
 /**
  * Homepage - ASLM NGO Website
@@ -70,6 +73,34 @@ const stats = [
   { value: "1", label: "Manual de practică" },
   { value: "1", label: "Revistă oficială" },
   { value: "2026", label: "Congres inaugural" },
+];
+
+// FAQ data for AI search optimization
+const homepageFAQs = [
+  {
+    question: "Ce este medicina stilului de viață?",
+    answer: "Medicina stilului de viață este o ramură modernă a medicinei, bazată pe dovezi științifice, care se concentrează pe schimbarea comportamentelor zilnice pentru a preveni, trata și chiar inversa progresia bolilor cronice. Aceasta se bazează pe șase piloni fundamentali: alimentația echilibrată, activitatea fizică, somnul de calitate, gestionarea stresului, relațiile sociale sănătoase și evitarea expunerii la substanțe nocive."
+  },
+  {
+    question: "Cine poate deveni membru ASLM?",
+    answer: "ASLM oferă mai multe categorii de membri: Membri Afiliați (profesioniști din sănătate - medici, farmaciști, nutriționiști, psihologi, etc.), Membri Asociați - Persoane Fizice (studenți, rezidenți și profesioniști non-medicali interesați de medicina stilului de viață), Membri Asociați - Persoane Juridice (companii și organizații care susțin misiunea ASLM), Membri Titulari (profesioniști cu experiență certificată în medicina stilului de viață) și Membri de Onoare (personalități recunoscute pentru contribuții excepționale)."
+  },
+  {
+    question: "Care sunt cei șase piloni ai medicinei stilului de viață?",
+    answer: "Cei șase piloni ai medicinei stilului de viață sunt: 1) Alimentație echilibrată - o dietă bazată preponderent pe alimente din plante, 2) Activitate fizică - mișcare regulată adaptată fiecărui individ, 3) Somn de calitate - odihna adecvată pentru recuperare, 4) Gestionarea stresului - tehnici de management pentru sănătatea mintală, 5) Relații sociale - conexiuni sociale sănătoase și comunitate suportivă, și 6) Evitarea substanțelor nocive - abstinența de la tutun, alcool în exces și alte substanțe dăunătoare."
+  },
+  {
+    question: "Cum pot să particip la Congresul ASLM 2026?",
+    answer: "Congresul Inaugural ASLM va avea loc în perioada 10-12 Mai 2026 la Brașov, în format hibrid (fizic și online). Pentru a participa, vizitați site-ul oficial al congresului la congres.aslm.ro unde veți găsi informații despre înregistrare, program, speakeri și tarife. Membrii ASLM beneficiază de tarife preferențiale și acces prioritar la eveniment."
+  },
+  {
+    question: "Ce beneficii oferă calitatea de membru ASLM?",
+    answer: "Membrii ASLM beneficiază de: educație continuă prin acces la cursuri online și webinarii de specialitate, networking cu profesioniști din domeniu, acces la revista Lifestyle Medicine Romania Review (LMRR), recunoaștere profesională și oportunități de specializare, tarife preferențiale la evenimente (congrese, conferințe, workshop-uri), credite EMC pentru evenimentele acreditate, și posibilitatea de a contribui la inițiative naționale de promovare a medicinei stilului de viață."
+  },
+  {
+    question: "Este ASLM o organizație acreditată?",
+    answer: "Da, ASLM este membru afiliat al Asociației Medicale Române (AMR) și colaborează cu organizații internaționale pentru promovarea medicinii stilului de viață la nivel global. Evenimentele noastre sunt acreditate și oferă credite EMC (Educație Medicală Continuă) pentru profesioniștii din sănătate."
+  },
 ];
 
 export default function Home() {
@@ -511,6 +542,31 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* FAQ Section */}
+      <FAQSection
+        title="Întrebări Frecvente"
+        subtitle="Răspunsuri la cele mai comune întrebări despre ASLM și medicina stilului de viață"
+        faqs={homepageFAQs}
+      />
+
+      {/* Structured Data for AI Search Optimization */}
+      <Script
+        id="homepage-structured-data"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify([
+            generateFAQSchema(homepageFAQs),
+            generateWebPageSchema(
+              "https://aslm.ro",
+              "ASLM - Societatea Academică de Medicina Stilului de Viață",
+              "Societatea Academică de Medicina Stilului de Viață (ASLM) promovează excelența în medicina stilului de viață prin educație, cercetare și colaborare profesională în România.",
+              [{ name: "Acasă", path: "/" }],
+              "https://aslm.ro/images/aslm-logo.png"
+            ),
+          ]),
+        }}
+      />
 
       {/* Final CTA */}
       <section 

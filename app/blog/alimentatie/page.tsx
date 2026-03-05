@@ -2,9 +2,11 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Script from "next/script";
 import { ChevronRight, ArrowLeft } from "lucide-react";
 import { getCategoryBySlug, getArticlesByCategory } from "@/data/blog-articles";
 import BlogCard from "@/components/blog/BlogCard";
+import { generateWebPageSchema } from "@/lib/structured-data";
 
 export default function AlimentatiePage() {
   const category = getCategoryBySlug("alimentatie")!;
@@ -78,6 +80,26 @@ export default function AlimentatiePage() {
           </div>
         </div>
       </section>
+
+      {/* Structured Data for AI Search Optimization */}
+      <Script
+        id="category-structured-data"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            generateWebPageSchema(
+              "https://aslm.ro/blog/alimentatie",
+              "Alimentație Sănătoasă | Blog ASLM",
+              "Articole despre alimentația echilibrată și nutriția în medicina stilului de viață: diete bazate pe plante, prevenirea bolilor cronice, deficiențe nutriționale și sănătate mentală.",
+              [
+                { name: "Acasă", path: "/" },
+                { name: "Blog", path: "/blog" },
+                { name: "Alimentație Sănătoasă", path: "/blog/alimentatie" },
+              ]
+            )
+          ),
+        }}
+      />
     </div>
   );
 }

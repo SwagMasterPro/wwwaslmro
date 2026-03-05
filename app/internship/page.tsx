@@ -1,10 +1,40 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Script from "next/script";
+import FAQSection from "@/components/seo/FAQSection";
+import { generateFAQSchema, generateWebPageSchema } from "@/lib/structured-data";
 
 /**
  * Internship Page - ASLM Student Leader Program
  */
+
+const internshipFAQs = [
+  {
+    question: "Cine se poate înscrie în programul de internship ASLM Student Leader?",
+    answer: "Programul este dedicat studenților motivați, cu interes real pentru prevenție, educație medicală și dezvoltare profesională. Este adresat studenților de la medicină, farmacie, nutriție, psihologie și alte specializări din domeniul sănătății care doresc să promoveze medicina stilului de viață în comunitatea academică."
+  },
+  {
+    question: "Ce responsabilități are un ASLM Student Leader?",
+    answer: "Responsabilitățile includ: informare temeinică despre medicina stilului de viață (cu bibliografie și surse oficiale transmise de echipa ASLM), promovarea responsabilă a materialelor ASLM și a Congresului de Medicina Stilului de Viață în mediul academic și online, republicarea și distribuirea conținutului educațional, și susținerea inițiativelor științifice ale societății."
+  },
+  {
+    question: "Cum se desfășoară procesul de selecție?",
+    answer: "Accesul în program se face pe baza unei scrisori de intenție. Candidații transmit un email la contact@aslm.ro cu o scurtă prezentare personală (nume, universitate, specializare, an de studiu, oraș), motivația pentru care doresc să facă parte din program, și domeniul lor de interes în medicina stilului de viață cu referire la cei șase piloni (nutriție, activitate fizică, somn, gestionare stres, relații sociale, evitare substanțe toxice)."
+  },
+  {
+    question: "Ce beneficii primesc studenții acceptați în program?",
+    answer: "Studenții acceptați primesc: <strong>certificat oficial de voluntar în cadrul ASLM</strong>, implicare într-o comunitate academică aflată în dezvoltare, <strong>acces gratuit la Congresul de Medicina Stilului de Viață - Ediția 2026</strong>, posibilitatea de a interacționa cu profesioniști din domeniul medical, și recomandare pentru cei care demonstrează consecvență și profesionalism."
+  },
+  {
+    question: "Cât timp durează programul de internship?",
+    answer: "Programul are o durată flexibilă, cu evaluare continuă pe baza implicării și consecvenței demonstrate. Studenții care se dovedesc dedicați și profesionali pot primi recomandări oficiale din partea ASLM și pot continua colaborarea pe termen lung."
+  },
+  {
+    question: "Este programul plătit sau voluntar?",
+    answer: "Este un program de voluntariat care oferă beneficii educaționale și profesionale semnificative, inclusiv acces gratuit la Congresul ASLM 2026, certificat oficial, networking cu profesioniști din domeniul medical, și oportunități de dezvoltare în domeniul medicinei stilului de viață."
+  },
+];
 
 export default function Internship() {
   return (
@@ -119,6 +149,33 @@ export default function Internship() {
           </motion.div>
         </div>
       </section>
+
+      {/* FAQ Section */}
+      <FAQSection
+        title="Întrebări Frecvente despre Programul de Internship"
+        subtitle="Află mai multe despre procesul de aplicare, responsabilități și beneficii"
+        faqs={internshipFAQs}
+      />
+
+      {/* Structured Data for AI Search Optimization */}
+      <Script
+        id="internship-structured-data"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify([
+            generateFAQSchema(internshipFAQs),
+            generateWebPageSchema(
+              "https://aslm.ro/internship",
+              "Program Internship ASLM Student Leader",
+              "Înscrie-te în programul de internship ASLM Student Leader. Program dedicat studenților care doresc să promoveze medicina stilului de viață în comunitatea academică. Certificat oficial, acces gratuit la Congres 2026.",
+              [
+                { name: "Acasă", path: "/" },
+                { name: "Internship", path: "/internship" },
+              ]
+            ),
+          ]),
+        }}
+      />
     </div>
   );
 }
