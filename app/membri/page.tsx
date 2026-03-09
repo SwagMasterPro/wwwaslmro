@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Script from "next/script";
 import Card from "@/components/ui/Card";
 import {
   ArrowRight,
@@ -22,6 +23,8 @@ import {
   BadgeCheck,
   Mail
 } from "lucide-react";
+import FAQSection from "@/components/seo/FAQSection";
+import { generateFAQSchema, generateWebPageSchema } from "@/lib/structured-data";
 
 /**
  * Members Page - ASLM NGO Website
@@ -32,6 +35,41 @@ import {
  * - Membri titulari
  * - Membri de onoare
  */
+
+const membriFAQs = [
+  {
+    question: "Care sunt categoriile de membri ASLM?",
+    answer: "ASLM oferă 5 categorii de membri: <strong>Membri Afiliați</strong> (profesioniști din sănătate - 400 RON/an), <strong>Membri Asociați PF</strong> (studenți, rezidenți - 200 RON/an), <strong>Membri Asociați PJ</strong> (persoane juridice - 2000 RON/an), <strong>Membri Titulari</strong> (profesioniști certificați în medicina stilului de viață - 600 RON/an), și <strong>Membri de Onoare</strong> (personalități cu contribuții excepționale - fără taxă)."
+  },
+  {
+    question: "Cât costă taxa de membru ASLM?",
+    answer: "Taxele anuale variază în funcție de categorie: Membri Afiliați - 400 RON, Membri Asociați Persoane Fizice - 200 RON, Membri Asociați Persoane Juridice - 2000 RON, Membri Titulari - 600 RON. Membri de Onoare nu plătesc taxă de membru."
+  },
+  {
+    question: "Ce documente sunt necesare pentru înscrierea ca membru afiliat?",
+    answer: "Pentru înscrierea ca membru afiliat (profesioniști din sănătate) este necesar să completați formularul online de adeziune și să achitați taxa de membru de 400 RON anual. Pot fi necesare și dovezi ale calificării profesionale în domeniul sănătății."
+  },
+  {
+    question: "Primesc certificat de membru ASLM?",
+    answer: "Da, toți membrii ASLM primesc un certificat oficial de membru care atestă apartenența la Societatea Academică de Medicina Stilului de Viață. Acest certificat poate fi folosit pentru dosar profesional și demonstrează angajamentul față de medicina stilului de viață."
+  },
+  {
+    question: "Ce înseamnă creditele EMC pentru membri?",
+    answer: "EMC înseamnă Educație Medicală Continuă. Membrii ASLM primesc credite EMC acreditate pentru participarea la evenimentele organizate de societate (congrese, conferințe, workshop-uri). Aceste credite sunt recunoscute oficial și contribuie la dezvoltarea profesională continuă a medicilor și profesioniștilor din sănătate."
+  },
+  {
+    question: "Pot fi membru ASLM dacă sunt student la medicină?",
+    answer: "Da, studenții la medicină pot deveni Membri Asociați - Persoane Fizice cu o taxă redusă de 200 RON pe an. Această categorie este dedicată studenților, rezidenților și profesioniștilor non-medicali care au interes real pentru medicina stilului de viață și doresc să facă parte din comunitatea ASLM."
+  },
+  {
+    question: "Ce beneficii au membrii ASLM la Congresul 2026?",
+    answer: "Membrii ASLM beneficiază de tarife preferențiale și acces prioritar la Congresul de Medicina Stilului de Viață din 10-12 Mai 2026 la Brașov. De asemenea, primesc credite EMC acreditate pentru participare și au oportunitatea de networking cu speakeri de top și profesioniști din domeniu."
+  },
+  {
+    question: "Cum pot să îmi reînnoiesc calitatea de membru?",
+    answer: "Calitatea de membru se reînnoiește anual prin achitarea taxei de membru corespunzătoare categoriei dumneavoastră. Veți primi notificări de reînnoire cu suficient timp înainte de expirare. Contactați-ne la contact@aslm.ro pentru detalii despre reînnoire."
+  },
+];
 
 const membershipBenefits = [
   {
@@ -316,12 +354,12 @@ export default function MembriiPage() {
                   </p>
                 )}
                 
-                <Link
-                  href="/contact"
+                <a
+                  href="#payment-details"
                   className="block w-full text-center px-6 py-3 rounded-xl font-semibold transition-all bg-[var(--color-primary-700)] text-white hover:bg-[var(--color-primary-800)]"
                 >
                   Solicită înscriere
-                </Link>
+                </a>
               </motion.div>
             ))}
           </div>
@@ -387,12 +425,21 @@ export default function MembriiPage() {
                   </p>
                 )}
                 
-                <Link
-                  href="/contact"
-                  className="block w-full text-center px-4 py-2 rounded-lg font-medium transition-all text-sm bg-[var(--color-primary-100)] text-[var(--color-primary-800)] hover:bg-[var(--color-primary-200)]"
-                >
-                  {category.id === 'asociati-pj' ? 'Contactează-ne' : 'Solicită înscriere'}
-                </Link>
+                {category.id === 'asociati-pj' ? (
+                  <Link
+                    href="/contact"
+                    className="block w-full text-center px-4 py-2 rounded-lg font-medium transition-all text-sm bg-[var(--color-primary-100)] text-[var(--color-primary-800)] hover:bg-[var(--color-primary-200)]"
+                  >
+                    Contactează-ne
+                  </Link>
+                ) : (
+                  <a
+                    href="#payment-details"
+                    className="block w-full text-center px-4 py-2 rounded-lg font-medium transition-all text-sm bg-[var(--color-primary-100)] text-[var(--color-primary-800)] hover:bg-[var(--color-primary-200)]"
+                  >
+                    Solicită înscriere
+                  </a>
+                )}
               </motion.div>
             ))}
           </div>
@@ -465,7 +512,7 @@ export default function MembriiPage() {
       </section>
 
       {/* Payment Information */}
-      <section className="section-lg surface-tertiary">
+      <section id="payment-details" className="section-lg surface-tertiary">
         <div className="container-default">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -566,6 +613,33 @@ export default function MembriiPage() {
           </div>
         </div>
       </section>
+
+      {/* FAQ Section */}
+      <FAQSection
+        title="Întrebări Frecvente despre Calitatea de Membru"
+        subtitle="Răspunsuri la cele mai comune întrebări despre înscrierea și beneficiile membrilor ASLM"
+        faqs={membriFAQs}
+      />
+
+      {/* Structured Data for AI Search Optimization */}
+      <Script
+        id="membri-structured-data"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify([
+            generateFAQSchema(membriFAQs),
+            generateWebPageSchema(
+              "https://aslm.ro/membri",
+              "Devino Membru ASLM",
+              "Alătură-te Societății Academice de Medicina Stilului de Viață. Descoperă categoriile de membri, beneficiile și procesul de înscriere pentru profesioniști din sănătate, studenți și organizații.",
+              [
+                { name: "Acasă", path: "/" },
+                { name: "Membri", path: "/membri" },
+              ]
+            ),
+          ]),
+        }}
+      />
 
       {/* Contact CTA */}
       <section 

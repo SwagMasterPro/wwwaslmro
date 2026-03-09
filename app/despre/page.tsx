@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
+import Script from "next/script";
 import {
   ArrowRight,
   Heart,
@@ -14,16 +15,41 @@ import {
   Sparkles,
   CheckCircle
 } from "lucide-react";
+import FAQSection from "@/components/seo/FAQSection";
+import { generateFAQSchema, generateWebPageSchema } from "@/lib/structured-data";
 
 /**
  * About Page - Despre ASLM
  */
 
+const despreFAQs = [
+  {
+    question: "Ce este Societatea Academică de Medicina Stilului de Viață (ASLM)?",
+    answer: "ASLM este o organizație non-profit care reunește medici, cercetători și profesioniști din domeniul sănătății dedicați promovării medicinii stilului de viață în România. Suntem membri afiliați la Asociația Medicală Română (AMR) și colaborăm cu organizații internaționale pentru promovarea medicinei stilului de viață la nivel global."
+  },
+  {
+    question: "Care este misiunea ASLM?",
+    answer: "Misiunea ASLM este să promoveze medicina stilului de viață ca standard de practică clinică în România. Contribuim activ la prevenirea și tratarea bolilor cronice prin educație medicală continuă, cercetare științifică și colaborare interdisciplinară, educând profesioniștii din sănătate și promovând cercetarea în domeniu."
+  },
+  {
+    question: "Ce sunt cei șase piloni ai medicinei stilului de viață?",
+    answer: "Cei șase piloni sunt: <strong>Alimentație echilibrată</strong> (dietă bazată pe plante, bogată în nutrienți), <strong>Activitate fizică</strong> (mișcare regulată adaptată fiecărui individ), <strong>Somn de calitate</strong> (odihna adecvată pentru recuperare), <strong>Gestionarea stresului</strong> (tehnici de management pentru sănătatea mintală), <strong>Relații sociale</strong> (conexiuni sănătoase și comunitate suportivă), și <strong>Evitarea substanțelor nocive</strong> (abstinența de la tutun, alcool în exces și alte substanțe dăunătoare)."
+  },
+  {
+    question: "Cum pot să mă implic în activitățile ASLM?",
+    answer: "Puteți să vă alăturați ASLM prin înscrierea ca membru (diverse categorii disponibile pentru profesioniști, studenți și organizații), participarea la evenimente și congrese organizate de societate, sau prin programul de internship pentru studenți. Contactați-ne la contact@aslm.ro pentru mai multe informații."
+  },
+  {
+    question: "Este ASLM recunoscută oficial?",
+    answer: "Da, ASLM este membru afiliat al Asociației Medicale Române (AMR), cea mai importantă organizație medicală din România. Evenimentele noastre sunt acreditate și oferă credite EMC (Educație Medicală Continuă) pentru profesioniștii din sănătate."
+  },
+];
+
 const pillars = [
   { 
     image: "/images/pillar-alimentatie-echilibrata.png",
     title: "Alimentație Echilibrată", 
-    description: "O dietă bazată preponderent pe plante, bogată în nutrienți, care previne și poate inversa bolile cronice.",
+    description: "O dietă bazată preponderent pe alimente din plante, bogată în nutrienți, care previne bolile cronice și ajută la regresia acestora.",
     color: "#40916C" 
   },
   { 
@@ -282,18 +308,25 @@ export default function DespreNoi() {
             <h2 className="text-headline text-[var(--text-primary)] mb-4">
               Statutul ASLM
             </h2>
-            <p className="text-body max-w-2xl mx-auto mb-6">
+            <p className="text-body max-w-2xl mx-auto mb-8">
               Consultați Statutul Societății Academice de Medicina Stilului de Viață pentru detalii complete despre organizare, membri și funcționare.
             </p>
-            <a
-              href="/documents/Statutul-ASLM.docx"
-              download
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all shadow-md hover:shadow-lg"
-              style={{ backgroundColor: '#2D6A4F', color: '#FFFFFF' }}
-            >
-              <BookOpen className="w-5 h-5" />
-              Descarcă Statutul ASLM
-            </a>
+            <div className="max-w-4xl mx-auto">
+              <div id="publitas-embed-bmqr6zksv6g"></div>
+              <Script
+                src="https://view.publitas.com/embed.js"
+                data-cfasync="false"
+                data-height=""
+                data-publication="https://view.publitas.com/amaltea/statut-aslm-2025-extrase/"
+                data-publication-aspect-ratio="0.7071503680336488"
+                data-publication-title="Statut ASLM 2025 [extrase]"
+                data-responsive="true"
+                data-width=""
+                data-wrapper-id="publitas-embed-bmqr6zksv6g"
+                publitas-embed="true"
+                strategy="afterInteractive"
+              />
+            </div>
           </motion.div>
         </div>
       </section>
@@ -344,6 +377,33 @@ export default function DespreNoi() {
           </div>
         </div>
       </section>
+
+      {/* FAQ Section */}
+      <FAQSection
+        title="Întrebări Frecvente despre ASLM"
+        subtitle="Răspunsuri la întrebările comune despre Societatea Academică de Medicina Stilului de Viață"
+        faqs={despreFAQs}
+      />
+
+      {/* Structured Data for AI Search Optimization */}
+      <Script
+        id="despre-structured-data"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify([
+            generateFAQSchema(despreFAQs),
+            generateWebPageSchema(
+              "https://aslm.ro/despre",
+              "Despre ASLM - Societatea Academică de Medicina Stilului de Viață",
+              "Societatea Academică de Medicina Stilului de Viață (ASLM) este o organizație dedicată promovării medicinei stilului de viață în România, membru afiliat AMR. Descoperă misiunea, viziunea și cei șase piloni ai medicinei stilului de viață.",
+              [
+                { name: "Acasă", path: "/" },
+                { name: "Despre ASLM", path: "/despre" },
+              ]
+            ),
+          ]),
+        }}
+      />
 
       {/* CTA */}
       <section 

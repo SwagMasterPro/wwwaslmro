@@ -3,10 +3,12 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Script from "next/script";
 import Card from "@/components/ui/Card";
 import { Input, Textarea } from "@/components/ui/Input";
 import Button from "@/components/ui/Button";
 import { MapPin, Mail, Phone, Clock, Facebook, Linkedin, Instagram, ArrowRight, Send, CheckCircle } from "lucide-react";
+import { generateWebPageSchema } from "@/lib/structured-data";
 
 /**
  * Contact Page - ASLM NGO Website
@@ -347,6 +349,25 @@ export default function ContactPage() {
           </motion.div>
         </div>
       </section>
+
+      {/* Structured Data for AI Search Optimization */}
+      <Script
+        id="contact-structured-data"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            generateWebPageSchema(
+              "https://aslm.ro/contact",
+              "Contact ASLM",
+              "Contactați Societatea Academică de Medicina Stilului de Viață pentru întrebări, colaborări sau înscrieri. Email: contact@aslm.ro, Sediu: Str. Iuliu Maniu 41A, Brașov.",
+              [
+                { name: "Acasă", path: "/" },
+                { name: "Contact", path: "/contact" },
+              ]
+            )
+          ),
+        }}
+      />
     </div>
   );
 }

@@ -2,7 +2,9 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Script from "next/script";
 import { ArrowLeft, FileText } from "lucide-react";
+import { generateWebPageSchema } from "@/lib/structured-data";
 
 /**
  * Terms of Service Page - Termeni și Condiții
@@ -210,6 +212,25 @@ export default function TermsOfService() {
           </motion.div>
         </div>
       </section>
+
+      {/* Structured Data for AI Search Optimization */}
+      <Script
+        id="terms-structured-data"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            generateWebPageSchema(
+              "https://aslm.ro/terms",
+              "Termeni și Condiții ASLM",
+              "Termenii și condițiile de utilizare pentru site-ul web al Societății Academice de Medicina Stilului de Viață.",
+              [
+                { name: "Acasă", path: "/" },
+                { name: "Termeni și Condiții", path: "/terms" },
+              ]
+            )
+          ),
+        }}
+      />
     </div>
   );
 }

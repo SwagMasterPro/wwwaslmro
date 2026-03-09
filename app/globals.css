@@ -198,104 +198,108 @@
   box-sizing: border-box;
 }
 
-html {
-  scroll-behavior: smooth;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    font-family: var(--font-body), system-ui, -apple-system, sans-serif;
+    font-size: var(--font-size-base);
+    line-height: var(--leading-normal);
+    color: var(--text-secondary);
+    background-color: var(--surface-primary);
+  }
+
+  button,
+  input,
+  select,
+  textarea {
+    font-family: inherit;
+    font-size: inherit;
+  }
+
+  a, button {
+    font-family: var(--font-body), system-ui, -apple-system, sans-serif;
+  }
 }
 
-body {
-  font-family: var(--font-body), system-ui, -apple-system, sans-serif;
-  font-size: var(--font-size-base);
-  line-height: var(--leading-normal);
-  color: var(--text-secondary);
-  background-color: var(--surface-primary);
-}
+@layer base {
+  /* ===== TYPOGRAPHY DEFAULTS ===== */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading), Georgia, serif;
+    font-weight: var(--font-semibold);
+    line-height: var(--leading-tight);
+    letter-spacing: var(--tracking-tight);
+    text-wrap: balance;
+  }
 
-button,
-input,
-select,
-textarea {
-  font-family: inherit;
-  font-size: inherit;
-}
+  h1 {
+    font-size: var(--font-size-5xl);
+    font-weight: var(--font-bold);
+  }
 
-a, button {
-  font-family: var(--font-body), system-ui, -apple-system, sans-serif;
-}
+  h2 {
+    font-size: var(--font-size-3xl);
+  }
 
-/* ===== TYPOGRAPHY DEFAULTS ===== */
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-heading), Georgia, serif;
-  font-weight: var(--font-semibold);
-  line-height: var(--leading-tight);
-  letter-spacing: var(--tracking-tight);
-  text-wrap: balance;
-}
+  h3 {
+    font-size: var(--font-size-2xl);
+  }
 
-h1 {
-  font-size: var(--font-size-5xl);
-  font-weight: var(--font-bold);
-}
+  h4 {
+    font-size: var(--font-size-xl);
+  }
 
-h2 {
-  font-size: var(--font-size-3xl);
-}
+  h5 {
+    font-size: var(--font-size-lg);
+  }
 
-h3 {
-  font-size: var(--font-size-2xl);
-}
+  h6 {
+    font-size: var(--font-size-base);
+    font-weight: var(--font-bold);
+  }
 
-h4 {
-  font-size: var(--font-size-xl);
-}
+  p {
+    line-height: var(--leading-relaxed);
+    color: var(--text-secondary);
+  }
 
-h5 {
-  font-size: var(--font-size-lg);
-}
+  strong, b {
+    color: var(--text-primary);
+    font-weight: var(--font-semibold);
+  }
 
-h6 {
-  font-size: var(--font-size-base);
-  font-weight: var(--font-bold);
-}
+  /* ===== LINK STYLES ===== */
+  a {
+    color: var(--text-link);
+    text-decoration: none;
+    transition: color var(--transition-fast) var(--ease-default);
+  }
 
-p {
-  line-height: var(--leading-relaxed);
-  color: var(--text-secondary);
-}
+  a:hover {
+    color: var(--text-link-hover);
+  }
 
-strong, b {
-  color: var(--text-primary);
-  font-weight: var(--font-semibold);
-}
+  /* ===== FOCUS STYLES ===== */
+  :focus-visible {
+    outline: var(--ring-width) solid var(--ring-color);
+    outline-offset: var(--ring-offset);
+    border-radius: var(--radius-sm);
+  }
 
-/* ===== LINK STYLES ===== */
-a {
-  color: var(--text-link);
-  text-decoration: none;
-  transition: color var(--transition-fast) var(--ease-default);
-}
+  :focus:not(:focus-visible) {
+    outline: none;
+  }
 
-a:hover {
-  color: var(--text-link-hover);
-}
-
-/* ===== FOCUS STYLES ===== */
-:focus-visible {
-  outline: var(--ring-width) solid var(--ring-color);
-  outline-offset: var(--ring-offset);
-  border-radius: var(--radius-sm);
-}
-
-:focus:not(:focus-visible) {
-  outline: none;
-}
-
-/* ===== SELECTION STYLES ===== */
-::selection {
-  background-color: var(--color-primary-200);
-  color: var(--color-primary-900);
+  /* ===== SELECTION STYLES ===== */
+  ::selection {
+    background-color: var(--color-primary-200);
+    color: var(--color-primary-900);
+  }
 }
 
 /* ===== SCROLLBAR STYLES ===== */

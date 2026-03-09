@@ -3,14 +3,17 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
+import Script from "next/script";
 import {
   ArrowRight,
-  GraduationCap
+  GraduationCap,
+  Award
 } from "lucide-react";
+import { generateWebPageSchema } from "@/lib/structured-data";
 
 /**
  * Team Page - ASLM NGO Website
- * Consiliul Științific
+ * Președinte, Președinți de Onoare, Consiliul Științific
  */
 
 // President
@@ -20,29 +23,36 @@ const president = {
   image: "/images/andreea-neculau.jpeg"
 };
 
+// Honorary Presidents
+const presedintiiDeOnoare = [
+  { name: "Acad. Constantin Ionescu-Tîrgoviște" },
+  { name: "†Prof. Dr. Adrian Restian" },
+];
+
 // Scientific Council Members
-// Order: Doina Todea, Monica Tarcea first, then alphabetical
+// Order: Doina Todea & Monica Tarcea first (founding members), then alphabetical by family name
 const consiliulStiintific = [
   { name: "Prof. Dr. Doina Todea", image: "/images/prof-dr-doina-todea.png" },
   { name: "Prof. Dr. Monica Tarcea", image: "/images/prof-dr-monica-tarcea.png" },
-  { name: "Conf. Dr. Adorata Elena Coman", image: "/images/conf-dr-adorata-coman.png" },
   { name: "Șef Lucr. Dr. Adriana Lavinia Cioca", image: "/images/sef-lucr-dr-adriana-cioca.png" },
-  { name: "Șef Lucr. Dr. Dan Constantin", image: null },
+  { name: "Conf. Dr. Adorata Elena Coman", image: "/images/conf-dr-adorata-coman.png" },
+  { name: "Șef Lucr. Dr. Laura Maria Condur", image: "/images/sef-lucr-dr-laura-condur.png" },
+  { name: "Șef Lucr. Dr. Dan Constantin", image: "/images/sef-lucr-dr-dan-constantin.png" },
   { name: "Prof. Dr. Mihai Craiu", image: "/images/prof-dr-mihai-craiu.png" },
   { name: "Prof. Dr. Lorena Dima", image: "/images/prof-dr-lorena-dima.png" },
-  { name: "Conf. Dr. Gindrovel Dumitra", image: "/images/conf-dr-gindrovel-dumitra.png" },
+  { name: "Conf. Dr. Gheorghe Gindrovel Dumitra", image: "/images/conf-dr-gindrovel-dumitra-new.png" },
+  { name: "Conf. Dr. Irina Eremia", image: "/images/conf-dr-irina-eremia.jpg" },
   { name: "Prof. Dr. Roxana Folescu", image: "/images/prof-dr-roxana-folescu.png" },
-  { name: "Prof. Dr. Alexandra Ghement", image: "/images/prof-dr-alexandra-ghement.png" },
-  { name: "Conf. Dr. Daniela Gurgus", image: "/images/conf-dr-daniela-gurgus.png" },
+  { name: "Dr. Alexandra Ghement", image: "/images/prof-dr-alexandra-ghement.png" },
+  { name: "Conf. Dr. Daniela Gurgus", image: "/images/conf-dr-daniela-gurgus-new.png" },
   { name: "Prof. Dr. Adela Mihaela Iancu", image: "/images/prof-dr-adela-iancu.png" },
-  { name: "Conf. Dr. Irina Irimia", image: "/images/conf-dr-irina-irimia.png" },
-  { name: "Conf. Dr. Constantin Kamal", image: null },
+  { name: "Conf. Dr. Constantin Kamal", image: "/images/conf-dr-constantin-kamal.png" },
   { name: "Prof. Dr. Polliana Mihaela Leru", image: "/images/prof-dr-poliana-leru.png" },
   { name: "Prof. Dr. Roxana Miclăuș", image: "/images/prof-dr-roxana-miclaus.png" },
-  { name: "Psih. Mihaela Naidin", image: null },
+  { name: "Psih. Mihaela Naidin", image: "/images/psih-mihaela-naidin.png" },
+  { name: "Dr. Mihai Cristian Popescu", image: "/images/dr-mihai-cristian-popescu.png" },
   { name: "Conf. Dr. Aida Puia", image: "/images/conf-dr-aida-puia.png" },
-  { name: "Prof. Dr. Carina Voinescu", image: "/images/prof-dr-carina-voinescu.png" },
-  { name: "Șef Lucr. Dr. Laura Maria Condur", image: "/images/sef-lucr-dr-laura-condur.png" },
+  { name: "Prof. Dr. Doina Carina Voinescu", image: "/images/prof-dr-carina-voinescu.png" },
 ];
 
 // Team Member Card Component
@@ -63,7 +73,7 @@ function TeamMemberCard({ name, image, index, title }: { name: string; image?: s
               src={image}
               alt={name}
               fill
-              className="object-cover group-hover:scale-105 transition-transform duration-500"
+              className="object-contain group-hover:scale-105 transition-transform duration-500"
             />
           ) : (
             <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-[var(--color-primary-600)] to-[var(--color-primary-800)]">
@@ -104,7 +114,7 @@ export default function EchipaPage() {
             className="text-center max-w-3xl mx-auto"
           >
             <span className="text-overline text-[var(--color-primary-300)] mb-3 block">
-              Echipa ASLM
+              Despre ASLM
             </span>
             <h1 className="text-display text-white mb-6" style={{ fontSize: "clamp(2.5rem, 5vw, 3.5rem)" }}>
               Consiliul Științific
@@ -118,31 +128,84 @@ export default function EchipaPage() {
         </div>
       </section>
 
-      {/* Președinte Section */}
-      <section className="section-lg surface-secondary">
+      {/* Președinte ASLM */}
+      <section className="section-lg surface-primary">
         <div className="container-default">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-center mb-8"
+            className="text-center mb-10"
           >
-            <h2 className="text-headline text-[var(--text-primary)] mb-2">
+            <h2 className="text-headline text-[var(--text-primary)] mb-4">
               Președinte ASLM
             </h2>
           </motion.div>
 
-          {/* President Card - Centered and larger */}
-          <div className="flex justify-center">
-            <div className="w-full max-w-xs">
-              <TeamMemberCard
-                name={president.name}
-                title={president.title}
-                image={president.image}
-                index={0}
-              />
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="flex justify-center"
+          >
+            <div className="w-64">
+              <div className="card overflow-hidden hover:shadow-xl transition-all duration-300">
+                <div className="aspect-square bg-gradient-to-br from-[var(--color-primary-100)] to-[var(--color-primary-200)] relative overflow-hidden">
+                  <Image
+                    src={president.image}
+                    alt={president.name}
+                    fill
+                    className="object-contain"
+                  />
+                </div>
+                <div className="p-5 text-center bg-white">
+                  <h3 className="font-semibold text-[var(--text-primary)] text-lg">
+                    {president.name}
+                  </h3>
+                  <p className="text-sm text-[var(--color-primary-600)] font-medium mt-1">
+                    {president.title}
+                  </p>
+                </div>
+              </div>
             </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Președinți de Onoare */}
+      <section className="py-16 surface-secondary">
+        <div className="container-default">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="text-center mb-10"
+          >
+            <div className="w-14 h-14 mx-auto mb-4 rounded-2xl bg-[var(--color-primary-100)] flex items-center justify-center">
+              <Award className="w-7 h-7 text-[var(--color-primary-600)]" />
+            </div>
+            <h2 className="text-headline text-[var(--text-primary)] mb-4">
+              Președinți de onoare
+            </h2>
+          </motion.div>
+
+          <div className="flex flex-col items-center gap-2">
+            {presedintiiDeOnoare.map((member, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.3, delay: index * 0.1 }}
+              >
+                <p className="text-lg font-semibold text-[var(--text-primary)] text-center">
+                  {member.name}
+                </p>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
@@ -219,6 +282,25 @@ export default function EchipaPage() {
           </motion.div>
         </div>
       </section>
+
+      {/* Structured Data for AI Search Optimization */}
+      <Script
+        id="echipa-structured-data"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            generateWebPageSchema(
+              "https://aslm.ro/echipa",
+              "Consiliul Științific ASLM",
+              "Echipa ASLM: Prof. Dr. Andrea Elena Neculau (Președinte), Președinți de Onoare (Acad. Constantin Ionescu-Tîrgoviște, Prof. Dr. Adrian Restian), și Consiliul Științific format din experți în medicina stilului de viață.",
+              [
+                { name: "Acasă", path: "/" },
+                { name: "Consiliul Științific", path: "/echipa" },
+              ]
+            )
+          ),
+        }}
+      />
     </div>
   );
 }

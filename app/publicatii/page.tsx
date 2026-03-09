@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
+import Script from "next/script";
 import {
   BookOpen,
   ExternalLink,
@@ -10,6 +11,7 @@ import {
   Download,
   ArrowRight
 } from "lucide-react";
+import { generateWebPageSchema } from "@/lib/structured-data";
 
 /**
  * Publications Page - ASLM NGO Website
@@ -135,12 +137,12 @@ export default function PublicatiiPage() {
               {
                 icon: FileText,
                 title: "Ghiduri Clinice",
-                description: "Ghiduri practice pentru implementarea MSV în practica clinică"
+                description: "Ghiduri practice pentru implementarea Medicinei Stilului de Viață în practica clinică"
               },
               {
                 icon: BookOpen,
-                title: "Prezentări Webinarii",
-                description: "Arhiva prezentărilor din webinariile anterioare"
+                title: "Webinarii Tematice",
+                description: "Acces la webinarii tematice și la beneficii exclusive pentru membri"
               },
               {
                 icon: Download,
@@ -207,6 +209,25 @@ export default function PublicatiiPage() {
           </motion.div>
         </div>
       </section>
+
+      {/* Structured Data for AI Search Optimization */}
+      <Script
+        id="publicatii-structured-data"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            generateWebPageSchema(
+              "https://aslm.ro/publicatii",
+              "Publicații ASLM",
+              "Revista oficială ASLM: Lifestyle Medicine Romania Review (LMRR) - publicație științifică dedicată medicinei stilului de viață, cercetare și articole peer-reviewed pentru profesioniști din sănătate.",
+              [
+                { name: "Acasă", path: "/" },
+                { name: "Publicații", path: "/publicatii" },
+              ]
+            )
+          ),
+        }}
+      />
     </div>
   );
 }

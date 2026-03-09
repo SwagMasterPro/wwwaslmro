@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Script from "next/script";
 import {
   ArrowRight,
   Target,
@@ -12,6 +13,7 @@ import {
   BookOpen,
   TrendingUp
 } from "lucide-react";
+import { generateWebPageSchema } from "@/lib/structured-data";
 
 /**
  * Mission Page - ASLM NGO Website
@@ -277,6 +279,25 @@ export default function MisiunePage() {
           </motion.div>
         </div>
       </section>
+
+      {/* Structured Data for AI Search Optimization */}
+      <Script
+        id="misiune-structured-data"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            generateWebPageSchema(
+              "https://aslm.ro/misiune",
+              "Misiunea și Viziunea ASLM",
+              "Misiunea ASLM: promovarea medicinei stilului de viață ca standard clinic în România prin educație, cercetare și colaborare. Viziunea: sistem de sănătate cu medicina stilului de viață integrată în toate nivelurile de îngrijire.",
+              [
+                { name: "Acasă", path: "/" },
+                { name: "Misiune & Viziune", path: "/misiune" },
+              ]
+            )
+          ),
+        }}
+      />
     </div>
   );
 }

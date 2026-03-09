@@ -18,7 +18,8 @@ const navItems = [
     children: [
       { href: "/despre", label: "Ce este ASLM" },
       { href: "/misiune", label: "Misiune & Viziune" },
-      { href: "/echipa", label: "Echipa ASLM" },
+      { href: "/echipa", label: "Consiliul Științific" },
+      { href: "/consiliul-director", label: "Consiliul Director" },
       { href: "/despre#statutul-aslm", label: "Statutul ASLM" },
     ]
   },
@@ -28,19 +29,13 @@ const navItems = [
     children: [
       { href: "/membri", label: "Categorii de membri" },
       { href: "/membri#beneficii", label: "Beneficii" },
-      { href: "/contact", label: "Înscrie-te" },
+      { href: "/membri", label: "Înscrie-te" },
     ]
   },
   { href: "/publicatii", label: "Publicații" },
+  { href: "/blog", label: "Blog" },
   { href: "/evenimente", label: "Evenimente" },
-  { 
-    href: "#", 
-    label: "Congres",
-    children: [
-      { href: "/comunicari-orale", label: "Comunicări Orale" },
-      { href: "https://congres.aslm.ro", label: "Site Congres 2026" },
-    ]
-  },
+  { href: "/internship", label: "Internship" },
   { href: "/contact", label: "Contact" },
 ];
 
@@ -149,7 +144,7 @@ export default function Header() {
                 ) : (
                   <Link
                     href={item.href}
-                    className="px-3 py-2 text-sm font-semibold rounded-lg transition-all duration-200"
+                    className="px-3 py-2 text-sm font-semibold rounded-lg transition-all duration-200 flex items-center"
                     style={{ color: '#374151' }}
                     onMouseEnter={(e) => {
                       e.currentTarget.style.color = '#166534';

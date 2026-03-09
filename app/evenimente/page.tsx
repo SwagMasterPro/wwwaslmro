@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
+import Script from "next/script";
 import {
   ArrowRight,
   Calendar,
@@ -11,6 +12,7 @@ import {
   ExternalLink,
   Clock
 } from "lucide-react";
+import { generateWebPageSchema } from "@/lib/structured-data";
 
 /**
  * Events Page - ASLM NGO Website
@@ -233,6 +235,25 @@ export default function EvenimentePage() {
           </motion.div>
         </div>
       </section>
+
+      {/* Structured Data for AI Search Optimization */}
+      <Script
+        id="evenimente-structured-data"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            generateWebPageSchema(
+              "https://aslm.ro/evenimente",
+              "Evenimente ASLM",
+              "Descoperă evenimentele Societății Academice de Medicina Stilului de Viață: Congresul Inaugural ASLM 2026 (10-12 Mai, Brașov), conferințe regionale, workshop-uri și școală de vară. Credite EMC disponibile.",
+              [
+                { name: "Acasă", path: "/" },
+                { name: "Evenimente", path: "/evenimente" },
+              ]
+            )
+          ),
+        }}
+      />
     </div>
   );
 }

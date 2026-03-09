@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
+import Script from "next/script";
 import {
   ArrowRight,
   Heart,
@@ -21,6 +22,8 @@ import {
   Globe,
   Target
 } from "lucide-react";
+import FAQSection from "@/components/seo/FAQSection";
+import { generateFAQSchema, generateWebPageSchema } from "@/lib/structured-data";
 
 /**
  * Homepage - ASLM NGO Website
@@ -63,9 +66,41 @@ const memberBenefits = [
 
 // Statistics
 const stats = [
-  { value: "1", label: "Eveniment anual" },
+  { value: "1", label: "Congres național" },
+  { value: "4", label: "Conferințe regionale" },
+  { value: "1", label: "Școală de vară" },
   { value: "6", label: "Piloni fundamentali" },
-  { value: "2026", label: "Primul congres" },
+  { value: "1", label: "Manual de practică" },
+  { value: "1", label: "Revistă oficială" },
+  { value: "2026", label: "Congres inaugural" },
+];
+
+// FAQ data for AI search optimization
+const homepageFAQs = [
+  {
+    question: "Ce este medicina stilului de viață?",
+    answer: "Medicina stilului de viață este o ramură modernă a medicinei, bazată pe dovezi științifice, care se concentrează pe schimbarea comportamentelor zilnice pentru a preveni, trata și chiar inversa progresia bolilor cronice. Aceasta se bazează pe șase piloni fundamentali: alimentația echilibrată, activitatea fizică, somnul de calitate, gestionarea stresului, relațiile sociale sănătoase și evitarea expunerii la substanțe nocive."
+  },
+  {
+    question: "Cine poate deveni membru ASLM?",
+    answer: "ASLM oferă mai multe categorii de membri: Membri Afiliați (profesioniști din sănătate - medici, farmaciști, nutriționiști, psihologi, etc.), Membri Asociați - Persoane Fizice (studenți, rezidenți și profesioniști non-medicali interesați de medicina stilului de viață), Membri Asociați - Persoane Juridice (companii și organizații care susțin misiunea ASLM), Membri Titulari (profesioniști cu experiență certificată în medicina stilului de viață) și Membri de Onoare (personalități recunoscute pentru contribuții excepționale)."
+  },
+  {
+    question: "Care sunt cei șase piloni ai medicinei stilului de viață?",
+    answer: "Cei șase piloni ai medicinei stilului de viață sunt: 1) Alimentație echilibrată - o dietă bazată preponderent pe alimente din plante, 2) Activitate fizică - mișcare regulată adaptată fiecărui individ, 3) Somn de calitate - odihna adecvată pentru recuperare, 4) Gestionarea stresului - tehnici de management pentru sănătatea mintală, 5) Relații sociale - conexiuni sociale sănătoase și comunitate suportivă, și 6) Evitarea substanțelor nocive - abstinența de la tutun, alcool în exces și alte substanțe dăunătoare."
+  },
+  {
+    question: "Cum pot să particip la Congresul ASLM 2026?",
+    answer: "Congresul Inaugural ASLM va avea loc în perioada 10-12 Mai 2026 la Brașov, în format hibrid (fizic și online). Pentru a participa, vizitați site-ul oficial al congresului la congres.aslm.ro unde veți găsi informații despre înregistrare, program, speakeri și tarife. Membrii ASLM beneficiază de tarife preferențiale și acces prioritar la eveniment."
+  },
+  {
+    question: "Ce beneficii oferă calitatea de membru ASLM?",
+    answer: "Membrii ASLM beneficiază de: educație continuă prin acces la cursuri online și webinarii de specialitate, networking cu profesioniști din domeniu, acces la revista Lifestyle Medicine Romania Review (LMRR), recunoaștere profesională și oportunități de specializare, tarife preferențiale la evenimente (congrese, conferințe, workshop-uri), credite EMC pentru evenimentele acreditate, și posibilitatea de a contribui la inițiative naționale de promovare a medicinei stilului de viață."
+  },
+  {
+    question: "Este ASLM o organizație acreditată?",
+    answer: "Da, ASLM este membru afiliat al Asociației Medicale Române (AMR) și colaborează cu organizații internaționale pentru promovarea medicinii stilului de viață la nivel global. Evenimentele noastre sunt acreditate și oferă credite EMC (Educație Medicală Continuă) pentru profesioniștii din sănătate."
+  },
 ];
 
 export default function Home() {
@@ -73,9 +108,11 @@ export default function Home() {
     <div className="overflow-hidden">
       {/* Hero Section */}
       <section 
-        className="relative min-h-[90vh] flex items-center"
+        className="relative flex items-center"
         style={{ 
-          paddingTop: '100px',
+          paddingTop: '90px',
+          paddingBottom: '30px',
+          minHeight: 'calc(100vh - 100px)',
           background: 'linear-gradient(135deg, #081C15 0%, #1B4332 50%, #2D6A4F 100%)'
         }}
       >
@@ -88,22 +125,22 @@ export default function Home() {
           }}
         />
         
-        <div className="container-wide relative z-10">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div className="container-wide relative z-10 py-6">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
               <span 
-                className="inline-block px-4 py-2 rounded-full text-sm font-semibold mb-6"
+                className="inline-block px-3 py-1.5 rounded-full text-xs font-semibold mb-4"
                 style={{ backgroundColor: 'rgba(255,255,255,0.1)', color: '#95D5B2' }}
               >
                 Societatea Academică de Medicina Stilului de Viață
               </span>
               
               <h1 
-                className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight"
+                className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold mb-4 leading-tight"
                 style={{ color: '#FFFFFF' }}
               >
                 Împreună pentru sănătate prin
@@ -111,7 +148,7 @@ export default function Home() {
               </h1>
               
               <p 
-                className="text-lg md:text-xl mb-8 leading-relaxed max-w-xl"
+                className="text-base md:text-lg mb-6 leading-relaxed max-w-xl"
                 style={{ color: 'rgba(255,255,255,0.8)' }}
               >
                 ASLM reunește profesioniști din domeniul sănătății dedicați promovării 
@@ -119,10 +156,10 @@ export default function Home() {
                 mai sănătos prin educație, cercetare și colaborare.
               </p>
               
-              <div className="flex flex-col sm:flex-row gap-4">
+              <div className="flex flex-col sm:flex-row gap-3">
                 <Link
                   href="/membri"
-                  className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-semibold transition-all shadow-lg hover:shadow-xl group"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all shadow-lg hover:shadow-xl group"
                   style={{ backgroundColor: '#FFFFFF', color: '#1B4332' }}
                 >
                   Devino Membru
@@ -130,7 +167,7 @@ export default function Home() {
                 </Link>
                 <Link
                   href="/despre"
-                  className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-semibold transition-all"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all"
                   style={{ 
                     backgroundColor: 'transparent', 
                     color: '#FFFFFF',
@@ -142,53 +179,21 @@ export default function Home() {
               </div>
             </motion.div>
 
-            {/* Hero visual - Logo and pillars */}
+            {/* Hero visual - Pillar infographic */}
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               className="hidden lg:flex items-center justify-center"
             >
-              <div className="relative">
-                {/* Central logo */}
-                <div 
-                  className="w-48 h-48 rounded-full flex items-center justify-center shadow-xl"
-                  style={{ backgroundColor: 'rgba(255,255,255,0.95)' }}
-                >
-                  <div className="relative w-32 h-32">
-                    <Image
-                      src="/images/aslm-logo.png"
-                      alt="ASLM Logo"
-                      fill
-                      className="object-contain"
-                    />
-                  </div>
-                </div>
-                
-                {/* Orbiting pillars */}
-                {pillars.map((pillar, index) => {
-                  const angle = (index * 60 - 90) * (Math.PI / 180);
-                  const radius = 160;
-                  const x = Math.cos(angle) * radius;
-                  const y = Math.sin(angle) * radius;
-                  
-                  return (
-                    <motion.div
-                      key={pillar.label}
-                      initial={{ opacity: 0, scale: 0 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      transition={{ duration: 0.4, delay: 0.4 + index * 0.1 }}
-                      className="absolute w-16 h-16 rounded-xl flex items-center justify-center shadow-lg"
-                      style={{ 
-                        left: `calc(50% + ${x}px - 32px)`,
-                        top: `calc(50% + ${y}px - 32px)`,
-                        backgroundColor: 'rgba(255,255,255,0.95)'
-                      }}
-                    >
-                      <pillar.icon className="w-7 h-7" style={{ color: pillar.color }} />
-                    </motion.div>
-                  );
-                })}
+              <div className="relative w-full max-w-lg">
+                <Image
+                  src="/images/piloni-msv.png"
+                  alt="Cei 6 piloni ai medicinei stilului de viață"
+                  width={500}
+                  height={500}
+                  className="object-contain drop-shadow-2xl"
+                />
               </div>
             </motion.div>
           </div>
@@ -201,22 +206,22 @@ export default function Home() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
-        style={{ backgroundColor: '#0f2b1d' }}
+        style={{ backgroundColor: '#0f2b1d', minHeight: '100px' }}
       >
-        <div className="container-wide py-8">
-          <div className="grid grid-cols-3 gap-8 text-center">
+        <div className="container-wide py-5">
+          <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-7 gap-3 md:gap-5 text-center">
             {stats.map((stat, index) => (
               <motion.div
                 key={stat.label}
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.3, delay: index * 0.1 }}
+                transition={{ duration: 0.3, delay: index * 0.05 }}
               >
-                <span className="block text-3xl md:text-4xl font-bold mb-1" style={{ color: '#74C69D' }}>
+                <span className="block text-2xl md:text-3xl font-bold mb-1" style={{ color: '#74C69D' }}>
                   {stat.value}
                 </span>
-                <span className="text-sm" style={{ color: 'rgba(255,255,255,0.7)' }}>
+                <span className="text-xs md:text-sm leading-tight" style={{ color: 'rgba(255,255,255,0.8)' }}>
                   {stat.label}
                 </span>
               </motion.div>
@@ -537,6 +542,31 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* FAQ Section */}
+      <FAQSection
+        title="Întrebări Frecvente"
+        subtitle="Răspunsuri la cele mai comune întrebări despre ASLM și medicina stilului de viață"
+        faqs={homepageFAQs}
+      />
+
+      {/* Structured Data for AI Search Optimization */}
+      <Script
+        id="homepage-structured-data"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify([
+            generateFAQSchema(homepageFAQs),
+            generateWebPageSchema(
+              "https://aslm.ro",
+              "ASLM - Societatea Academică de Medicina Stilului de Viață",
+              "Societatea Academică de Medicina Stilului de Viață (ASLM) promovează excelența în medicina stilului de viață prin educație, cercetare și colaborare profesională în România.",
+              [{ name: "Acasă", path: "/" }],
+              "https://aslm.ro/images/aslm-logo.png"
+            ),
+          ]),
+        }}
+      />
 
       {/* Final CTA */}
       <section 
