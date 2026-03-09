@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import Script from "next/script";
 import { ChevronRight, ArrowLeft } from "lucide-react";
 import { getCategoryBySlug, getArticlesByCategory } from "@/data/blog-articles";
@@ -11,7 +12,6 @@ import { generateWebPageSchema } from "@/lib/structured-data";
 export default function RelatiiSocialePage() {
   const category = getCategoryBySlug("relatii-sociale")!;
   const articles = getArticlesByCategory("relatii-sociale");
-  const CategoryIcon = category.icon;
 
   return (
     <div className="pt-20">
@@ -38,10 +38,17 @@ export default function RelatiiSocialePage() {
             className="max-w-3xl mx-auto text-center mb-12"
           >
             <div
-              className="w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6"
+              className="w-24 h-24 rounded-2xl flex items-center justify-center mx-auto mb-6 overflow-hidden"
               style={{ backgroundColor: `${category.color}15` }}
             >
-              <CategoryIcon className="w-10 h-10" style={{ color: category.color }} />
+              <div className="relative w-full h-full p-4">
+                <Image
+                  src={category.image}
+                  alt={category.name}
+                  fill
+                  className="object-contain"
+                />
+              </div>
             </div>
             <h1 className="text-display mb-6" style={{ fontSize: "clamp(2.5rem, 5vw, 3.5rem)" }}>
               {category.name}

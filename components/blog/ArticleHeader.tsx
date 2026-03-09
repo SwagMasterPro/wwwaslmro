@@ -12,8 +12,6 @@ interface ArticleHeaderProps {
 }
 
 export default function ArticleHeader({ article, category }: ArticleHeaderProps) {
-  const CategoryIcon = category.icon;
-
   return (
     <div className="pt-20">
       {/* Breadcrumb Navigation */}
@@ -51,7 +49,14 @@ export default function ArticleHeader({ article, category }: ArticleHeaderProps)
                 className="px-4 py-2 rounded-lg text-sm font-semibold text-white flex items-center gap-2"
                 style={{ backgroundColor: category.color }}
               >
-                <CategoryIcon className="w-4 h-4" />
+                <div className="relative w-4 h-4">
+                  <Image
+                    src={category.image}
+                    alt={category.name}
+                    fill
+                    className="object-contain"
+                  />
+                </div>
                 {category.name}
               </div>
             </div>
