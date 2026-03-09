@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import { BlogCategory } from "@/data/blog-articles";
 import Card, { CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/Card";
@@ -13,8 +14,6 @@ interface CategoryCardProps {
 }
 
 export default function CategoryCard({ category, articleCount, index = 0 }: CategoryCardProps) {
-  const CategoryIcon = category.icon;
-
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -26,10 +25,17 @@ export default function CategoryCard({ category, articleCount, index = 0 }: Cate
         <Card variant="interactive" padding="lg" className="h-full">
           <CardHeader className="p-0 mb-4">
             <div
-              className="w-16 h-16 rounded-2xl flex items-center justify-center mb-4"
+              className="w-24 h-24 rounded-2xl flex items-center justify-center mb-4 overflow-hidden"
               style={{ backgroundColor: `${category.color}15` }}
             >
-              <CategoryIcon className="w-8 h-8" style={{ color: category.color }} />
+              <div className="relative w-full h-full p-4">
+                <Image
+                  src={category.image}
+                  alt={category.name}
+                  fill
+                  className="object-contain"
+                />
+              </div>
             </div>
             <CardTitle as="h3" className="text-2xl mb-2">
               {category.name}

@@ -1,17 +1,7 @@
-import { LucideIcon } from "lucide-react";
-import {
-  Salad,
-  Activity,
-  Moon,
-  Brain,
-  ShieldOff,
-  Users,
-} from "lucide-react";
-
 export interface BlogCategory {
   slug: string;
   name: string;
-  icon: LucideIcon;
+  image: string;
   description: string;
   color: string;
 }
@@ -37,7 +27,7 @@ export const categories: Record<string, BlogCategory> = {
   alimentatie: {
     slug: "alimentatie",
     name: "Alimentație Sănătoasă",
-    icon: Salad,
+    image: "/images/pillar-alimentatie-echilibrata.png",
     description:
       "Descoperiți cum alimentația echilibrată poate transforma sănătatea și preveni bolile cronice.",
     color: "var(--color-primary-600)",
@@ -45,7 +35,7 @@ export const categories: Record<string, BlogCategory> = {
   "activitate-fizica": {
     slug: "activitate-fizica",
     name: "Activitate Fizică",
-    icon: Activity,
+    image: "/images/pillar-activitate-fizica.png",
     description:
       "Explorați beneficiile mișcării regulate și tehnicile de menținere a unui stil de viață activ.",
     color: "var(--color-accent-600)",
@@ -53,7 +43,7 @@ export const categories: Record<string, BlogCategory> = {
   "calitate-somn": {
     slug: "calitate-somn",
     name: "Calitate Somn",
-    icon: Moon,
+    image: "/images/pillar-somn-calitate.png",
     description:
       "Învățați importanța somnului de calitate pentru sănătatea fizică și mentală.",
     color: "#7C3AED",
@@ -61,7 +51,7 @@ export const categories: Record<string, BlogCategory> = {
   "gestionare-stres": {
     slug: "gestionare-stres",
     name: "Gestionare Stres",
-    icon: Brain,
+    image: "/images/pillar-gestionare-stres.png",
     description:
       "Descoperiți tehnici eficiente pentru gestionarea stresului și îmbunătățirea sănătății mentale.",
     color: "#2563EB",
@@ -69,7 +59,7 @@ export const categories: Record<string, BlogCategory> = {
   "evitare-substante": {
     slug: "evitare-substante",
     name: "Evitare Substanțe Nocive",
-    icon: ShieldOff,
+    image: "/images/pillar-evitare-substante-nocive.png",
     description:
       "Aflați cum evitarea substanțelor nocive protejează sănătatea pe termen lung.",
     color: "#DC2626",
@@ -77,7 +67,7 @@ export const categories: Record<string, BlogCategory> = {
   "relatii-sociale": {
     slug: "relatii-sociale",
     name: "Relații Sociale",
-    icon: Users,
+    image: "/images/pillar-relatii-sociale.png",
     description:
       "Explorați impactul relațiilor sociale asupra sănătății și bunăstării generale.",
     color: "#EA580C",
