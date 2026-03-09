@@ -9,12 +9,6 @@ import {
   Users,
   BookOpen,
   Award,
-  Salad,
-  Activity,
-  Moon,
-  Brain,
-  Smile,
-  ShieldCheck,
   Target,
   Globe,
   Sparkles,
@@ -27,37 +21,37 @@ import {
 
 const pillars = [
   { 
-    icon: Salad, 
+    image: "/images/pillar-alimentatie-echilibrata.png",
     title: "Alimentație Echilibrată", 
     description: "O dietă bazată preponderent pe plante, bogată în nutrienți, care previne și poate inversa bolile cronice.",
     color: "#40916C" 
   },
   { 
-    icon: Activity, 
+    image: "/images/pillar-activitate-fizica.png",
     title: "Activitate Fizică", 
     description: "Mișcare regulată adaptată fiecărui individ, esențială pentru sănătatea cardiovasculară și metabolică.",
     color: "#52B788" 
   },
   { 
-    icon: Moon, 
+    image: "/images/pillar-somn-calitate.png",
     title: "Somn de Calitate", 
     description: "Odihna adecvată pentru recuperare, echilibrul hormonal și funcționarea optimă a sistemului imunitar.",
     color: "#2D6A4F" 
   },
   { 
-    icon: Brain, 
+    image: "/images/pillar-gestionare-stres.png",
     title: "Gestionarea Stresului", 
     description: "Tehnici de management al stresului pentru sănătatea mintală și prevenirea bolilor legate de stres.",
     color: "#C4725B" 
   },
   { 
-    icon: Smile, 
+    image: "/images/pillar-relatii-sociale.png",
     title: "Relații Sociale", 
     description: "Conexiuni sociale sănătoase și comunitate suportivă, esențiale pentru bunăstarea emoțională.",
     color: "#D4876E" 
   },
   { 
-    icon: ShieldCheck, 
+    image: "/images/pillar-evitare-substante-nocive.png",
     title: "Evitare Substanțe Nocive", 
     description: "Abstinența de la tutun, alcool în exces și alte substanțe care dăunează sănătății.",
     color: "#1B4332" 
@@ -209,10 +203,17 @@ export default function DespreNoi() {
                 className="card-elevated p-6"
               >
                 <div 
-                  className="w-12 h-12 rounded-xl flex items-center justify-center mb-4"
+                  className="w-20 h-20 rounded-xl flex items-center justify-center mb-4"
                   style={{ backgroundColor: `${pillar.color}15` }}
                 >
-                  <pillar.icon className="w-6 h-6" style={{ color: pillar.color }} />
+                  <div className="relative w-16 h-16">
+                    <Image
+                      src={pillar.image}
+                      alt={pillar.title}
+                      fill
+                      className="object-contain"
+                    />
+                  </div>
                 </div>
                 <h3 className="text-lg font-semibold text-[var(--text-primary)] mb-2">
                   {pillar.title}
