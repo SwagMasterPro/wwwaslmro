@@ -14,7 +14,6 @@ interface BlogCardProps {
 
 export default function BlogCard({ article, index = 0 }: BlogCardProps) {
   const category = getCategoryBySlug(article.categorySlug);
-  const CategoryIcon = category?.icon;
 
   return (
     <motion.article
@@ -40,7 +39,14 @@ export default function BlogCard({ article, index = 0 }: BlogCardProps) {
                 className="absolute top-4 left-4 px-3 py-1.5 rounded-lg text-xs font-semibold text-white flex items-center gap-1.5 backdrop-blur-sm"
                 style={{ backgroundColor: `${category.color}dd` }}
               >
-                {CategoryIcon && <CategoryIcon className="w-3.5 h-3.5" />}
+                <div className="relative w-3.5 h-3.5">
+                  <Image
+                    src={category.image}
+                    alt=""
+                    fill
+                    className="object-contain"
+                  />
+                </div>
                 {category.name}
               </div>
             )}
