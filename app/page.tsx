@@ -23,6 +23,7 @@ import {
   Target
 } from "lucide-react";
 import FAQSection from "@/components/seo/FAQSection";
+import VideoModal from "@/components/ui/VideoModal";
 import { generateFAQSchema, generateWebPageSchema } from "@/lib/structured-data";
 
 /**
@@ -622,6 +623,8 @@ export default function Home() {
           </motion.div>
         </div>
       </section>
+
+      <VideoModal />
     </div>
   );
 }
