@@ -46,6 +46,7 @@ const consiliulStiintific = [
   { name: "Dr. Alexandra Ghement", image: "/images/prof-dr-alexandra-ghement.png" },
   { name: "Conf. Dr. Daniela Gurgus", image: "/images/conf-dr-daniela-gurgus-new.png" },
   { name: "Prof. Dr. Adela Mihaela Iancu", image: "/images/prof-dr-adela-iancu.png" },
+  { name: "Dr. Cristina Isar", image: "/images/dr-cristina-isar.png" },
   { name: "Conf. Dr. Constantin Kamal", image: "/images/conf-dr-constantin-kamal.png" },
   { name: "Prof. Dr. Polliana Mihaela Leru", image: "/images/prof-dr-poliana-leru.png" },
   { name: "Prof. Dr. Roxana Miclăuș", image: "/images/prof-dr-roxana-miclaus.png" },
