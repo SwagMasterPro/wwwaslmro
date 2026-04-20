@@ -34,6 +34,7 @@ const presedintiiDeOnoare = [
 const consiliulStiintific = [
   { name: "Prof. Dr. Doina Todea", image: "/images/prof-dr-doina-todea.png" },
   { name: "Prof. Dr. Monica Tarcea", image: "/images/prof-dr-monica-tarcea.png" },
+  { name: "Prof. Dr. Vladimir Poroch", image: "/images/prof-dr-vladimir-poroch.png" },
   { name: "Șef Lucr. Dr. Adriana Lavinia Cioca", image: "/images/sef-lucr-dr-adriana-cioca.png" },
   { name: "Conf. Dr. Adorata Elena Coman", image: "/images/conf-dr-adorata-coman.png" },
   { name: "Șef Lucr. Dr. Laura Maria Condur", image: "/images/sef-lucr-dr-laura-condur.png" },
@@ -52,7 +53,6 @@ const consiliulStiintific = [
   { name: "Prof. Dr. Roxana Miclăuș", image: "/images/prof-dr-roxana-miclaus.png" },
   { name: "Psih. Mihaela Naidin", image: "/images/psih-mihaela-naidin.png" },
   { name: "Dr. Mihai Cristian Popescu", image: "/images/dr-mihai-cristian-popescu.png" },
-  { name: "Prof. Dr. Vladimir Poroch", image: "/images/prof-dr-vladimir-poroch.png" },
   { name: "Conf. Dr. Aida Puia", image: "/images/conf-dr-aida-puia.png" },
   { name: "Prof. Dr. Doina Carina Voinescu", image: "/images/prof-dr-carina-voinescu.png" },
 ];
@@ -75,7 +75,7 @@ function TeamMemberCard({ name, image, index, title }: { name: string; image?: s
               src={image}
               alt={name}
               fill
-              className="object-contain group-hover:scale-105 transition-transform duration-500"
+              className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
             />
           ) : (
             <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-[var(--color-primary-600)] to-[var(--color-primary-800)]">
