@@ -35,6 +35,7 @@ const consiliulStiintific = [
   { name: "Prof. Dr. Doina Todea", image: "/images/prof-dr-doina-todea.png" },
   { name: "Prof. Dr. Monica Tarcea", image: "/images/prof-dr-monica-tarcea.png" },
   { name: "Prof. Dr. Vladimir Poroch", image: "/images/prof-dr-vladimir-poroch.png" },
+  { name: "Prof. Dr. Mircea Cinteza", image: "/images/prof-dr-mircea-cinteza.png" },
   { name: "Șef Lucr. Dr. Adriana Lavinia Cioca", image: "/images/sef-lucr-dr-adriana-cioca.png" },
   { name: "Conf. Dr. Adorata Elena Coman", image: "/images/conf-dr-adorata-coman.png" },
   { name: "Șef Lucr. Dr. Laura Maria Condur", image: "/images/sef-lucr-dr-laura-condur.png" },
