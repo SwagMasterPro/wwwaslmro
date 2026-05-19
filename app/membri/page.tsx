@@ -39,11 +39,11 @@ import { generateFAQSchema, generateWebPageSchema } from "@/lib/structured-data"
 const membriFAQs = [
   {
     question: "Care sunt categoriile de membri ASLM?",
-    answer: "ASLM oferă 5 categorii de membri: <strong>Membri Afiliați</strong> (profesioniști din sănătate - 400 RON/an), <strong>Membri Asociați PF</strong> (studenți, rezidenți - 200 RON/an), <strong>Membri Asociați PJ</strong> (persoane juridice - 2000 RON/an), <strong>Membri Titulari</strong> (profesioniști certificați în medicina stilului de viață - 600 RON/an), și <strong>Membri de Onoare</strong> (personalități cu contribuții excepționale - fără taxă)."
+    answer: "ASLM oferă 5 categorii de membri: <strong>Membri Afiliați</strong> (profesioniști din sănătate - 400 RON/an), <strong>Membri Asociați PF</strong> (studenți, rezidenți - 300 RON/an), <strong>Membri Asociați PJ</strong> (persoane juridice - 2000 RON/an), <strong>Membri Titulari</strong> (profesioniști certificați în medicina stilului de viață - 600 RON/an), și <strong>Membri de Onoare</strong> (personalități cu contribuții excepționale - fără taxă)."
   },
   {
     question: "Cât costă taxa de membru ASLM?",
-    answer: "Taxele anuale variază în funcție de categorie: Membri Afiliați - 400 RON, Membri Asociați Persoane Fizice - 200 RON, Membri Asociați Persoane Juridice - 2000 RON, Membri Titulari - 600 RON. Membri de Onoare nu plătesc taxă de membru."
+    answer: "Taxele anuale variază în funcție de categorie: Membri Afiliați - 400 RON, Membri Asociați Persoane Fizice - 300 RON, Membri Asociați Persoane Juridice - 2000 RON, Membri Titulari - 600 RON. Membri de Onoare nu plătesc taxă de membru."
   },
   {
     question: "Ce documente sunt necesare pentru înscrierea ca membru afiliat?",
@@ -59,7 +59,7 @@ const membriFAQs = [
   },
   {
     question: "Pot fi membru ASLM dacă sunt student la medicină?",
-    answer: "Da, studenții la medicină pot deveni Membri Asociați - Persoane Fizice cu o taxă redusă de 200 RON pe an. Această categorie este dedicată studenților, rezidenților și profesioniștilor non-medicali care au interes real pentru medicina stilului de viață și doresc să facă parte din comunitatea ASLM."
+    answer: "Da, studenții la medicină pot deveni Membri Asociați - Persoane Fizice cu o taxă redusă de 300 RON pe an. Această categorie este dedicată studenților, rezidenților și profesioniștilor non-medicali care au interes real pentru medicina stilului de viață și doresc să facă parte din comunitatea ASLM."
   },
   {
     question: "Ce beneficii au membrii ASLM la Congresul 2026?",
@@ -131,7 +131,7 @@ const membershipCategories = [
     icon: Heart,
     name: "Membri Asociați PF",
     tagline: "Pentru persoane fizice pasionate",
-    price: "200",
+    price: "300",
     period: "RON / an",
     audience: "Categorie adresată persoanelor fizice (public larg), pasionate de principiile Medicinei Stilului de Viață (MSV).",
     requirements: "Calitatea de membru asociat PF se dobândește prin completarea formularului online de adeziune și achitarea taxei.",
@@ -488,7 +488,7 @@ export default function MembriiPage() {
                   { right: "Certificat de membru", values: [true, true, true, true, true] },
                   { right: "Drept de a fi ales", values: ["CD", "Dept.", "-", "Toate", "Toate"] },
                   { right: "Drept de vot în AGA", values: ["După 2 ani", "-", "-", true, true] },
-                  { right: "Cotizație anuală", values: ["400 RON", "200 RON", "Contact", "400 RON", "Scutit"] },
+                  { right: "Cotizație anuală", values: ["400 RON", "300 RON", "Contact", "400 RON", "Scutit"] },
                 ].map((row, index) => (
                   <tr key={index} className="border-b border-[var(--border-primary)]">
                     <td className="py-3 px-4 text-sm text-[var(--text-secondary)]">{row.right}</td>
