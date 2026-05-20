@@ -3,6 +3,7 @@ import { Playfair_Display, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import MembershipPopup from "@/components/marketing/MembershipPopup";
 import StructuredData from "@/components/seo/StructuredData";
 import { generateOrganizationSchema } from "@/lib/structured-data";
 
@@ -102,6 +103,7 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
+        <MembershipPopup />
       </body>
     </html>
   );

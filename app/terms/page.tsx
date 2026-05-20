@@ -61,11 +61,11 @@ export default function TermsOfService() {
               <div className="card p-8">
                 <h2 className="text-title text-[var(--text-primary)] mb-4">2. Definiții</h2>
                 <ul className="list-disc list-inside space-y-2 text-body">
-                  <li><strong>„ASLM"</strong> sau <strong>„noi"</strong> se referă la Societatea Academică de Medicina Stilului de Viață</li>
-                  <li><strong>„Site"</strong> se referă la www.aslm.ro și toate subdomeniile asociate</li>
-                  <li><strong>„Utilizator"</strong> sau <strong>„dumneavoastră"</strong> se referă la orice persoană care accesează sau utilizează site-ul</li>
-                  <li><strong>„Membru"</strong> se referă la persoanele care au o calitate de membru activ în ASLM</li>
-                  <li><strong>„Conținut"</strong> se referă la toate materialele disponibile pe site</li>
+                  <li><strong>„ASLM&quot;</strong> sau <strong>„noi&quot;</strong> se referă la Societatea Academică de Medicina Stilului de Viață</li>
+                  <li><strong>„Site&quot;</strong> se referă la www.aslm.ro și toate subdomeniile asociate</li>
+                  <li><strong>„Utilizator&quot;</strong> sau <strong>„dumneavoastră&quot;</strong> se referă la orice persoană care accesează sau utilizează site-ul</li>
+                  <li><strong>„Membru&quot;</strong> se referă la persoanele care au o calitate de membru activ în ASLM</li>
+                  <li><strong>„Conținut&quot;</strong> se referă la toate materialele disponibile pe site</li>
                 </ul>
               </div>
 
@@ -124,7 +124,7 @@ export default function TermsOfService() {
                   <li>Nu constituie sfat medical personalizat</li>
                   <li>Nu înlocuiesc consultul medical profesional</li>
                   <li>Nu trebuie utilizate pentru autodiagnosticare sau autotratament</li>
-                  <li>Sunt furnizate „ca atare", fără garanții de niciun fel</li>
+                  <li>Sunt furnizate „ca atare&quot;, fără garanții de niciun fel</li>
                 </ul>
                 <p className="text-body mt-4">
                   Profesioniștii din sănătate trebuie să își utilizeze propria judecată clinică 
