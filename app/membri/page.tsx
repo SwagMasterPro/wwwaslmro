@@ -529,7 +529,7 @@ export default function MembriiPage() {
             </h3>
             <div className="bg-[var(--surface-secondary)] rounded-xl p-6 mb-6">
               <p className="text-body mb-4">
-                Cotizația de „membru" al Societății ASLM, se achită anual în contul AMR 
+                Cotizația de „membru&quot; al Societății ASLM, se achită anual în contul AMR 
                 (Asociația Medicală Română, CUI 8345234)
               </p>
               <div className="bg-white rounded-lg p-4 border-2 border-[var(--color-primary-200)]">
@@ -540,7 +540,7 @@ export default function MembriiPage() {
                   Unicredit Bank
                 </p>
                 <p className="text-sm text-[var(--color-primary-700)] font-semibold mt-2">
-                  Mențiunea: "Cotizație ASLM"
+                  Mențiunea: &quot;Cotizație ASLM&quot;
                 </p>
               </div>
             </div>

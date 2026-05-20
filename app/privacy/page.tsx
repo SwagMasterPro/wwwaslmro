@@ -114,7 +114,7 @@ export default function PrivacyPolicy() {
                 <ul className="list-disc list-inside space-y-2 text-body">
                   <li><strong>De acces:</strong> să solicitați o copie a datelor dumneavoastră</li>
                   <li><strong>De rectificare:</strong> să corectați datele inexacte</li>
-                  <li><strong>De ștergere:</strong> să solicitați ștergerea datelor („dreptul de a fi uitat")</li>
+                  <li><strong>De ștergere:</strong> să solicitați ștergerea datelor („dreptul de a fi uitat&quot;)</li>
                   <li><strong>De restricționare:</strong> să limitați prelucrarea datelor</li>
                   <li><strong>De portabilitate:</strong> să primiți datele într-un format structurat</li>
                   <li><strong>De opoziție:</strong> să vă opuneți prelucrării în anumite situații</li>

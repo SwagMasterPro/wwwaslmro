@@ -4,7 +4,7 @@
  */
 
 interface StructuredDataProps {
-  data: Record<string, any> | Record<string, any>[];
+  data: unknown | unknown[];
 }
 
 export default function StructuredData({ data }: StructuredDataProps) {
