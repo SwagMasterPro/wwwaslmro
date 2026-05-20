@@ -228,7 +228,7 @@ export default function MembershipPopup() {
 
                 <Link
                   href="/membri#payment-details"
-                  onClick={markDismissed}
+                  onClick={closePopup}
                   className="mb-4 flex min-h-[76px] w-full items-center justify-center rounded-2xl bg-[#143f32] px-6 text-center text-xl font-extrabold leading-snug text-white transition hover:bg-[#0f2f25] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#40916c] focus-visible:ring-offset-2 sm:text-2xl"
                 >
                   Devino membru ASLM — activează până la 1 iulie
