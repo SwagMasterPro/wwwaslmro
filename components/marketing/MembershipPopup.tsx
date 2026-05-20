@@ -176,14 +176,6 @@ export default function MembershipPopup() {
                   Membru afiliat AMR
                 </div>
 
-                <div className="mb-8 rounded-r-xl border-l-[5px] border-[#5e9b37] bg-[#edf5e1] px-5 py-5 sm:px-6">
-                  <p className="text-xl font-medium leading-[1.6] text-[#2f4e1f] sm:text-2xl">
-                    Un ecosistem dedicat profesioniștilor medicali care aleg un
-                    standard ridicat de practică, educație continuă și
-                    comunitate academică activă.
-                  </p>
-                </div>
-
                 <p className="mb-4 text-sm font-bold uppercase tracking-[0.12em] text-[#8b8a84] sm:text-base">
                   Beneficii incluse în membership
                 </p>
@@ -212,7 +204,7 @@ export default function MembershipPopup() {
                       reducere
                     </span>
                   </div>
-                  <p className="text-lg font-extrabold leading-relaxed sm:text-xl">
+                  <p className="text-lg font-extrabold leading-relaxed text-white sm:text-xl">
                     La achiziționarea Cărții Congresului ASLM — beneficiu
                     exclusiv membri
                   </p>
