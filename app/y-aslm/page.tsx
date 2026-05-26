@@ -20,6 +20,20 @@ const involvementItems = [
   "Participarea la dezvoltarea comunității studențești ASLM",
 ];
 
+const activeStudents = [
+  "Caian Ioana-Gabriela, Brașov",
+  "Celano Sara-Viorica, Brașov",
+  "Cotirta Gabriela Cristina, București",
+  "Drondu Mara Cristiana, București",
+  "Dutu Maria, Iași",
+  "Elisei Alina Mihaela, Galați",
+  "Nastase Medeea, București",
+  "Pavel-Balan Grațiela-Andrada, București",
+  "Poenar Sabina, Brașov",
+  "Rosca Lucian Andrei, București",
+  "Staicu Coca, Brașov",
+];
+
 const benefits = [
   {
     icon: Award,
@@ -100,6 +114,45 @@ export default function YAslmPage() {
               Departamentul Studențesc ASLM
             </p>
           </motion.div>
+        </div>
+      </section>
+
+      {/* Active Students Section */}
+      <section className="section-lg surface-primary">
+        <div className="container-wide">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="text-center mb-10"
+          >
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--color-primary-50)] text-[var(--color-primary-700)] mb-4">
+              <Users className="w-5 h-5" />
+              <span className="text-sm font-semibold">Y-ASLM</span>
+            </div>
+            <h2 className="text-headline text-[var(--text-primary)]">
+              Studenți implicați în promovarea medicinei stilului de viață
+            </h2>
+          </motion.div>
+
+          <ul
+            className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 max-w-5xl mx-auto"
+            aria-label="Studenți implicați în promovarea medicinei stilului de viață"
+          >
+            {activeStudents.map((student, index) => (
+              <motion.li
+                key={student}
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.3, delay: Math.min(index * 0.03, 0.24) }}
+                className="card-elevated px-5 py-4 text-body text-[var(--text-primary)]"
+              >
+                {student}
+              </motion.li>
+            ))}
+          </ul>
         </div>
       </section>
 
