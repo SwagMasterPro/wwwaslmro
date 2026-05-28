@@ -20,7 +20,7 @@ export default function ArticlePage() {
     </>
   );
 
-  const articleUrl = `https://aslm.ro/blog/${article.categorySlug}/${article.slug}`;
+  const articleUrl = `https://www.aslm.ro/blog/${article.categorySlug}/${article.slug}`;
   const breadcrumbs = [
     { name: "Acasă", path: "/" },
     { name: "Blog", path: "/blog" },

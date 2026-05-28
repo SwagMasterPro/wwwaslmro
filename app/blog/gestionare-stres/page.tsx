@@ -7,6 +7,7 @@ import Script from "next/script";
 import { ChevronRight, ArrowLeft } from "lucide-react";
 import { getCategoryBySlug, getArticlesByCategory } from "@/data/blog-articles";
 import BlogCard from "@/components/blog/BlogCard";
+import CategoryHubSection from "@/components/blog/CategoryHubSection";
 import { generateWebPageSchema } from "@/lib/structured-data";
 
 export default function GestionareStresPage() {
@@ -63,6 +64,8 @@ export default function GestionareStresPage() {
             </div>
           </motion.div>
 
+          <CategoryHubSection categorySlug="gestionare-stres" />
+
           {/* Back to Blog Link */}
           <motion.div
             initial={{ opacity: 0 }}
@@ -95,7 +98,7 @@ export default function GestionareStresPage() {
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(
             generateWebPageSchema(
-              "https://aslm.ro/blog/gestionare-stres",
+              "https://www.aslm.ro/blog/gestionare-stres",
               "Gestionare Stres | Blog ASLM",
               "Articole despre gestionarea stresului în medicina stilului de viață: stresul cronic și riscul cardiovascular, managementul stresului la locul de muncă, conștientizarea emoțiilor și gândirea pozitivă.",
               [

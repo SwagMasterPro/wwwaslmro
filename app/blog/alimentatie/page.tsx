@@ -7,6 +7,7 @@ import Script from "next/script";
 import { ChevronRight, ArrowLeft } from "lucide-react";
 import { getCategoryBySlug, getArticlesByCategory } from "@/data/blog-articles";
 import BlogCard from "@/components/blog/BlogCard";
+import CategoryHubSection from "@/components/blog/CategoryHubSection";
 import { generateWebPageSchema } from "@/lib/structured-data";
 
 export default function AlimentatiePage() {
@@ -63,6 +64,8 @@ export default function AlimentatiePage() {
             </div>
           </motion.div>
 
+          <CategoryHubSection categorySlug="alimentatie" />
+
           {/* Back to Blog Link */}
           <motion.div
             initial={{ opacity: 0 }}
@@ -95,7 +98,7 @@ export default function AlimentatiePage() {
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(
             generateWebPageSchema(
-              "https://aslm.ro/blog/alimentatie",
+              "https://www.aslm.ro/blog/alimentatie",
               "Alimentație Sănătoasă | Blog ASLM",
               "Articole despre alimentația echilibrată și nutriția în medicina stilului de viață: diete bazate pe plante, prevenirea bolilor cronice, deficiențe nutriționale și sănătate mentală.",
               [

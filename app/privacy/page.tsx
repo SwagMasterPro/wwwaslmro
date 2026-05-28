@@ -195,7 +195,7 @@ export default function PrivacyPolicy() {
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(
             generateWebPageSchema(
-              "https://aslm.ro/privacy",
+              "https://www.aslm.ro/privacy",
               "Politica de Confidențialitate ASLM",
               "Politica de confidențialitate și protecția datelor personale pentru Societatea Academică de Medicina Stilului de Viață. GDPR compliant.",
               [

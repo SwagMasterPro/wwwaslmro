@@ -7,7 +7,7 @@ import Script from "next/script";
 import Card from "@/components/ui/Card";
 import { Input, Textarea } from "@/components/ui/Input";
 import Button from "@/components/ui/Button";
-import { MapPin, Mail, Phone, Clock, Facebook, Linkedin, Instagram, ArrowRight, Send, CheckCircle } from "lucide-react";
+import { MapPin, Mail, Clock, Facebook, Linkedin, Instagram, ArrowRight, Send, CheckCircle } from "lucide-react";
 import { generateWebPageSchema } from "@/lib/structured-data";
 
 /**
@@ -357,7 +357,7 @@ export default function ContactPage() {
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(
             generateWebPageSchema(
-              "https://aslm.ro/contact",
+              "https://www.aslm.ro/contact",
               "Contact ASLM",
               "Contactați Societatea Academică de Medicina Stilului de Viață pentru întrebări, colaborări sau înscrieri. Email: contact@aslm.ro, Sediu: Str. Iuliu Maniu 41A, Brașov.",
               [

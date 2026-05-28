@@ -9,7 +9,6 @@ import {
   Heart,
   Users,
   BookOpen,
-  Award,
   Target,
   Globe,
   Sparkles,
@@ -168,6 +167,14 @@ export default function DespreNoi() {
                   </li>
                 ))}
               </ul>
+              <Link
+                href="/medicina-stilului-de-viata"
+                className="inline-flex items-center gap-2 mt-8 px-5 py-3 rounded-xl font-semibold text-white transition-all shadow-md hover:shadow-lg"
+                style={{ backgroundColor: "var(--color-primary-600)" }}
+              >
+                Ghid: medicina stilului de viață
+                <ArrowRight className="w-5 h-5" />
+              </Link>
             </motion.div>
 
             {/* Vision */}
@@ -393,7 +400,7 @@ export default function DespreNoi() {
           __html: JSON.stringify([
             generateFAQSchema(despreFAQs),
             generateWebPageSchema(
-              "https://aslm.ro/despre",
+              "https://www.aslm.ro/despre",
               "Despre ASLM - Societatea Academică de Medicina Stilului de Viață",
               "Societatea Academică de Medicina Stilului de Viață (ASLM) este o organizație dedicată promovării medicinei stilului de viață în România, membru afiliat AMR. Descoperă misiunea, viziunea și cei șase piloni ai medicinei stilului de viață.",
               [

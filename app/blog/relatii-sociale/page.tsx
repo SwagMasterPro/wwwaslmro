@@ -7,6 +7,7 @@ import Script from "next/script";
 import { ChevronRight, ArrowLeft } from "lucide-react";
 import { getCategoryBySlug, getArticlesByCategory } from "@/data/blog-articles";
 import BlogCard from "@/components/blog/BlogCard";
+import CategoryHubSection from "@/components/blog/CategoryHubSection";
 import { generateWebPageSchema } from "@/lib/structured-data";
 
 export default function RelatiiSocialePage() {
@@ -63,6 +64,8 @@ export default function RelatiiSocialePage() {
             </div>
           </motion.div>
 
+          <CategoryHubSection categorySlug="relatii-sociale" />
+
           {/* Back to Blog Link */}
           <motion.div
             initial={{ opacity: 0 }}
@@ -95,7 +98,7 @@ export default function RelatiiSocialePage() {
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(
             generateWebPageSchema(
-              "https://aslm.ro/blog/relatii-sociale",
+              "https://www.aslm.ro/blog/relatii-sociale",
               "Relații Sociale | Blog ASLM",
               "Articole despre relațiile sociale în medicina stilului de viață: importanța relațiilor sociale la vârstnici, combaterea izolării sociale, beneficiile activităților de grup, conexiuni sociale și sănătate mentală.",
               [

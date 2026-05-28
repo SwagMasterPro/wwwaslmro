@@ -8,7 +8,6 @@ import {
   ArrowRight,
   Calendar,
   MapPin,
-  Users,
   ExternalLink,
   Clock
 } from "lucide-react";
@@ -18,13 +17,13 @@ import { generateWebPageSchema } from "@/lib/structured-data";
  * Events Page - ASLM NGO Website
  */
 
-const upcomingEvents = [
+const featuredEvents = [
   {
     title: "Congresul Inaugural ASLM",
     date: "10-12 Mai 2026",
     location: "Universitatea Transilvania, Brașov",
-    type: "Congres",
-    description: "Primul congres al Societății Academice de Medicina Stilului de Viață. Format hibrid cu 10 secțiuni tematice, 30+ speakeri și credite EMC.",
+    type: "Congres desfășurat",
+    description: "Primul congres al Societății Academice de Medicina Stilului de Viață a avut loc în format hibrid, cu 10 secțiuni tematice, 30+ speakeri și credite EMC.",
     link: "https://congres.aslm.ro",
     featured: true
   }
@@ -83,11 +82,11 @@ export default function EvenimentePage() {
           >
             <p className="text-overline mb-3">Eveniment Principal</p>
             <h2 className="text-headline text-[var(--text-primary)] mb-4">
-              Următorul Eveniment Mare
+              Congresul ASLM 2026 - retrospectivă
             </h2>
           </motion.div>
 
-          {upcomingEvents.filter(e => e.featured).map((event, index) => (
+          {featuredEvents.filter(e => e.featured).map((event) => (
             <motion.div
               key={event.title}
               initial={{ opacity: 0, y: 20 }}
@@ -130,7 +129,7 @@ export default function EvenimentePage() {
                     className="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-semibold transition-all shadow-lg hover:shadow-xl group"
                     style={{ backgroundColor: '#FFFFFF', color: '#1B4332' }}
                   >
-                    Vizitează site-ul
+                    Vezi site-ul congresului
                     <ExternalLink className="w-5 h-5" />
                   </a>
                 </div>
@@ -243,9 +242,9 @@ export default function EvenimentePage() {
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(
             generateWebPageSchema(
-              "https://aslm.ro/evenimente",
+              "https://www.aslm.ro/evenimente",
               "Evenimente ASLM",
-              "Descoperă evenimentele Societății Academice de Medicina Stilului de Viață: Congresul Inaugural ASLM 2026 (10-12 Mai, Brașov), conferințe regionale, workshop-uri și școală de vară. Credite EMC disponibile.",
+              "Descoperă evenimentele Societății Academice de Medicina Stilului de Viață: retrospectiva Congresului Inaugural ASLM 2026, conferințe regionale, workshop-uri și școală de vară. Credite EMC disponibile.",
               [
                 { name: "Acasă", path: "/" },
                 { name: "Evenimente", path: "/evenimente" },

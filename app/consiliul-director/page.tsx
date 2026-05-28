@@ -129,7 +129,7 @@ export default function ConsiliulDirectorPage() {
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(
             generateWebPageSchema(
-              "https://aslm.ro/consiliul-director",
+              "https://www.aslm.ro/consiliul-director",
               "Consiliul Director ASLM",
               "Consiliul Director ASLM: Andrea Elena Neculau (Președinte), Mihai-Cristian Popescu (Secretar General), și coordonatori pentru relații academice, tehnologie, psihologie, strategie și proiecte speciale.",
               [

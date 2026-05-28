@@ -47,6 +47,15 @@ export default function BlogPage() {
               <BookOpen className="w-5 h-5" />
               <span>{articles.length} articole publicate</span>
             </div>
+            <div className="mt-6">
+              <Link
+                href="/medicina-stilului-de-viata"
+                className="inline-flex items-center gap-2 px-5 py-3 rounded-xl font-semibold bg-white text-[var(--color-primary-700)] transition-all shadow-md hover:shadow-lg"
+              >
+                Începe cu ghidul despre medicina stilului de viață
+                <ArrowRight className="w-5 h-5" />
+              </Link>
+            </div>
           </motion.div>
         </div>
       </section>
@@ -189,7 +198,7 @@ export default function BlogPage() {
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(
             generateWebPageSchema(
-              "https://aslm.ro/blog",
+              "https://www.aslm.ro/blog",
               "Blog ASLM - Medicina Stilului de Viață",
               "Descoperă articole educaționale despre cei șase piloni ai medicinei stilului de viață: alimentație echilibrată, activitate fizică, somn de calitate, gestionare stres, relații sociale, evitare substanțe nocive.",
               [

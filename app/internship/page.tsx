@@ -24,7 +24,7 @@ const internshipFAQs = [
   },
   {
     question: "Ce beneficii primesc studenții acceptați în program?",
-    answer: "Studenții acceptați primesc: <strong>certificat oficial de voluntar în cadrul ASLM</strong>, implicare într-o comunitate academică aflată în dezvoltare, <strong>acces gratuit la Congresul de Medicina Stilului de Viață - Ediția 2026</strong>, posibilitatea de a interacționa cu profesioniști din domeniul medical, și recomandare pentru cei care demonstrează consecvență și profesionalism."
+    answer: "Studenții acceptați primesc: <strong>certificat oficial de voluntar în cadrul ASLM</strong>, implicare într-o comunitate academică aflată în dezvoltare, acces la evenimente ASLM selectate, posibilitatea de a interacționa cu profesioniști din domeniul medical și recomandare pentru cei care demonstrează consecvență și profesionalism."
   },
   {
     question: "Cât timp durează programul de internship?",
@@ -32,7 +32,7 @@ const internshipFAQs = [
   },
   {
     question: "Este programul plătit sau voluntar?",
-    answer: "Este un program de voluntariat care oferă beneficii educaționale și profesionale semnificative, inclusiv acces gratuit la Congresul ASLM 2026, certificat oficial, networking cu profesioniști din domeniul medical, și oportunități de dezvoltare în domeniul medicinei stilului de viață."
+    answer: "Este un program de voluntariat care oferă beneficii educaționale și profesionale semnificative, inclusiv acces la evenimente ASLM selectate, certificat oficial, networking cu profesioniști din domeniul medical și oportunități de dezvoltare în domeniul medicinei stilului de viață."
   },
 ];
 
@@ -108,7 +108,7 @@ export default function Internship() {
                 <ul className="list-disc pl-6 mb-6 space-y-2">
                   <li>Certificat oficial de voluntar în cadrul ASLM</li>
                   <li>Implicare într-o comunitate academică aflată în dezvoltare</li>
-                  <li>Acces gratuit la Congresul de Medicina Stilului de Viață – Ediția 2026</li>
+                  <li>Acces gratuit sau prioritar la evenimente ASLM selectate, în funcție de ediție și disponibilitate</li>
                   <li>Posibilitatea de a interacționa cu profesioniști din domeniul medical</li>
                   <li>Recomandare pentru studenții care demonstrează consecvență și profesionalism</li>
                 </ul>
@@ -165,9 +165,9 @@ export default function Internship() {
           __html: JSON.stringify([
             generateFAQSchema(internshipFAQs),
             generateWebPageSchema(
-              "https://aslm.ro/internship",
+              "https://www.aslm.ro/internship",
               "Program Internship ASLM Student Leader",
-              "Înscrie-te în programul de internship ASLM Student Leader. Program dedicat studenților care doresc să promoveze medicina stilului de viață în comunitatea academică. Certificat oficial, acces gratuit la Congres 2026.",
+              "Înscrie-te în programul de internship ASLM Student Leader. Program dedicat studenților care doresc să promoveze medicina stilului de viață în comunitatea academică. Certificat oficial și acces la evenimente ASLM selectate.",
               [
                 { name: "Acasă", path: "/" },
                 { name: "Internship", path: "/internship" },

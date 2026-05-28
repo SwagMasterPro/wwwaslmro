@@ -5,12 +5,14 @@ import { getArticleBySlug, getCategoryBySlug, getArticlesByCategory } from "@/da
 import ArticleHeader from "@/components/blog/ArticleHeader";
 import ArticleContent from "@/components/blog/ArticleContent";
 import RelatedArticles from "@/components/blog/RelatedArticles";
-import { generateArticleSchema, generateBreadcrumbSchema } from "@/lib/structured-data";
+import { getArticleEnhancement } from "@/data/article-enhancements";
+import { generateArticleSchema, generateBreadcrumbSchema, generateFAQSchema } from "@/lib/structured-data";
 
 export default function ArticlePage() {
   const article = getArticleBySlug("stresul-cronic-si-riscul-cardiovascular")!;
   const category = getCategoryBySlug(article.categorySlug)!;
   const relatedArticles = getArticlesByCategory(article.categorySlug);
+  const enhancement = getArticleEnhancement(article.slug);
 
   const content = article.content || (
     <>
@@ -20,7 +22,7 @@ export default function ArticlePage() {
     </>
   );
 
-  const articleUrl = `https://aslm.ro/blog/${article.categorySlug}/${article.slug}`;
+  const articleUrl = `https://www.aslm.ro/blog/${article.categorySlug}/${article.slug}`;
   const breadcrumbs = [
     { name: "Acasă", path: "/" },
     { name: "Blog", path: "/blog" },
@@ -37,6 +39,7 @@ export default function ArticlePage() {
           __html: JSON.stringify([
             generateArticleSchema(article, category, articleUrl),
             generateBreadcrumbSchema(breadcrumbs),
+            ...(enhancement ? [generateFAQSchema(enhancement.faqs)] : []),
           ]),
         }}
       />

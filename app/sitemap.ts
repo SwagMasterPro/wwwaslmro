@@ -1,4 +1,6 @@
 import { MetadataRoute } from 'next';
+import { SITE_URL } from '@/lib/site-config';
+import { experts } from '@/data/experts';
 
 /**
  * Dynamic Sitemap for ASLM Website
@@ -6,8 +8,14 @@ import { MetadataRoute } from 'next';
  */
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://aslm.ro';
+  const baseUrl = SITE_URL;
   const lastModified = new Date();
+  const expertPages = experts.map((expert) => ({
+    url: `${baseUrl}${expert.profilePath}`,
+    lastModified,
+    changeFrequency: 'monthly' as const,
+    priority: 0.55,
+  }));
 
   return [
     // Main Pages
@@ -48,6 +56,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
+      url: `${baseUrl}/medicina-stilului-de-viata`,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.95,
+    },
+    {
+      url: `${baseUrl}/medicina-stilului-de-viata-vs-medicina-preventiva`,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.75,
+    },
+    {
+      url: `${baseUrl}/revizie-medicala`,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
       url: `${baseUrl}/internship`,
       lastModified,
       changeFrequency: 'monthly',
@@ -64,6 +90,60 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified,
       changeFrequency: 'weekly',
       priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/evenimente/credite-emc`,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.75,
+    },
+    {
+      url: `${baseUrl}/lifestyle-medicine-romania`,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.75,
+    },
+    {
+      url: `${baseUrl}/ghid/gestionare-stres`,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.75,
+    },
+    {
+      url: `${baseUrl}/ghid/sanatatea-somnului`,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.75,
+    },
+    {
+      url: `${baseUrl}/ghid/alimentatie-sanatoasa`,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.75,
+    },
+    {
+      url: `${baseUrl}/ghid/activitate-fizica`,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.75,
+    },
+    {
+      url: `${baseUrl}/ghid/renuntare-fumat-alcool`,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.75,
+    },
+    {
+      url: `${baseUrl}/ghid/relatii-sociale-sanatate`,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.75,
+    },
+    {
+      url: `${baseUrl}/y-aslm`,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.8,
     },
     {
       url: `${baseUrl}/conferinte`,
@@ -84,6 +164,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
+      url: `${baseUrl}/llms.txt`,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.4,
+    },
+    {
+      url: `${baseUrl}/ai-context.md`,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.4,
+    },
+    {
       url: `${baseUrl}/privacy`,
       lastModified,
       changeFrequency: 'yearly',
@@ -95,6 +187,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'yearly',
       priority: 0.3,
     },
+    ...expertPages,
 
     // Blog Main and Categories
     {

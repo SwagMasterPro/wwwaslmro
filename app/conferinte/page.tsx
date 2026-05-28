@@ -200,7 +200,7 @@ export default function ConferintePage() {
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(
             generateWebPageSchema(
-              "https://aslm.ro/conferinte",
+              "https://www.aslm.ro/conferinte",
               "Conferințe ASLM",
               "Conferințe științifice ASLM despre medicina stilului de viață: prezentări susținute de personalități de prestigiu, teme medicale de actualitate, 4 conferințe regionale anuale cu credite EMC.",
               [

@@ -217,7 +217,7 @@ export default function PublicatiiPage() {
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(
             generateWebPageSchema(
-              "https://aslm.ro/publicatii",
+              "https://www.aslm.ro/publicatii",
               "Publicații ASLM",
               "Revista oficială ASLM: Lifestyle Medicine Romania Review (LMRR) - publicație științifică dedicată medicinei stilului de viață, cercetare și articole peer-reviewed pentru profesioniști din sănătate.",
               [

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Mail, MapPin, Facebook, Linkedin, Instagram, ExternalLink } from "lucide-react";
+import { Mail, MapPin, Facebook, Instagram, ExternalLink } from "lucide-react";
 
 /**
  * Footer Component - ASLM NGO Website
@@ -20,8 +20,12 @@ const memberLinks = [
 ];
 
 const resourceLinks = [
+  { href: "/medicina-stilului-de-viata", label: "Medicina stilului de viață" },
+  { href: "/blog", label: "Blog ASLM" },
+  { href: "/membri", label: "Membri ASLM" },
   { href: "/publicatii", label: "Publicații" },
   { href: "/evenimente", label: "Evenimente" },
+  { href: "/evenimente/credite-emc", label: "Credite EMC" },
   { href: "https://medscience.center/LMRR/", label: "Revista LMRR", external: true },
 ];
 
@@ -149,7 +153,7 @@ export default function Footer() {
               className="font-bold text-sm mb-5 uppercase tracking-wider"
               style={{ color: '#166534' }}
             >
-              Resurse
+              Resurse principale
             </h3>
             <ul className="space-y-3">
               {resourceLinks.map((link) => (

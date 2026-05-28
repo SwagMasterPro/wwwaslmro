@@ -7,6 +7,7 @@ import Script from "next/script";
 import { ChevronRight, ArrowLeft } from "lucide-react";
 import { getCategoryBySlug, getArticlesByCategory } from "@/data/blog-articles";
 import BlogCard from "@/components/blog/BlogCard";
+import CategoryHubSection from "@/components/blog/CategoryHubSection";
 import { generateWebPageSchema } from "@/lib/structured-data";
 
 export default function ActivitateFizicaPage() {
@@ -63,6 +64,8 @@ export default function ActivitateFizicaPage() {
             </div>
           </motion.div>
 
+          <CategoryHubSection categorySlug="activitate-fizica" />
+
           {/* Back to Blog Link */}
           <motion.div
             initial={{ opacity: 0 }}
@@ -95,7 +98,7 @@ export default function ActivitateFizicaPage() {
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(
             generateWebPageSchema(
-              "https://aslm.ro/blog/activitate-fizica",
+              "https://www.aslm.ro/blog/activitate-fizica",
               "Activitate Fizică | Blog ASLM",
               "Articole despre activitatea fizică în medicina stilului de viață: tehnici de automotivare, activități în aer liber pentru reducerea stresului, beneficiile înotului pentru sănătatea pulmonară.",
               [

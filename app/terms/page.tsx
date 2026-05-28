@@ -220,7 +220,7 @@ export default function TermsOfService() {
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(
             generateWebPageSchema(
-              "https://aslm.ro/terms",
+              "https://www.aslm.ro/terms",
               "Termeni și Condiții ASLM",
               "Termenii și condițiile de utilizare pentru site-ul web al Societății Academice de Medicina Stilului de Viață.",
               [

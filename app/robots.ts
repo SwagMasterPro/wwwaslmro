@@ -1,4 +1,5 @@
 import { MetadataRoute } from 'next';
+import { SITE_URL } from '@/lib/site-config';
 
 /**
  * Dynamic Robots.txt for ASLM Website
@@ -7,11 +8,25 @@ import { MetadataRoute } from 'next';
 
 export default function robots(): MetadataRoute.Robots {
   return {
-    rules: {
-      userAgent: '*',
-      allow: '/',
-      disallow: [],
-    },
-    sitemap: 'https://aslm.ro/sitemap.xml',
+    rules: [
+      {
+        userAgent: '*',
+        allow: '/',
+        disallow: [],
+      },
+      ...[
+        'GPTBot',
+        'ChatGPT-User',
+        'PerplexityBot',
+        'ClaudeBot',
+        'anthropic-ai',
+        'Google-Extended',
+        'Bingbot',
+      ].map((userAgent) => ({
+        userAgent,
+        allow: '/',
+      })),
+    ],
+    sitemap: `${SITE_URL}/sitemap.xml`,
   };
 }

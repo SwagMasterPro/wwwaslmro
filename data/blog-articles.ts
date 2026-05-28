@@ -116,7 +116,7 @@ export const articles: BlogArticle[] = [
       ],
     },
     image: {
-      src: "/blog/alimentatie/articol-1.png",
+      src: "/blog/alimentatie/articol-1.webp",
       alt: "Alimentație echilibrată pentru o viață activă",
     },
   },
@@ -182,7 +182,7 @@ export const articles: BlogArticle[] = [
       ],
     },
     image: {
-      src: "/blog/alimentatie/articol-2.png",
+      src: "/blog/alimentatie/articol-2.webp",
       alt: "Legătura dintre nutriție și sănătatea mentală",
     },
   },
@@ -224,7 +224,7 @@ export const articles: BlogArticle[] = [
       ],
     },
     image: {
-      src: "/blog/alimentatie/articol-3.png",
+      src: "/blog/alimentatie/articol-3.webp",
       alt: "Alimentația în prevenirea bolilor",
     },
   },
@@ -269,7 +269,7 @@ export const articles: BlogArticle[] = [
       tags: ["aer liber", "stres", "anxietate", "natură", "wellbeing"],
     },
     image: {
-      src: "/blog/activitate-fizica/articol-4.png",
+      src: "/blog/activitate-fizica/articol-4.webp",
       alt: "Activități în aer liber pentru reducerea stresului",
     },
   },
@@ -321,7 +321,7 @@ export const articles: BlogArticle[] = [
       ],
     },
     image: {
-      src: "/blog/activitate-fizica/articol-5.png",
+      src: "/blog/activitate-fizica/articol-5.webp",
       alt: "Tehnici de automotivare pentru sport",
     },
   },
@@ -394,7 +394,7 @@ export const articles: BlogArticle[] = [
       ],
     },
     image: {
-      src: "/blog/activitate-fizica/articol-6.png",
+      src: "/blog/activitate-fizica/articol-6.webp",
       alt: "Înotul și beneficiile pentru plămâni",
     },
   },
@@ -444,7 +444,7 @@ export const articles: BlogArticle[] = [
       ],
     },
     image: {
-      src: "/blog/calitate-somn/articol-7.png",
+      src: "/blog/calitate-somn/articol-7.webp",
       alt: "Impactul somnului asupra sănătății",
     },
   },
@@ -495,7 +495,7 @@ export const articles: BlogArticle[] = [
       ],
     },
     image: {
-      src: "/blog/calitate-somn/articol-8.png",
+      src: "/blog/calitate-somn/articol-8.webp",
       alt: "Ritmul circadian și somnul",
     },
   },
@@ -552,7 +552,7 @@ export const articles: BlogArticle[] = [
       ],
     },
     image: {
-      src: "/blog/calitate-somn/articol-9.png",
+      src: "/blog/calitate-somn/articol-9.webp",
       alt: "Somnul fragmentat și efectele asupra sănătății",
     },
   },
@@ -636,7 +636,7 @@ export const articles: BlogArticle[] = [
       ],
     },
     image: {
-      src: "/blog/gestionare-stres/articol-10.png",
+      src: "/blog/gestionare-stres/articol-10.webp",
       alt: "Stresul cronic și sănătatea cardiovasculară",
     },
   },
@@ -694,7 +694,7 @@ export const articles: BlogArticle[] = [
       ],
     },
     image: {
-      src: "/blog/gestionare-stres/articol-11.png",
+      src: "/blog/gestionare-stres/articol-11.webp",
       alt: "Gestionarea stresului la birou",
     },
   },
@@ -750,7 +750,7 @@ export const articles: BlogArticle[] = [
       ],
     },
     image: {
-      src: "/blog/gestionare-stres/articol-12.png",
+      src: "/blog/gestionare-stres/articol-12.webp",
       alt: "Conștientizarea emoțiilor pentru un stil de viață echilibrat",
     },
   },
@@ -821,7 +821,7 @@ export const articles: BlogArticle[] = [
       tags: ["fumat", "inflamație", "boli cronice", "plămâni", "prevenție"],
     },
     image: {
-      src: "/blog/evitare-substante/articol-13.png",
+      src: "/blog/evitare-substante/articol-13.webp",
       alt: "Fumatul și efectele inflamatorii",
     },
   },
@@ -876,7 +876,7 @@ export const articles: BlogArticle[] = [
       ],
     },
     image: {
-      src: "/blog/evitare-substante/articol-14.png",
+      src: "/blog/evitare-substante/articol-14.webp",
       alt: "Strategii pentru renunțarea la dependențe",
     },
   },
@@ -967,7 +967,7 @@ export const articles: BlogArticle[] = [
       ],
     },
     image: {
-      src: "/blog/evitare-substante/articol-15.png",
+      src: "/blog/evitare-substante/articol-15.webp",
       alt: "Construirea obiceiurilor sănătoase",
     },
   },
@@ -1035,7 +1035,7 @@ export const articles: BlogArticle[] = [
       ],
     },
     image: {
-      src: "/blog/relatii-sociale/articol-16.png",
+      src: "/blog/relatii-sociale/articol-16.webp",
       alt: "Relațiile sociale la vârstnici",
     },
   },
@@ -1093,7 +1093,7 @@ export const articles: BlogArticle[] = [
       ],
     },
     image: {
-      src: "/blog/relatii-sociale/articol-17.png",
+      src: "/blog/relatii-sociale/articol-17.webp",
       alt: "Activități de grup pentru combaterea izolării",
     },
   },
@@ -1141,7 +1141,7 @@ export const articles: BlogArticle[] = [
       ],
     },
     image: {
-      src: "/blog/relatii-sociale/articol-18.png",
+      src: "/blog/relatii-sociale/articol-18.webp",
       alt: "Conexiunile sociale și impactul asupra sănătății mentale",
     },
   },

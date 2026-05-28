@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Clock, Calendar, ArrowRight } from "lucide-react";
 import { BlogArticle, getCategoryBySlug } from "@/data/blog-articles";
-import Card, { CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/Card";
+import Card, { CardHeader, CardTitle, CardDescription } from "@/components/ui/Card";
 
 interface BlogCardProps {
   article: BlogArticle;

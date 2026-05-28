@@ -7,6 +7,7 @@ import Script from "next/script";
 import { ChevronRight, ArrowLeft } from "lucide-react";
 import { getCategoryBySlug, getArticlesByCategory } from "@/data/blog-articles";
 import BlogCard from "@/components/blog/BlogCard";
+import CategoryHubSection from "@/components/blog/CategoryHubSection";
 import { generateWebPageSchema } from "@/lib/structured-data";
 
 export default function CalitateSomnPage() {
@@ -63,6 +64,8 @@ export default function CalitateSomnPage() {
             </div>
           </motion.div>
 
+          <CategoryHubSection categorySlug="calitate-somn" />
+
           {/* Back to Blog Link */}
           <motion.div
             initial={{ opacity: 0 }}
@@ -95,7 +98,7 @@ export default function CalitateSomnPage() {
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(
             generateWebPageSchema(
-              "https://aslm.ro/blog/calitate-somn",
+              "https://www.aslm.ro/blog/calitate-somn",
               "Calitate Somn | Blog ASLM",
               "Articole despre somnul de calitate în medicina stilului de viață: impactul somnului asupra sănătății fizice și mentale, ritmul circadian, somnul fragmentat și inflamația sistemică.",
               [

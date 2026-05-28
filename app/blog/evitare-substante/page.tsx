@@ -7,6 +7,7 @@ import Script from "next/script";
 import { ChevronRight, ArrowLeft } from "lucide-react";
 import { getCategoryBySlug, getArticlesByCategory } from "@/data/blog-articles";
 import BlogCard from "@/components/blog/BlogCard";
+import CategoryHubSection from "@/components/blog/CategoryHubSection";
 import { generateWebPageSchema } from "@/lib/structured-data";
 
 export default function EvitareSubstantePage() {
@@ -63,6 +64,8 @@ export default function EvitareSubstantePage() {
             </div>
           </motion.div>
 
+          <CategoryHubSection categorySlug="evitare-substante" />
+
           {/* Back to Blog Link */}
           <motion.div
             initial={{ opacity: 0 }}
@@ -95,7 +98,7 @@ export default function EvitareSubstantePage() {
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(
             generateWebPageSchema(
-              "https://aslm.ro/blog/evitare-substante",
+              "https://www.aslm.ro/blog/evitare-substante",
               "Evitare Substanțe Nocive | Blog ASLM",
               "Articole despre evitarea substanțelor nocive în medicina stilului de viață: fumatul și inflamația cronică, tehnici pentru renunțarea la tutun și alcool, înlocuirea obiceiurilor nocive cu obiceiuri sănătoase.",
               [

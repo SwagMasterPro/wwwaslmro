@@ -91,8 +91,8 @@ const homepageFAQs = [
     answer: "Cei șase piloni ai medicinei stilului de viață sunt: 1) Alimentație echilibrată - o dietă bazată preponderent pe alimente din plante, 2) Activitate fizică - mișcare regulată adaptată fiecărui individ, 3) Somn de calitate - odihna adecvată pentru recuperare, 4) Gestionarea stresului - tehnici de management pentru sănătatea mintală, 5) Relații sociale - conexiuni sociale sănătoase și comunitate suportivă, și 6) Evitarea substanțelor nocive - abstinența de la tutun, alcool în exces și alte substanțe dăunătoare."
   },
   {
-    question: "Cum pot să particip la Congresul ASLM 2026?",
-    answer: "Congresul Inaugural ASLM va avea loc în perioada 10-12 Mai 2026 la Brașov, în format hibrid (fizic și online). Pentru a participa, vizitați site-ul oficial al congresului la congres.aslm.ro unde veți găsi informații despre înregistrare, program, speakeri și tarife. Membrii ASLM beneficiază de tarife preferențiale și acces prioritar la eveniment."
+    question: "Unde găsesc informații despre Congresul ASLM 2026?",
+    answer: "Congresul Inaugural ASLM a avut loc în perioada 10-12 mai 2026 la Brașov, în format hibrid (fizic și online). Vizitați site-ul oficial al congresului la congres.aslm.ro pentru informații despre program, speakeri și materialele disponibile după eveniment."
   },
   {
     question: "Ce beneficii oferă calitatea de membru ASLM?",
@@ -167,7 +167,7 @@ export default function Home() {
                   <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
                 </Link>
                 <Link
-                  href="/despre"
+                  href="/medicina-stilului-de-viata"
                   className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all"
                   style={{ 
                     backgroundColor: 'transparent', 
@@ -175,7 +175,7 @@ export default function Home() {
                     border: '2px solid rgba(255,255,255,0.3)'
                   }}
                 >
-                  Află mai multe
+                  Ce este medicina stilului de viață
                 </Link>
               </div>
             </motion.div>
@@ -451,7 +451,7 @@ export default function Home() {
                 style={{ backgroundColor: '#FEF6F3', color: '#9A3412' }}
               >
                 <Calendar className="w-4 h-4" />
-                10-12 Mai 2026
+                10-12 Mai 2026 · retrospectivă
               </span>
               
               <h2 className="text-headline text-[var(--text-primary)] mb-6">
@@ -459,16 +459,16 @@ export default function Home() {
               </h2>
               
               <p className="text-body mb-6">
-                Vă invităm la primul Congres al Societății Academice de Medicina 
-                Stilului de Viață, un eveniment de referință pentru profesioniștii 
-                din domeniul sănătății.
+                Primul Congres al Societății Academice de Medicina Stilului de Viață
+                a reunit la Brașov profesioniști din domeniul sănătății interesați de
+                prevenție, educație medicală și colaborare interdisciplinară.
               </p>
               
               <ul className="space-y-3 mb-8">
                 {[
-                  "Format hibrid: fizic la Brașov + online",
+                  "Format hibrid: Brașov + online",
                   "10 secțiuni tematice specializate",
-                  "30+ speakeri de top",
+                  "30+ speakeri invitați",
                   "Credite EMC acreditate"
                 ].map((item, index) => (
                   <li key={index} className="flex items-center gap-3 text-[var(--text-secondary)]">
@@ -492,7 +492,7 @@ export default function Home() {
                   color: '#FFFFFF'
                 }}
               >
-                Vizitează site-ul congresului
+                Vezi site-ul congresului
                 <ExternalLink className="w-5 h-5" />
               </a>
             </motion.div>
@@ -522,7 +522,7 @@ export default function Home() {
                     Brașov, România
                   </h3>
                   <p style={{ color: 'rgba(255,255,255,0.7)' }}>
-                    Aula Universității Transilvania va găzdui prima ediție a 
+                    Aula Universității Transilvania a găzduit prima ediție a
                     Congresului ASLM, reunind experți naționali și internaționali.
                   </p>
                   
@@ -530,7 +530,7 @@ export default function Home() {
                     <div className="flex items-center gap-6">
                       <div>
                         <p className="text-3xl font-bold" style={{ color: '#74C69D' }}>500+</p>
-                        <p className="text-sm" style={{ color: 'rgba(255,255,255,0.7)' }}>Participanți așteptați</p>
+                        <p className="text-sm" style={{ color: 'rgba(255,255,255,0.7)' }}>Participanți</p>
                       </div>
                       <div className="w-px h-12" style={{ backgroundColor: 'rgba(255,255,255,0.2)' }} />
                       <div>
@@ -561,11 +561,11 @@ export default function Home() {
           __html: JSON.stringify([
             generateFAQSchema(homepageFAQs),
             generateWebPageSchema(
-              "https://aslm.ro",
+              "https://www.aslm.ro",
               "ASLM - Societatea Academică de Medicina Stilului de Viață",
               "Societatea Academică de Medicina Stilului de Viață (ASLM) promovează excelența în medicina stilului de viață prin educație, cercetare și colaborare profesională în România.",
               [{ name: "Acasă", path: "/" }],
-              "https://aslm.ro/images/aslm-logo.png"
+              "https://www.aslm.ro/images/aslm-logo.png"
             ),
           ]),
         }}

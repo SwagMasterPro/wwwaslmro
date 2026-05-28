@@ -327,7 +327,7 @@ export default function ComunicariOralePage() {
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(
             generateWebPageSchema(
-              "https://aslm.ro/comunicari-orale",
+              "https://www.aslm.ro/comunicari-orale",
               "Comunicări Orale ASLM",
               "Instrucțiuni pentru autorii de comunicări orale la evenimentele ASLM: cerințe de structură, format prezentare PowerPoint, limită de timp, evaluare și credite EMC.",
               [

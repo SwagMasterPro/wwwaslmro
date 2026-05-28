@@ -17,6 +17,7 @@ const navItems = [
     label: "Despre ASLM",
     children: [
       { href: "/despre", label: "Ce este ASLM" },
+      { href: "/medicina-stilului-de-viata", label: "Medicina stilului de viață" },
       { href: "/misiune", label: "Misiune & Viziune" },
       { href: "/echipa", label: "Consiliul Științific" },
       { href: "/consiliul-director", label: "Consiliul Director" },
@@ -174,7 +175,7 @@ export default function Header() {
                 color: '#FFFFFF'
               }}
             >
-              Congres 2026
+              Congres ASLM
             </Link>
           </div>
 
@@ -258,7 +259,7 @@ export default function Header() {
                   className="block w-full text-center px-5 py-3 font-bold rounded-xl"
                   style={{ backgroundColor: '#166534', color: '#FFFFFF' }}
                 >
-                  Congres 2026
+                  Congres ASLM
                 </Link>
               </motion.div>
             </div>

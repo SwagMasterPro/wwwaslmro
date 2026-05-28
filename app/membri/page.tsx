@@ -3,7 +3,6 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Script from "next/script";
-import Card from "@/components/ui/Card";
 import {
   ArrowRight,
   Users,
@@ -19,7 +18,6 @@ import {
   Heart,
   Building2,
   Crown,
-  UserCheck,
   BadgeCheck,
   Mail
 } from "lucide-react";
@@ -62,8 +60,8 @@ const membriFAQs = [
     answer: "Da, studenții la medicină pot deveni Membri Asociați - Persoane Fizice cu o taxă redusă de 300 RON pe an. Această categorie este dedicată studenților, rezidenților și profesioniștilor non-medicali care au interes real pentru medicina stilului de viață și doresc să facă parte din comunitatea ASLM."
   },
   {
-    question: "Ce beneficii au membrii ASLM la Congresul 2026?",
-    answer: "Membrii ASLM beneficiază de tarife preferențiale și acces prioritar la Congresul de Medicina Stilului de Viață din 10-12 Mai 2026 la Brașov. De asemenea, primesc credite EMC acreditate pentru participare și au oportunitatea de networking cu speakeri de top și profesioniști din domeniu."
+    question: "Ce beneficii au membrii ASLM la evenimente?",
+    answer: "Membrii ASLM beneficiază de tarife preferențiale, acces prioritar la evenimentele societății, credite EMC pentru evenimentele acreditate și oportunități de networking cu speakeri și profesioniști din domeniu. Pentru Congresul ASLM 2026, membrii au avut acces la beneficiile dedicate ediției."
   },
   {
     question: "Cum pot să îmi reînnoiesc calitatea de membru?",
@@ -629,7 +627,7 @@ export default function MembriiPage() {
           __html: JSON.stringify([
             generateFAQSchema(membriFAQs),
             generateWebPageSchema(
-              "https://aslm.ro/membri",
+              "https://www.aslm.ro/membri",
               "Devino Membru ASLM",
               "Alătură-te Societății Academice de Medicina Stilului de Viață. Descoperă categoriile de membri, beneficiile și procesul de înscriere pentru profesioniști din sănătate, studenți și organizații.",
               [

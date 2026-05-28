@@ -110,6 +110,14 @@ export default function MisiunePage() {
                     </li>
                   ))}
                 </ul>
+                <Link
+                  href="/medicina-stilului-de-viata"
+                  className="inline-flex items-center gap-2 mt-6 px-5 py-3 rounded-xl font-semibold text-white transition-all shadow-md hover:shadow-lg"
+                  style={{ backgroundColor: "var(--color-primary-600)" }}
+                >
+                  Citește definiția și pilonii MSV
+                  <ArrowRight className="w-5 h-5" />
+                </Link>
               </div>
             </motion.div>
 
@@ -287,7 +295,7 @@ export default function MisiunePage() {
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(
             generateWebPageSchema(
-              "https://aslm.ro/misiune",
+              "https://www.aslm.ro/misiune",
               "Misiunea și Viziunea ASLM",
               "Misiunea ASLM: promovarea medicinei stilului de viață ca standard clinic în România prin educație, cercetare și colaborare. Viziunea: sistem de sănătate cu medicina stilului de viață integrată în toate nivelurile de îngrijire.",
               [

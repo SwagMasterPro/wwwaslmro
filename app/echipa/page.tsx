@@ -293,7 +293,7 @@ export default function EchipaPage() {
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(
             generateWebPageSchema(
-              "https://aslm.ro/echipa",
+              "https://www.aslm.ro/echipa",
               "Consiliul Științific ASLM",
               "Echipa ASLM: Prof. Dr. Andrea Elena Neculau (Președinte), Președinți de Onoare (Acad. Constantin Ionescu-Tîrgoviște, Prof. Dr. Adrian Restian), și Consiliul Științific format din experți în medicina stilului de viață.",
               [

@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Clock, Calendar, Tag, ChevronRight } from "lucide-react";
 import { BlogArticle, BlogCategory } from "@/data/blog-articles";
+import ArticleTrustBlock from "@/components/blog/ArticleTrustBlock";
 
 interface ArticleHeaderProps {
   article: BlogArticle;
@@ -113,6 +114,7 @@ export default function ArticleHeader({ article, category }: ArticleHeaderProps)
           </motion.div>
         </div>
       </section>
+      <ArticleTrustBlock slug={article.slug} />
     </div>
   );
 }
