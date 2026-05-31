@@ -34,7 +34,7 @@ const rawExperts: Omit<Expert, "profilePath" | "schemaType">[] = [
     slug: "mihai-cristian-popescu",
     name: "Dr. Mihai Cristian Popescu",
     role: "Secretar General ASLM",
-    image: "/images/dr-mihai-cristian-popescu.png",
+    image: "/images/dr-mihai-cristian-popescu.jpg",
     affiliation: "Consiliul Director ASLM",
   },
   {

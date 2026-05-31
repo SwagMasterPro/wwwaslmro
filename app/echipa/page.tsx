@@ -53,7 +53,7 @@ const consiliulStiintific = [
   { name: "Prof. Dr. Polliana Mihaela Leru", image: "/images/prof-dr-poliana-leru.png" },
   { name: "Prof. Dr. Roxana Miclăuș", image: "/images/prof-dr-roxana-miclaus.png" },
   { name: "Psih. Mihaela Naidin", image: "/images/psih-mihaela-naidin.png" },
-  { name: "Dr. Mihai Cristian Popescu", image: "/images/dr-mihai-cristian-popescu.png" },
+  { name: "Dr. Mihai Cristian Popescu", image: "/images/dr-mihai-cristian-popescu.jpg" },
   { name: "Conf. Dr. Aida Puia", image: "/images/conf-dr-aida-puia.png" },
   { name: "Prof. Dr. Doina Carina Voinescu", image: "/images/prof-dr-carina-voinescu.png" },
 ];
