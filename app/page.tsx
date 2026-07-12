@@ -65,6 +65,38 @@ const memberBenefits = [
   },
 ];
 
+const englishPillars = [
+  { icon: Salad, label: "Balanced\nnutrition", color: "#40916C" },
+  { icon: Activity, label: "Physical\nactivity", color: "#52B788" },
+  { icon: Moon, label: "Quality\nsleep", color: "#2D6A4F" },
+  { icon: Brain, label: "Stress\nmanagement", color: "#C4725B" },
+  { icon: Smile, label: "Social\nconnections", color: "#D4876E" },
+  { icon: ShieldCheck, label: "Avoiding\nharmful substances", color: "#1B4332" },
+];
+
+const englishMemberBenefits = [
+  {
+    icon: GraduationCap,
+    title: "Continuing Education",
+    description: "Access specialist courses, webinars and educational materials",
+  },
+  {
+    icon: Users,
+    title: "Professional Community",
+    description: "Connect with professionals working in lifestyle medicine",
+  },
+  {
+    icon: BookOpen,
+    title: "Publications & Research",
+    description: "Access LMRR and current scientific resources",
+  },
+  {
+    icon: Award,
+    title: "Professional Recognition",
+    description: "Opportunities for professional development and specialization",
+  },
+];
+
 // Statistics
 const stats = [
   { value: "1", label: "Congres național" },
@@ -74,6 +106,79 @@ const stats = [
   { value: "1", label: "Manual de practică" },
   { value: "1", label: "Revistă oficială" },
   { value: "2026", label: "Congres inaugural" },
+];
+
+const englishStats = [
+  { value: "1", label: "National congress" },
+  { value: "4", label: "Regional conferences" },
+  { value: "1", label: "Summer school" },
+  { value: "6", label: "Core pillars" },
+  { value: "1", label: "Practice manual" },
+  { value: "1", label: "Official journal" },
+  { value: "2026", label: "Inaugural congress" },
+];
+
+const englishHomepageFAQs = [
+  {
+    question: "What is lifestyle medicine?",
+    answer: "Lifestyle medicine is a modern, evidence-based branch of medicine focused on changing daily behaviors to prevent, treat and even reverse the progression of chronic disease. It is built on six core pillars: balanced nutrition, physical activity, quality sleep, stress management, healthy social connections and avoiding harmful substances.",
+  },
+  {
+    question: "Who can become an ASLM member?",
+    answer: "ASLM offers several membership categories, including healthcare professionals, students, residents, non-medical professionals interested in lifestyle medicine, organizations that support our mission, certified lifestyle medicine professionals and honorary members.",
+  },
+  {
+    question: "What are the six pillars of lifestyle medicine?",
+    answer: "The six pillars are balanced nutrition, regular physical activity, quality sleep, stress management, healthy social connections and avoiding harmful substances such as tobacco and excessive alcohol.",
+  },
+  {
+    question: "Where can I find information about the 2026 ASLM Congress?",
+    answer: "The inaugural ASLM Congress took place on 10–12 May 2026 in Brașov in a hybrid format. Visit congres.aslm.ro for information about the program, speakers and materials available after the event.",
+  },
+  {
+    question: "What are the benefits of ASLM membership?",
+    answer: "ASLM members receive continuing education opportunities, professional networking, access to Lifestyle Medicine Romania Review, professional recognition, preferential event rates, EMC credits for accredited events and opportunities to contribute to national lifestyle medicine initiatives.",
+  },
+  {
+    question: "Is ASLM an accredited organization?",
+    answer: "ASLM is an affiliated member of the Romanian Medical Association and collaborates with international organizations to promote lifestyle medicine globally. Our accredited events offer EMC credits to healthcare professionals.",
+  },
+];
+
+const aboutItemsRo = [
+  {
+    icon: Target,
+    title: "Misiunea Noastră",
+    description: "Promovăm medicina stilului de viață ca standard de practică clinică în România, contribuind la prevenirea și tratarea bolilor cronice prin schimbări sustenabile ale stilului de viață.",
+  },
+  {
+    icon: Globe,
+    title: "Viziunea Noastră",
+    description: "Un sistem de sănătate românesc în care medicina stilului de viață este integrată în toate nivelurile de îngrijire, de la prevenție la tratament și recuperare.",
+  },
+  {
+    icon: Heart,
+    title: "Valorile Noastre",
+    description: "Excelență profesională, colaborare interdisciplinară, educație continuă, etică medicală și angajament față de bunăstarea pacienților și comunității.",
+  },
+];
+
+const aboutItemsEn = [
+  {
+    icon: Target,
+    title: "Our Mission",
+    description: "We promote lifestyle medicine as a standard of clinical practice in Romania, helping prevent and treat chronic disease through sustainable lifestyle changes.",
+  },
+  {
+    icon: Globe,
+    title: "Our Vision",
+    description: "A Romanian healthcare system where lifestyle medicine is integrated across every level of care, from prevention through treatment and recovery.",
+  },
+  {
+    icon: Heart,
+    title: "Our Values",
+    description: "Professional excellence, interdisciplinary collaboration, continuing education, medical ethics and a commitment to the wellbeing of patients and communities.",
+  },
 ];
 
 // FAQ data for AI search optimization
@@ -104,7 +209,22 @@ const homepageFAQs = [
   },
 ];
 
-export default function Home() {
+export type HomeLocale = "ro" | "en";
+
+export function HomePage({ locale = "ro" }: { locale?: HomeLocale }) {
+  const isEnglish = locale === "en";
+  const localizedPillars = isEnglish ? englishPillars : pillars;
+  const localizedMemberBenefits = isEnglish ? englishMemberBenefits : memberBenefits;
+  const localizedStats = isEnglish ? englishStats : stats;
+  const localizedFAQs = isEnglish ? englishHomepageFAQs : homepageFAQs;
+  const localizedAboutItems = isEnglish ? aboutItemsEn : aboutItemsRo;
+  const memberPath = isEnglish ? "/en/membership" : "/membri";
+  const lifestyleMedicinePath = isEnglish ? "/en#lifestyle-medicine" : "/medicina-stilului-de-viata";
+  const aboutPath = isEnglish ? "/en#about-aslm" : "/despre";
+  const congressBullets = isEnglish
+    ? ["Hybrid format: Brașov + online", "10 specialized thematic sections", "30+ invited speakers", "Accredited EMC credits"]
+    : ["Format hibrid: Brașov + online", "10 secțiuni tematice specializate", "30+ speakeri invitați", "Credite EMC acreditate"];
+
   return (
     <div className="overflow-hidden">
       {/* Hero Section */}
@@ -137,37 +257,37 @@ export default function Home() {
                 className="inline-block px-3 py-1.5 rounded-full text-xs font-semibold mb-4"
                 style={{ backgroundColor: 'rgba(255,255,255,0.1)', color: '#95D5B2' }}
               >
-                Societatea Academică de Medicina Stilului de Viață
+                {isEnglish ? "Academic Society of Lifestyle Medicine" : "Societatea Academică de Medicina Stilului de Viață"}
               </span>
               
               <h1 
                 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold mb-4 leading-tight"
                 style={{ color: '#FFFFFF' }}
               >
-                Împreună pentru sănătate prin
-                <span style={{ color: '#74C69D' }}> medicina stilului de viață</span>
+                {isEnglish ? "Together for health through" : "Împreună pentru sănătate prin"}
+                <span style={{ color: '#74C69D' }}>{isEnglish ? " lifestyle medicine" : " medicina stilului de viață"}</span>
               </h1>
               
               <p 
                 className="text-base md:text-lg mb-6 leading-relaxed max-w-xl"
                 style={{ color: 'rgba(255,255,255,0.8)' }}
               >
-                ASLM reunește profesioniști din domeniul sănătății dedicați promovării 
-                medicinei stilului de viață în România. Împreună construim un viitor 
-                mai sănătos prin educație, cercetare și colaborare.
+                {isEnglish
+                  ? "ASLM brings together healthcare professionals committed to advancing lifestyle medicine in Romania. Together, we are building a healthier future through education, research and collaboration."
+                  : "ASLM reunește profesioniști din domeniul sănătății dedicați promovării medicinei stilului de viață în România. Împreună construim un viitor mai sănătos prin educație, cercetare și colaborare."}
               </p>
               
               <div className="flex flex-col sm:flex-row gap-3">
                 <Link
-                  href="/membri"
+                  href={memberPath}
                   className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all shadow-lg hover:shadow-xl group"
                   style={{ backgroundColor: '#FFFFFF', color: '#1B4332' }}
                 >
-                  Devino Membru
+                  {isEnglish ? "Join ASLM" : "Devino Membru"}
                   <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
                 </Link>
                 <Link
-                  href="/medicina-stilului-de-viata"
+                  href={lifestyleMedicinePath}
                   className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all"
                   style={{ 
                     backgroundColor: 'transparent', 
@@ -175,7 +295,7 @@ export default function Home() {
                     border: '2px solid rgba(255,255,255,0.3)'
                   }}
                 >
-                  Ce este medicina stilului de viață
+                  {isEnglish ? "What is lifestyle medicine" : "Ce este medicina stilului de viață"}
                 </Link>
               </div>
             </motion.div>
@@ -190,7 +310,7 @@ export default function Home() {
               <div className="relative w-full max-w-lg">
                 <Image
                   src="/images/piloni-msv.png"
-                  alt="Cei 6 piloni ai medicinei stilului de viață"
+                  alt={isEnglish ? "The six pillars of lifestyle medicine" : "Cei 6 piloni ai medicinei stilului de viață"}
                   width={500}
                   height={500}
                   className="object-contain drop-shadow-2xl"
@@ -211,7 +331,7 @@ export default function Home() {
       >
         <div className="container-wide py-5">
           <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-7 gap-3 md:gap-5 text-center">
-            {stats.map((stat, index) => (
+            {localizedStats.map((stat, index) => (
               <motion.div
                 key={stat.label}
                 initial={{ opacity: 0, y: 10 }}
@@ -234,7 +354,7 @@ export default function Home() {
       <PromoVideoEmbed />
 
       {/* What is Lifestyle Medicine */}
-      <section className="section-lg surface-secondary">
+      <section id="lifestyle-medicine" className="section-lg surface-secondary">
         <div className="container-wide">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <motion.div
@@ -243,35 +363,43 @@ export default function Home() {
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
             >
-              <p className="text-overline mb-3">Fundament</p>
+              <p className="text-overline mb-3">{isEnglish ? "Foundation" : "Fundament"}</p>
               <h2 className="text-headline text-[var(--text-primary)] mb-6">
-                Ce este Medicina Stilului de Viață?
+                {isEnglish ? "What is Lifestyle Medicine?" : "Ce este Medicina Stilului de Viață?"}
               </h2>
               <div className="space-y-4 text-body text-[var(--text-secondary)]">
-                <p>
-                  Medicina stilului de viață este o ramură modernă a medicinei, bazată pe 
-                  dovezi științifice, care se concentrează pe schimbarea comportamentelor 
-                  zilnice pentru a <strong>preveni</strong>, <strong>trata</strong> și 
-                  chiar <strong>inversa</strong> progresia bolilor cronice.
-                </p>
-                <p>
-                  Spre deosebire de abordările tradiționale centrate exclusiv pe medicamente 
-                  și proceduri, medicina stilului de viață pune pacientul în centrul 
-                  deciziei terapeutice, valorificând puterea alegerilor zilnice.
-                </p>
-                <p>
-                  Aceasta se bazează pe <strong>șase piloni fundamentali</strong>: 
-                  alimentația echilibrată, activitatea fizică, somnul de calitate, 
-                  gestionarea stresului, relațiile sociale sănătoase și evitarea 
-                  expunerii la substanțe nocive.
-                </p>
+                {isEnglish ? (
+                  <>
+                    <p>
+                      Lifestyle medicine is a modern, evidence-based branch of medicine focused on changing daily behaviors to <strong>prevent</strong>, <strong>treat</strong> and even <strong>reverse</strong> chronic disease.
+                    </p>
+                    <p>
+                      Unlike traditional approaches centered exclusively on medication and procedures, lifestyle medicine puts the patient at the center of care and recognizes the power of everyday choices.
+                    </p>
+                    <p>
+                      It is built on <strong>six core pillars</strong>: balanced nutrition, physical activity, quality sleep, stress management, healthy social connections and avoiding harmful substances.
+                    </p>
+                  </>
+                ) : (
+                  <>
+                    <p>
+                      Medicina stilului de viață este o ramură modernă a medicinei, bazată pe dovezi științifice, care se concentrează pe schimbarea comportamentelor zilnice pentru a <strong>preveni</strong>, <strong>trata</strong> și chiar <strong>inversa</strong> progresia bolilor cronice.
+                    </p>
+                    <p>
+                      Spre deosebire de abordările tradiționale centrate exclusiv pe medicamente și proceduri, medicina stilului de viață pune pacientul în centrul deciziei terapeutice, valorificând puterea alegerilor zilnice.
+                    </p>
+                    <p>
+                      Aceasta se bazează pe <strong>șase piloni fundamentali</strong>: alimentația echilibrată, activitatea fizică, somnul de calitate, gestionarea stresului, relațiile sociale sănătoase și evitarea expunerii la substanțe nocive.
+                    </p>
+                  </>
+                )}
               </div>
               <div className="mt-8">
                 <Link
-                  href="/despre"
+                  href={aboutPath}
                   className="inline-flex items-center gap-2 text-[var(--color-primary-700)] font-semibold hover:text-[var(--color-primary-800)] transition-colors group"
                 >
-                  Descoperă mai multe despre MSV
+                  {isEnglish ? "Learn more about lifestyle medicine" : "Descoperă mai multe despre MSV"}
                   <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                 </Link>
               </div>
@@ -285,7 +413,7 @@ export default function Home() {
               transition={{ duration: 0.5 }}
               className="grid grid-cols-2 sm:grid-cols-3 gap-4"
             >
-              {pillars.map((pillar, index) => (
+              {localizedPillars.map((pillar, index) => (
                 <motion.div
                   key={pillar.label}
                   initial={{ opacity: 0, scale: 0.9 }}
@@ -311,7 +439,7 @@ export default function Home() {
       </section>
 
       {/* About ASLM Section */}
-      <section className="section-lg surface-primary">
+      <section id="about-aslm" className="section-lg surface-primary">
         <div className="container-wide">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -320,35 +448,19 @@ export default function Home() {
             transition={{ duration: 0.5 }}
             className="text-center mb-12"
           >
-            <p className="text-overline mb-3">Despre noi</p>
+            <p className="text-overline mb-3">{isEnglish ? "About us" : "Despre noi"}</p>
             <h2 className="text-headline text-[var(--text-primary)] mb-4">
-              Cine suntem
+              {isEnglish ? "Who we are" : "Cine suntem"}
             </h2>
             <p className="text-subtitle text-[var(--text-secondary)] max-w-3xl mx-auto">
-              ASLM este o organizație non-profit care reunește medici, cercetători și 
-              profesioniști din domeniul sănătății dedicați promovării medicinii 
-              stilului de viață în România.
+              {isEnglish
+                ? "ASLM is a non-profit organization bringing together physicians, researchers and healthcare professionals dedicated to advancing lifestyle medicine in Romania."
+                : "ASLM este o organizație non-profit care reunește medici, cercetători și profesioniști din domeniul sănătății dedicați promovării medicinii stilului de viață în România."}
             </p>
           </motion.div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                icon: Target,
-                title: "Misiunea Noastră",
-                description: "Promovăm medicina stilului de viață ca standard de practică clinică în România, contribuind la prevenirea și tratarea bolilor cronice prin schimbări sustenabile ale stilului de viață."
-              },
-              {
-                icon: Globe,
-                title: "Viziunea Noastră",
-                description: "Un sistem de sănătate românesc în care medicina stilului de viață este integrată în toate nivelurile de îngrijire, de la prevenție la tratament și recuperare."
-              },
-              {
-                icon: Heart,
-                title: "Valorile Noastre",
-                description: "Excelență profesională, colaborare interdisciplinară, educație continuă, etică medicală și angajament față de bunăstarea pacienților și comunității."
-              }
-            ].map((item, index) => (
+            {localizedAboutItems.map((item, index) => (
               <motion.div
                 key={item.title}
                 initial={{ opacity: 0, y: 20 }}
@@ -382,17 +494,19 @@ export default function Home() {
             transition={{ duration: 0.5 }}
             className="text-center mb-12"
           >
-            <p className="text-overline mb-3">Beneficii</p>
+            <p className="text-overline mb-3">{isEnglish ? "Benefits" : "Beneficii"}</p>
             <h2 className="text-headline text-[var(--text-primary)] mb-4">
-              De ce să devii membru ASLM?
+              {isEnglish ? "Why become an ASLM member?" : "De ce să devii membru ASLM?"}
             </h2>
             <p className="text-subtitle text-[var(--text-secondary)] max-w-2xl mx-auto">
-              Alătură-te comunității de profesioniști dedicați transformării sănătății
+              {isEnglish
+                ? "Join a community of professionals dedicated to transforming health"
+                : "Alătură-te comunității de profesioniști dedicați transformării sănătății"}
             </p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {memberBenefits.map((item, index) => (
+            {localizedMemberBenefits.map((item, index) => (
               <motion.div
                 key={item.title}
                 initial={{ opacity: 0, y: 20 }}
@@ -422,14 +536,14 @@ export default function Home() {
             className="text-center mt-10"
           >
             <Link
-              href="/membri"
+              href={memberPath}
               className="inline-flex items-center gap-2 px-8 py-4 font-semibold rounded-xl transition-all group shadow-sm hover:shadow-md"
               style={{
                 backgroundColor: '#2D6A4F',
                 color: '#FFFFFF'
               }}
             >
-              Înscrie-te ca membru
+              {isEnglish ? "Join as a member" : "Înscrie-te ca membru"}
               <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
             </Link>
           </motion.div>
@@ -451,26 +565,21 @@ export default function Home() {
                 style={{ backgroundColor: '#FEF6F3', color: '#9A3412' }}
               >
                 <Calendar className="w-4 h-4" />
-                10-12 Mai 2026 · retrospectivă
+                {isEnglish ? "10–12 May 2026 · retrospective" : "10-12 Mai 2026 · retrospectivă"}
               </span>
               
               <h2 className="text-headline text-[var(--text-primary)] mb-6">
-                Congresul Inaugural ASLM
+                {isEnglish ? "The Inaugural ASLM Congress" : "Congresul Inaugural ASLM"}
               </h2>
               
               <p className="text-body mb-6">
-                Primul Congres al Societății Academice de Medicina Stilului de Viață
-                a reunit la Brașov profesioniști din domeniul sănătății interesați de
-                prevenție, educație medicală și colaborare interdisciplinară.
+                {isEnglish
+                  ? "The first congress of the Academic Society of Lifestyle Medicine brought healthcare professionals together in Brașov to focus on prevention, medical education and interdisciplinary collaboration."
+                  : "Primul Congres al Societății Academice de Medicina Stilului de Viață a reunit la Brașov profesioniști din domeniul sănătății interesați de prevenție, educație medicală și colaborare interdisciplinară."}
               </p>
               
               <ul className="space-y-3 mb-8">
-                {[
-                  "Format hibrid: Brașov + online",
-                  "10 secțiuni tematice specializate",
-                  "30+ speakeri invitați",
-                  "Credite EMC acreditate"
-                ].map((item, index) => (
+                {congressBullets.map((item, index) => (
                   <li key={index} className="flex items-center gap-3 text-[var(--text-secondary)]">
                     <div className="w-5 h-5 rounded-full bg-[var(--color-primary-100)] flex items-center justify-center flex-shrink-0">
                       <svg className="w-3 h-3 text-[var(--color-primary-600)]" fill="currentColor" viewBox="0 0 20 20">
@@ -492,7 +601,7 @@ export default function Home() {
                   color: '#FFFFFF'
                 }}
               >
-                Vezi site-ul congresului
+                {isEnglish ? "Visit the congress website" : "Vezi site-ul congresului"}
                 <ExternalLink className="w-5 h-5" />
               </a>
             </motion.div>
@@ -519,23 +628,24 @@ export default function Home() {
                     className="font-heading text-2xl md:text-3xl font-bold mb-4"
                     style={{ color: '#FFFFFF' }}
                   >
-                    Brașov, România
+                    {isEnglish ? "Brașov, Romania" : "Brașov, România"}
                   </h3>
                   <p style={{ color: 'rgba(255,255,255,0.7)' }}>
-                    Aula Universității Transilvania a găzduit prima ediție a
-                    Congresului ASLM, reunind experți naționali și internaționali.
+                    {isEnglish
+                      ? "The Transilvania University auditorium hosted the first ASLM Congress, bringing together national and international experts."
+                      : "Aula Universității Transilvania a găzduit prima ediție a Congresului ASLM, reunind experți naționali și internaționali."}
                   </p>
                   
                   <div className="mt-8 pt-8" style={{ borderTop: '1px solid rgba(255,255,255,0.2)' }}>
                     <div className="flex items-center gap-6">
                       <div>
                         <p className="text-3xl font-bold" style={{ color: '#74C69D' }}>500+</p>
-                        <p className="text-sm" style={{ color: 'rgba(255,255,255,0.7)' }}>Participanți</p>
+                        <p className="text-sm" style={{ color: 'rgba(255,255,255,0.7)' }}>{isEnglish ? "Participants" : "Participanți"}</p>
                       </div>
                       <div className="w-px h-12" style={{ backgroundColor: 'rgba(255,255,255,0.2)' }} />
                       <div>
                         <p className="text-3xl font-bold" style={{ color: '#74C69D' }}>3</p>
-                        <p className="text-sm" style={{ color: 'rgba(255,255,255,0.7)' }}>Zile de conferințe</p>
+                        <p className="text-sm" style={{ color: 'rgba(255,255,255,0.7)' }}>{isEnglish ? "Conference days" : "Zile de conferințe"}</p>
                       </div>
                     </div>
                   </div>
@@ -548,23 +658,25 @@ export default function Home() {
 
       {/* FAQ Section */}
       <FAQSection
-        title="Întrebări Frecvente"
-        subtitle="Răspunsuri la cele mai comune întrebări despre ASLM și medicina stilului de viață"
-        faqs={homepageFAQs}
+        title={isEnglish ? "Frequently Asked Questions" : "Întrebări Frecvente"}
+        subtitle={isEnglish ? "Answers to common questions about ASLM and lifestyle medicine" : "Răspunsuri la cele mai comune întrebări despre ASLM și medicina stilului de viață"}
+        faqs={localizedFAQs}
       />
 
       {/* Structured Data for AI Search Optimization */}
       <Script
-        id="homepage-structured-data"
+        id={`homepage-structured-data-${locale}`}
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify([
-            generateFAQSchema(homepageFAQs),
+            generateFAQSchema(localizedFAQs),
             generateWebPageSchema(
-              "https://www.aslm.ro",
-              "ASLM - Societatea Academică de Medicina Stilului de Viață",
-              "Societatea Academică de Medicina Stilului de Viață (ASLM) promovează excelența în medicina stilului de viață prin educație, cercetare și colaborare profesională în România.",
-              [{ name: "Acasă", path: "/" }],
+              isEnglish ? "https://www.aslm.ro/en" : "https://www.aslm.ro",
+              isEnglish ? "ASLM - Academic Society of Lifestyle Medicine" : "ASLM - Societatea Academică de Medicina Stilului de Viață",
+              isEnglish
+                ? "The Academic Society of Lifestyle Medicine (ASLM) advances lifestyle medicine through education, research and professional collaboration in Romania."
+                : "Societatea Academică de Medicina Stilului de Viață (ASLM) promovează excelența în medicina stilului de viață prin educație, cercetare și colaborare profesională în România.",
+              [{ name: isEnglish ? "Home" : "Acasă", path: isEnglish ? "/en" : "/" }],
               "https://www.aslm.ro/images/aslm-logo.png"
             ),
           ]),
@@ -587,18 +699,19 @@ export default function Home() {
               className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold mb-6"
               style={{ color: '#FFFFFF' }}
             >
-              Alătură-te comunității medicinei stilului de viață
+              {isEnglish ? "Join the lifestyle medicine community" : "Alătură-te comunității medicinei stilului de viață"}
             </h2>
             <p 
               className="text-lg mb-10 max-w-2xl mx-auto leading-relaxed"
               style={{ color: '#D1D5DB' }}
             >
-              Fii parte din comunitatea profesioniștilor care transformă medicina 
-              românească prin abordarea stilului de viață.
+              {isEnglish
+                ? "Be part of the professional community transforming healthcare through a lifestyle medicine approach."
+                : "Fii parte din comunitatea profesioniștilor care transformă medicina românească prin abordarea stilului de viață."}
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link
-                href="/membri"
+                href={memberPath}
                 className="inline-flex items-center gap-2 px-8 py-4 rounded-xl shadow-lg hover:shadow-xl transition-all group"
                 style={{ 
                   backgroundColor: '#FFFFFF', 
@@ -606,7 +719,7 @@ export default function Home() {
                   fontWeight: 600
                 }}
               >
-                Devino Membru
+                {isEnglish ? "Join ASLM" : "Devino Membru"}
                 <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-0.5" />
               </Link>
               <Link
@@ -619,7 +732,7 @@ export default function Home() {
                   border: '2px solid #FFFFFF'
                 }}
               >
-                Contactează-ne
+                {isEnglish ? "Contact us" : "Contactează-ne"}
               </Link>
             </div>
           </motion.div>
@@ -628,4 +741,8 @@ export default function Home() {
 
     </div>
   );
+}
+
+export default function Home() {
+  return <HomePage locale="ro" />;
 }
