@@ -3,6 +3,7 @@ import { Playfair_Display, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import LocaleDocument from "@/components/layout/LocaleDocument";
 import MembershipPopup from "@/components/marketing/MembershipPopup";
 import StructuredData from "@/components/seo/StructuredData";
 import { generateOrganizationSchema, generateWebSiteSchema } from "@/lib/structured-data";
@@ -54,6 +55,7 @@ export default function RootLayout({
       <body
         className={`${playfair.variable} ${jakarta.variable} antialiased min-h-screen flex flex-col font-sans bg-[var(--color-background)] selection:bg-[var(--color-accent)] selection:text-white`}
       >
+        <LocaleDocument />
         <Header />
         <main className="flex-1 w-full overflow-x-hidden">
           {children}

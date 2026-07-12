@@ -8,6 +8,11 @@ Canonical site: https://www.aslm.ro
 
 ASLM health education pages are educational and do not replace medical diagnosis or treatment. Editorial and medical review policy: https://www.aslm.ro/revizie-medicala. Reviewer attribution currently uses Consiliul Stiintific ASLM unless a page names an approved individual reviewer.
 
+Scientific Council page: https://www.aslm.ro/consiliu-stiintific
+Executive Council page: https://www.aslm.ro/consiliu-executiv
+General Assembly member list: https://www.aslm.ro/adunarea-generala
+English entry point: https://www.aslm.ro/en
+
 ## Six canonical pillar guides
 
 1. Lifestyle medicine definition: https://www.aslm.ro/medicina-stilului-de-viata

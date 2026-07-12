@@ -81,7 +81,7 @@ export default function MedicalReviewPage() {
               </p>
               <div className="flex flex-col sm:flex-row gap-3">
                 <Link
-                  href="/echipa"
+                  href="/consiliu-stiintific"
                   className="inline-flex justify-center rounded-xl px-5 py-3 font-semibold text-white bg-[var(--color-primary-600)]"
                 >
                   Vezi Consiliul Științific ASLM

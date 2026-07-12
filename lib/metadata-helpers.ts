@@ -17,6 +17,7 @@ import {
   SITE_URL,
   getSiteUrl,
 } from "@/lib/site-config";
+import { localizedRoutePairs } from "@/lib/localized-routes";
 
 type StaticPageMetadata = {
   title: string;
@@ -44,23 +45,59 @@ const staticPages: Record<string, StaticPageMetadata> = {
       "Misiunea și viziunea ASLM pentru integrarea medicinei stilului de viață în prevenția și tratamentul bolilor cronice în România.",
     keywords: ["misiune ASLM", "viziune ASLM", "prevenție boli cronice"],
   },
-  "/echipa": {
-    title: "Consiliul Științific",
+  "/consiliu-stiintific": {
+    title: "Consiliu Științific",
     description:
       "Cunoaște membrii Consiliului Științific ASLM și experții care susțin dezvoltarea medicinei stilului de viață în România.",
-    keywords: ["consiliul științific ASLM", "experți medicina stilului de viață"],
+    keywords: ["consiliu științific ASLM", "experți medicina stilului de viață"],
   },
-  "/consiliul-director": {
-    title: "Consiliul Director",
+  "/consiliu-executiv": {
+    title: "Consiliu Executiv",
     description:
       "Află cine coordonează activitatea ASLM și inițiativele societății pentru educație, cercetare și colaborare medicală.",
-    keywords: ["consiliul director ASLM", "conducere ASLM"],
+    keywords: ["consiliu executiv ASLM", "conducere ASLM"],
+  },
+  "/adunarea-generala": {
+    title: "Adunarea Generală",
+    description:
+      "Lista actualizată a membrilor Adunării Generale ASLM, cu nume și localitate, afișată alfabetic.",
+    keywords: ["Adunarea Generală ASLM", "membri ASLM", "lista membri ASLM"],
   },
   "/membri": {
     title: "Devino Membru",
     description:
       "Alătură-te ASLM ca membru afiliat, asociat, titular sau organizație și accesează beneficii profesionale în medicina stilului de viață.",
     keywords: ["membri ASLM", "înscriere ASLM", "beneficii membri", "educație medicală continuă"],
+  },
+  "/en": {
+    title: "ASLM in English",
+    description:
+      "English entry point for ASLM membership, governance and lifestyle medicine information.",
+    keywords: ["ASLM English", "lifestyle medicine Romania", "Academic Society of Lifestyle Medicine"],
+  },
+  "/en/scientific-council": {
+    title: "Scientific Council",
+    description:
+      "Meet the ASLM Scientific Council and the experts supporting lifestyle medicine in Romania.",
+    keywords: ["ASLM Scientific Council", "lifestyle medicine experts Romania"],
+  },
+  "/en/executive-council": {
+    title: "Executive Council",
+    description:
+      "Meet the ASLM Executive Council coordinating the society's operational and strategic projects.",
+    keywords: ["ASLM Executive Council", "ASLM leadership"],
+  },
+  "/en/membership": {
+    title: "Membership",
+    description:
+      "Explore ASLM membership categories, benefits and the joining process for healthcare professionals, students, organizations and supporters.",
+    keywords: ["ASLM membership", "join ASLM", "lifestyle medicine Romania"],
+  },
+  "/en/general-assembly": {
+    title: "General Assembly",
+    description:
+      "Updated ASLM General Assembly member list, with names and locations shown alphabetically.",
+    keywords: ["ASLM General Assembly", "ASLM members"],
   },
   "/medicina-stilului-de-viata": {
     title: "Medicina stilului de viață",
@@ -258,6 +295,14 @@ export function generatePageMetadata(
   const fullTitle = `${title} | ASLM`;
   const url = getAbsoluteUrl(path);
   const image = imageUrl ? getAbsoluteUrl(imageUrl) : DEFAULT_SITE_IMAGE;
+  const isEnglishPage = path === "/en" || path.startsWith("/en/");
+  const localizedPair = localizedRoutePairs.find((pair) => pair.ro === path || pair.en === path);
+  const languageAlternates = localizedPair
+    ? {
+        "ro-RO": getAbsoluteUrl(localizedPair.ro),
+        "en-US": getAbsoluteUrl(localizedPair.en),
+      }
+    : undefined;
 
   return {
     metadataBase: new URL(SITE_URL),
@@ -270,7 +315,7 @@ export function generatePageMetadata(
       description,
       url,
       siteName: SITE_NAME,
-      locale: "ro_RO",
+      locale: isEnglishPage ? "en_US" : "ro_RO",
       type: "website",
       images: [
         {
@@ -289,6 +334,7 @@ export function generatePageMetadata(
     },
     alternates: {
       canonical: url,
+      ...(languageAlternates ? { languages: languageAlternates } : {}),
     },
   };
 }

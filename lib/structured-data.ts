@@ -39,6 +39,7 @@ export interface PersonSchema {
   url: string;
   image?: string;
   jobTitle?: string;
+  sameAs?: string[];
   affiliation?: {
     "@type": "MedicalOrganization";
     name: string;
@@ -202,6 +203,7 @@ export function generatePersonSchema(person: {
   image?: string;
   jobTitle?: string;
   affiliation?: string;
+  sameAs?: string[];
 }): PersonSchema {
   return {
     "@context": "https://schema.org",
@@ -210,6 +212,7 @@ export function generatePersonSchema(person: {
     url: person.url,
     image: person.image,
     jobTitle: person.jobTitle,
+    sameAs: person.sameAs,
     affiliation: person.affiliation
       ? {
           "@type": "MedicalOrganization",
@@ -250,7 +253,7 @@ export function generateArticleSchema(
     reviewedBy: {
       "@type": "MedicalOrganization",
       name: "Consiliul Științific ASLM",
-      url: getAbsoluteUrl("/echipa"),
+      url: getAbsoluteUrl("/consiliu-stiintific"),
     },
     publisher: {
       "@type": "Organization",
@@ -360,7 +363,7 @@ export function generateMedicalWebPageSchema(
     reviewedBy: {
       "@type": "MedicalOrganization",
       name: "Consiliul Științific ASLM",
-      url: getAbsoluteUrl("/echipa"),
+      url: getAbsoluteUrl("/consiliu-stiintific"),
     },
     audience: {
       "@type": "MedicalAudience",

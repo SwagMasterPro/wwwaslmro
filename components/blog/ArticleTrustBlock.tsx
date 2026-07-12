@@ -40,7 +40,7 @@ export default function ArticleTrustBlock({ slug }: ArticleTrustBlockProps) {
             <Link href="/revizie-medicala" className="font-semibold text-[var(--color-primary-700)] hover:underline">
               Proces editorial și revizie medicală
             </Link>
-            <Link href="/echipa" className="font-semibold text-[var(--color-primary-700)] hover:underline">
+            <Link href="/consiliu-stiintific" className="font-semibold text-[var(--color-primary-700)] hover:underline">
               Consiliul Științific ASLM
             </Link>
           </div>

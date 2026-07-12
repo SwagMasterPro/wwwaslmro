@@ -46,6 +46,18 @@ const checks = [
       });
   }],
   ["No non-www canonical pollution", () => !readFileSync(path.join(appOutputDir, "sitemap.xml.body"), "utf8").includes("https://aslm.ro")],
+  ["Sitemap only includes indexable HTML URLs", () => {
+    const sitemap = readFileSync(path.join(appOutputDir, "sitemap.xml.body"), "utf8");
+    return !sitemap.includes("https://www.aslm.ro/llms.txt") && !sitemap.includes("https://www.aslm.ro/ai-context.md");
+  }],
+  ["Governance sitemap routes are canonical", () => {
+    const sitemap = readFileSync(path.join(appOutputDir, "sitemap.xml.body"), "utf8");
+    return sitemap.includes("https://www.aslm.ro/consiliu-stiintific")
+      && sitemap.includes("https://www.aslm.ro/consiliu-executiv")
+      && sitemap.includes("https://www.aslm.ro/adunarea-generala")
+      && !sitemap.includes("https://www.aslm.ro/echipa")
+      && !sitemap.includes("https://www.aslm.ro/consiliul-director");
+  }],
 ];
 
 const passed = checks.filter(([, check]) => check()).length;

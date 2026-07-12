@@ -168,14 +168,34 @@ const sitemap = readFileSync(sitemapPath, "utf8");
 if (sitemap.includes("https://aslm.ro")) {
   fail("Sitemap still contains non-www https://aslm.ro URLs.");
 }
-if (!sitemap.includes("<loc>https://www.aslm.ro/y-aslm</loc>")) {
-  fail("Sitemap is missing https://www.aslm.ro/y-aslm.");
+
+for (const row of rows) {
+  const expectedSitemapUrl = expectedUrlForRoute(row.route);
+  if (!sitemap.includes(`<loc>${expectedSitemapUrl}</loc>`)) {
+    fail(`Sitemap is missing built HTML route ${expectedSitemapUrl}.`);
+  }
 }
-if (!sitemap.includes("<loc>https://www.aslm.ro/llms.txt</loc>")) {
-  fail("Sitemap is missing https://www.aslm.ro/llms.txt.");
+
+for (const nonIndexableUrl of [
+  "https://www.aslm.ro/llms.txt",
+  "https://www.aslm.ro/ai-context.md",
+  "https://www.aslm.ro/echipa",
+  "https://www.aslm.ro/consiliul-director",
+]) {
+  if (sitemap.includes(`<loc>${nonIndexableUrl}</loc>`)) {
+    fail(`Sitemap includes non-canonical URL ${nonIndexableUrl}.`);
+  }
 }
 
 for (const expectedSitemapUrl of [
+  "https://www.aslm.ro/consiliu-stiintific",
+  "https://www.aslm.ro/consiliu-executiv",
+  "https://www.aslm.ro/adunarea-generala",
+  "https://www.aslm.ro/en",
+  "https://www.aslm.ro/en/scientific-council",
+  "https://www.aslm.ro/en/executive-council",
+  "https://www.aslm.ro/en/membership",
+  "https://www.aslm.ro/en/general-assembly",
   "https://www.aslm.ro/medicina-stilului-de-viata",
   "https://www.aslm.ro/evenimente/credite-emc",
   "https://www.aslm.ro/lifestyle-medicine-romania",
@@ -189,7 +209,6 @@ for (const expectedSitemapUrl of [
   "https://www.aslm.ro/ghid/renuntare-fumat-alcool",
   "https://www.aslm.ro/ghid/relatii-sociale-sanatate",
   "https://www.aslm.ro/medicina-stilului-de-viata-vs-medicina-preventiva",
-  "https://www.aslm.ro/ai-context.md",
 ]) {
   if (!sitemap.includes(`<loc>${expectedSitemapUrl}</loc>`)) {
     fail(`Sitemap is missing ${expectedSitemapUrl}.`);
@@ -235,6 +254,9 @@ for (const requiredContent of [
   "Canonical guide for physical activity: https://www.aslm.ro/ghid/activitate-fizica",
   "Canonical guide for avoiding harmful substances: https://www.aslm.ro/ghid/renuntare-fumat-alcool",
   "Canonical guide for social connection and health: https://www.aslm.ro/ghid/relatii-sociale-sanatate",
+  "Scientific Council: https://www.aslm.ro/consiliu-stiintific",
+  "Executive Council: https://www.aslm.ro/consiliu-executiv",
+  "English membership: https://www.aslm.ro/en/membership",
 ]) {
   if (!llms.includes(requiredContent)) {
     fail(`public/llms.txt is missing required AI context: ${requiredContent}`);

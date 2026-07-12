@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowRight, CalendarDays, HeartHandshake, X } from "lucide-react";
 import {
@@ -12,6 +11,7 @@ import {
   useState,
   type KeyboardEvent,
 } from "react";
+import { MEMBERSHIP_JOIN_URL } from "@/lib/localized-routes";
 
 const POPUP_SESSION_KEY = "aslm-membership-popup-dismissed";
 
@@ -195,14 +195,16 @@ export default function MembershipPopup() {
             </div>
 
             <div className="border-t border-[#e1e6e2] bg-white px-7 py-7 sm:px-12 lg:px-[72px]">
-              <Link
-                href="/membri#payment-details"
+              <a
+                href={MEMBERSHIP_JOIN_URL}
+                target="_blank"
+                rel="noopener noreferrer"
                 onClick={closePopup}
                 className="ml-auto flex min-h-[112px] w-full items-center justify-center gap-8 rounded-xl bg-[#1c9638] px-8 text-center text-3xl font-semibold leading-tight !text-white shadow-[0_16px_34px_rgba(20,115,45,0.28)] transition hover:bg-[#15852f] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1f8f2e] focus-visible:ring-offset-2 lg:max-w-[700px]"
               >
                 Află mai multe despre Membership
                 <ArrowRight className="h-10 w-10 shrink-0" strokeWidth={2.2} aria-hidden="true" />
-              </Link>
+              </a>
             </div>
           </motion.div>
         </motion.div>

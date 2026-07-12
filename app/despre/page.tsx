@@ -16,6 +16,7 @@ import {
 } from "lucide-react";
 import FAQSection from "@/components/seo/FAQSection";
 import { generateFAQSchema, generateWebPageSchema } from "@/lib/structured-data";
+import { STATUTE_RO_URL } from "@/lib/localized-routes";
 
 /**
  * About Page - Despre ASLM
@@ -319,14 +320,22 @@ export default function DespreNoi() {
               Consultați Statutul Societății Academice de Medicina Stilului de Viață pentru detalii complete despre organizare, membri și funcționare.
             </p>
             <div className="max-w-4xl mx-auto">
+              <a
+                href={STATUTE_RO_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mb-6 inline-flex items-center rounded-xl bg-[var(--color-primary-700)] px-5 py-3 font-semibold text-white transition-colors hover:bg-[var(--color-primary-800)]"
+              >
+                Deschide Statutul ASLM (extrase)
+              </a>
               <div id="publitas-embed-bmqr6zksv6g"></div>
               <Script
                 src="https://view.publitas.com/embed.js"
                 data-cfasync="false"
                 data-height=""
-                data-publication="https://view.publitas.com/amaltea/statut-aslm-2025-extrase/"
+                data-publication={STATUTE_RO_URL}
                 data-publication-aspect-ratio="0.7071503680336488"
-                data-publication-title="Statut ASLM 2025 [extrase]"
+                data-publication-title="Statutul ASLM [extrase]"
                 data-responsive="true"
                 data-width=""
                 data-wrapper-id="publitas-embed-bmqr6zksv6g"

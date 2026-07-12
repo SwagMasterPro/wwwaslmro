@@ -78,14 +78,25 @@ export default async function ExpertPage({ params }: ExpertPageProps) {
               Rol în ecosistemul ASLM
             </h2>
             <p className="text-[var(--text-secondary)] leading-relaxed mb-6">
-              Acest profil susține transparența editorială și semnalele E-E-A-T ale
-              conținutului ASLM. Datele sunt limitate la informațiile publice prezente
-              pe site-ul ASLM și pot fi extinse când organizația aprobă biografii
-              detaliate pentru fiecare expert.
+              {expert.shortBio?.ro ??
+                "Acest profil susține transparența editorială și semnalele E-E-A-T ale conținutului ASLM. Datele sunt limitate la informațiile publice prezente pe site-ul ASLM și pot fi extinse când organizația aprobă biografii detaliate pentru fiecare expert."}
             </p>
+            {expert.orcid && (
+              <p className="text-[var(--text-secondary)] leading-relaxed mb-6">
+                ORCID:{" "}
+                <a
+                  href={expert.orcid}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-semibold text-[var(--color-primary-700)] hover:underline"
+                >
+                  {expert.orcid}
+                </a>
+              </p>
+            )}
             <div className="flex flex-col sm:flex-row gap-3">
               <Link
-                href="/echipa"
+                href="/consiliu-stiintific"
                 className="inline-flex items-center justify-center gap-2 rounded-xl px-5 py-3 font-semibold text-white bg-[var(--color-primary-600)]"
               >
                 Consiliul Științific
@@ -113,6 +124,7 @@ export default async function ExpertPage({ params }: ExpertPageProps) {
               image: expert.image ? getAbsoluteUrl(expert.image) : undefined,
               jobTitle: expert.role,
               affiliation: expert.affiliation,
+              sameAs: expert.orcid ? [expert.orcid] : undefined,
             }),
           ),
         }}
