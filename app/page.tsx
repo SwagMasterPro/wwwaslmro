@@ -24,6 +24,7 @@ import {
 } from "lucide-react";
 import FAQSection from "@/components/seo/FAQSection";
 import PromoVideoEmbed from "@/components/sections/PromoVideoEmbed";
+import { STATUTE_EN_URL } from "@/lib/localized-routes";
 import { generateFAQSchema, generateWebPageSchema } from "@/lib/structured-data";
 
 /**
@@ -457,6 +458,17 @@ export function HomePage({ locale = "ro" }: { locale?: HomeLocale }) {
                 ? "ASLM is a non-profit organization bringing together physicians, researchers and healthcare professionals dedicated to advancing lifestyle medicine in Romania."
                 : "ASLM este o organizație non-profit care reunește medici, cercetători și profesioniști din domeniul sănătății dedicați promovării medicinii stilului de viață în România."}
             </p>
+            {isEnglish && (
+              <a
+                href={STATUTE_EN_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-6 inline-flex items-center gap-2 font-semibold text-[var(--color-primary-700)] hover:text-[var(--color-primary-800)] transition-colors"
+              >
+                Read the ASLM Statute (extracts)
+                <ExternalLink className="w-4 h-4" />
+              </a>
+            )}
           </motion.div>
 
           <div className="grid md:grid-cols-3 gap-8">
