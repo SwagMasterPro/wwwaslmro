@@ -21,6 +21,7 @@ export default function MembershipPopup() {
   const dialogRef = useRef<HTMLDivElement>(null);
   const previousFocusRef = useRef<HTMLElement | null>(null);
   const titleId = useId();
+  const descriptionId = useId();
   const pathname = usePathname();
   const isEnglish = isEnglishPath(pathname);
 
@@ -106,7 +107,7 @@ export default function MembershipPopup() {
     <AnimatePresence>
       {isOpen && (
         <motion.div
-          className="fixed inset-0 z-[1040] flex items-center justify-center overflow-y-auto bg-[#5f7469]/90 p-2 sm:p-4"
+          className="fixed inset-0 z-[1040] flex items-center justify-center overflow-y-auto bg-[#5f7469]/90 p-3 sm:p-5"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -122,8 +123,9 @@ export default function MembershipPopup() {
             role="dialog"
             aria-modal="true"
             aria-labelledby={titleId}
+            aria-describedby={descriptionId}
             tabIndex={-1}
-            className="relative flex max-h-[calc(100dvh-1rem)] min-h-0 w-full max-w-[1180px] flex-col overflow-hidden rounded-[24px] bg-white shadow-[0_28px_80px_rgba(8,28,21,0.34)] focus:outline-none sm:max-h-[calc(100dvh-2rem)]"
+            className="relative flex min-h-0 w-full max-w-[1080px] flex-col overflow-hidden rounded-[22px] bg-white shadow-[0_28px_80px_rgba(8,28,21,0.34)] focus:outline-none max-h-[calc(100dvh-1.5rem)] sm:max-h-[calc(100dvh-2.5rem)]"
             style={{ outline: "none" }}
             initial={{ opacity: 0, scale: 0.96, y: 18 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -133,67 +135,70 @@ export default function MembershipPopup() {
           >
             <button
               type="button"
-              aria-label={isEnglish ? "Close membership popup" : "Închide popup-ul"}
+              aria-label={isEnglish ? "Close membership popup" : "Închide fereastra de înscriere"}
               onClick={closePopup}
-              className="absolute right-3 top-3 z-20 inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/90 text-[#082b27] shadow-sm transition hover:scale-105 hover:text-[#1f8f2e] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1f8f2e] sm:right-5 sm:top-5"
+              className="absolute right-3 top-3 z-20 inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/95 text-[#082b27] shadow-md transition hover:scale-105 hover:text-[#1f8f2e] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1f8f2e] sm:right-5 sm:top-5"
             >
-              <X className="h-9 w-9 stroke-[2.4]" aria-hidden="true" />
+              <X className="h-5 w-5 stroke-[2.5]" aria-hidden="true" />
             </button>
 
-            <div className="grid min-h-0 flex-1 lg:grid-cols-[1fr_1fr]">
-              <div className="relative h-[clamp(150px,28vh,270px)] min-h-0 overflow-hidden bg-[#eef4ef] sm:h-[290px] lg:h-auto lg:min-h-0">
+            <div className="grid min-h-0 flex-1 grid-cols-1 overflow-y-auto lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:overflow-hidden">
+              <div className="relative min-h-[clamp(155px,24dvh,240px)] max-h-[240px] overflow-hidden bg-[#eef4ef] lg:h-auto lg:min-h-0 lg:max-h-none">
                 <Image
                   src="/images/membership-popup-doctor.jpg"
-                  alt="Profesionist medical"
+                  alt={isEnglish ? "Medical professional" : "Profesionist medical"}
                   fill
-                  sizes="(min-width: 1024px) 52vw, 100vw"
+                  sizes="(min-width: 1024px) 43vw, 100vw"
                   priority
                   className="object-cover object-[50%_28%] brightness-[1.16] contrast-[1.03] saturate-[1.04]"
                 />
-                <div className="absolute inset-y-0 right-0 hidden w-24 bg-gradient-to-l from-white/80 to-transparent lg:block" />
+                <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-[#082b27]/20 to-transparent lg:inset-y-0 lg:right-0 lg:left-auto lg:h-auto lg:w-24 lg:bg-gradient-to-l lg:from-white/80 lg:to-transparent" />
               </div>
 
-              <div className="min-h-0 overflow-y-auto px-5 py-7 sm:px-8 sm:py-9 lg:flex lg:flex-col lg:justify-center lg:px-12 xl:px-14">
-                <div className="mx-auto w-full max-w-[500px]">
-                  <p className="mb-3 text-xs font-bold uppercase tracking-[0.22em] text-[#45a536]">
-                    {isEnglish ? "ASLM membership" : "Membri ASLM"}
+              <div className="flex min-h-0 items-center overflow-y-auto px-5 py-8 sm:px-9 sm:py-10 lg:px-12 xl:px-14">
+                <div className="mx-auto w-full max-w-[500px] min-w-0">
+                  <p className="mb-3 text-[0.68rem] font-bold uppercase tracking-[0.2em] text-[#45a536] sm:text-xs">
+                    {isEnglish ? "ASLM membership" : "Înscriere în ASLM"}
                   </p>
-                  <div
+
+                  <h2
                     id={titleId}
-                    role="heading"
-                    aria-level={2}
-                    className="font-sans text-[clamp(2.8rem,8vw,4.8rem)] font-black leading-[0.92] tracking-[-0.04em] text-[#082b27]"
+                    className="max-w-[12ch] text-[clamp(2.65rem,8vw,4.7rem)] font-black leading-[0.94] tracking-[-0.055em] text-[#082b27]"
                   >
-                    {isEnglish ? "Become" : "Devino"}
-                    <br />
-                    {isEnglish ? "a member" : "membru"}
-                    <br />
-                    <span className="text-[#45a536]">{isEnglish ? "of ASLM" : "în ASLM"}</span>
-                  </div>
+                    {isEnglish ? "Become an" : "Devino membru"}
+                    <span className="block text-[#45a536]">
+                      {isEnglish ? "ASLM member" : "ASLM"}
+                    </span>
+                  </h2>
 
-                  <div className="mt-6 h-1.5 w-16 rounded-full bg-[#21943c]" />
+                  <div className="mt-5 h-1.5 w-14 rounded-full bg-[#21943c] sm:mt-7 sm:w-16" />
 
-                  <div className="mt-7 flex items-center gap-4 sm:mt-9 sm:gap-5">
-                    <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-[#eaf3e9] sm:h-20 sm:w-20">
-                      <HeartHandshake className="h-9 w-9 text-[#1c9638] sm:h-11 sm:w-11" strokeWidth={1.9} aria-hidden="true" />
+                  <div className="mt-6 flex items-start gap-3 sm:mt-8 sm:gap-4">
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#eaf3e9] sm:h-14 sm:w-14">
+                      <HeartHandshake className="h-7 w-7 text-[#1c9638] sm:h-8 sm:w-8" strokeWidth={1.9} aria-hidden="true" />
                     </div>
-                    <p className="max-w-[360px] text-base font-semibold leading-[1.3] tracking-normal !text-[#082b27] sm:text-xl">
+                    <p
+                      id={descriptionId}
+                      className="min-w-0 pt-1 text-[0.98rem] font-semibold leading-[1.35] text-[#082b27] sm:text-lg"
+                    >
                       {isEnglish
                         ? "Discover the benefits and advantages available to ASLM members."
-                        : "Descoperă beneficiile și avantajele dedicate membrilor ASLM."}
+                        : "Descoperă beneficiile și avantajele disponibile membrilor ASLM."}
                     </p>
                   </div>
 
-                  <div className="mt-8 flex items-center gap-4 rounded-xl bg-[#eef6ed] px-4 py-4 sm:mt-10 sm:gap-5 sm:px-5">
-                    <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-[#71bd61] text-white sm:h-16 sm:w-16">
-                      <CalendarDays className="h-7 w-7 sm:h-8 sm:w-8" strokeWidth={2.2} aria-hidden="true" />
+                  <div className="mt-6 flex items-center gap-3 rounded-xl bg-[#eef6ed] px-3.5 py-3.5 sm:mt-8 sm:gap-4 sm:px-4 sm:py-4">
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#71bd61] text-white sm:h-14 sm:w-14">
+                      <CalendarDays className="h-6 w-6 sm:h-7 sm:w-7" strokeWidth={2.2} aria-hidden="true" />
                     </div>
-                    <div>
-                      <p className="text-sm font-medium leading-tight !text-[#082b27] sm:text-base">
+                    <div className="min-w-0">
+                      <p className="text-[0.78rem] font-medium leading-tight text-[#082b27] sm:text-sm">
                         {isEnglish ? "Offer valid from" : "Ofertă valabilă în perioada"}
                       </p>
-                      <p className="mt-1 text-base font-black leading-tight !text-[#15912f] sm:text-lg">
-                        {isEnglish ? "5 June 2026 – 31 July 2026" : "5.06.2026 – 31.07.2026"}
+                      <p className="mt-1 break-words text-[0.98rem] font-black leading-tight text-[#15912f] sm:text-base">
+                        {isEnglish
+                          ? "5 June 2026 – 31 July 2026"
+                          : "5 iunie 2026 – 31 iulie 2026"}
                       </p>
                     </div>
                   </div>
@@ -201,16 +206,20 @@ export default function MembershipPopup() {
               </div>
             </div>
 
-            <div className="border-t border-[#e1e6e2] bg-white px-4 py-4 sm:px-8 sm:py-5 lg:px-10">
+            <div className="shrink-0 border-t border-[#e1e6e2] bg-white px-4 py-3.5 sm:px-8 sm:py-4 lg:px-10">
               <a
                 href={MEMBERSHIP_JOIN_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={closePopup}
-                className="mx-auto flex min-h-14 w-full items-center justify-center gap-3 rounded-xl bg-[#1c9638] px-5 py-3 text-center text-base font-semibold leading-tight !text-white shadow-[0_12px_26px_rgba(20,115,45,0.24)] transition hover:bg-[#15852f] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1f8f2e] focus-visible:ring-offset-2 sm:min-h-16 sm:gap-4 sm:px-7 sm:text-lg"
+                className="mx-auto flex min-h-12 w-full items-center justify-center gap-2 rounded-xl bg-[#1c9638] px-4 py-3 text-center text-[0.95rem] font-semibold leading-tight text-white shadow-[0_12px_26px_rgba(20,115,45,0.24)] transition hover:bg-[#15852f] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1f8f2e] focus-visible:ring-offset-2 sm:min-h-14 sm:gap-3 sm:px-6 sm:text-base"
               >
-                {isEnglish ? "Learn more about membership" : "Află mai multe despre Membership"}
-                <ArrowRight className="h-5 w-5 shrink-0 sm:h-6 sm:w-6" strokeWidth={2.2} aria-hidden="true" />
+                <span className="min-w-0 break-words">
+                  {isEnglish
+                    ? "Learn more about ASLM membership"
+                    : "Află mai multe despre calitatea de membru"}
+                </span>
+                <ArrowRight className="h-5 w-5 shrink-0" strokeWidth={2.2} aria-hidden="true" />
               </a>
             </div>
           </motion.div>
