@@ -230,11 +230,10 @@ export function HomePage({ locale = "ro" }: { locale?: HomeLocale }) {
     <div className="overflow-hidden">
       {/* Hero Section */}
       <section 
-        className="relative flex items-center"
+        className="relative min-h-[75vh] flex items-center"
         style={{ 
-          paddingTop: '90px',
-          paddingBottom: '30px',
-          minHeight: 'calc(100vh - 100px)',
+          paddingTop: '80px',
+          paddingBottom: '40px',
           background: 'linear-gradient(135deg, #081C15 0%, #1B4332 50%, #2D6A4F 100%)'
         }}
       >
@@ -247,22 +246,22 @@ export function HomePage({ locale = "ro" }: { locale?: HomeLocale }) {
           }}
         />
         
-        <div className="container-wide relative z-10 py-6">
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+        <div className="container-wide relative z-10">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
               <span 
-                className="inline-block px-3 py-1.5 rounded-full text-xs font-semibold mb-4"
+                className="inline-block px-4 py-2 rounded-full text-sm font-semibold mb-6"
                 style={{ backgroundColor: 'rgba(255,255,255,0.1)', color: '#95D5B2' }}
               >
                 {isEnglish ? "Academic Society of Lifestyle Medicine" : "Societatea Academică de Medicina Stilului de Viață"}
               </span>
               
               <h1 
-                className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold mb-4 leading-tight"
+                className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight"
                 style={{ color: '#FFFFFF' }}
               >
                 {isEnglish ? "Together for health through" : "Împreună pentru sănătate prin"}
@@ -270,7 +269,7 @@ export function HomePage({ locale = "ro" }: { locale?: HomeLocale }) {
               </h1>
               
               <p 
-                className="text-base md:text-lg mb-6 leading-relaxed max-w-xl"
+                className="text-lg md:text-xl mb-8 leading-relaxed max-w-xl"
                 style={{ color: 'rgba(255,255,255,0.8)' }}
               >
                 {isEnglish
@@ -278,10 +277,10 @@ export function HomePage({ locale = "ro" }: { locale?: HomeLocale }) {
                   : "ASLM reunește profesioniști din domeniul sănătății dedicați promovării medicinei stilului de viață în România. Împreună construim un viitor mai sănătos prin educație, cercetare și colaborare."}
               </p>
               
-              <div className="flex flex-col sm:flex-row gap-3">
+              <div className="flex flex-col sm:flex-row gap-4">
                 <Link
                   href={memberPath}
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all shadow-lg hover:shadow-xl group"
+                  className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-semibold transition-all shadow-lg hover:shadow-xl group"
                   style={{ backgroundColor: '#FFFFFF', color: '#1B4332' }}
                 >
                   {isEnglish ? "Join ASLM" : "Devino Membru"}
@@ -289,7 +288,7 @@ export function HomePage({ locale = "ro" }: { locale?: HomeLocale }) {
                 </Link>
                 <Link
                   href={lifestyleMedicinePath}
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all"
+                  className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-semibold transition-all"
                   style={{ 
                     backgroundColor: 'transparent', 
                     color: '#FFFFFF',
@@ -301,21 +300,63 @@ export function HomePage({ locale = "ro" }: { locale?: HomeLocale }) {
               </div>
             </motion.div>
 
-            {/* Hero visual - Pillar infographic */}
+            {/* Hero visual - Logo and pillars */}
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               className="hidden lg:flex items-center justify-center"
             >
-              <div className="relative w-full max-w-lg">
-                <Image
-                  src="/images/piloni-msv.png"
-                  alt={isEnglish ? "The six pillars of lifestyle medicine" : "Cei 6 piloni ai medicinei stilului de viață"}
-                  width={500}
-                  height={500}
-                  className="object-contain drop-shadow-2xl"
-                />
+              <div className="relative">
+                <div
+                  className="w-48 h-48 rounded-full flex flex-col items-center justify-center shadow-xl"
+                  style={{ backgroundColor: 'rgba(255,255,255,0.95)' }}
+                >
+                  <div className="relative w-24 h-24 mb-2">
+                    <Image
+                      src="/images/aslm-logo.png"
+                      alt="ASLM Logo"
+                      fill
+                      className="object-contain"
+                    />
+                  </div>
+                  <p className="text-xs font-bold text-center leading-tight px-4" style={{ color: '#1B4332' }}>
+                    {isEnglish ? "6 lifestyle medicine" : "Cei 6 piloni"}<br />
+                    {isEnglish ? "pillars" : "ai MSV"}
+                  </p>
+                </div>
+
+                {localizedPillars.map((pillar, index) => {
+                  const angle = (index * 60 - 90) * (Math.PI / 180);
+                  const radius = 180;
+                  const x = Math.cos(angle) * radius;
+                  const y = Math.sin(angle) * radius;
+
+                  return (
+                    <motion.div
+                      key={pillar.label}
+                      initial={{ opacity: 0, scale: 0 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ duration: 0.4, delay: 0.4 + index * 0.1 }}
+                      className="absolute flex flex-col items-center"
+                      style={{
+                        left: `calc(50% + ${x}px - 40px)`,
+                        top: `calc(50% + ${y}px - 50px)`,
+                        width: '80px'
+                      }}
+                    >
+                      <div
+                        className="w-20 h-20 rounded-2xl flex items-center justify-center shadow-lg mb-1"
+                        style={{ backgroundColor: pillar.color }}
+                      >
+                        <pillar.icon className="w-10 h-10 text-white" />
+                      </div>
+                      <p className="text-[9px] font-semibold text-center leading-tight text-white whitespace-pre-line">
+                        {pillar.label}
+                      </p>
+                    </motion.div>
+                  );
+                })}
               </div>
             </motion.div>
           </div>
@@ -328,10 +369,10 @@ export function HomePage({ locale = "ro" }: { locale?: HomeLocale }) {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
-        style={{ backgroundColor: '#0f2b1d', minHeight: '100px' }}
+        style={{ backgroundColor: '#0f2b1d' }}
       >
-        <div className="container-wide py-5">
-          <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-7 gap-3 md:gap-5 text-center">
+        <div className="container-wide py-6">
+          <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-7 gap-4 md:gap-6 text-center">
             {localizedStats.map((stat, index) => (
               <motion.div
                 key={stat.label}
