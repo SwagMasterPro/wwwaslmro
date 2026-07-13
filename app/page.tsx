@@ -228,9 +228,10 @@ export function HomePage({ locale = "ro" }: { locale?: HomeLocale }) {
 
   return (
     <div className="overflow-hidden">
+      <div className="flex min-h-[100svh] w-full flex-col">
       {/* Hero Section */}
       <section 
-        className="relative min-h-[75vh] flex items-center"
+        className="relative flex min-h-[75vh] flex-1 items-center"
         style={{ 
           paddingTop: '80px',
           paddingBottom: '40px',
@@ -365,6 +366,7 @@ export function HomePage({ locale = "ro" }: { locale?: HomeLocale }) {
 
       {/* Stats Bar */}
       <motion.section
+        className="w-full"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
@@ -392,6 +394,8 @@ export function HomePage({ locale = "ro" }: { locale?: HomeLocale }) {
           </div>
         </div>
       </motion.section>
+
+      </div>
 
       <PromoVideoEmbed />
 
