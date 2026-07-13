@@ -12,6 +12,7 @@ import {
   ArrowRight
 } from "lucide-react";
 import { generateWebPageSchema } from "@/lib/structured-data";
+import PublitasSupplementViewer from "@/components/sections/PublitasSupplementViewer";
 
 /**
  * Publications Page - ASLM NGO Website
@@ -109,6 +110,45 @@ export default function PublicatiiPage() {
                 />
               </div>
             </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* LMRR Supplements 2026 */}
+      <section id="suplimente-lmrr-2026" className="section-lg surface-secondary">
+        <div className="container-wide">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="mx-auto mb-12 max-w-3xl text-center"
+          >
+            <p className="text-overline mb-3 text-[var(--color-primary-600)]">LMRR · 2026</p>
+            <h2 className="text-headline text-[var(--text-primary)] mb-4">Suplimente LMRR 2026</h2>
+            <p className="text-subtitle">
+              Citește online cele două suplimente publicate ale revistei Lifestyle Medicine Research &amp; Reviews.
+              Vizualizarea se face direct în Publitas, fără descărcare de fișiere PDF.
+            </p>
+          </motion.div>
+
+          <div className="mx-auto max-w-6xl space-y-8">
+            <PublitasSupplementViewer
+              code="S1"
+              title="Ghidul-MSV"
+              description="Suplimentul LMRR 2026 dedicat ghidului de medicină a stilului de viață."
+              publicationUrl="https://view.publitas.com/amph/lmrr-2026-s1-full-issue-ghid-msv/"
+              aspectRatio={0.7070515168109399}
+              wrapperId="publitas-lmrr-2026-s1-ghid-msv"
+            />
+            <PublitasSupplementViewer
+              code="S2"
+              title="Proceedings ASLM"
+              description="Volumul online al proceedings-urilor Congresului ASLM 2026."
+              publicationUrl="https://view.publitas.com/amph/lmrr-2026-s2-full-issue-proceedings-aslm/"
+              aspectRatio={0.9138760790941538}
+              wrapperId="publitas-lmrr-2026-s2-proceedings-aslm"
+            />
           </div>
         </div>
       </section>
