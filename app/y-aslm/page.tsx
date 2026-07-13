@@ -12,26 +12,13 @@ import {
   Target,
   Lightbulb,
 } from "lucide-react";
+import { activeYAslmStudents } from "@/data/y-aslm";
 
 const involvementItems = [
   "Familiarizarea cu principiile medicinei stilului de viață (resursele științifice vor fi puse la dispoziție în limba română de către echipa ASLM)",
   "Promovarea responsabilă a informațiilor științifice și a inițiativelor ASLM",
   "Implicarea în comunicarea proiectelor educaționale și a evenimentelor",
   "Participarea la dezvoltarea comunității studențești ASLM",
-];
-
-const activeStudents = [
-  "Caian Ioana-Gabriela, Brașov",
-  "Celano Sara-Viorica, Brașov",
-  "Cotirta Gabriela Cristina, București",
-  "Drondu Mara Cristiana, București",
-  "Dutu Maria, Iași",
-  "Elisei Alina Mihaela, Galați",
-  "Nastase Medeea, București",
-  "Pavel-Balan Grațiela-Andrada, București",
-  "Poenar Sabina, Brașov",
-  "Rosca Lucian Andrei, București",
-  "Staicu Coca, Brașov",
 ];
 
 const benefits = [
@@ -140,7 +127,7 @@ export default function YAslmPage() {
             className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 max-w-5xl mx-auto"
             aria-label="Studenți implicați în promovarea medicinei stilului de viață"
           >
-            {activeStudents.map((student, index) => (
+            {activeYAslmStudents.map((student, index) => (
               <motion.li
                 key={student}
                 initial={{ opacity: 0, y: 12 }}

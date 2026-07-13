@@ -5,6 +5,7 @@ import Link from "next/link";
 import Script from "next/script";
 import { motion } from "framer-motion";
 import { ArrowRight, Award, BookOpen, GraduationCap, Users } from "lucide-react";
+import { activeYAslmStudents } from "@/data/y-aslm";
 import {
   executiveCouncilMembers,
   honoraryPresidents,
@@ -300,6 +301,10 @@ export function ExecutiveCouncilPageContent({ locale }: { locale: Locale }) {
       members: "Membrii Consiliului Executiv",
       membersDescription:
         "Echipa de conducere a ASLM, responsabilă de implementarea strategiei și coordonarea activităților societății.",
+      studentTeam: "Echipa Y-ASLM",
+      studentTeamDescription:
+        "Studenții implicați în promovarea medicinei stilului de viață și în dezvoltarea comunității ASLM.",
+      studentTeamAriaLabel: "Studenții implicați în promovarea medicinei stilului de viață",
       schemaName: "Consiliu Executiv ASLM",
       schemaDescription:
         "Consiliul Executiv ASLM coordonează activitățile operaționale și proiectele strategice ale societății.",
@@ -313,6 +318,10 @@ export function ExecutiveCouncilPageContent({ locale }: { locale: Locale }) {
       members: "Executive Council Members",
       membersDescription:
         "The ASLM leadership team responsible for strategy implementation and coordination of the society's work.",
+      studentTeam: "Y-ASLM Student Team",
+      studentTeamDescription:
+        "Students involved in promoting lifestyle medicine and developing the ASLM community.",
+      studentTeamAriaLabel: "Students involved in promoting lifestyle medicine",
       schemaName: "ASLM Executive Council",
       schemaDescription:
         "The ASLM Executive Council coordinates the society's operations and strategic projects.",
@@ -345,6 +354,42 @@ export function ExecutiveCouncilPageContent({ locale }: { locale: Locale }) {
               <MemberCard key={member.id} member={member} index={index} locale={locale} showRole />
             ))}
           </div>
+        </div>
+      </section>
+      <section className="section-lg surface-secondary" aria-labelledby={`y-aslm-team-${locale}`}>
+        <div className="container-wide">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="text-center mb-10"
+          >
+            <div className="w-14 h-14 mx-auto mb-4 rounded-2xl bg-[var(--color-primary-100)] flex items-center justify-center">
+              <GraduationCap className="w-7 h-7 text-[var(--color-primary-600)]" />
+            </div>
+            <h2 id={`y-aslm-team-${locale}`} className="text-headline text-[var(--text-primary)] mb-4">
+              {copy.studentTeam}
+            </h2>
+            <p className="text-subtitle max-w-3xl mx-auto">{copy.studentTeamDescription}</p>
+          </motion.div>
+          <ul
+            className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 max-w-5xl mx-auto"
+            aria-label={copy.studentTeamAriaLabel}
+          >
+            {activeYAslmStudents.map((student, index) => (
+              <motion.li
+                key={student}
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.3, delay: Math.min(index * 0.03, 0.24) }}
+                className="card-elevated px-5 py-4 text-body text-[var(--text-primary)]"
+              >
+                {student}
+              </motion.li>
+            ))}
+          </ul>
         </div>
       </section>
       <MembershipCta locale={locale} />
