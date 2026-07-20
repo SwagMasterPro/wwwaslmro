@@ -269,6 +269,9 @@ if (!findRoute("/evenimente").schemas.some((schema) => schema["@type"] === "WebP
 if (findRoute("/evenimente").schemas.some((schema) => schema["@type"] === "Event")) {
   fail("/evenimente must not emit Event schema when no confirmed future event exists.");
 }
+if (findRoute("/evenimente/credite-emc").schemas.some((schema) => schema["@type"] === "WebPage" && schema.url === expectedUrl("/evenimente"))) {
+  fail("/evenimente/credite-emc must not inherit the archive WebPage schema for /evenimente.");
+}
 for (const requiredHref of ["/publicatii", "/evenimente", "/membri"]) {
   if (!proceedings.html.includes(`href="${requiredHref}"`)) {
     fail(`${proceedingsRoute} must link contextually to ${requiredHref}.`);

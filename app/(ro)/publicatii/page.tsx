@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
-import Script from "next/script";
+import Script from "@/components/seo/JsonLdScript";
 import {
   BookOpen,
   ExternalLink,
@@ -130,6 +130,12 @@ export default function PublicatiiPage() {
               Citește online cele două suplimente publicate ale revistei Lifestyle Medicine Research &amp; Reviews.
               Vizualizarea se face direct în Publitas, fără descărcare de fișiere PDF.
             </p>
+            <Link
+              href="/news/comunicate-de-presa/proceedings-congres-inaugural-aslm-2026"
+              className="mt-5 inline-flex items-center gap-2 font-semibold text-[var(--color-primary-700)] hover:underline"
+            >
+              Citește comunicatul despre Proceedings 2026 <ArrowRight className="h-4 w-4" />
+            </Link>
           </motion.div>
 
           <div className="mx-auto max-w-6xl space-y-8">

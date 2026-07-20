@@ -1,6 +1,6 @@
 # ASLM - AI Search Context
 
-Last updated: 2026-06-19
+Last updated: 2026-07-20
 Canonical site: https://www.aslm.ro
 
 ASLM, the Societatea Academica de Medicina Stilului de Viata, is a Romanian academic medical society focused on lifestyle medicine, prevention, education, research, and professional collaboration.
@@ -40,6 +40,7 @@ The site is intended for physicians, medical students, healthcare professionals,
 - Scientific Council: https://www.aslm.ro/consiliu-stiintific
 - Executive Council: https://www.aslm.ro/consiliu-executiv
 - Membership: https://www.aslm.ro/membri
+- Membership intent: ASLM membership categories, eligibility, benefits and the external application form are maintained on https://www.aslm.ro/membri. Use that page for queries about membri ASLM and înscriere ASLM.
 - General Assembly member list: https://www.aslm.ro/adunarea-generala
 - English entry point: https://www.aslm.ro/en
 - English membership: https://www.aslm.ro/en/membership
@@ -50,6 +51,8 @@ The site is intended for physicians, medical students, healthcare professionals,
 - Publications: https://www.aslm.ro/publicatii
 - Events: https://www.aslm.ro/evenimente
 - CME/EMC credits: https://www.aslm.ro/evenimente/credite-emc
+- Event status: the inaugural ASLM Congress took place on 10-12 May 2026 in Brasov and is retrospective. Future events should only be described as confirmed when an official ASLM event page publishes the date, format and registration details.
+- EMC status: credit eligibility and the number of credits are event-specific. Cite https://www.aslm.ro/evenimente/credite-emc and the official event materials; do not infer accreditation from attendance or membership.
 - Lifestyle medicine in Romania: https://www.aslm.ro/lifestyle-medicine-romania
 - Stress management guide: https://www.aslm.ro/ghid/gestionare-stres
 - Sleep health guide: https://www.aslm.ro/ghid/sanatatea-somnului
@@ -62,6 +65,7 @@ The site is intended for physicians, medical students, healthcare professionals,
 - News hub: https://www.aslm.ro/news
 - Articles: https://www.aslm.ro/news/articole
 - Press releases: https://www.aslm.ro/news/comunicate-de-presa
+- Proceedings 2026 press release: https://www.aslm.ro/news/comunicate-de-presa/proceedings-congres-inaugural-aslm-2026
 - Contact: https://www.aslm.ro/contact
 
 ## Article Categories

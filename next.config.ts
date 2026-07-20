@@ -31,7 +31,17 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: "/blog/",
+        destination: "/news/articole",
+        permanent: true,
+      },
+      {
         source: "/blog/:path*",
+        destination: "/news/articole/:path*",
+        permanent: true,
+      },
+      {
+        source: "/blog/:path*/",
         destination: "/news/articole/:path*",
         permanent: true,
       },
@@ -41,7 +51,17 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: "/echipa/",
+        destination: "/consiliu-stiintific",
+        permanent: true,
+      },
+      {
         source: "/consiliul-director",
+        destination: "/consiliu-executiv",
+        permanent: true,
+      },
+      {
+        source: "/consiliul-director/",
         destination: "/consiliu-executiv",
         permanent: true,
       },

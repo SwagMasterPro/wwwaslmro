@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Script from "next/script";
+import Script from "@/components/seo/JsonLdScript";
 import FAQSection from "@/components/seo/FAQSection";
 import { generateFAQSchema, generateWebPageSchema } from "@/lib/structured-data";
 

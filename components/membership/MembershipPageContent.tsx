@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import Script from "next/script";
+import Script from "@/components/seo/JsonLdScript";
 import { motion } from "framer-motion";
 import { useEffect } from "react";
 import {

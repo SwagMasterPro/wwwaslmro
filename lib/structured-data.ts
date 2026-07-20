@@ -21,6 +21,7 @@ export interface Organization {
   foundingDate?: string;
   address?: {
     "@type": "PostalAddress";
+    streetAddress?: string;
     addressLocality: string;
     addressCountry: string;
   };
@@ -166,6 +167,7 @@ export function generateOrganizationSchema(): Organization {
     foundingDate: "2024",
     address: {
       "@type": "PostalAddress",
+      streetAddress: "Str. Iuliu Maniu 41A",
       addressLocality: "Brașov",
       addressCountry: "RO",
     },

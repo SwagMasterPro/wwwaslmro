@@ -5,9 +5,15 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, Calendar, Clock, ExternalLink, MapPin } from "lucide-react";
 import { completedEvents, events } from "@/data/events";
+import JsonLdScript from "@/components/seo/JsonLdScript";
+import { upcomingConfirmedEvents } from "@/data/events";
+import { generateEventSchema, generateWebPageSchema } from "@/lib/structured-data";
 
 const featuredEvent = events.find((event) => event.featured);
 const archiveEvents = completedEvents.filter((event) => !event.featured);
+const eventSchemas = upcomingConfirmedEvents
+  .map(generateEventSchema)
+  .filter((schema) => schema !== null);
 
 export default function EvenimentePage() {
   return (
@@ -118,6 +124,21 @@ export default function EvenimentePage() {
           </Link>
         </div>
       </section>
+      <JsonLdScript
+        id="events-structured-data"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify([
+            generateWebPageSchema(
+              "https://www.aslm.ro/evenimente",
+              "Evenimente ASLM: calendar, arhivă și credite EMC",
+              "Calendarul și arhiva evenimentelor Societății Academice de Medicina Stilului de Viață, cu informații despre congrese, workshop-uri și credite EMC.",
+              [{ name: "Acasă", path: "/" }, { name: "Evenimente", path: "/evenimente" }],
+            ),
+            ...eventSchemas,
+          ]),
+        }}
+      />
     </div>
   );
 }

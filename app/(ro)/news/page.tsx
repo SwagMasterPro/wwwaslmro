@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { BookOpen, FileText, ArrowRight } from "lucide-react";
 import { generateStaticPageMetadata } from "@/lib/metadata-helpers";
+import JsonLdScript from "@/components/seo/JsonLdScript";
+import { generateWebPageSchema } from "@/lib/structured-data";
 import { NEWS_ARTICLES_PATH, PRESS_RELEASES_PATH } from "@/lib/news-routes";
 
 export const metadata = generateStaticPageMetadata("/news");
@@ -49,6 +51,20 @@ export default function NewsPage() {
           })}
         </div>
       </section>
+      <JsonLdScript
+        id="news-structured-data"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            generateWebPageSchema(
+              "https://www.aslm.ro/news",
+              "News ASLM: articole și comunicate de presă",
+              "Hubul editorial ASLM cu articole despre medicina stilului de viață și comunicate despre proiecte, activități și publicații.",
+              [{ name: "Acasă", path: "/" }, { name: "News", path: "/news" }],
+            ),
+          ),
+        }}
+      />
     </main>
   );
 }

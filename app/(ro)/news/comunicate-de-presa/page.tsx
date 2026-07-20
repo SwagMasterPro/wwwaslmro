@@ -1,5 +1,7 @@
 import { pressReleases } from "@/data/press-releases";
 import PressReleaseCard from "@/components/news/PressReleaseCard";
+import JsonLdScript from "@/components/seo/JsonLdScript";
+import { generateWebPageSchema } from "@/lib/structured-data";
 
 export default function PressReleasesPage() {
   return (
@@ -14,6 +16,24 @@ export default function PressReleasesPage() {
           {pressReleases.map((pressRelease) => <PressReleaseCard key={pressRelease.slug} pressRelease={pressRelease} />)}
         </div>
       </section>
+      <JsonLdScript
+        id="press-releases-structured-data"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            generateWebPageSchema(
+              "https://www.aslm.ro/news/comunicate-de-presa",
+              "Comunicate de presă ASLM",
+              "Comunicate oficiale despre proiectele, activitățile și publicațiile Societății Academice de Medicina Stilului de Viață.",
+              [
+                { name: "Acasă", path: "/" },
+                { name: "News", path: "/news" },
+                { name: "Comunicate de presă", path: "/news/comunicate-de-presa" },
+              ],
+            ),
+          ),
+        }}
+      />
     </main>
   );
 }

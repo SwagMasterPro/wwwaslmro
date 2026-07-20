@@ -279,7 +279,7 @@ export const seoGrowthPages: Record<string, SeoGrowthPage> = {
   },
   "/ghid/gestionare-stres": {
     path: "/ghid/gestionare-stres",
-    modifiedDate: "2026-07-13",
+    modifiedDate: "2026-07-20",
     eyebrow: "Ghid practic",
     title: "Gestionare stres: tehnici, prevenție și rol în sănătate",
     description:
@@ -328,6 +328,11 @@ export const seoGrowthPages: Record<string, SeoGrowthPage> = {
     ],
     faqs: [
       {
+        question: "Cum se gestionează stresul?",
+        answer:
+          "Stresul se gestionează prin identificarea surselor de presiune, pauze și respirație lentă, mișcare, somn regulat, sprijin social și ajutor medical sau psihologic când simptomele persistă ori afectează funcționarea zilnică.",
+      },
+      {
         question: "Care sunt cele mai simple tehnici de gestionare a stresului?",
         answer:
           "Respirația lentă, mersul pe jos, pauzele programate, somnul regulat, reducerea stimulilor digitali și discuțiile cu persoane de încredere sunt puncte de început accesibile.",
@@ -352,7 +357,7 @@ export const seoGrowthPages: Record<string, SeoGrowthPage> = {
   },
   "/ghid/sanatatea-somnului": {
     path: "/ghid/sanatatea-somnului",
-    modifiedDate: "2026-07-13",
+    modifiedDate: "2026-07-20",
     eyebrow: "Ghid practic",
     title: "Sănătatea somnului: somn de calitate și prevenție",
     description:
@@ -381,6 +386,12 @@ export const seoGrowthPages: Record<string, SeoGrowthPage> = {
         ],
       },
       {
+        heading: "Ce este igiena somnului",
+        body: [
+          "Igiena somnului este setul de obiceiuri și condiții care susțin un somn regulat și odihnitor: ore similare de culcare și trezire, lumină redusă seara, un dormitor potrivit și limitarea cofeinei, alcoolului și ecranelor înainte de culcare.",
+        ],
+      },
+      {
         heading: "Semne că somnul merită evaluat",
         body: [
           "Oboseala persistentă, somnolența diurnă, sforăitul puternic, trezirile frecvente, insomnia sau schimbările de dispoziție pot indica o problemă care necesită atenție. Uneori este suficientă ajustarea rutinei; alteori este necesară evaluarea medicală.",
@@ -400,6 +411,11 @@ export const seoGrowthPages: Record<string, SeoGrowthPage> = {
       },
     ],
     faqs: [
+      {
+        question: "Ce este igiena somnului?",
+        answer:
+          "Igiena somnului este setul de rutine și condiții care ajută la un somn regulat și odihnitor, inclusiv un program constant, lumină redusă seara și limitarea cofeinei, alcoolului și ecranelor înainte de culcare.",
+      },
       {
         question: "Câte ore de somn sunt recomandate adulților?",
         answer:

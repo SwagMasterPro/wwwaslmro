@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import Script from "next/script";
+import Script from "@/components/seo/JsonLdScript";
 import { BookOpen, ArrowRight } from "lucide-react";
 import { getAllCategories, articles, getArticlesByCategory } from "@/data/blog-articles";
 import CategoryCard from "@/components/blog/CategoryCard";

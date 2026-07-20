@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import Script from "next/script";
+import JsonLdScript from "@/components/seo/JsonLdScript";
 import {
   ArrowRight,
   Heart,
@@ -402,7 +403,7 @@ export default function DespreNoi() {
       />
 
       {/* Structured Data for AI Search Optimization */}
-      <Script
+      <JsonLdScript
         id="despre-structured-data"
         type="application/ld+json"
         dangerouslySetInnerHTML={{

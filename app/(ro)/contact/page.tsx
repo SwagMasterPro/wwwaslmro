@@ -3,11 +3,11 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import Script from "next/script";
+import Script from "@/components/seo/JsonLdScript";
 import Card from "@/components/ui/Card";
 import { Input, Textarea } from "@/components/ui/Input";
 import Button from "@/components/ui/Button";
-import { MapPin, Mail, Clock, Facebook, Linkedin, Instagram, ArrowRight, Send, CheckCircle } from "lucide-react";
+import { MapPin, Mail, Clock, Facebook, Instagram, ArrowRight, Send, CheckCircle } from "lucide-react";
 import { generateWebPageSchema } from "@/lib/structured-data";
 
 /**
@@ -36,9 +36,8 @@ const contactInfo = [
 ];
 
 const socialLinks = [
-  { icon: Facebook, href: "#", label: "Facebook" },
-  { icon: Linkedin, href: "#", label: "LinkedIn" },
-  { icon: Instagram, href: "#", label: "Instagram" },
+  { icon: Facebook, href: "https://www.facebook.com/profile.php?id=61587670614129", label: "Facebook" },
+  { icon: Instagram, href: "https://www.instagram.com/aslm.lifestylemedicine/", label: "Instagram" },
 ];
 
 export default function ContactPage() {

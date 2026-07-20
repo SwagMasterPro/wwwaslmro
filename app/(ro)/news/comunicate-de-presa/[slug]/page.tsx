@@ -73,7 +73,7 @@ export default async function PressReleasePage({ params }: PageProps) {
       <section className="section-md surface-secondary">
         <div className="container-default max-w-4xl">
           <p className="text-overline mb-3">Resurse ASLM</p>
-          <div className="grid gap-4 md:grid-cols-3">
+          <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
             <Link href="/publicatii" className="rounded-xl border border-[var(--color-primary-100)] bg-white p-5 transition-shadow hover:shadow-md">
               <h2 className="font-semibold text-[var(--text-primary)]">Publicații</h2>
               <p className="mt-2 text-sm text-[var(--text-secondary)]">Resurse și publicații științifice ASLM.</p>
@@ -81,6 +81,10 @@ export default async function PressReleasePage({ params }: PageProps) {
             <Link href="/evenimente" className="rounded-xl border border-[var(--color-primary-100)] bg-white p-5 transition-shadow hover:shadow-md">
               <h2 className="font-semibold text-[var(--text-primary)]">Evenimente</h2>
               <p className="mt-2 text-sm text-[var(--text-secondary)]">Calendarul și arhiva activităților ASLM.</p>
+            </Link>
+            <Link href="/evenimente/credite-emc" className="rounded-xl border border-[var(--color-primary-100)] bg-white p-5 transition-shadow hover:shadow-md">
+              <h2 className="font-semibold text-[var(--text-primary)]">Credite EMC</h2>
+              <p className="mt-2 text-sm text-[var(--text-secondary)]">Statutul și documentele pentru fiecare eveniment.</p>
             </Link>
             <Link href="/membri" className="rounded-xl border border-[var(--color-primary-100)] bg-white p-5 transition-shadow hover:shadow-md">
               <h2 className="font-semibold text-[var(--text-primary)]">Membri ASLM</h2>

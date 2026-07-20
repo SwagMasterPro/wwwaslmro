@@ -22,12 +22,12 @@ type RouteConfig = {
 };
 
 const staticRoutes: RouteConfig[] = [
-  { path: "/", lastModified: "2026-07-13", changeFrequency: "weekly", priority: 1 },
+  { path: "/", lastModified: "2026-07-20", changeFrequency: "weekly", priority: 1 },
   { path: "/despre", lastModified: "2026-07-13", changeFrequency: "monthly", priority: 0.9 },
   { path: "/misiune", lastModified: "2026-06-19", changeFrequency: "monthly", priority: 0.8 },
   { path: "/consiliu-stiintific", lastModified: "2026-07-13", changeFrequency: "monthly", priority: 0.8 },
   { path: "/consiliu-executiv", lastModified: "2026-07-13", changeFrequency: "monthly", priority: 0.8 },
-  { path: "/membri", lastModified: "2026-07-13", changeFrequency: "monthly", priority: 0.9 },
+  { path: "/membri", lastModified: "2026-07-20", changeFrequency: "monthly", priority: 0.9 },
   { path: "/adunarea-generala", lastModified: "2026-07-13", changeFrequency: "monthly", priority: 0.65 },
   { path: "/en", lastModified: "2026-07-13", changeFrequency: "monthly", priority: 0.75 },
   { path: "/en/scientific-council", lastModified: "2026-07-13", changeFrequency: "monthly", priority: 0.65 },
@@ -36,8 +36,8 @@ const staticRoutes: RouteConfig[] = [
   { path: "/en/general-assembly", lastModified: "2026-07-13", changeFrequency: "monthly", priority: 0.55 },
   { path: "/revizie-medicala", lastModified: "2026-07-13", changeFrequency: "monthly", priority: 0.7 },
   { path: "/internship", lastModified: "2026-06-19", changeFrequency: "monthly", priority: 0.9 },
-  { path: "/publicatii", lastModified: "2026-07-13", changeFrequency: "weekly", priority: 0.8 },
-  { path: "/evenimente", lastModified: "2026-07-13", changeFrequency: "weekly", priority: 0.9 },
+  { path: "/publicatii", lastModified: "2026-07-20", changeFrequency: "weekly", priority: 0.8 },
+  { path: "/evenimente", lastModified: "2026-07-20", changeFrequency: "weekly", priority: 0.9 },
   { path: "/y-aslm", lastModified: "2026-07-13", changeFrequency: "monthly", priority: 0.8 },
   { path: "/conferinte", lastModified: "2026-07-13", changeFrequency: "yearly", priority: 0.55 },
   { path: "/comunicari-orale", lastModified: "2026-07-13", changeFrequency: "yearly", priority: 0.55 },
