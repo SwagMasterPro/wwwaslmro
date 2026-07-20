@@ -281,9 +281,9 @@ export const seoGrowthPages: Record<string, SeoGrowthPage> = {
     path: "/ghid/gestionare-stres",
     modifiedDate: "2026-07-20",
     eyebrow: "Ghid practic",
-    title: "Gestionare stres: tehnici, prevenție și rol în sănătate",
+    title: "Gestionarea stresului: tehnici, prevenție și sănătate",
     description:
-      "Ghid ASLM despre gestionare stres, tehnici practice și legătura dintre stres, somn, relații sociale și prevenția bolilor cronice.",
+      "Ghid ASLM despre gestionarea stresului, tehnici practice și legătura dintre stres, somn, relații sociale și prevenția bolilor cronice.",
     lastUpdated: "2026",
     reviewedBy: "Consiliul Științific ASLM",
     medicalAudience: "Profesioniști din sănătate și public interesat de sănătate mentală preventivă",
@@ -359,9 +359,9 @@ export const seoGrowthPages: Record<string, SeoGrowthPage> = {
     path: "/ghid/sanatatea-somnului",
     modifiedDate: "2026-07-20",
     eyebrow: "Ghid practic",
-    title: "Sănătatea somnului: somn de calitate și prevenție",
+    title: "Sănătatea somnului și igiena somnului: ghid ASLM",
     description:
-      "Ghid ASLM despre sănătatea somnului, somn de calitate, ritm circadian și legătura cu sănătatea fizică și mentală.",
+      "Ghid ASLM despre sănătatea somnului și igiena somnului, somn de calitate, ritm circadian și legătura cu sănătatea fizică și mentală.",
     lastUpdated: "2026",
     reviewedBy: "Consiliul Științific ASLM",
     medicalAudience: "Profesioniști din sănătate și public interesat de somn și prevenție",

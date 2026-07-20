@@ -169,16 +169,16 @@ const staticPages: Record<string, StaticPageMetadata> = {
     keywords: ["lifestyle medicine Romania", "Academic Society of Lifestyle Medicine", "Romanian Society of Lifestyle Medicine"],
   },
   "/ghid/gestionare-stres": {
-    title: "Ghid de Gestionare a Stresului",
+    title: "Gestionarea stresului: tehnici practice",
     description:
-      "Ghid ASLM despre gestionare stres, tehnici practice și rolul stresului în medicina stilului de viață și prevenția bolilor cronice.",
-    keywords: ["gestionare stres", "tehnici gestionare stres", "stres cronic", "sănătate mentală"],
+      "Ghid ASLM despre gestionarea stresului, tehnici practice și rolul stresului în medicina stilului de viață și prevenția bolilor cronice.",
+    keywords: ["gestionarea stresului", "tehnici de gestionare a stresului", "stres cronic", "sănătate mentală"],
   },
   "/ghid/sanatatea-somnului": {
-    title: "Ghid pentru Sănătatea Somnului",
+    title: "Sănătatea somnului și igiena somnului",
     description:
-      "Ghid ASLM despre sănătatea somnului, somn de calitate, ritm circadian și prevenția bolilor cronice prin odihnă adecvată.",
-    keywords: ["sănătatea somnului", "sanatatea somnului", "somn de calitate", "somnul și sănătatea"],
+      "Ghid ASLM despre sănătatea somnului și igiena somnului, somn de calitate, ritm circadian și prevenția bolilor cronice prin odihnă adecvată.",
+    keywords: ["sănătatea somnului", "igiena somnului", "somn de calitate", "somnul și sănătatea"],
   },
   "/ghid/alimentatie-sanatoasa": {
     title: "Ghid de Alimentație Sănătoasă",
