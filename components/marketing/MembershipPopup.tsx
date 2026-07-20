@@ -12,8 +12,9 @@ import {
   type KeyboardEvent,
 } from "react";
 import { usePathname } from "next/navigation";
-import { isEnglishPath, MEMBERSHIP_JOIN_URL } from "@/lib/localized-routes";
+import { isEnglishPath } from "@/lib/localized-routes";
 import { MEMBERSHIP_DIALOG_OPEN_EVENT } from "@/components/marketing/membership-dialog-events";
+import MembershipJoinLink from "@/components/marketing/MembershipJoinLink";
 
 export default function MembershipPopup({ initialOpen = false }: { initialOpen?: boolean }) {
   const [isOpen, setIsOpen] = useState(initialOpen);
@@ -189,10 +190,8 @@ export default function MembershipPopup({ initialOpen = false }: { initialOpen?:
             </div>
 
             <div className="shrink-0 border-t border-[#e1e6e2] bg-white px-4 py-3.5 sm:px-8 sm:py-4 lg:px-10">
-              <a
-                href={MEMBERSHIP_JOIN_URL}
-                target="_blank"
-                rel="noopener noreferrer"
+              <MembershipJoinLink
+                source="membership_popup"
                 onClick={closePopup}
                 className="mx-auto flex min-h-12 w-full items-center justify-center gap-2 rounded-xl bg-[#1c9638] px-4 py-3 text-center text-[0.95rem] font-semibold leading-tight text-white shadow-[0_12px_26px_rgba(20,115,45,0.24)] transition hover:bg-[#15852f] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1f8f2e] focus-visible:ring-offset-2 sm:min-h-14 sm:gap-3 sm:px-6 sm:text-base"
               >
@@ -202,7 +201,7 @@ export default function MembershipPopup({ initialOpen = false }: { initialOpen?:
                     : "Află mai multe despre calitatea de membru"}
                 </span>
                 <ArrowRight className="h-5 w-5 shrink-0" strokeWidth={2.2} aria-hidden="true" />
-              </a>
+              </MembershipJoinLink>
             </div>
           </motion.div>
         </motion.div>

@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Script from "next/script";
 import { motion } from "framer-motion";
+import { useEffect } from "react";
 import {
   ArrowRight,
   Award,
@@ -22,7 +23,9 @@ import {
   Users,
 } from "lucide-react";
 import FAQSection from "@/components/seo/FAQSection";
-import { MEMBERSHIP_JOIN_URL, type Locale } from "@/lib/localized-routes";
+import MembershipJoinLink from "@/components/marketing/MembershipJoinLink";
+import { trackMembershipEvent } from "@/lib/analytics";
+import { type Locale } from "@/lib/localized-routes";
 import { generateFAQSchema, generateWebPageSchema } from "@/lib/structured-data";
 
 type Localized = Record<Locale, string>;
@@ -241,16 +244,14 @@ const faqs = {
   ],
 };
 
-function CategoryButton({ label }: { label: string }) {
+function CategoryButton({ label, source }: { label: string; source: string }) {
   return (
-    <a
-      href={MEMBERSHIP_JOIN_URL}
-      target="_blank"
-      rel="noopener noreferrer"
+    <MembershipJoinLink
+      source={source}
       className="block w-full text-center px-6 py-3 rounded-xl font-semibold transition-all bg-[var(--color-primary-700)] text-white hover:bg-[var(--color-primary-800)]"
     >
       {label}
-    </a>
+    </MembershipJoinLink>
   );
 }
 
@@ -325,18 +326,22 @@ function CategoryCard({
           {locale === "ro" ? "Contactează-ne" : "Contact us"}
         </Link>
       ) : (
-        <CategoryButton label={locale === "ro" ? "Solicită înscriere" : "Apply to join"} />
+        <CategoryButton source={`membership_category_${category.id}`} label={locale === "ro" ? "Solicită înscriere" : "Apply to join"} />
       )}
     </motion.div>
   );
 }
 
 export default function MembershipPageContent({ locale }: { locale: Locale }) {
+  useEffect(() => {
+    trackMembershipEvent("view_membership", { source: "membership_page", locale });
+  }, [locale]);
+
   const copy = {
     ro: {
       overline: "Alătură-te comunității",
-      title: "Devino Membru ASLM",
-      description: "Fii parte din comunitatea de profesioniști și pasionați care transformă medicina românească prin abordarea stilului de viață.",
+      title: "Membri ASLM: înscriere și beneficii",
+      description: "Alege categoria potrivită, compară cotizațiile și beneficiile și înscrie-te în comunitatea ASLM dedicată medicinei stilului de viață.",
       benefitsOverline: "Avantaje",
       benefitsTitle: "Beneficiile Membrilor ASLM",
       benefitsSubtitle: "Indiferent de categoria de membru, vei avea acces la resurse valoroase pentru dezvoltarea ta.",
@@ -355,8 +360,8 @@ export default function MembershipPageContent({ locale }: { locale: Locale }) {
       finalBody: "Completează formularul de înscriere și devino parte din comunitatea ASLM.",
       join: "Înscrie-te",
       path: "/membri",
-      schemaName: "Devino Membru ASLM",
-      schemaDescription: "Descoperă categoriile de membri ASLM, beneficiile și procesul de înscriere.",
+      schemaName: "Membri ASLM: înscriere, categorii și beneficii",
+      schemaDescription: "Descoperă categoriile de membri ASLM, cotizațiile, beneficiile și procesul de înscriere.",
     },
     en: {
       overline: "Join the community",
@@ -463,15 +468,13 @@ export default function MembershipPageContent({ locale }: { locale: Locale }) {
             <Sparkles className="w-9 h-9 mx-auto mb-4 text-[var(--color-primary-600)]" />
             <h2 className="text-title text-[var(--text-primary)] mb-4">{copy.dataTitle}</h2>
             <p className="text-body mb-6">{copy.dataBody}</p>
-            <a
-              href={MEMBERSHIP_JOIN_URL}
-              target="_blank"
-              rel="noopener noreferrer"
+            <MembershipJoinLink
+              source="membership_profile_data"
               className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl shadow-lg transition-all group bg-[var(--color-primary-600)] text-white font-semibold hover:bg-[var(--color-primary-700)]"
             >
               {copy.join}
               <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-0.5" />
-            </a>
+            </MembershipJoinLink>
           </div>
         </div>
       </section>
@@ -564,10 +567,10 @@ export default function MembershipPageContent({ locale }: { locale: Locale }) {
             <h2 className="font-heading text-3xl md:text-4xl font-bold mb-6" style={{ color: "#FFFFFF" }}>{copy.finalTitle}</h2>
             <p className="text-lg mb-8 max-w-2xl mx-auto" style={{ color: "#D1D5DB" }}>{copy.finalBody}</p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <a href={MEMBERSHIP_JOIN_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-8 py-4 rounded-xl shadow-lg transition-all group bg-white text-[#0f2b1d] font-semibold">
+              <MembershipJoinLink source="membership_final_cta" className="inline-flex items-center gap-2 px-8 py-4 rounded-xl shadow-lg transition-all group bg-white text-[#0f2b1d] font-semibold">
                 {copy.join}
                 <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-0.5" />
-              </a>
+              </MembershipJoinLink>
               <a href="mailto:contact@aslm.ro" className="inline-flex items-center gap-2 px-8 py-4 rounded-xl transition-all hover:bg-white/10" style={{ backgroundColor: "transparent", color: "#FFFFFF", fontWeight: 600, border: "2px solid #FFFFFF" }}>
                 <Mail className="w-5 h-5" />
                 contact@aslm.ro

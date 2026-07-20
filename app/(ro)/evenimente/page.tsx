@@ -3,269 +3,121 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
-import Script from "next/script";
-import {
-  ArrowRight,
-  Calendar,
-  MapPin,
-  ExternalLink,
-  Clock
-} from "lucide-react";
-import { generateWebPageSchema } from "@/lib/structured-data";
+import { ArrowRight, Calendar, Clock, ExternalLink, MapPin } from "lucide-react";
+import { completedEvents, events } from "@/data/events";
 
-/**
- * Events Page - ASLM NGO Website
- */
-
-const featuredEvents = [
-  {
-    title: "Congresul Inaugural ASLM",
-    date: "10-12 Mai 2026",
-    location: "Universitatea Transilvania, Brașov",
-    type: "Congres desfășurat",
-    description: "Primul congres al Societății Academice de Medicina Stilului de Viață a avut loc în format hibrid, cu 10 secțiuni tematice, 30+ speakeri și credite EMC.",
-    link: "https://congres.aslm.ro",
-    featured: true
-  }
-];
-
-const pastEvents = [
-  {
-    title: "Webinar: Introducere în MSV",
-    date: "Ianuarie 2026",
-    type: "Webinar",
-    description: "Webinar introductiv despre principiile de bază ale medicinei stilului de viață."
-  },
-  {
-    title: "Workshop: Nutriție Plant-Based",
-    date: "Decembrie 2025",
-    type: "Workshop",
-    description: "Workshop practic despre alimentația bazată pe plante în practica clinică."
-  }
-];
+const featuredEvent = events.find((event) => event.featured);
+const archiveEvents = completedEvents.filter((event) => !event.featured);
 
 export default function EvenimentePage() {
   return (
     <div className="pt-20">
-      {/* Page Header */}
       <section className="mesh-hero section-lg">
-        <div className="container-default">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="text-center max-w-3xl mx-auto"
-          >
-            <span className="text-overline text-[var(--color-primary-300)] mb-3 block">
-              Calendar
-            </span>
-            <h1 className="text-display text-white mb-6" style={{ fontSize: "clamp(2.5rem, 5vw, 3.5rem)" }}>
-              Evenimente ASLM
-            </h1>
-            <p className="text-lg leading-relaxed" style={{ color: 'rgba(255, 255, 255, 0.85)' }}>
-              Descoperă evenimentele organizate de ASLM - congrese, conferințe și workshop-uri 
-              dedicate medicinei stilului de viață.
-            </p>
-          </motion.div>
+        <div className="container-default text-center">
+          <span className="text-overline text-[var(--color-primary-300)] mb-3 block">Calendar și arhivă</span>
+          <h1 className="text-display text-white" style={{ fontSize: "clamp(2.5rem, 5vw, 3.5rem)" }}>
+            Evenimente ASLM
+          </h1>
+          <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-white/85">
+            Congrese, conferințe și workshop-uri ASLM, cu informații clare despre statutul fiecărui eveniment și resursele disponibile participanților.
+          </p>
         </div>
       </section>
 
-      {/* Featured Event */}
-      <section className="section-lg surface-primary">
-        <div className="container-wide">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="text-center mb-12"
-          >
-            <p className="text-overline mb-3">Eveniment Principal</p>
-            <h2 className="text-headline text-[var(--text-primary)] mb-4">
-              Congresul ASLM 2026 - retrospectivă
-            </h2>
-          </motion.div>
+      {featuredEvent && (
+        <section className="section-lg surface-primary">
+          <div className="container-wide">
+            <div className="mb-12 text-center">
+              <p className="text-overline mb-3">Arhivă principală</p>
+              <h2 className="text-headline text-[var(--text-primary)]">Congresul ASLM 2026</h2>
+            </div>
 
-          {featuredEvents.filter(e => e.featured).map((event) => (
-            <motion.div
-              key={event.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="rounded-2xl overflow-hidden shadow-xl"
-              style={{ backgroundColor: '#1B4332' }}
-            >
+            <div className="overflow-hidden rounded-2xl shadow-xl" style={{ backgroundColor: "#1B4332" }}>
               <div className="grid lg:grid-cols-2">
                 <div className="p-8 md:p-12">
-                  <span 
-                    className="inline-block px-3 py-1 rounded-full text-xs font-semibold mb-4"
-                    style={{ backgroundColor: 'rgba(116, 198, 157, 0.2)', color: '#74C69D' }}
-                  >
-                    {event.type}
+                  <span className="inline-block rounded-full px-3 py-1 text-xs font-semibold text-[#74C69D]" style={{ backgroundColor: "rgba(116, 198, 157, 0.2)" }}>
+                    Eveniment încheiat
                   </span>
-                  <h3 className="font-heading text-2xl md:text-3xl font-bold mb-4 text-white">
-                    {event.title}
-                  </h3>
-                  <p className="text-white/70 mb-6 leading-relaxed">
-                    {event.description}
-                  </p>
-                  
-                  <div className="space-y-3 mb-8">
-                    <div className="flex items-center gap-3 text-white/80">
-                      <Calendar className="w-5 h-5 text-[#74C69D]" />
-                      {event.date}
-                    </div>
-                    <div className="flex items-center gap-3 text-white/80">
-                      <MapPin className="w-5 h-5 text-[#74C69D]" />
-                      {event.location}
-                    </div>
+                  <h3 className="mt-4 font-heading text-2xl font-bold text-white md:text-3xl">{featuredEvent.title}</h3>
+                  <p className="mt-4 leading-relaxed text-white/75">{featuredEvent.summary}</p>
+                  <div className="my-8 space-y-3 text-white/80">
+                    <div className="flex items-center gap-3"><Calendar className="h-5 w-5 text-[#74C69D]" />{featuredEvent.displayDate}</div>
+                    <div className="flex items-center gap-3"><MapPin className="h-5 w-5 text-[#74C69D]" />{featuredEvent.location}</div>
+                    <div className="flex items-center gap-3"><Clock className="h-5 w-5 text-[#74C69D]" />{featuredEvent.emc.details}</div>
                   </div>
-                  
-                  <a
-                    href={event.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-semibold transition-all shadow-lg hover:shadow-xl group"
-                    style={{ backgroundColor: '#FFFFFF', color: '#1B4332' }}
-                  >
-                    Vezi site-ul congresului
-                    <ExternalLink className="w-5 h-5" />
-                  </a>
+                  <div className="flex flex-wrap gap-3">
+                    {featuredEvent.detailsUrl && (
+                      <a href={featuredEvent.detailsUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-xl bg-white px-6 py-3 font-semibold text-[#1B4332] transition hover:bg-[#f3f8f4]">
+                        Site-ul congresului <ExternalLink className="h-4 w-4" />
+                      </a>
+                    )}
+                    <Link href="/news/comunicate-de-presa/proceedings-congres-inaugural-aslm-2026" className="inline-flex items-center gap-2 rounded-xl border border-white/40 px-6 py-3 font-semibold text-white transition hover:bg-white/10">
+                      Proceedings 2026 <ArrowRight className="h-4 w-4" />
+                    </Link>
+                  </div>
                 </div>
-                
                 <div className="relative min-h-[300px] lg:min-h-full">
-                  <Image
-                    src="/images/banner-congres-2026.png"
-                    alt="Congresul Inaugural ASLM 2026 - Interdisciplinaritate în medicina stilului de viață"
-                    fill
-                    className="object-cover"
-                  />
+                  <Image src={featuredEvent.image.src} alt={featuredEvent.image.alt} fill sizes="(min-width: 1024px) 50vw, 100vw" className="object-cover" />
                 </div>
               </div>
-            </motion.div>
-          ))}
-        </div>
-      </section>
+            </div>
+          </div>
+        </section>
+      )}
 
-      {/* Past Events */}
       <section className="section-lg surface-secondary">
         <div className="container-wide">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="text-center mb-12"
-          >
+          <div className="mb-12 text-center">
             <p className="text-overline mb-3">Istoric</p>
-            <h2 className="text-headline text-[var(--text-primary)] mb-4">
-              Evenimente Anterioare
-            </h2>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 gap-6">
-            {pastEvents.map((event, index) => (
-              <motion.div
-                key={event.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.1 }}
-                className="card p-6"
-              >
+            <h2 className="text-headline text-[var(--text-primary)]">Evenimente anterioare</h2>
+          </div>
+          <div className="grid gap-6 md:grid-cols-2">
+            {archiveEvents.map((event, index) => (
+              <motion.article key={event.slug} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4, delay: index * 0.1 }} className="card p-6">
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-[var(--color-primary-100)] flex items-center justify-center flex-shrink-0">
-                    <Calendar className="w-6 h-6 text-[var(--color-primary-600)]" />
-                  </div>
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[var(--color-primary-100)]"><Calendar className="h-6 w-6 text-[var(--color-primary-600)]" /></div>
                   <div>
-                    <span className="text-xs font-semibold text-[var(--color-primary-600)] uppercase tracking-wider">
-                      {event.type}
-                    </span>
-                    <h3 className="text-lg font-semibold text-[var(--text-primary)] mt-1 mb-2">
-                      {event.title}
-                    </h3>
-                    <p className="text-body-sm mb-3">{event.description}</p>
-                    <div className="flex items-center gap-2 text-sm text-[var(--text-tertiary)]">
-                      <Clock className="w-4 h-4" />
-                      {event.date}
-                    </div>
+                    <p className="text-xs font-semibold uppercase tracking-wider text-[var(--color-primary-600)]">{event.format} · încheiat</p>
+                    <h3 className="mt-1 text-lg font-semibold text-[var(--text-primary)]">{event.title}</h3>
+                    <p className="mt-2 text-body-sm">{event.summary}</p>
+                    <p className="mt-3 inline-flex items-center gap-2 text-sm text-[var(--text-tertiary)]"><Clock className="h-4 w-4" />{event.displayDate}</p>
                   </div>
                 </div>
-              </motion.div>
+              </motion.article>
             ))}
           </div>
-
-          <div className="mt-10 grid md:grid-cols-2 gap-4">
-            <Link href="/conferinte" className="card p-6 hover:shadow-lg transition-shadow">
-              <p className="text-overline mb-2">Arhivă 2026</p>
-              <h3 className="text-lg font-semibold text-[var(--text-primary)] mb-2">Conferințe ASLM</h3>
-              <p className="text-body-sm">Formatul și calendarul conferințelor din ediția încheiată.</p>
-            </Link>
-            <Link href="/comunicari-orale" className="card p-6 hover:shadow-lg transition-shadow">
-              <p className="text-overline mb-2">Arhivă 2026</p>
-              <h3 className="text-lg font-semibold text-[var(--text-primary)] mb-2">Comunicări orale</h3>
-              <p className="text-body-sm">Instrucțiunile și calendarul apelului științific din 2026.</p>
-            </Link>
-          </div>
         </div>
       </section>
 
-      {/* Newsletter CTA */}
-      <section 
-        className="py-20 md:py-24"
-        style={{ backgroundColor: '#0f2b1d' }}
-      >
-        <div className="container-default text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-          >
-            <Calendar className="w-10 h-10 mx-auto mb-6" style={{ color: '#74C69D' }} />
-            <h2 
-              className="font-heading text-3xl md:text-4xl font-bold mb-6"
-              style={{ color: '#FFFFFF' }}
-            >
-              Nu rata niciun eveniment
-            </h2>
-            <p 
-              className="text-lg mb-8 max-w-2xl mx-auto"
-              style={{ color: '#D1D5DB' }}
-            >
-              Abonează-te la newsletter pentru a primi notificări despre evenimentele ASLM.
-            </p>
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-2 px-8 py-4 rounded-xl shadow-lg transition-all group"
-              style={{ backgroundColor: '#FFFFFF', color: '#0f2b1d', fontWeight: 600 }}
-            >
-              Contactează-ne
-              <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-0.5" />
-            </Link>
-          </motion.div>
+      <section className="section-lg surface-primary">
+        <div className="container-wide grid gap-4 md:grid-cols-2 lg:grid-cols-5">
+          <Link href="/evenimente/credite-emc" className="card p-6 transition-shadow hover:shadow-lg">
+            <p className="text-overline mb-2">EMC</p>
+            <h2 className="text-lg font-semibold text-[var(--text-primary)]">Credite și puncte EMC</h2>
+            <p className="mt-2 text-body-sm">Cum verifici statutul creditării pentru fiecare eveniment.</p>
+          </Link>
+          <Link href="/news/comunicate-de-presa" className="card p-6 transition-shadow hover:shadow-lg">
+            <p className="text-overline mb-2">Noutăți</p>
+            <h2 className="text-lg font-semibold text-[var(--text-primary)]">Comunicate ASLM</h2>
+            <p className="mt-2 text-body-sm">Anunțuri oficiale despre proiecte, activități și publicații.</p>
+          </Link>
+          <Link href="/conferinte" className="card p-6 transition-shadow hover:shadow-lg">
+            <p className="text-overline mb-2">Arhivă 2026</p>
+            <h2 className="text-lg font-semibold text-[var(--text-primary)]">Conferințe ASLM</h2>
+            <p className="mt-2 text-body-sm">Formatul și calendarul conferințelor ediției încheiate.</p>
+          </Link>
+          <Link href="/comunicari-orale" className="card p-6 transition-shadow hover:shadow-lg">
+            <p className="text-overline mb-2">Arhivă 2026</p>
+            <h2 className="text-lg font-semibold text-[var(--text-primary)]">Comunicări orale</h2>
+            <p className="mt-2 text-body-sm">Cerințele și calendarul apelului științific din ediția încheiată.</p>
+          </Link>
+          <Link href="/membri" className="card p-6 transition-shadow hover:shadow-lg">
+            <p className="text-overline mb-2">Comunitate</p>
+            <h2 className="text-lg font-semibold text-[var(--text-primary)]">Devino membru ASLM</h2>
+            <p className="mt-2 text-body-sm">Beneficii, categorii și pașii de înscriere.</p>
+          </Link>
         </div>
       </section>
-
-      {/* Structured Data for AI Search Optimization */}
-      <Script
-        id="evenimente-structured-data"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(
-            generateWebPageSchema(
-              "https://www.aslm.ro/evenimente",
-              "Evenimente ASLM",
-              "Descoperă evenimentele Societății Academice de Medicina Stilului de Viață: retrospectiva Congresului Inaugural ASLM 2026, conferințe regionale, workshop-uri și școală de vară. Credite EMC disponibile.",
-              [
-                { name: "Acasă", path: "/" },
-                { name: "Evenimente", path: "/evenimente" },
-              ]
-            )
-          ),
-        }}
-      />
     </div>
   );
 }

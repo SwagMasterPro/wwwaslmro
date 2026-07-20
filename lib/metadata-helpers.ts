@@ -91,10 +91,10 @@ const staticPages: Record<string, StaticPageMetadata> = {
     keywords: ["Adunarea Generală ASLM", "membri ASLM", "lista membri ASLM"],
   },
   "/membri": {
-    title: "Devino Membru",
+    title: "Membri ASLM: înscriere, beneficii și categorii",
     description:
-      "Alătură-te ASLM ca membru afiliat, asociat, titular sau organizație și accesează beneficii profesionale în medicina stilului de viață.",
-    keywords: ["membri ASLM", "înscriere ASLM", "beneficii membri", "educație medicală continuă"],
+      "Înscrie-te în ASLM ca membru afiliat, asociat, titular sau organizație. Compară beneficiile, cotizațiile și pașii de aderare în medicina stilului de viață.",
+    keywords: ["membri ASLM", "înscriere ASLM", "devino membru ASLM", "beneficii membri", "medicina stilului de viață"],
   },
   "/en": {
     title: "ASLM in English",
@@ -145,10 +145,10 @@ const staticPages: Record<string, StaticPageMetadata> = {
     keywords: ["publicații ASLM", "LMRR", "revistă medicina stilului de viață"],
   },
   "/evenimente": {
-    title: "Evenimente și Conferințe Medicale ASLM",
+    title: "Evenimente ASLM: calendar, arhivă și credite EMC",
     description:
-      "Evenimente ASLM, conferințe, workshop-uri și retrospectiva Congresului Inaugural ASLM 2026 dedicat medicinei stilului de viață.",
-    keywords: ["evenimente ASLM", "congres ASLM", "conferințe medicale", "credite EMC"],
+      "Calendarul și arhiva evenimentelor ASLM: congrese, conferințe, workshop-uri, Proceedings 2026 și informații despre credite EMC.",
+    keywords: ["evenimente ASLM", "congres ASLM", "conferințe medicale", "credite EMC", "puncte EMC medici"],
     image: {
       url: "/images/banner-congres-2026.png",
       width: 1500,
@@ -157,10 +157,10 @@ const staticPages: Record<string, StaticPageMetadata> = {
     },
   },
   "/evenimente/credite-emc": {
-    title: "Credite EMC",
+    title: "Credite EMC pentru medici",
     description:
-      "Informații despre credite EMC, puncte EMC medici și participarea la evenimente ASLM acreditate sau în curs de acreditare.",
-    keywords: ["credite EMC", "puncte EMC medici", "evenimente medicale", "educație medicală continuă"],
+      "Cum verifici creditele EMC și punctele EMC pentru medici la evenimente ASLM: statut, eligibilitate, documente și comunicări oficiale.",
+    keywords: ["credite EMC", "credite EMC medici", "puncte EMC medici", "evenimente medicale", "educație medicală continuă"],
   },
   "/lifestyle-medicine-romania": {
     title: "Lifestyle Medicine Romania",

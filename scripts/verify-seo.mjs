@@ -253,6 +253,22 @@ if (!findRoute("/evenimente").html.includes('href="/conferinte"')
   || !findRoute("/evenimente").html.includes('href="/comunicari-orale"')) {
   fail("/evenimente must link to both historical archives.");
 }
+for (const requiredHref of ["/evenimente/credite-emc", "/news/comunicate-de-presa", "/membri"]) {
+  if (!findRoute("/evenimente").html.includes(`href="${requiredHref}"`)) {
+    fail(`/evenimente must link to ${requiredHref}.`);
+  }
+}
+if (!findRoute("/evenimente").schemas.some((schema) => schema["@type"] === "WebPage" && schema.url === expectedUrl("/evenimente"))) {
+  fail("/evenimente must include a canonical WebPage schema.");
+}
+if (findRoute("/evenimente").schemas.some((schema) => schema["@type"] === "Event")) {
+  fail("/evenimente must not emit Event schema when no confirmed future event exists.");
+}
+for (const requiredHref of ["/publicatii", "/evenimente", "/membri"]) {
+  if (!proceedings.html.includes(`href="${requiredHref}"`)) {
+    fail(`${proceedingsRoute} must link contextually to ${requiredHref}.`);
+  }
+}
 if (!findRoute("/y-aslm").html.includes('href="/internship"')) fail("/y-aslm must link to /internship.");
 if (!findRoute("/medicina-stilului-de-viata").html.includes('href="/medicina-stilului-de-viata-vs-medicina-preventiva"')) {
   fail("The pillar page must link to the preventive-medicine comparison.");

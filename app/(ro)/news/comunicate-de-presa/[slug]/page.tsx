@@ -70,6 +70,25 @@ export default async function PressReleasePage({ params }: PageProps) {
         </div>
       </article>
       <ArticleContent content={pressRelease.content} />
+      <section className="section-md surface-secondary">
+        <div className="container-default max-w-4xl">
+          <p className="text-overline mb-3">Resurse ASLM</p>
+          <div className="grid gap-4 md:grid-cols-3">
+            <Link href="/publicatii" className="rounded-xl border border-[var(--color-primary-100)] bg-white p-5 transition-shadow hover:shadow-md">
+              <h2 className="font-semibold text-[var(--text-primary)]">Publicații</h2>
+              <p className="mt-2 text-sm text-[var(--text-secondary)]">Resurse și publicații științifice ASLM.</p>
+            </Link>
+            <Link href="/evenimente" className="rounded-xl border border-[var(--color-primary-100)] bg-white p-5 transition-shadow hover:shadow-md">
+              <h2 className="font-semibold text-[var(--text-primary)]">Evenimente</h2>
+              <p className="mt-2 text-sm text-[var(--text-secondary)]">Calendarul și arhiva activităților ASLM.</p>
+            </Link>
+            <Link href="/membri" className="rounded-xl border border-[var(--color-primary-100)] bg-white p-5 transition-shadow hover:shadow-md">
+              <h2 className="font-semibold text-[var(--text-primary)]">Membri ASLM</h2>
+              <p className="mt-2 text-sm text-[var(--text-secondary)]">Beneficii, categorii și înscriere.</p>
+            </Link>
+          </div>
+        </div>
+      </section>
     </main>
   );
 }

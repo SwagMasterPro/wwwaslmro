@@ -144,10 +144,10 @@ export default function PrivacyPolicy() {
               <div className="card p-8">
                 <h2 className="text-title text-[var(--text-primary)] mb-4">9. Cookie-uri</h2>
                 <p className="text-body">
-                  Site-ul nostru utilizează cookie-uri pentru a îmbunătăți experiența de navigare. 
-                  Acestea includ cookie-uri esențiale pentru funcționarea site-ului și cookie-uri 
-                  analitice pentru înțelegerea modului în care este utilizat site-ul. 
-                  Puteți gestiona preferințele cookie din setările browserului dumneavoastră.
+                  Site-ul utilizează cookie-uri esențiale pentru funcționare. Dacă alegeți opțiunea
+                  „Accept analiza”, putem utiliza cookie-uri analitice pentru a înțelege navigarea pe
+                  www.aslm.ro și traseul către formularul extern de înscriere. Puteți refuza analiza
+                  și puteți reveni asupra preferințelor prin ștergerea datelor site-ului din browser.
                 </p>
               </div>
 

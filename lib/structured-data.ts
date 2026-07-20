@@ -4,6 +4,7 @@
  */
 
 import type { BlogArticle, BlogCategory } from "@/data/blog-articles";
+import type { EventRecord } from "@/data/events";
 import type { PressRelease } from "@/data/press-releases";
 import { getExpertBySlug } from "@/data/experts";
 import { normalizeLegacyBlogPath } from "@/lib/news-routes";
@@ -193,6 +194,21 @@ export function generateWebSiteSchema() {
     name: SITE_NAME,
     url: SITE_URL,
   };
+}
+
+export interface EventSchema {
+  "@context": "https://schema.org";
+  "@type": "Event";
+  name: string;
+  description: string;
+  startDate: string;
+  endDate?: string;
+  eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode" | "https://schema.org/OnlineEventAttendanceMode" | "https://schema.org/MixedEventAttendanceMode";
+  eventStatus: "https://schema.org/EventScheduled";
+  image: string;
+  location: { "@type": "Place"; name: string } | { "@type": "VirtualLocation"; url: string };
+  organizer: { "@type": "MedicalOrganization"; name: string; url: string };
+  url: string;
 }
 
 export function generatePersonSchema(person: {
@@ -404,6 +420,40 @@ export function generateMedicalWebPageSchema(
   }
 
   return schema;
+}
+
+/** Emits Event markup only for approved, forthcoming events. */
+export function generateEventSchema(event: EventRecord): EventSchema | null {
+  if (event.lifecycle !== "scheduled" || !event.detailsUrl) {
+    return null;
+  }
+
+  const attendanceMode = event.format === "Online"
+    ? "https://schema.org/OnlineEventAttendanceMode"
+    : event.format === "Hibrid"
+      ? "https://schema.org/MixedEventAttendanceMode"
+      : "https://schema.org/OfflineEventAttendanceMode";
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "Event",
+    name: event.title,
+    description: event.summary,
+    startDate: event.startDate,
+    ...(event.endDate ? { endDate: event.endDate } : {}),
+    eventAttendanceMode: attendanceMode,
+    eventStatus: "https://schema.org/EventScheduled",
+    image: getAbsoluteUrl(event.image.src),
+    location: event.format === "Online"
+      ? { "@type": "VirtualLocation", url: event.detailsUrl }
+      : { "@type": "Place", name: event.location },
+    organizer: {
+      "@type": "MedicalOrganization",
+      name: "ASLM",
+      url: SITE_URL,
+    },
+    url: event.detailsUrl,
+  };
 }
 
 function normalizeLegacyBlogUrl(url: string): string {

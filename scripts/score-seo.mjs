@@ -69,7 +69,9 @@ const checks = [
   }],
   ["Archives are indexable and linked", () => readBuilt("/conferinte").includes("Arhivă")
     && readBuilt("/comunicari-orale").includes("Arhivă")
-    && readBuilt("/evenimente").includes('href="/conferinte"')],
+    && readBuilt("/evenimente").includes('href="/conferinte"')
+    && readBuilt("/evenimente").includes('href="/evenimente/credite-emc"')
+    && readBuilt("/evenimente").includes('href="/membri"')],
 ];
 
 const results = checks.map(([label, check]) => [label, Boolean(check())]);

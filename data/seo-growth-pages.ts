@@ -143,30 +143,35 @@ export const seoGrowthPages: Record<string, SeoGrowthPage> = {
   },
   "/evenimente/credite-emc": {
     path: "/evenimente/credite-emc",
-    modifiedDate: "2026-07-13",
+    modifiedDate: "2026-07-20",
     eyebrow: "Educație Medicală Continuă",
-    title: "Credite EMC și puncte EMC medici la evenimente ASLM",
+    title: "Credite EMC pentru medici la evenimente ASLM",
     description:
-      "Informații despre credite EMC, puncte EMC medici și participarea la evenimentele educaționale organizate sau promovate de ASLM.",
+      "Află cum verifici creditele EMC și punctele EMC pentru medici la evenimentele ASLM, ce statut are fiecare eveniment și unde găsești documentele oficiale.",
     directAnswer:
-      "Creditele EMC sunt puncte de educație medicală continuă acordate profesioniștilor eligibili pentru participarea la evenimente medicale acreditate. ASLM comunică pentru fiecare eveniment statutul acreditării, numărul de credite, condițiile de participare și documentele necesare, astfel încât medicii să poată planifica formarea profesională responsabil.",
+      "Creditele EMC se verifică separat pentru fiecare eveniment ASLM. Pagina oficială a evenimentului trebuie să precizeze statutul acreditării, profesioniștii eligibili, condițiile de participare și documentele emise; până la confirmarea oficială, un eveniment nu trebuie prezentat ca acreditat.",
     highlights: [
-      "Pagina țintește căutările pentru credite EMC și puncte EMC medici.",
-      "Fiecare eveniment trebuie verificat individual pentru statutul de acreditare.",
-      "Membrii ASLM primesc acces mai rapid la noutăți și evenimente relevante.",
+      "Informații pentru căutările credite EMC, puncte EMC medici și credite EMC medici.",
+      "Fiecare eveniment are propriul statut: confirmat, în curs de acreditare, neofertat sau de verificat pe pagina oficială.",
+      "Membrii ASLM primesc comunicări dedicate despre noutăți și evenimente relevante.",
     ],
     sections: [
       {
         heading: "Cum verifici dacă un eveniment oferă credite EMC",
         body: [
-          "Pentru fiecare congres, conferință sau webinar, ASLM va comunica explicit dacă evenimentul este acreditat, câte credite EMC sunt disponibile și pentru ce categorii profesionale se aplică. Informația trebuie verificată pe pagina evenimentului, în formularul de înscriere sau în comunicările oficiale transmise participanților.",
-          "Dacă un eveniment este în curs de acreditare, formularea trebuie tratată ca provizorie până la publicarea confirmării. Pentru întrebări punctuale, participanții pot contacta organizatorii înainte de înscriere.",
+          "Pentru fiecare congres, conferință sau webinar, consultă pagina oficială a evenimentului și materialele de înscriere. Acolo trebuie să apară statutul acreditării, categoria profesională eligibilă, condițiile de participare și documentele care se emit după eveniment.",
+          "Dacă un eveniment este în curs de acreditare, statutul este provizoriu. Nu considera creditele confirmate înainte ca ASLM să publice informația oficială; pentru întrebări punctuale, contactează organizatorii înainte de înscriere.",
+        ],
+        bullets: [
+          "Verifică data, formatul și prezența cerută pentru participare.",
+          "Caută statutul explicit: acreditat, în curs de acreditare sau fără credite anunțate.",
+          "Păstrează confirmarea de înscriere și documentele comunicate de organizator.",
         ],
       },
       {
         heading: "Pentru cine sunt relevante punctele EMC",
         body: [
-          "Punctele EMC sunt relevante în special pentru medici și alți profesioniști care au obligații de educație medicală continuă. Evenimentele ASLM sunt construite pentru teme de prevenție, boli cronice, medicina stilului de viață, colaborare interdisciplinară și actualizare profesională.",
+          "Punctele EMC sunt relevante în special pentru medici și alți profesioniști care urmăresc formarea medicală continuă. Eligibilitatea exactă și numărul de credite se confirmă individual, nu se transferă automat de la un eveniment ASLM la altul.",
         ],
         bullets: [
           "Medici interesați de prevenție și boli cronice.",
@@ -175,9 +180,10 @@ export const seoGrowthPages: Record<string, SeoGrowthPage> = {
         ],
       },
       {
-        heading: "Cum urmărești evenimentele ASLM",
+        heading: "Documente și comunicări oficiale",
         body: [
-          "Verifică periodic pagina de evenimente, urmărește comunicările ASLM și ia în calcul calitatea de membru dacă vrei acces prioritar la noutăți, tarife preferențiale sau oportunități de networking profesional.",
+          "ASLM publică informațiile confirmate pe pagina evenimentului și în comunicările sale oficiale. Pentru evenimente încheiate, verifică arhiva și resursele publicate; pentru cele viitoare, urmărește calendarul, pagina de înscriere și eventualele actualizări privind acreditarea.",
+          "Verifică periodic pagina de evenimente și comunicările ASLM. Calitatea de membru poate oferi acces la noutăți, tarife preferențiale sau oportunități de networking, în condițiile anunțate pentru fiecare eveniment.",
         ],
       },
     ],
@@ -188,9 +194,9 @@ export const seoGrowthPages: Record<string, SeoGrowthPage> = {
           "Nu automat. Statutul de acreditare și numărul de credite se comunică separat pentru fiecare eveniment.",
       },
       {
-        question: "Unde găsesc punctele EMC pentru un eveniment ASLM?",
+        question: "Unde găsesc informațiile despre punctele EMC pentru un eveniment ASLM?",
         answer:
-          "Informațiile despre puncte EMC apar pe pagina evenimentului, în materialele de înscriere sau în comunicările oficiale transmise participanților.",
+          "Informațiile confirmate apar pe pagina evenimentului, în materialele de înscriere sau în comunicările oficiale transmise participanților.",
       },
       {
         question: "Membrii ASLM au beneficii la evenimente acreditate?",
@@ -201,6 +207,7 @@ export const seoGrowthPages: Record<string, SeoGrowthPage> = {
     references: [
       { label: "Pagina evenimente ASLM", href: "https://www.aslm.ro/evenimente" },
       { label: "Pagina membri ASLM", href: "https://www.aslm.ro/membri" },
+      { label: "Comunicate de presă ASLM", href: "https://www.aslm.ro/news/comunicate-de-presa" },
     ],
     primaryCta: { label: "Vezi evenimentele ASLM", href: "/evenimente" },
     secondaryCta: { label: "Devino membru", href: "/membri" },
