@@ -157,6 +157,11 @@ const allHtml = rows.map((row) => row.html).join("\n");
 if (allHtml.includes("SearchAction")) fail("Built HTML must not emit SearchAction without site search.");
 if (allHtml.includes("Last updated: 2026")) fail("Built HTML contains the stale year-only update label.");
 
+const nextConfig = readFileSync(path.join(process.cwd(), "next.config.ts"), "utf8");
+if (!nextConfig.includes('source: "/blog",') || !nextConfig.includes('destination: "/news/articole",')) {
+  fail("The /blog root redirect must map directly to /news/articole without a trailing-slash hop.");
+}
+
 const home = findRoute("/");
 const organizationSchema = home.schemas.find((schema) => schema["@type"] === "MedicalOrganization");
 if (!organizationSchema) fail("Homepage is missing MedicalOrganization JSON-LD.");
