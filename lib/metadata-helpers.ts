@@ -10,28 +10,55 @@ import {
   getArticleBySlug,
   getCategoryBySlug,
 } from "@/data/blog-articles";
+import type { PressRelease } from "@/data/press-releases";
+import {
+  getNewsArticlePath,
+  getNewsCategoryPath,
+  getPressReleasePath,
+} from "@/lib/news-routes";
 import {
   DEFAULT_SITE_IMAGE,
+  DEFAULT_SITE_IMAGE_HEIGHT,
+  DEFAULT_SITE_IMAGE_WIDTH,
   SITE_NAME,
   SITE_TITLE,
   SITE_URL,
   getSiteUrl,
 } from "@/lib/site-config";
-import { localizedRoutePairs } from "@/lib/localized-routes";
+import { getRouteLocale, localizedRoutePairs } from "@/lib/localized-routes";
+
+export type SocialImage = {
+  url: string;
+  width?: number;
+  height?: number;
+  alt?: string;
+};
 
 type StaticPageMetadata = {
   title: string;
   description: string;
   keywords?: string[];
-  imageUrl?: string;
+  image?: SocialImage;
 };
 
 const staticPages: Record<string, StaticPageMetadata> = {
-  "/blog": {
-    title: "Blog Medicina Stilului de Viață",
+  "/news": {
+    title: "News ASLM",
+    description:
+      "Noutăți ASLM: articole educaționale, proiecte, activități și comunicate de presă despre medicina stilului de viață.",
+    keywords: ["News ASLM", "noutăți ASLM", "medicina stilului de viață", "comunicate de presă"],
+  },
+  "/news/articole": {
+    title: "Articole despre Medicina Stilului de Viață",
     description:
       "Articole ASLM bazate pe dovezi despre alimentație, activitate fizică, somn, stres, relații sociale și evitarea substanțelor nocive.",
-    keywords: ["blog medical", "articole sănătate", "prevenție", "stil de viață sănătos"],
+    keywords: ["articole medicale", "articole sănătate", "prevenție", "stil de viață sănătos"],
+  },
+  "/news/comunicate-de-presa": {
+    title: "Comunicate de presă ASLM",
+    description:
+      "Comunicatele de presă ale Societății Academice de Medicina Stilului de Viață despre proiecte, activități și publicații ASLM.",
+    keywords: ["comunicate de presă ASLM", "proiecte ASLM", "activități ASLM"],
   },
   "/despre": {
     title: "Despre ASLM",
@@ -100,9 +127,9 @@ const staticPages: Record<string, StaticPageMetadata> = {
     keywords: ["ASLM General Assembly", "ASLM members"],
   },
   "/medicina-stilului-de-viata": {
-    title: "Medicina stilului de viață",
+    title: "Medicina Stilului de Viață: Ghid ASLM",
     description:
-      "Definiție, piloni și aplicare în România pentru medicina stilului de viață: alimentație, activitate fizică, somn, stres, relații sociale și evitarea substanțelor nocive.",
+      "Descoperă ce este medicina stilului de viață, cei șase piloni și rolul lor în prevenirea și managementul bolilor cronice în România.",
     keywords: ["medicina stilului de viață", "medicina stilului de viata", "lifestyle medicine", "prevenție boli cronice"],
   },
   "/internship": {
@@ -118,11 +145,16 @@ const staticPages: Record<string, StaticPageMetadata> = {
     keywords: ["publicații ASLM", "LMRR", "revistă medicina stilului de viață"],
   },
   "/evenimente": {
-    title: "Evenimente",
+    title: "Evenimente și Conferințe Medicale ASLM",
     description:
       "Evenimente ASLM, conferințe, workshop-uri și retrospectiva Congresului Inaugural ASLM 2026 dedicat medicinei stilului de viață.",
     keywords: ["evenimente ASLM", "congres ASLM", "conferințe medicale", "credite EMC"],
-    imageUrl: "/images/banner-congres-2026.png",
+    image: {
+      url: "/images/banner-congres-2026.png",
+      width: 1500,
+      height: 1000,
+      alt: "Congresul Inaugural ASLM 2026",
+    },
   },
   "/evenimente/credite-emc": {
     title: "Credite EMC",
@@ -137,37 +169,37 @@ const staticPages: Record<string, StaticPageMetadata> = {
     keywords: ["lifestyle medicine Romania", "Academic Society of Lifestyle Medicine", "Romanian Society of Lifestyle Medicine"],
   },
   "/ghid/gestionare-stres": {
-    title: "Gestionare Stres",
+    title: "Ghid de Gestionare a Stresului",
     description:
       "Ghid ASLM despre gestionare stres, tehnici practice și rolul stresului în medicina stilului de viață și prevenția bolilor cronice.",
     keywords: ["gestionare stres", "tehnici gestionare stres", "stres cronic", "sănătate mentală"],
   },
   "/ghid/sanatatea-somnului": {
-    title: "Sănătatea Somnului",
+    title: "Ghid pentru Sănătatea Somnului",
     description:
       "Ghid ASLM despre sănătatea somnului, somn de calitate, ritm circadian și prevenția bolilor cronice prin odihnă adecvată.",
     keywords: ["sănătatea somnului", "sanatatea somnului", "somn de calitate", "somnul și sănătatea"],
   },
   "/ghid/alimentatie-sanatoasa": {
-    title: "Alimentație Sănătoasă",
+    title: "Ghid de Alimentație Sănătoasă",
     description:
       "Ghid ASLM despre alimentație sănătoasă, alimente integrale, prevenție nutrițională și rolul nutriției în medicina stilului de viață.",
     keywords: ["alimentație sănătoasă", "alimentatie sanatoasa", "nutriție preventivă", "alimente integrale"],
   },
   "/ghid/activitate-fizica": {
-    title: "Activitate Fizică",
+    title: "Ghid de Activitate Fizică",
     description:
       "Ghid ASLM despre activitate fizică, mișcare regulată, aderență și prevenția bolilor cronice.",
     keywords: ["activitate fizică", "activitate fizica", "mișcare regulată", "prevenție"],
   },
   "/ghid/renuntare-fumat-alcool": {
-    title: "Renunțare Fumat Alcool",
+    title: "Ghid pentru Renunțarea la Fumat și Alcool",
     description:
       "Ghid ASLM despre renunțare fumat alcool, evitarea substanțelor nocive, reducerea riscului și suport medical.",
     keywords: ["renunțare fumat alcool", "renuntare fumat alcool", "substanțe nocive", "tutun alcool"],
   },
   "/ghid/relatii-sociale-sanatate": {
-    title: "Relații Sociale Sănătate",
+    title: "Relații Sociale și Sănătate: Ghid ASLM",
     description:
       "Ghid ASLM despre relații sociale sănătate, sprijin social, izolare și rolul conexiunilor în medicina stilului de viață.",
     keywords: ["relații sociale sănătate", "relatii sociale sanatate", "sprijin social", "izolare socială"],
@@ -185,15 +217,15 @@ const staticPages: Record<string, StaticPageMetadata> = {
     keywords: ["revizie medicală ASLM", "proces editorial", "E-E-A-T medical", "Consiliul Științific ASLM"],
   },
   "/conferinte": {
-    title: "Conferințe",
+    title: "Conferințe ASLM 2026: Arhivă",
     description:
-      "Conferințele ASLM pentru profesioniștii din sănătate interesați de medicina stilului de viață, prevenție și educație medicală.",
+      "Arhiva conferințelor ASLM 2026 despre medicina stilului de viață, cu formatul prezentărilor, temele abordate și calendarul ediției încheiate.",
     keywords: ["conferințe ASLM", "conferințe medicale", "medicina stilului de viață"],
   },
   "/comunicari-orale": {
-    title: "Comunicări Orale",
+    title: "Comunicări Orale ASLM 2026: Arhivă",
     description:
-      "Informații pentru comunicări orale ASLM, prezentări științifice și contribuții academice în medicina stilului de viață.",
+      "Arhiva apelului pentru comunicări orale ASLM 2026, cu cerințele de redactare, formatul prezentărilor și calendarul ediției încheiate.",
     keywords: ["comunicări orale", "ASLM", "prezentări științifice"],
   },
   "/contact": {
@@ -235,7 +267,7 @@ export function getAbsoluteUrl(path: string = ""): string {
 export function generateHomeMetadata(): Metadata {
   const title = SITE_TITLE;
   const description =
-    "Societatea Academică de Medicina Stilului de Viață (ASLM) promovează excelența în medicina stilului de viață prin educație, cercetare și colaborare profesională în România. Descoperă cei șase piloni ai medicinei stilului de viață.";
+    "ASLM promovează medicina stilului de viață în România prin educație, cercetare și colaborare. Descoperă cei șase piloni pentru prevenirea bolilor cronice.";
 
   return {
     metadataBase: new URL(SITE_URL),
@@ -264,8 +296,8 @@ export function generateHomeMetadata(): Metadata {
       images: [
         {
           url: DEFAULT_SITE_IMAGE,
-          width: 1200,
-          height: 630,
+          width: DEFAULT_SITE_IMAGE_WIDTH,
+          height: DEFAULT_SITE_IMAGE_HEIGHT,
           alt: "ASLM Logo",
         },
       ],
@@ -278,6 +310,11 @@ export function generateHomeMetadata(): Metadata {
     },
     alternates: {
       canonical: SITE_URL,
+      languages: {
+        ro: SITE_URL,
+        en: getAbsoluteUrl("/en"),
+        "x-default": SITE_URL,
+      },
     },
   };
 }
@@ -290,17 +327,18 @@ export function generatePageMetadata(
   description: string,
   path: string,
   keywords: string[] = [],
-  imageUrl?: string
+  socialImage?: SocialImage,
 ): Metadata {
   const fullTitle = `${title} | ASLM`;
   const url = getAbsoluteUrl(path);
-  const image = imageUrl ? getAbsoluteUrl(imageUrl) : DEFAULT_SITE_IMAGE;
-  const isEnglishPage = path === "/en" || path.startsWith("/en/");
+  const image = socialImage ? getAbsoluteUrl(socialImage.url) : DEFAULT_SITE_IMAGE;
+  const locale = getRouteLocale(path);
   const localizedPair = localizedRoutePairs.find((pair) => pair.ro === path || pair.en === path);
   const languageAlternates = localizedPair
     ? {
-        "ro-RO": getAbsoluteUrl(localizedPair.ro),
-        "en-US": getAbsoluteUrl(localizedPair.en),
+        ro: getAbsoluteUrl(localizedPair.ro),
+        en: getAbsoluteUrl(localizedPair.en),
+        "x-default": getAbsoluteUrl(localizedPair.xDefault),
       }
     : undefined;
 
@@ -315,14 +353,14 @@ export function generatePageMetadata(
       description,
       url,
       siteName: SITE_NAME,
-      locale: isEnglishPage ? "en_US" : "ro_RO",
+      locale: locale === "en" ? "en" : "ro_RO",
       type: "website",
       images: [
         {
           url: image,
-          width: 1200,
-          height: 630,
-          alt: title,
+          width: socialImage ? socialImage.width : DEFAULT_SITE_IMAGE_WIDTH,
+          height: socialImage ? socialImage.height : DEFAULT_SITE_IMAGE_HEIGHT,
+          alt: socialImage?.alt ?? title,
         },
       ],
     },
@@ -347,39 +385,39 @@ export function generateArticleMetadata(
   category: BlogCategory,
   path: string
 ): Metadata {
-  const fullTitle = `${article.title} | ${category.name} | ASLM Blog`;
+  const fullTitle = `${article.metadata.seoTitle} | ASLM`;
   const url = getAbsoluteUrl(path);
   const image = getAbsoluteUrl(article.image.src);
 
   return {
     metadataBase: new URL(SITE_URL),
     title: fullTitle,
-    description: article.excerpt,
+    description: article.metadata.metaDescription,
     keywords: [
       ...article.metadata.tags,
       category.name,
       "medicina stilului de viață",
       "ASLM",
-      "blog medical",
+      "articole medicale",
     ],
     authors: [{ name: "ASLM" }],
     openGraph: {
       title: article.title,
-      description: article.excerpt,
+      description: article.metadata.metaDescription,
       url,
       siteName: SITE_NAME,
       locale: "ro_RO",
       type: "article",
       publishedTime: article.metadata.publishDate,
-      modifiedTime: article.metadata.publishDate,
+      modifiedTime: article.metadata.modifiedDate,
       authors: ["ASLM"],
       section: category.name,
       tags: article.metadata.tags,
       images: [
         {
           url: image,
-          width: 1200,
-          height: 630,
+          width: 1000,
+          height: 1000,
           alt: article.image.alt,
         },
       ],
@@ -387,7 +425,7 @@ export function generateArticleMetadata(
     twitter: {
       card: "summary_large_image",
       title: article.title,
-      description: article.excerpt,
+      description: article.metadata.metaDescription,
       images: [image],
     },
     alternates: {
@@ -403,7 +441,7 @@ export function generateCategoryMetadata(
   category: BlogCategory,
   path: string
 ): Metadata {
-  const fullTitle = `${category.name} | Blog ASLM`;
+  const fullTitle = `${category.name} | Articole ASLM`;
   const url = getAbsoluteUrl(path);
 
   return {
@@ -414,7 +452,7 @@ export function generateCategoryMetadata(
       category.name,
       "medicina stilului de viață",
       "ASLM",
-      "blog",
+      "News ASLM",
       "articole medicale",
     ],
     authors: [{ name: "ASLM" }],
@@ -428,8 +466,8 @@ export function generateCategoryMetadata(
       images: [
         {
           url: DEFAULT_SITE_IMAGE,
-          width: 1200,
-          height: 630,
+          width: DEFAULT_SITE_IMAGE_WIDTH,
+          height: DEFAULT_SITE_IMAGE_HEIGHT,
           alt: category.name,
         },
       ],
@@ -457,7 +495,7 @@ export function generateStaticPageMetadata(path: string): Metadata {
     page.description,
     path,
     page.keywords ?? [],
-    page.imageUrl,
+    page.image,
   );
 }
 
@@ -475,7 +513,7 @@ export function generateArticleMetadataBySlug(slug: string): Metadata {
   return generateArticleMetadata(
     article,
     category,
-    `/blog/${article.categorySlug}/${article.slug}`,
+    getNewsArticlePath(article.categorySlug, article.slug),
   );
 }
 
@@ -485,5 +523,46 @@ export function generateCategoryMetadataBySlug(categorySlug: string): Metadata {
     throw new Error(`Missing category metadata for ${categorySlug}`);
   }
 
-  return generateCategoryMetadata(category, `/blog/${category.slug}`);
+  return generateCategoryMetadata(category, getNewsCategoryPath(category.slug));
+}
+
+export function generatePressReleaseMetadata(pressRelease: PressRelease): Metadata {
+  const path = getPressReleasePath(pressRelease.slug);
+  const url = getAbsoluteUrl(path);
+  const image = getAbsoluteUrl(pressRelease.image.src);
+  const title = `${pressRelease.metadata.seoTitle} | ASLM`;
+
+  return {
+    metadataBase: new URL(SITE_URL),
+    title,
+    description: pressRelease.metadata.metaDescription,
+    keywords: [...pressRelease.metadata.tags, "Comunicate de presă ASLM", "News ASLM"],
+    authors: [{ name: "ASLM" }],
+    openGraph: {
+      title: pressRelease.title,
+      description: pressRelease.metadata.metaDescription,
+      url,
+      siteName: SITE_NAME,
+      locale: "ro_RO",
+      type: "article",
+      publishedTime: pressRelease.metadata.publishDate,
+      modifiedTime: pressRelease.metadata.modifiedDate,
+      authors: ["ASLM"],
+      section: "Comunicate de presă",
+      tags: pressRelease.metadata.tags,
+      images: [{
+        url: image,
+        width: pressRelease.image.width,
+        height: pressRelease.image.height,
+        alt: pressRelease.image.alt,
+      }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: pressRelease.title,
+      description: pressRelease.metadata.metaDescription,
+      images: [image],
+    },
+    alternates: { canonical: url },
+  };
 }

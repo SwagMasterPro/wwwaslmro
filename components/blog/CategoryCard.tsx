@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import { BlogCategory } from "@/data/blog-articles";
+import { getNewsCategoryPath } from "@/lib/news-routes";
 import Card, { CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/Card";
 
 interface CategoryCardProps {
@@ -21,7 +22,7 @@ export default function CategoryCard({ category, articleCount, index = 0 }: Cate
       viewport={{ once: true }}
       transition={{ duration: 0.4, delay: index * 0.1 }}
     >
-      <Link href={`/blog/${category.slug}`}>
+      <Link href={getNewsCategoryPath(category.slug)}>
         <Card variant="interactive" padding="lg" className="h-full">
           <CardHeader className="p-0 mb-4">
             <div

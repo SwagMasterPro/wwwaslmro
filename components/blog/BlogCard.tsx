@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Clock, Calendar, ArrowRight } from "lucide-react";
 import { BlogArticle, getCategoryBySlug } from "@/data/blog-articles";
+import { getNewsArticlePath } from "@/lib/news-routes";
 import Card, { CardHeader, CardTitle, CardDescription } from "@/components/ui/Card";
 
 interface BlogCardProps {
@@ -22,7 +23,7 @@ export default function BlogCard({ article, index = 0 }: BlogCardProps) {
       viewport={{ once: true }}
       transition={{ duration: 0.4, delay: index * 0.1 }}
     >
-      <Link href={`/blog/${article.categorySlug}/${article.slug}`}>
+      <Link href={getNewsArticlePath(article.categorySlug, article.slug)}>
         <Card variant="interactive" padding="none" className="h-full overflow-hidden">
           {/* Article Image */}
           <div className="relative w-full h-48 bg-gray-200 overflow-hidden">

@@ -16,12 +16,25 @@ export interface BlogArticle {
     publishDate: string;
     readingTime: number;
     tags: string[];
+    seoTitle: string;
+    metaDescription: string;
+    modifiedDate?: string;
+    lastReviewedDate?: string;
+    authorId?: string;
+    reviewerId?: string;
   };
   image: {
     src: string;
     alt: string;
   };
 }
+
+type BlogArticleSource = Omit<BlogArticle, "metadata"> & {
+  metadata: Omit<
+    BlogArticle["metadata"],
+    "seoTitle" | "metaDescription" | "modifiedDate" | "lastReviewedDate" | "authorId" | "reviewerId"
+  >;
+};
 
 export const categories: Record<string, BlogCategory> = {
   alimentatie: {
@@ -74,7 +87,7 @@ export const categories: Record<string, BlogCategory> = {
   },
 };
 
-export const articles: BlogArticle[] = [
+const articleSources: BlogArticleSource[] = [
   // Alimentație Sănătoasă
   {
     slug: "alimentatia-echilibrata-cheia-unei-vieti-active",
@@ -1146,6 +1159,117 @@ export const articles: BlogArticle[] = [
     },
   },
 ];
+
+const articleSeoMetadata: Record<
+  string,
+  Pick<BlogArticle["metadata"], "seoTitle" | "metaDescription">
+> = {
+  "alimentatia-echilibrata-cheia-unei-vieti-active": {
+    seoTitle: "Alimentația echilibrată pentru o viață activă",
+    metaDescription:
+      "Află cum construiești o alimentație echilibrată, bogată în nutrienți, care susține energia, imunitatea și prevenirea bolilor cronice și metabolice.",
+  },
+  "deficientele-nutritionale-si-riscul-de-depresie": {
+    seoTitle: "Deficiențe nutriționale și riscul de depresie",
+    metaDescription:
+      "Descoperă legătura dintre vitamine, minerale și sănătatea mentală, când sunt utile analizele și de ce alimentația nu înlocuiește tratamentul.",
+  },
+  "rolul-alimentatiei-in-prevenirea-bolilor": {
+    seoTitle: "Rolul alimentației în prevenirea bolilor cronice",
+    metaDescription:
+      "Înțelege cum alegerile alimentare, alimentele integrale și obiceiurile sustenabile contribuie la prevenirea bolilor cronice și la longevitate.",
+  },
+  "cum-activitatile-in-aer-liber-reduc-stresul": {
+    seoTitle: "Cum ajută activitățile în aer liber la reducerea stresului",
+    metaDescription:
+      "Află cum timpul petrecut în natură, mișcarea și expunerea la lumină naturală pot reduce stresul și susține sănătatea fizică și mentală.",
+  },
+  "tehnici-de-automotivare-pentru-antrenamente": {
+    seoTitle: "Tehnici de automotivare pentru antrenamente constante",
+    metaDescription:
+      "Descoperă strategii practice de automotivare, obiective realiste și rutine care te ajută să menții consecvența antrenamentelor pe termen lung.",
+  },
+  "beneficiile-inotului-pentru-sanatatea-pulmonara": {
+    seoTitle: "Înotul și beneficiile pentru sănătatea pulmonară",
+    metaDescription:
+      "Află cum înotul poate susține controlul respirației, capacitatea de efort și sănătatea pulmonară, precum și când este necesar sfatul medicului.",
+  },
+  "cum-impacteaza-somnul-sanatatea-fizica-si-mentala": {
+    seoTitle: "Somnul: efecte asupra sănătății fizice și mentale",
+    metaDescription:
+      "Descoperă cum durata și calitatea somnului influențează metabolismul, imunitatea, memoria, dispoziția și sănătatea cardiovasculară pe termen lung.",
+  },
+  "ritmul-circadian-de-ce-conteaza-ora-de-culcare": {
+    seoTitle: "Ritmul circadian și ora potrivită de culcare pentru somn",
+    metaDescription:
+      "Înțelege cum ritmul circadian reglează somnul, hormonii și energia și află ce obiceiuri te ajută să păstrezi un program de odihnă constant.",
+  },
+  "somnul-fragmentat-si-inflamatia-sistemica": {
+    seoTitle: "Somnul fragmentat și efectele inflamației sistemice",
+    metaDescription:
+      "Află cum trezirile repetate pot afecta procesele inflamatorii, recuperarea și sănătatea metabolică și când tulburările de somn cer evaluare.",
+  },
+  "stresul-cronic-si-riscul-cardiovascular": {
+    seoTitle: "Stresul cronic: efecte și risc cardiovascular",
+    metaDescription:
+      "Descoperă cum stresul cronic influențează tensiunea, somnul și comportamentele de risc și ce măsuri pot proteja sănătatea cardiovasculară.",
+  },
+  "managementul-stresului-la-locul-de-munca": {
+    seoTitle: "Ghid pentru gestionarea stresului la locul de muncă",
+    metaDescription:
+      "Aplică tehnici practice pentru prioritizare, pauze, limite sănătoase și recuperare, astfel încât să reduci stresul profesional și epuizarea.",
+  },
+  "constientizarea-emotiilor-si-gandirea-pozitiva": {
+    seoTitle: "Conștientizarea emoțiilor pentru reducerea stresului",
+    metaDescription:
+      "Află cum identificarea emoțiilor, reformularea gândurilor și exercițiile de atenție pot sprijini gestionarea stresului și echilibrul mental.",
+  },
+  "fumatul-si-inflamatia-cronica": {
+    seoTitle: "Fumatul, inflamația cronică și efectele asupra sănătății",
+    metaDescription:
+      "Înțelege cum fumatul întreține inflamația cronică, afectează vasele și plămânii și de ce renunțarea reduce riscul de boli cronice severe.",
+  },
+  "tehnici-pentru-renuntarea-la-tutun-si-alcool": {
+    seoTitle: "Renunțarea la tutun și alcool: tehnici eficiente",
+    metaDescription:
+      "Descoperă strategii bazate pe dovezi, sprijin medical și pași concreți care pot crește șansele de renunțare la tutun și consumul nociv de alcool.",
+  },
+  "inlocuirea-obiceiurilor-nocive-cu-obiceiuri-sanatoase": {
+    seoTitle: "Cum înlocuim obiceiurile nocive cu unele sănătoase",
+    metaDescription:
+      "Află cum identifici declanșatorii, alegi alternative realiste și consolidezi rutine sănătoase care pot înlocui treptat obiceiurile nocive.",
+  },
+  "importanta-relatiilor-sociale-la-varstnici": {
+    seoTitle: "Relațiile sociale: beneficii pentru sănătatea vârstnicilor",
+    metaDescription:
+      "Descoperă cum sprijinul social influențează sănătatea mentală, cognitivă și fizică a vârstnicilor și ce poate preveni izolarea socială.",
+  },
+  "combaterea-izolarii-sociale-beneficiile-activitatilor-de-grup": {
+    seoTitle: "Activități de grup pentru combaterea izolării sociale",
+    metaDescription:
+      "Află cum activitățile de grup cresc sentimentul de apartenență, reduc stresul și susțin sănătatea mentală și fizică prin conexiuni reale.",
+  },
+  "conexiunile-sociale-si-sanatatea-mentala": {
+    seoTitle: "Rolul conexiunilor sociale în sănătatea mentală",
+    metaDescription:
+      "Înțelege cum relațiile apropiate și sprijinul emoțional reduc izolarea, susțin reziliența și contribuie la o sănătate mentală mai bună.",
+  },
+};
+
+export const articles: BlogArticle[] = articleSources.map((article) => {
+  const seoMetadata = articleSeoMetadata[article.slug];
+  if (!seoMetadata) {
+    throw new Error(`Missing SEO metadata for article ${article.slug}`);
+  }
+
+  return {
+    ...article,
+    metadata: {
+      ...article.metadata,
+      ...seoMetadata,
+    },
+  };
+});
 
 // Helper functions
 export function getArticlesByCategory(categorySlug: string): BlogArticle[] {

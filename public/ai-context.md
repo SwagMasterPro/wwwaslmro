@@ -4,6 +4,12 @@ ASLM is the Societatea Academica de Medicina Stilului de Viata, a Romanian acade
 
 Canonical site: https://www.aslm.ro
 
+## News
+
+- News hub: https://www.aslm.ro/news
+- Articles: https://www.aslm.ro/news/articole
+- Press releases: https://www.aslm.ro/news/comunicate-de-presa
+
 ## Medical review
 
 ASLM health education pages are educational and do not replace medical diagnosis or treatment. Editorial and medical review policy: https://www.aslm.ro/revizie-medicala. Reviewer attribution currently uses Consiliul Stiintific ASLM unless a page names an approved individual reviewer.

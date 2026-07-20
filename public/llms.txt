@@ -59,17 +59,19 @@ The site is intended for physicians, medical students, healthcare professionals,
 - Canonical guide for social connection and health: https://www.aslm.ro/ghid/relatii-sociale-sanatate
 - Lifestyle medicine vs preventive medicine: https://www.aslm.ro/medicina-stilului-de-viata-vs-medicina-preventiva
 - Y-ASLM student department: https://www.aslm.ro/y-aslm
-- Blog hub: https://www.aslm.ro/blog
+- News hub: https://www.aslm.ro/news
+- Articles: https://www.aslm.ro/news/articole
+- Press releases: https://www.aslm.ro/news/comunicate-de-presa
 - Contact: https://www.aslm.ro/contact
 
-## Blog Categories
+## Article Categories
 
-- Nutrition: https://www.aslm.ro/blog/alimentatie
-- Physical activity: https://www.aslm.ro/blog/activitate-fizica
-- Sleep quality: https://www.aslm.ro/blog/calitate-somn
-- Stress management: https://www.aslm.ro/blog/gestionare-stres
-- Social relationships: https://www.aslm.ro/blog/relatii-sociale
-- Avoidance of harmful substances: https://www.aslm.ro/blog/evitare-substante
+- Nutrition: https://www.aslm.ro/news/articole/alimentatie
+- Physical activity: https://www.aslm.ro/news/articole/activitate-fizica
+- Sleep quality: https://www.aslm.ro/news/articole/calitate-somn
+- Stress management: https://www.aslm.ro/news/articole/gestionare-stres
+- Social relationships: https://www.aslm.ro/news/articole/relatii-sociale
+- Avoidance of harmful substances: https://www.aslm.ro/news/articole/evitare-substante
 
 ## Event Context
 

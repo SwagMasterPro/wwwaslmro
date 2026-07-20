@@ -58,7 +58,7 @@ function getFooterLinks(locale: Locale) {
       ],
       resources: [
         { href: "/lifestyle-medicine-romania", label: "Lifestyle medicine Romania" },
-        { href: "/blog", label: "ASLM Blog" },
+        { href: "/news", label: "ASLM News" },
         { href: "/publicatii", label: "Publications" },
         { href: "/evenimente", label: "Events" },
         { href: "/evenimente/credite-emc", label: "CME/EMC credits" },
@@ -97,7 +97,7 @@ function getFooterLinks(locale: Locale) {
     ],
     resources: [
       { href: "/medicina-stilului-de-viata", label: "Medicina stilului de viață" },
-      { href: "/blog", label: "Blog ASLM" },
+      { href: "/news", label: "News ASLM" },
       { href: "/membri", label: "Membri ASLM" },
       { href: "/publicatii", label: "Publicații" },
       { href: "/evenimente", label: "Evenimente" },

@@ -1,10 +1,12 @@
 export type SeoGrowthPage = {
   path: string;
+  modifiedDate: string;
   eyebrow: string;
   title: string;
   description: string;
   lastUpdated?: string;
   reviewedBy?: string;
+  lastReviewedDate?: string;
   medicalAudience?: string;
   directAnswer?: string;
   highlights: string[];
@@ -24,6 +26,7 @@ export type SeoGrowthPage = {
 export const seoGrowthPages: Record<string, SeoGrowthPage> = {
   "/medicina-stilului-de-viata": {
     path: "/medicina-stilului-de-viata",
+    modifiedDate: "2026-07-13",
     eyebrow: "Ghid ASLM",
     title: "Medicina stilului de viață: definiție, piloni și aplicare în România",
     description:
@@ -45,6 +48,7 @@ export const seoGrowthPages: Record<string, SeoGrowthPage> = {
       { label: "Ghid gestionare stres", href: "/ghid/gestionare-stres" },
       { label: "Ghid renunțare fumat alcool", href: "/ghid/renuntare-fumat-alcool" },
       { label: "Ghid relații sociale sănătate", href: "/ghid/relatii-sociale-sanatate" },
+      { label: "Medicina stilului de viață vs medicina preventivă", href: "/medicina-stilului-de-viata-vs-medicina-preventiva" },
     ],
     comparisonRows: [
       {
@@ -135,10 +139,11 @@ export const seoGrowthPages: Record<string, SeoGrowthPage> = {
       { label: "CDC - about sleep", href: "https://www.cdc.gov/sleep/about/index.html" },
     ],
     primaryCta: { label: "Devino membru ASLM", href: "/membri" },
-    secondaryCta: { label: "Explorează blogul", href: "/blog" },
+    secondaryCta: { label: "Explorează articolele", href: "/news/articole" },
   },
   "/evenimente/credite-emc": {
     path: "/evenimente/credite-emc",
+    modifiedDate: "2026-07-13",
     eyebrow: "Educație Medicală Continuă",
     title: "Credite EMC și puncte EMC medici la evenimente ASLM",
     description:
@@ -202,6 +207,7 @@ export const seoGrowthPages: Record<string, SeoGrowthPage> = {
   },
   "/lifestyle-medicine-romania": {
     path: "/lifestyle-medicine-romania",
+    modifiedDate: "2026-07-13",
     eyebrow: "English overview",
     title: "Lifestyle medicine in Romania",
     description:
@@ -262,10 +268,11 @@ export const seoGrowthPages: Record<string, SeoGrowthPage> = {
       { label: "World Health Organization - noncommunicable diseases", href: "https://www.who.int/health-topics/noncommunicable-diseases" },
     ],
     primaryCta: { label: "Contact ASLM", href: "/contact" },
-    secondaryCta: { label: "Read the Romanian blog", href: "/blog" },
+    secondaryCta: { label: "Read the Romanian articles", href: "/news/articole" },
   },
   "/ghid/gestionare-stres": {
     path: "/ghid/gestionare-stres",
+    modifiedDate: "2026-07-13",
     eyebrow: "Ghid practic",
     title: "Gestionare stres: tehnici, prevenție și rol în sănătate",
     description:
@@ -281,8 +288,8 @@ export const seoGrowthPages: Record<string, SeoGrowthPage> = {
       "Include recomandări educaționale, nu tratament psihologic individualizat.",
     ],
     relatedResources: [
-      { label: "Hub gestionare stres", href: "/blog/gestionare-stres" },
-      { label: "Stres cronic și risc cardiovascular", href: "/blog/gestionare-stres/stresul-cronic-si-riscul-cardiovascular" },
+      { label: "Hub gestionare stres", href: "/news/articole/gestionare-stres" },
+      { label: "Stres cronic și risc cardiovascular", href: "/news/articole/gestionare-stres/stresul-cronic-si-riscul-cardiovascular" },
       { label: "Medicina stilului de viață", href: "/medicina-stilului-de-viata" },
     ],
     sections: [
@@ -333,11 +340,12 @@ export const seoGrowthPages: Record<string, SeoGrowthPage> = {
       { label: "World Health Organization - healthy lifestyle recommendations", href: "https://www.who.int/europe/news-room/fact-sheets/item/a-healthy-lifestyle---who-recommendations" },
       { label: "CDC - sleep and heart health", href: "https://www.cdc.gov/heart-disease/about/sleep-and-heart-health.html" },
     ],
-    primaryCta: { label: "Citește articole despre stres", href: "/blog/gestionare-stres" },
+    primaryCta: { label: "Citește articole despre stres", href: "/news/articole/gestionare-stres" },
     secondaryCta: { label: "Vezi medicina stilului de viață", href: "/medicina-stilului-de-viata" },
   },
   "/ghid/sanatatea-somnului": {
     path: "/ghid/sanatatea-somnului",
+    modifiedDate: "2026-07-13",
     eyebrow: "Ghid practic",
     title: "Sănătatea somnului: somn de calitate și prevenție",
     description:
@@ -353,8 +361,8 @@ export const seoGrowthPages: Record<string, SeoGrowthPage> = {
       "Trimite către articolele ASLM despre ritm circadian, inflamație și sănătate mentală.",
     ],
     relatedResources: [
-      { label: "Hub calitate somn", href: "/blog/calitate-somn" },
-      { label: "Somnul și sănătatea fizică și mentală", href: "/blog/calitate-somn/cum-impacteaza-somnul-sanatatea-fizica-si-mentala" },
+      { label: "Hub calitate somn", href: "/news/articole/calitate-somn" },
+      { label: "Somnul și sănătatea fizică și mentală", href: "/news/articole/calitate-somn/cum-impacteaza-somnul-sanatatea-fizica-si-mentala" },
       { label: "Medicina stilului de viață", href: "/medicina-stilului-de-viata" },
     ],
     sections: [
@@ -405,11 +413,12 @@ export const seoGrowthPages: Record<string, SeoGrowthPage> = {
       { label: "CDC - about sleep", href: "https://www.cdc.gov/sleep/about/index.html" },
       { label: "CDC - sleep and heart health", href: "https://www.cdc.gov/heart-disease/about/sleep-and-heart-health.html" },
     ],
-    primaryCta: { label: "Citește articole despre somn", href: "/blog/calitate-somn" },
+    primaryCta: { label: "Citește articole despre somn", href: "/news/articole/calitate-somn" },
     secondaryCta: { label: "Vezi medicina stilului de viață", href: "/medicina-stilului-de-viata" },
   },
   "/ghid/alimentatie-sanatoasa": {
     path: "/ghid/alimentatie-sanatoasa",
+    modifiedDate: "2026-07-13",
     eyebrow: "Ghid practic",
     title: "Alimentație sănătoasă: principii, prevenție și aplicare",
     description:
@@ -425,8 +434,8 @@ export const seoGrowthPages: Record<string, SeoGrowthPage> = {
       "Leagă nutriția de somn, mișcare, stres și sănătate mentală.",
     ],
     relatedResources: [
-      { label: "Hub alimentație", href: "/blog/alimentatie" },
-      { label: "Deficiențe nutriționale și depresie", href: "/blog/alimentatie/deficientele-nutritionale-si-riscul-de-depresie" },
+      { label: "Hub alimentație", href: "/news/articole/alimentatie" },
+      { label: "Deficiențe nutriționale și depresie", href: "/news/articole/alimentatie/deficientele-nutritionale-si-riscul-de-depresie" },
       { label: "Medicina stilului de viață", href: "/medicina-stilului-de-viata" },
     ],
     sections: [
@@ -469,11 +478,12 @@ export const seoGrowthPages: Record<string, SeoGrowthPage> = {
       { label: "World Health Organization - healthy diet", href: "https://www.who.int/news-room/fact-sheets/detail/healthy-diet" },
       { label: "World Health Organization - noncommunicable diseases", href: "https://www.who.int/health-topics/noncommunicable-diseases" },
     ],
-    primaryCta: { label: "Citește articole despre alimentație", href: "/blog/alimentatie" },
+    primaryCta: { label: "Citește articole despre alimentație", href: "/news/articole/alimentatie" },
     secondaryCta: { label: "Devino membru ASLM", href: "/membri" },
   },
   "/ghid/activitate-fizica": {
     path: "/ghid/activitate-fizica",
+    modifiedDate: "2026-07-13",
     eyebrow: "Ghid practic",
     title: "Activitate fizică: mișcare regulată pentru sănătate",
     description:
@@ -489,8 +499,8 @@ export const seoGrowthPages: Record<string, SeoGrowthPage> = {
       "Leagă mișcarea de somn, stres și sănătate cardiometabolică.",
     ],
     relatedResources: [
-      { label: "Hub activitate fizică", href: "/blog/activitate-fizica" },
-      { label: "Înot și sănătate pulmonară", href: "/blog/activitate-fizica/beneficiile-inotului-pentru-sanatatea-pulmonara" },
+      { label: "Hub activitate fizică", href: "/news/articole/activitate-fizica" },
+      { label: "Înot și sănătate pulmonară", href: "/news/articole/activitate-fizica/beneficiile-inotului-pentru-sanatatea-pulmonara" },
       { label: "Medicina stilului de viață", href: "/medicina-stilului-de-viata" },
     ],
     sections: [
@@ -533,11 +543,12 @@ export const seoGrowthPages: Record<string, SeoGrowthPage> = {
       { label: "World Health Organization - physical activity", href: "https://www.who.int/news-room/fact-sheets/detail/physical-activity" },
       { label: "World Health Organization - healthy lifestyle recommendations", href: "https://www.who.int/europe/news-room/fact-sheets/item/a-healthy-lifestyle---who-recommendations" },
     ],
-    primaryCta: { label: "Citește articole despre mișcare", href: "/blog/activitate-fizica" },
+    primaryCta: { label: "Citește articole despre mișcare", href: "/news/articole/activitate-fizica" },
     secondaryCta: { label: "Vezi pilonii medicinei stilului de viață", href: "/medicina-stilului-de-viata" },
   },
   "/ghid/renuntare-fumat-alcool": {
     path: "/ghid/renuntare-fumat-alcool",
+    modifiedDate: "2026-07-13",
     eyebrow: "Ghid practic",
     title: "Renunțare fumat alcool: pași și suport medical",
     description:
@@ -553,8 +564,8 @@ export const seoGrowthPages: Record<string, SeoGrowthPage> = {
       "Include situații în care este necesară evaluare medicală.",
     ],
     relatedResources: [
-      { label: "Hub evitare substanțe", href: "/blog/evitare-substante" },
-      { label: "Tehnici pentru renunțarea la tutun și alcool", href: "/blog/evitare-substante/tehnici-pentru-renuntarea-la-tutun-si-alcool" },
+      { label: "Hub evitare substanțe", href: "/news/articole/evitare-substante" },
+      { label: "Tehnici pentru renunțarea la tutun și alcool", href: "/news/articole/evitare-substante/tehnici-pentru-renuntarea-la-tutun-si-alcool" },
       { label: "Medicina stilului de viață", href: "/medicina-stilului-de-viata" },
     ],
     sections: [
@@ -597,11 +608,12 @@ export const seoGrowthPages: Record<string, SeoGrowthPage> = {
       { label: "World Health Organization - noncommunicable diseases", href: "https://www.who.int/health-topics/noncommunicable-diseases" },
       { label: "World Health Organization - healthy lifestyle recommendations", href: "https://www.who.int/europe/news-room/fact-sheets/item/a-healthy-lifestyle---who-recommendations" },
     ],
-    primaryCta: { label: "Citește articole despre substanțe nocive", href: "/blog/evitare-substante" },
+    primaryCta: { label: "Citește articole despre substanțe nocive", href: "/news/articole/evitare-substante" },
     secondaryCta: { label: "Devino membru ASLM", href: "/membri" },
   },
   "/ghid/relatii-sociale-sanatate": {
     path: "/ghid/relatii-sociale-sanatate",
+    modifiedDate: "2026-07-13",
     eyebrow: "Ghid practic",
     title: "Relații sociale sănătate: sprijin, apartenență și prevenție",
     description:
@@ -617,8 +629,8 @@ export const seoGrowthPages: Record<string, SeoGrowthPage> = {
       "Include pași practici pentru reducerea izolării.",
     ],
     relatedResources: [
-      { label: "Hub relații sociale", href: "/blog/relatii-sociale" },
-      { label: "Conexiuni sociale și sănătate mentală", href: "/blog/relatii-sociale/conexiunile-sociale-si-sanatatea-mentala" },
+      { label: "Hub relații sociale", href: "/news/articole/relatii-sociale" },
+      { label: "Conexiuni sociale și sănătate mentală", href: "/news/articole/relatii-sociale/conexiunile-sociale-si-sanatatea-mentala" },
       { label: "Medicina stilului de viață", href: "/medicina-stilului-de-viata" },
     ],
     sections: [
@@ -661,11 +673,12 @@ export const seoGrowthPages: Record<string, SeoGrowthPage> = {
       { label: "World Health Organization - healthy lifestyle recommendations", href: "https://www.who.int/europe/news-room/fact-sheets/item/a-healthy-lifestyle---who-recommendations" },
       { label: "World Health Organization - noncommunicable diseases", href: "https://www.who.int/health-topics/noncommunicable-diseases" },
     ],
-    primaryCta: { label: "Citește articole despre relații sociale", href: "/blog/relatii-sociale" },
+    primaryCta: { label: "Citește articole despre relații sociale", href: "/news/articole/relatii-sociale" },
     secondaryCta: { label: "Vezi pilonii medicinei stilului de viață", href: "/medicina-stilului-de-viata" },
   },
   "/medicina-stilului-de-viata-vs-medicina-preventiva": {
     path: "/medicina-stilului-de-viata-vs-medicina-preventiva",
+    modifiedDate: "2026-07-13",
     eyebrow: "Comparație",
     title: "Medicina stilului de viață vs medicina preventivă",
     description:
@@ -737,7 +750,7 @@ export const seoGrowthPages: Record<string, SeoGrowthPage> = {
       { label: "World Health Organization - noncommunicable diseases", href: "https://www.who.int/health-topics/noncommunicable-diseases" },
     ],
     primaryCta: { label: "Vezi ghidul principal", href: "/medicina-stilului-de-viata" },
-    secondaryCta: { label: "Explorează blogul", href: "/blog" },
+    secondaryCta: { label: "Explorează articolele", href: "/news/articole" },
   },
 };
 

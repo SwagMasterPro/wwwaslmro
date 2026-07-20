@@ -13,11 +13,10 @@ import {
 } from "react";
 import { usePathname } from "next/navigation";
 import { isEnglishPath, MEMBERSHIP_JOIN_URL } from "@/lib/localized-routes";
+import { MEMBERSHIP_DIALOG_OPEN_EVENT } from "@/components/marketing/membership-dialog-events";
 
-const POPUP_SESSION_KEY = "aslm-membership-popup-dismissed";
-
-export default function MembershipPopup() {
-  const [isOpen, setIsOpen] = useState(false);
+export default function MembershipPopup({ initialOpen = false }: { initialOpen?: boolean }) {
+  const [isOpen, setIsOpen] = useState(initialOpen);
   const dialogRef = useRef<HTMLDivElement>(null);
   const previousFocusRef = useRef<HTMLElement | null>(null);
   const titleId = useId();
@@ -25,34 +24,18 @@ export default function MembershipPopup() {
   const pathname = usePathname();
   const isEnglish = isEnglishPath(pathname);
 
-  const markDismissed = useCallback(() => {
-    try {
-      window.sessionStorage.setItem(POPUP_SESSION_KEY, "true");
-    } catch {
-      // Storage can be unavailable in strict privacy modes; dismissal should still work.
-    }
+  const closePopup = useCallback(() => {
+    setIsOpen(false);
   }, []);
 
-  const closePopup = useCallback(() => {
-    markDismissed();
-    setIsOpen(false);
-  }, [markDismissed]);
-
   useEffect(() => {
-    try {
-      if (window.sessionStorage.getItem(POPUP_SESSION_KEY) === "true") {
-        return;
-      }
-    } catch {
-      // If storage is blocked, still show the popup once for this render lifecycle.
-    }
-
-    const timer = window.setTimeout(() => {
+    const openPopup = () => {
       previousFocusRef.current = document.activeElement as HTMLElement | null;
       setIsOpen(true);
-    }, 3000);
+    };
 
-    return () => window.clearTimeout(timer);
+    window.addEventListener(MEMBERSHIP_DIALOG_OPEN_EVENT, openPopup);
+    return () => window.removeEventListener(MEMBERSHIP_DIALOG_OPEN_EVENT, openPopup);
   }, []);
 
   useEffect(() => {
@@ -145,11 +128,10 @@ export default function MembershipPopup() {
             <div className="grid min-h-0 flex-1 grid-cols-1 overflow-y-auto lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:overflow-hidden">
               <div className="relative min-h-[clamp(155px,24dvh,240px)] max-h-[240px] overflow-hidden bg-[#eef4ef] lg:h-auto lg:min-h-0 lg:max-h-none">
                 <Image
-                  src="/images/membership-popup-doctor.jpg"
+                  src="/images/membership-popup-doctor.webp"
                   alt={isEnglish ? "Medical professional" : "Profesionist medical"}
                   fill
                   sizes="(min-width: 1024px) 43vw, 100vw"
-                  priority
                   className="object-cover object-[50%_28%] brightness-[1.16] contrast-[1.03] saturate-[1.04]"
                 />
                 <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-[#082b27]/20 to-transparent lg:inset-y-0 lg:right-0 lg:left-auto lg:h-auto lg:w-24 lg:bg-gradient-to-l lg:from-white/80 lg:to-transparent" />
@@ -192,7 +174,7 @@ export default function MembershipPopup() {
                       <CalendarDays className="h-6 w-6 sm:h-7 sm:w-7" strokeWidth={2.2} aria-hidden="true" />
                     </div>
                     <div className="min-w-0">
-                      <p className="text-[0.78rem] font-medium leading-tight text-[#082b27] sm:text-sm">
+                      <p className="text-[0.78rem] font-semibold leading-tight text-[#174f3d] sm:text-sm">
                         {isEnglish ? "Offer valid from" : "Ofertă valabilă în perioada"}
                       </p>
                       <p className="mt-1 break-words text-[0.98rem] font-black leading-tight text-[#15912f] sm:text-base">

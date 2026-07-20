@@ -4,7 +4,10 @@
  */
 
 import type { BlogArticle, BlogCategory } from "@/data/blog-articles";
-import { DEFAULT_SITE_IMAGE, SITE_NAME, SITE_URL, getSiteUrl } from "@/lib/site-config";
+import type { PressRelease } from "@/data/press-releases";
+import { getExpertBySlug } from "@/data/experts";
+import { normalizeLegacyBlogPath } from "@/lib/news-routes";
+import { SITE_LOGO, SITE_NAME, SITE_URL, getSiteUrl } from "@/lib/site-config";
 
 export interface Organization {
   "@context": "https://schema.org";
@@ -49,19 +52,19 @@ export interface PersonSchema {
 
 export interface Article {
   "@context": "https://schema.org";
-  "@type": "Article";
+  "@type": "Article" | "NewsArticle";
   headline: string;
   description: string;
   image: string;
   datePublished: string;
-  dateModified: string;
+  dateModified?: string;
   author: {
     "@type": "Organization" | "Person";
     name: string;
     url?: string;
   };
   reviewedBy?: {
-    "@type": "MedicalOrganization";
+    "@type": "MedicalOrganization" | "Person";
     name: string;
     url: string;
   };
@@ -156,7 +159,7 @@ export function generateOrganizationSchema(): Organization {
     name: "Societatea Academică de Medicina Stilului de Viață",
     alternateName: "ASLM",
     url: SITE_URL,
-    logo: DEFAULT_SITE_IMAGE,
+    logo: SITE_LOGO,
     description:
       "Societatea Academică de Medicina Stilului de Viață (ASLM) promovează excelența în medicina stilului de viață prin educație, cercetare și colaborare profesională în România. ASLM reunește profesioniști din domeniul sănătății dedicați prevenirii și tratării bolilor cronice prin schimbări ale stilului de viață.",
     foundingDate: "2024",
@@ -189,11 +192,6 @@ export function generateWebSiteSchema() {
     "@type": "WebSite",
     name: SITE_NAME,
     url: SITE_URL,
-    potentialAction: {
-      "@type": "SearchAction",
-      target: `${SITE_URL}/blog?search={search_term_string}`,
-      "query-input": "required name=search_term_string",
-    },
   };
 }
 
@@ -232,45 +230,65 @@ export function generateArticleSchema(
   fullUrl: string
 ): Article {
   const imageUrl = getAbsoluteUrl(article.image.src);
+  const author = article.metadata.authorId
+    ? getExpertBySlug(article.metadata.authorId)
+    : undefined;
+  const reviewer = article.metadata.reviewerId
+    ? getExpertBySlug(article.metadata.reviewerId)
+    : undefined;
   const wordCount = article.content
     .replace(/<[^>]*>/g, "")
     .split(/\s+/)
     .filter((word) => word.length > 0).length;
 
-  return {
+  const schema: Article = {
     "@context": "https://schema.org",
     "@type": "Article",
     headline: article.title,
     description: article.excerpt,
     image: imageUrl,
     datePublished: article.metadata.publishDate,
-    dateModified: article.metadata.publishDate,
-    author: {
-      "@type": "Organization",
-      name: "Echipa editorială ASLM",
-      url: SITE_URL,
-    },
-    reviewedBy: {
-      "@type": "MedicalOrganization",
-      name: "Consiliul Științific ASLM",
-      url: getAbsoluteUrl("/consiliu-stiintific"),
-    },
+    author: author
+      ? {
+          "@type": "Person",
+          name: author.name,
+          url: getAbsoluteUrl(author.profilePath),
+        }
+      : {
+          "@type": "Organization",
+          name: "Echipa editorială ASLM",
+          url: SITE_URL,
+        },
     publisher: {
       "@type": "Organization",
       name: "ASLM",
       logo: {
         "@type": "ImageObject",
-        url: DEFAULT_SITE_IMAGE,
+        url: SITE_LOGO,
       },
     },
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": fullUrl,
+      "@id": normalizeLegacyBlogUrl(fullUrl),
     },
     keywords: article.metadata.tags,
     articleSection: category.name,
     wordCount,
   };
+
+  if (article.metadata.modifiedDate) {
+    schema.dateModified = article.metadata.modifiedDate;
+  }
+
+  if (reviewer && article.metadata.lastReviewedDate) {
+    schema.reviewedBy = {
+      "@type": "Person",
+      name: reviewer.name,
+      url: getAbsoluteUrl(reviewer.profilePath),
+    };
+  }
+
+  return schema;
 }
 
 /**
@@ -299,10 +317,19 @@ export function generateFAQSchema(
 export function generateBreadcrumbSchema(
   breadcrumbs: { name: string; path: string }[]
 ): BreadcrumbList {
+  const canonicalBreadcrumbs = breadcrumbs.flatMap((crumb) =>
+    crumb.path === "/blog"
+      ? [
+          { name: "News", path: "/news" },
+          { name: "Articole", path: "/news/articole" },
+        ]
+      : [{ ...crumb, path: normalizeLegacyBlogPath(crumb.path) }],
+  );
+
   return {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
-    itemListElement: breadcrumbs.map((crumb, index) => ({
+    itemListElement: canonicalBreadcrumbs.map((crumb, index) => ({
       "@type": "ListItem",
       position: index + 1,
       name: crumb.name,
@@ -355,21 +382,68 @@ export function generateMedicalWebPageSchema(
   description: string,
   breadcrumbs?: { name: string; path: string }[],
   imageUrl?: string,
-  audienceType = "Profesioniști din sănătate și public interesat de prevenție"
+  audienceType = "Profesioniști din sănătate și public interesat de prevenție",
+  review?: { reviewerName: string; reviewerUrl: string; lastReviewed: string },
 ): MedicalWebPage {
-  return {
+  const schema: MedicalWebPage = {
     ...generateWebPageSchema(url, name, description, breadcrumbs, imageUrl),
     "@type": "MedicalWebPage",
-    reviewedBy: {
-      "@type": "MedicalOrganization",
-      name: "Consiliul Științific ASLM",
-      url: getAbsoluteUrl("/consiliu-stiintific"),
-    },
     audience: {
       "@type": "MedicalAudience",
       audienceType,
     },
-    lastReviewed: "2026-05-28",
+  };
+
+  if (review) {
+    schema.reviewedBy = {
+      "@type": "MedicalOrganization",
+      name: review.reviewerName,
+      url: review.reviewerUrl,
+    };
+    schema.lastReviewed = review.lastReviewed;
+  }
+
+  return schema;
+}
+
+function normalizeLegacyBlogUrl(url: string): string {
+  const parsed = new URL(url);
+  return parsed.origin === SITE_URL
+    ? getAbsoluteUrl(normalizeLegacyBlogPath(parsed.pathname))
+    : url;
+}
+
+export function generatePressReleaseSchema(
+  pressRelease: PressRelease,
+  fullUrl: string,
+): Article {
+  return {
+    "@context": "https://schema.org",
+    "@type": "NewsArticle",
+    headline: pressRelease.title,
+    description: pressRelease.metadata.metaDescription,
+    image: getAbsoluteUrl(pressRelease.image.src),
+    datePublished: pressRelease.metadata.publishDate,
+    dateModified: pressRelease.metadata.modifiedDate ?? pressRelease.metadata.publishDate,
+    author: {
+      "@type": "Organization",
+      name: "ASLM",
+      url: SITE_URL,
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "ASLM",
+      logo: {
+        "@type": "ImageObject",
+        url: SITE_LOGO,
+      },
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": fullUrl,
+    },
+    keywords: pressRelease.metadata.tags,
+    articleSection: "Comunicate de presă",
   };
 }
 

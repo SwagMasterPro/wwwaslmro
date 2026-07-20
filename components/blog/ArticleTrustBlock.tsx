@@ -1,9 +1,8 @@
-"use client";
-
 import Link from "next/link";
 import { ExternalLink } from "lucide-react";
 import { getArticleEnhancement } from "@/data/article-enhancements";
 import { getArticleBySlug } from "@/data/blog-articles";
+import { getExpertBySlug } from "@/data/experts";
 import { getTopicByCategory } from "@/data/seo-topic-map";
 import RelatedResources from "@/components/seo/RelatedResources";
 import { generateFAQSchema } from "@/lib/structured-data";
@@ -19,6 +18,19 @@ export default function ArticleTrustBlock({ slug }: ArticleTrustBlockProps) {
     return null;
   }
   const topic = article ? getTopicByCategory(article.categorySlug) : null;
+  const author = article?.metadata.authorId
+    ? getExpertBySlug(article.metadata.authorId)
+    : undefined;
+  const reviewer = article?.metadata.reviewerId
+    ? getExpertBySlug(article.metadata.reviewerId)
+    : undefined;
+  const formatDate = (value: string) =>
+    new Intl.DateTimeFormat("ro-RO", {
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+      timeZone: "UTC",
+    }).format(new Date(`${value}T00:00:00Z`));
 
   return (
     <section className="surface-secondary py-8">
@@ -26,14 +38,16 @@ export default function ArticleTrustBlock({ slug }: ArticleTrustBlockProps) {
         <div className="max-w-4xl mx-auto rounded-lg bg-white border border-[var(--color-primary-100)] p-6 md:p-8">
           <div className="flex flex-wrap gap-3 mb-6">
             <span className="px-3 py-1 rounded-full text-sm font-semibold bg-[var(--color-primary-50)] text-[var(--color-primary-700)]">
-              {`Last updated: ${enhancement.lastUpdated}`}
+              {`Publicat: ${article ? formatDate(article.metadata.publishDate) : ""}`}
             </span>
             <span className="px-3 py-1 rounded-full text-sm font-semibold bg-[var(--surface-tertiary)] text-[var(--text-secondary)]">
-              Autor: Echipa editorială ASLM
+              {`Autor: ${author?.name ?? "Echipa editorială ASLM"}`}
             </span>
-            <span className="px-3 py-1 rounded-full text-sm font-semibold bg-[var(--surface-tertiary)] text-[var(--text-secondary)]">
-              {`Revizuit de: ${enhancement.reviewer}`}
-            </span>
+            {reviewer && article?.metadata.lastReviewedDate ? (
+              <span className="px-3 py-1 rounded-full text-sm font-semibold bg-[var(--surface-tertiary)] text-[var(--text-secondary)]">
+                {`Revizuit de ${reviewer.name}: ${formatDate(article.metadata.lastReviewedDate)}`}
+              </span>
+            ) : null}
           </div>
 
           <div className="flex flex-wrap gap-4 mb-8 text-sm">

@@ -6,6 +6,7 @@ import Link from "next/link";
 import { Clock, Calendar, Tag, ChevronRight } from "lucide-react";
 import { BlogArticle, BlogCategory } from "@/data/blog-articles";
 import ArticleTrustBlock from "@/components/blog/ArticleTrustBlock";
+import { NEWS_ARTICLES_PATH, NEWS_PATH, getNewsCategoryPath } from "@/lib/news-routes";
 
 interface ArticleHeaderProps {
   article: BlogArticle;
@@ -19,12 +20,16 @@ export default function ArticleHeader({ article, category }: ArticleHeaderProps)
       <section className="surface-secondary py-4">
         <div className="container-default">
           <nav className="flex items-center gap-2 text-sm text-[var(--text-tertiary)]">
-            <Link href="/blog" className="hover:text-[var(--color-primary-600)] transition-colors">
-              Blog
+            <Link href={NEWS_PATH} className="hover:text-[var(--color-primary-600)] transition-colors">
+              News
+            </Link>
+            <ChevronRight className="w-4 h-4" />
+            <Link href={NEWS_ARTICLES_PATH} className="hover:text-[var(--color-primary-600)] transition-colors">
+              Articole
             </Link>
             <ChevronRight className="w-4 h-4" />
             <Link
-              href={`/blog/${category.slug}`}
+              href={getNewsCategoryPath(category.slug)}
               className="hover:text-[var(--color-primary-600)] transition-colors"
             >
               {category.name}

@@ -14,6 +14,13 @@ type SeoGrowthPageProps = {
 };
 
 export default function SeoGrowthPage({ page }: SeoGrowthPageProps) {
+  const formatDate = (value: string) =>
+    new Intl.DateTimeFormat("ro-RO", {
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+      timeZone: "UTC",
+    }).format(new Date(`${value}T00:00:00Z`));
   const breadcrumbs = [
     { name: "Acasă", path: "/" },
     { name: page.title, path: page.path },
@@ -74,23 +81,19 @@ export default function SeoGrowthPage({ page }: SeoGrowthPageProps) {
                   <p className="text-lg leading-relaxed text-[var(--text-secondary)]">
                     {page.directAnswer}
                   </p>
-                  {(page.lastUpdated || page.reviewedBy) && (
-                    <div className="flex flex-wrap gap-3 mt-5 text-sm">
-                      {page.lastUpdated && (
-                        <span className="px-3 py-1 rounded-full bg-white font-semibold text-[var(--color-primary-700)]">
-                          {`Last updated: ${page.lastUpdated}`}
-                        </span>
-                      )}
+                  <div className="flex flex-wrap gap-3 mt-5 text-sm">
+                      <span className="px-3 py-1 rounded-full bg-white font-semibold text-[var(--color-primary-700)]">
+                        {`Actualizat: ${formatDate(page.modifiedDate)}`}
+                      </span>
                       <span className="px-3 py-1 rounded-full bg-white font-semibold text-[var(--text-secondary)]">
                         Autor: Echipa editorială ASLM
                       </span>
-                      {page.reviewedBy && (
+                      {page.reviewedBy && page.lastReviewedDate ? (
                         <span className="px-3 py-1 rounded-full bg-white font-semibold text-[var(--text-secondary)]">
-                          {`Revizuit de: ${page.reviewedBy}`}
+                          {`Revizuit de ${page.reviewedBy}: ${formatDate(page.lastReviewedDate)}`}
                         </span>
-                      )}
+                      ) : null}
                     </div>
-                  )}
                   <div className="flex flex-wrap gap-4 mt-4 text-sm">
                     <Link href="/revizie-medicala" className="font-semibold text-[var(--color-primary-700)] hover:underline">
                       Proces editorial ASLM
@@ -240,6 +243,13 @@ export default function SeoGrowthPage({ page }: SeoGrowthPageProps) {
                   breadcrumbs,
                   undefined,
                   page.medicalAudience,
+                  page.reviewedBy && page.lastReviewedDate
+                    ? {
+                        reviewerName: page.reviewedBy,
+                        reviewerUrl: getAbsoluteUrl("/consiliu-stiintific"),
+                        lastReviewed: page.lastReviewedDate,
+                      }
+                    : undefined,
                 )
               : generateWebPageSchema(
                   getAbsoluteUrl(page.path),

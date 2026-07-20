@@ -5,6 +5,7 @@ import { ArrowRight } from "lucide-react";
 import { getCategoryHub } from "@/data/category-hubs";
 import { getArticlesByCategory } from "@/data/blog-articles";
 import { generateItemListSchema, getAbsoluteUrl } from "@/lib/structured-data";
+import { getNewsArticlePath } from "@/lib/news-routes";
 
 type CategoryHubSectionProps = {
   categorySlug: string;
@@ -17,7 +18,7 @@ export default function CategoryHubSection({ categorySlug }: CategoryHubSectionP
     hub.title,
     articles.map((article) => ({
       name: article.title,
-      url: getAbsoluteUrl(`/blog/${article.categorySlug}/${article.slug}`),
+      url: getAbsoluteUrl(getNewsArticlePath(article.categorySlug, article.slug)),
     })),
   );
 
@@ -44,7 +45,7 @@ export default function CategoryHubSection({ categorySlug }: CategoryHubSectionP
             {articles.map((article) => (
               <li key={article.slug}>
                 <Link
-                  href={`/blog/${article.categorySlug}/${article.slug}`}
+                  href={getNewsArticlePath(article.categorySlug, article.slug)}
                   className="text-[var(--color-primary-700)] font-medium hover:underline"
                 >
                   {article.title}

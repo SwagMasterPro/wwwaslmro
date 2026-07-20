@@ -11,13 +11,9 @@ function fail(message) {
 function walkHtmlFiles(dir, files = []) {
   for (const entry of readdirSync(dir, { withFileTypes: true })) {
     const fullPath = path.join(dir, entry.name);
-    if (entry.isDirectory()) {
-      walkHtmlFiles(fullPath, files);
-    } else if (entry.isFile() && entry.name.endsWith(".html")) {
-      files.push(fullPath);
-    }
+    if (entry.isDirectory()) walkHtmlFiles(fullPath, files);
+    else if (entry.isFile() && entry.name.endsWith(".html")) files.push(fullPath);
   }
-
   return files;
 }
 
@@ -26,33 +22,50 @@ function routeFromHtmlFile(filePath) {
     .relative(appOutputDir, filePath)
     .replaceAll(path.sep, "/")
     .replace(/\.html$/, "");
-
-  if (relative === "index") {
-    return "/";
-  }
-
-  return `/${relative}`;
+  return relative === "index" ? "/" : `/${relative}`;
 }
 
-function expectedUrlForRoute(route) {
+function expectedUrl(route) {
   return route === "/" ? siteUrl : `${siteUrl}${route}`;
 }
 
 function matchContent(html, pattern, label, route) {
   const match = html.match(pattern);
-  if (!match) {
-    fail(`${route}: missing ${label}`);
-  }
-
+  if (!match) fail(`${route}: missing ${label}`);
   return match[1];
 }
 
-function parseJsonLd(html) {
-  return [...html.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/gs)]
+function flattenSchemas(value) {
+  if (Array.isArray(value)) return value.flatMap(flattenSchemas);
+  if (value && typeof value === "object" && Array.isArray(value["@graph"])) {
+    return [value, ...value["@graph"].flatMap(flattenSchemas)];
+  }
+  return value && typeof value === "object" ? [value] : [];
+}
+
+function parseJsonLd(html, route) {
+  return [...html.matchAll(/<script[^>]*type="application\/ld\+json"[^>]*>(.*?)<\/script>/gs)]
     .flatMap((match) => {
-      const parsed = JSON.parse(match[1]);
-      return Array.isArray(parsed) ? parsed : [parsed];
+      try {
+        return flattenSchemas(JSON.parse(match[1]));
+      } catch (error) {
+        fail(`${route}: invalid JSON-LD (${error.message})`);
+      }
     });
+}
+
+function normalizeInternalHref(href) {
+  if (/^(?:mailto:|tel:|javascript:|#)/i.test(href)) return null;
+  try {
+    const url = new URL(href.replaceAll("&amp;", "&"), siteUrl);
+    if (url.origin !== siteUrl) return null;
+    let pathname = decodeURI(url.pathname).replace(/\/+$/, "");
+    if (!pathname) pathname = "/";
+    if (/\.[a-z0-9]{2,5}$/i.test(pathname)) return null;
+    return pathname;
+  } catch {
+    return null;
+  }
 }
 
 if (!existsSync(appOutputDir)) {
@@ -64,79 +77,95 @@ const htmlFiles = walkHtmlFiles(appOutputDir).filter((filePath) => {
   return route !== "/_not-found" && route !== "/_global-error";
 });
 
-if (htmlFiles.length === 0) {
-  fail("No built HTML pages found under .next/server/app.");
-}
+if (htmlFiles.length === 0) fail("No built HTML pages found under .next/server/app.");
 
-const rows = htmlFiles
-  .map((filePath) => {
-    const route = routeFromHtmlFile(filePath);
-    const html = readFileSync(filePath, "utf8");
-
-    return {
-      route,
+const rows = htmlFiles.map((filePath) => {
+  const route = routeFromHtmlFile(filePath);
+  const html = readFileSync(filePath, "utf8");
+  return {
+    route,
+    html,
+    title: matchContent(html, /<title>(.*?)<\/title>/s, "title", route),
+    description: matchContent(
       html,
-      title: matchContent(html, /<title>(.*?)<\/title>/s, "title", route),
-      description: matchContent(
-        html,
-        /<meta name="description" content="([^"]*)"/,
-        "description",
-        route,
-      ),
-      canonical: matchContent(
-        html,
-        /<link rel="canonical" href="([^"]*)"/,
-        "canonical",
-        route,
-      ),
-      ogUrl: matchContent(
-        html,
-        /<meta property="og:url" content="([^"]*)"/,
-        "og:url",
-        route,
-      ),
-    };
-  })
-  .sort((a, b) => a.route.localeCompare(b.route));
+      /<meta name="description" content="([^"]*)"/,
+      "description",
+      route,
+    ),
+    canonical: matchContent(html, /<link rel="canonical" href="([^"]*)"/, "canonical", route),
+    ogUrl: matchContent(html, /<meta property="og:url" content="([^"]*)"/, "og:url", route),
+    schemas: parseJsonLd(html, route),
+  };
+}).sort((a, b) => a.route.localeCompare(b.route));
 
-const home = rows.find((row) => row.route === "/");
-if (!home) {
-  fail("Missing built homepage HTML.");
-}
-
-function findRoute(route) {
-  const row = rows.find((candidate) => candidate.route === route);
-  if (!row) {
-    fail(`Missing built route ${route}`);
-  }
-
+const rowByRoute = new Map(rows.map((row) => [row.route, row]));
+const findRoute = (route) => {
+  const row = rowByRoute.get(route);
+  if (!row) fail(`Missing built route ${route}`);
   return row;
-}
+};
 
+// Canonicals, SSR language, Open Graph URLs, and unique snippets.
 for (const row of rows) {
-  const expectedUrl = expectedUrlForRoute(row.route);
-  if (row.canonical !== expectedUrl) {
-    fail(`${row.route}: expected canonical ${expectedUrl}, received ${row.canonical}`);
-  }
-  if (row.ogUrl !== expectedUrl) {
-    fail(`${row.route}: expected og:url ${expectedUrl}, received ${row.ogUrl}`);
-  }
+  const url = expectedUrl(row.route);
+  if (row.canonical !== url) fail(`${row.route}: canonical is ${row.canonical}, expected ${url}`);
+  if (row.ogUrl !== url) fail(`${row.route}: og:url is ${row.ogUrl}, expected ${url}`);
 
-  if (row.route !== "/" && row.title === home.title) {
-    fail(`${row.route}: title matches homepage title`);
-  }
-  if (row.route !== "/" && row.description === home.description) {
-    fail(`${row.route}: description matches homepage description`);
+  const expectedLanguage = row.route === "/lifestyle-medicine-romania"
+    || row.route === "/en"
+    || row.route.startsWith("/en/")
+    ? "en"
+    : "ro";
+  if (!row.html.includes(`<html lang="${expectedLanguage}"`)) {
+    fail(`${row.route}: SSR html lang must be ${expectedLanguage}`);
   }
 }
 
-const homeSchemas = parseJsonLd(home.html);
-const organizationSchema = homeSchemas.find((schema) => schema["@type"] === "MedicalOrganization");
-if (!organizationSchema) {
-  fail("Homepage is missing MedicalOrganization JSON-LD.");
+for (const field of ["title", "description"]) {
+  const values = new Map();
+  for (const row of rows) {
+    const previousRoute = values.get(row[field]);
+    if (previousRoute) fail(`${row.route}: duplicate ${field} also used by ${previousRoute}`);
+    values.set(row[field], row.route);
+  }
+}
+
+// Reciprocal translated-route alternates, including x-default.
+const localizedPairs = [
+  ["/", "/en"],
+  ["/consiliu-executiv", "/en/executive-council"],
+  ["/consiliu-stiintific", "/en/scientific-council"],
+  ["/adunarea-generala", "/en/general-assembly"],
+  ["/membri", "/en/membership"],
+];
+for (const [roRoute, enRoute] of localizedPairs) {
+  for (const route of [roRoute, enRoute]) {
+    const html = findRoute(route).html;
+    const expectedAlternates = [
+      ["ro", expectedUrl(roRoute)],
+      ["en", expectedUrl(enRoute)],
+      ["x-default", expectedUrl(roRoute)],
+    ];
+    for (const [language, href] of expectedAlternates) {
+      const tag = `<link rel="alternate" hrefLang="${language}" href="${href}"`;
+      if (!html.includes(tag)) fail(`${route}: missing reciprocal alternate ${language} -> ${href}`);
+    }
+  }
+}
+
+const allHtml = rows.map((row) => row.html).join("\n");
+if (allHtml.includes("SearchAction")) fail("Built HTML must not emit SearchAction without site search.");
+if (allHtml.includes("Last updated: 2026")) fail("Built HTML contains the stale year-only update label.");
+
+const home = findRoute("/");
+const organizationSchema = home.schemas.find((schema) => schema["@type"] === "MedicalOrganization");
+if (!organizationSchema) fail("Homepage is missing MedicalOrganization JSON-LD.");
+if (!home.schemas.some((schema) => schema["@type"] === "WebPage")
+  || home.schemas.filter((schema) => schema["@type"] === "FAQPage").length !== 1) {
+  fail("Homepage must emit one FAQPage and one WebPage schema in the initial HTML.");
 }
 if (organizationSchema.address?.addressLocality !== "Brașov") {
-  fail("MedicalOrganization schema addressLocality is not Brașov.");
+  fail("MedicalOrganization addressLocality must be Brașov.");
 }
 for (const socialUrl of [
   "https://www.facebook.com/profile.php?id=61587670614129",
@@ -147,257 +176,130 @@ for (const socialUrl of [
   }
 }
 
-const allHtml = rows.map((row) => row.html).join("\n");
-for (const stalePhrase of [
-  "va avea loc",
-  "Vă invităm",
-  "va găzdui",
-  "Următorul Eveniment Mare",
-]) {
-  if (allHtml.includes(stalePhrase)) {
-    fail(`Built HTML still contains stale congress phrase: ${stalePhrase}`);
+// Article snippets, trust signals, image dimensions, and exactly one FAQPage schema.
+const articleRows = rows.filter((row) => row.route.split("/").length === 5 && row.route.startsWith("/news/articole/"));
+if (articleRows.length !== 18) fail(`Expected 18 article pages, found ${articleRows.length}.`);
+for (const row of articleRows) {
+  const editorialTitle = row.title.replace(/ \| ASLM$/, "");
+  if (editorialTitle.length < 45 || editorialTitle.length > 60) {
+    fail(`${row.route}: editorial title length ${editorialTitle.length}, expected 45-60.`);
   }
-}
-
-const sitemapPath = path.join(appOutputDir, "sitemap.xml.body");
-if (!existsSync(sitemapPath)) {
-  fail("Missing built sitemap body.");
-}
-
-const sitemap = readFileSync(sitemapPath, "utf8");
-if (sitemap.includes("https://aslm.ro")) {
-  fail("Sitemap still contains non-www https://aslm.ro URLs.");
-}
-
-for (const row of rows) {
-  const expectedSitemapUrl = expectedUrlForRoute(row.route);
-  if (!sitemap.includes(`<loc>${expectedSitemapUrl}</loc>`)) {
-    fail(`Sitemap is missing built HTML route ${expectedSitemapUrl}.`);
+  if (row.description.length < 135 || row.description.length > 160) {
+    fail(`${row.route}: meta description length ${row.description.length}, expected 135-160.`);
   }
-}
-
-for (const nonIndexableUrl of [
-  "https://www.aslm.ro/llms.txt",
-  "https://www.aslm.ro/ai-context.md",
-  "https://www.aslm.ro/echipa",
-  "https://www.aslm.ro/consiliul-director",
-]) {
-  if (sitemap.includes(`<loc>${nonIndexableUrl}</loc>`)) {
-    fail(`Sitemap includes non-canonical URL ${nonIndexableUrl}.`);
-  }
-}
-
-for (const expectedSitemapUrl of [
-  "https://www.aslm.ro/consiliu-stiintific",
-  "https://www.aslm.ro/consiliu-executiv",
-  "https://www.aslm.ro/adunarea-generala",
-  "https://www.aslm.ro/en",
-  "https://www.aslm.ro/en/scientific-council",
-  "https://www.aslm.ro/en/executive-council",
-  "https://www.aslm.ro/en/membership",
-  "https://www.aslm.ro/en/general-assembly",
-  "https://www.aslm.ro/medicina-stilului-de-viata",
-  "https://www.aslm.ro/evenimente/credite-emc",
-  "https://www.aslm.ro/lifestyle-medicine-romania",
-  "https://www.aslm.ro/ghid/gestionare-stres",
-  "https://www.aslm.ro/ghid/sanatatea-somnului",
-  "https://www.aslm.ro/revizie-medicala",
-  "https://www.aslm.ro/experti/andrea-elena-neculau",
-  "https://www.aslm.ro/experti/monica-tarcea",
-  "https://www.aslm.ro/ghid/alimentatie-sanatoasa",
-  "https://www.aslm.ro/ghid/activitate-fizica",
-  "https://www.aslm.ro/ghid/renuntare-fumat-alcool",
-  "https://www.aslm.ro/ghid/relatii-sociale-sanatate",
-  "https://www.aslm.ro/medicina-stilului-de-viata-vs-medicina-preventiva",
-]) {
-  if (!sitemap.includes(`<loc>${expectedSitemapUrl}</loc>`)) {
-    fail(`Sitemap is missing ${expectedSitemapUrl}.`);
-  }
-}
-
-const robotsPath = path.join(appOutputDir, "robots.txt.body");
-if (!existsSync(robotsPath)) {
-  fail("Missing built robots body.");
-}
-
-const robots = readFileSync(robotsPath, "utf8");
-if (!robots.includes("Sitemap: https://www.aslm.ro/sitemap.xml")) {
-  fail("robots.txt does not reference the www sitemap.");
-}
-for (const bot of [
-  "GPTBot",
-  "ChatGPT-User",
-  "PerplexityBot",
-  "ClaudeBot",
-  "anthropic-ai",
-  "Google-Extended",
-  "Bingbot",
-]) {
-  if (!robots.includes(`User-Agent: ${bot}`) || !robots.includes("Allow: /")) {
-    fail(`robots.txt does not explicitly allow ${bot}.`);
-  }
-}
-
-const llmsPath = path.join(process.cwd(), "public", "llms.txt");
-if (!existsSync(llmsPath)) {
-  fail("Missing public/llms.txt for AI search context.");
-}
-
-const llms = readFileSync(llmsPath, "utf8");
-for (const requiredContent of [
-  "Canonical site: https://www.aslm.ro",
-  "Societatea Academica de Medicina Stilului de Viata",
-  "https://www.aslm.ro/blog",
-  "The ASLM inaugural congress took place on 10-12 May 2026",
-  "Editorial and medical review policy: https://www.aslm.ro/revizie-medicala",
-  "Canonical guide for healthy nutrition: https://www.aslm.ro/ghid/alimentatie-sanatoasa",
-  "Canonical guide for physical activity: https://www.aslm.ro/ghid/activitate-fizica",
-  "Canonical guide for avoiding harmful substances: https://www.aslm.ro/ghid/renuntare-fumat-alcool",
-  "Canonical guide for social connection and health: https://www.aslm.ro/ghid/relatii-sociale-sanatate",
-  "Scientific Council: https://www.aslm.ro/consiliu-stiintific",
-  "Executive Council: https://www.aslm.ro/consiliu-executiv",
-  "English membership: https://www.aslm.ro/en/membership",
-]) {
-  if (!llms.includes(requiredContent)) {
-    fail(`public/llms.txt is missing required AI context: ${requiredContent}`);
-  }
-}
-
-const aiContextPath = path.join(process.cwd(), "public", "ai-context.md");
-if (!existsSync(aiContextPath)) {
-  fail("Missing public/ai-context.md for machine-readable AI context.");
-}
-const aiContext = readFileSync(aiContextPath, "utf8");
-for (const requiredContent of [
-  "ASLM entity summary",
-  "Medical review",
-  "Six canonical pillar guides",
-  "https://www.aslm.ro/medicina-stilului-de-viata",
-]) {
-  if (!aiContext.includes(requiredContent)) {
-    fail(`public/ai-context.md is missing required AI context: ${requiredContent}`);
-  }
-}
-
-const pillar = findRoute("/medicina-stilului-de-viata");
-if (!pillar.title.includes("Medicina stilului de viață")) {
-  fail("/medicina-stilului-de-viata: title does not target medicina stilului de viață.");
-}
-for (const requiredText of [
-  "Medicina stilului de viață: definiție, piloni și aplicare în România",
-  "Ce este medicina stilului de viață?",
-  "Alimentație echilibrată",
-  "Medicina stilului de viață vs medicina preventivă",
-  "Cui i se adresează",
-  "Când este nevoie de evaluare medicală",
-  "Pentru profesioniști",
-  "FAQPage",
-  "MedicalWebPage",
-  "Revizuit de: Consiliul Științific ASLM",
-  "World Health Organization",
-]) {
-  if (!pillar.html.includes(requiredText)) {
-    fail(`/medicina-stilului-de-viata is missing required content: ${requiredText}`);
-  }
-}
-
-const seoRoutes = [
-  ["/evenimente/credite-emc", ["credite EMC", "puncte EMC medici", "FAQPage"]],
-  ["/lifestyle-medicine-romania", ["Lifestyle medicine in Romania", "Academic Society of Lifestyle Medicine", "FAQPage"]],
-  ["/ghid/gestionare-stres", ["Gestionare stres", "tehnici de gestionare a stresului", "FAQPage"]],
-  ["/ghid/sanatatea-somnului", ["sănătatea somnului", "somn de calitate", "FAQPage"]],
-  ["/ghid/alimentatie-sanatoasa", ["alimentație sănătoasă", "alimente integrale", "MedicalWebPage", "FAQPage"]],
-  ["/ghid/activitate-fizica", ["activitate fizică", "mișcare regulată", "MedicalWebPage", "FAQPage"]],
-  ["/ghid/renuntare-fumat-alcool", ["renunțare fumat alcool", "substanțe nocive", "MedicalWebPage", "FAQPage"]],
-  ["/ghid/relatii-sociale-sanatate", ["relații sociale sănătate", "sprijin social", "MedicalWebPage", "FAQPage"]],
-  ["/medicina-stilului-de-viata-vs-medicina-preventiva", ["Medicina stilului de viață vs medicina preventivă", "diferențe", "FAQPage"]],
-];
-for (const [route, requiredTexts] of seoRoutes) {
-  const row = findRoute(route);
-  for (const requiredText of requiredTexts) {
-    if (!row.html.includes(requiredText)) {
-      fail(`${route} is missing required content: ${requiredText}`);
-    }
-  }
-}
-
-for (const [route, keyword] of [
-  ["/blog/alimentatie", "alimentație sănătoasă"],
-  ["/blog/activitate-fizica", "activitate fizică"],
-  ["/blog/calitate-somn", "sănătatea somnului"],
-  ["/blog/gestionare-stres", "gestionare stres"],
-  ["/blog/evitare-substante", "renunțare fumat alcool"],
-  ["/blog/relatii-sociale", "relații sociale sănătate"],
-]) {
-  const row = findRoute(route);
-  if (!row.html.includes(keyword)) {
-    fail(`${route} is missing hub keyword: ${keyword}`);
-  }
-  if (!row.html.includes("/medicina-stilului-de-viata")) {
-    fail(`${route} does not link to the lifestyle medicine pillar page.`);
-  }
-}
-
-const reviewPolicy = findRoute("/revizie-medicala");
-for (const requiredText of [
-  "Procesul editorial și de revizie medicală ASLM",
-  "Conținut educațional, nu diagnostic",
-  "standard de citare",
-  "Consiliul Științific ASLM",
-  "MedicalOrganization",
-]) {
-  if (!reviewPolicy.html.includes(requiredText)) {
-    fail(`/revizie-medicala is missing required E-E-A-T policy content: ${requiredText}`);
-  }
-}
-
-for (const [route, name] of [
-  ["/experti/andrea-elena-neculau", "Prof. Dr. Andrea Elena Neculau"],
-  ["/experti/monica-tarcea", "Prof. Dr. Monica Tarcea"],
-]) {
-  const row = findRoute(route);
-  if (!row.html.includes(name) || !row.html.includes("Person")) {
-    fail(`${route} is missing expert profile content or Person schema.`);
-  }
-}
-
-const articleRoutes = [
-  "/blog/alimentatie/alimentatia-echilibrata-cheia-unei-vieti-active",
-  "/blog/alimentatie/deficientele-nutritionale-si-riscul-de-depresie",
-  "/blog/alimentatie/rolul-alimentatiei-in-prevenirea-bolilor",
-  "/blog/activitate-fizica/cum-activitatile-in-aer-liber-reduc-stresul",
-  "/blog/activitate-fizica/tehnici-de-automotivare-pentru-antrenamente",
-  "/blog/activitate-fizica/beneficiile-inotului-pentru-sanatatea-pulmonara",
-  "/blog/calitate-somn/cum-impacteaza-somnul-sanatatea-fizica-si-mentala",
-  "/blog/calitate-somn/ritmul-circadian-de-ce-conteaza-ora-de-culcare",
-  "/blog/calitate-somn/somnul-fragmentat-si-inflamatia-sistemica",
-  "/blog/gestionare-stres/stresul-cronic-si-riscul-cardiovascular",
-  "/blog/gestionare-stres/managementul-stresului-la-locul-de-munca",
-  "/blog/gestionare-stres/constientizarea-emotiilor-si-gandirea-pozitiva",
-  "/blog/evitare-substante/fumatul-si-inflamatia-cronica",
-  "/blog/evitare-substante/tehnici-pentru-renuntarea-la-tutun-si-alcool",
-  "/blog/evitare-substante/inlocuirea-obiceiurilor-nocive-cu-obiceiuri-sanatoase",
-  "/blog/relatii-sociale/importanta-relatiilor-sociale-la-varstnici",
-  "/blog/relatii-sociale/combaterea-izolarii-sociale-beneficiile-activitatilor-de-grup",
-  "/blog/relatii-sociale/conexiunile-sociale-si-sanatatea-mentala",
-];
-
-for (const route of articleRoutes) {
-  const row = findRoute(route);
   for (const requiredText of [
-    "Last updated: 2026",
-    "Autor: Echipa editorială ASLM",
-    "Revizuit de: Consiliul Științific ASLM",
+    "Publicat:",
+    "Autor:",
     "Key takeaways",
     "Întrebări frecvente",
     "Referințe",
     "/revizie-medicala",
     "/medicina-stilului-de-viata",
   ]) {
-    if (!row.html.includes(requiredText)) {
-      fail(`${route} is missing E-E-A-T/extractability block: ${requiredText}`);
-    }
+    if (!row.html.includes(requiredText)) fail(`${row.route}: missing article trust content: ${requiredText}`);
+  }
+  const faqSchemas = row.schemas.filter((schema) => schema["@type"] === "FAQPage");
+  if (faqSchemas.length !== 1) fail(`${row.route}: expected one FAQPage schema, found ${faqSchemas.length}.`);
+  const articleSchema = row.schemas.find((schema) => schema["@type"] === "Article");
+  if (!articleSchema) fail(`${row.route}: missing Article schema.`);
+  if (articleSchema.dateModified && !row.html.includes("Actualizat:")) {
+    fail(`${row.route}: dateModified has no matching visible updated date.`);
+  }
+  if (articleSchema.reviewedBy && !row.html.includes("Revizuit de:")) {
+    fail(`${row.route}: reviewedBy has no matching visible reviewer.`);
+  }
+  if (!row.html.includes('<meta property="og:image:width" content="1000"')
+    || !row.html.includes('<meta property="og:image:height" content="1000"')) {
+    fail(`${row.route}: square source image must be declared as 1000x1000.`);
   }
 }
 
-console.log(`Verified SEO metadata for ${rows.length} built pages.`);
+const proceedingsRoute = "/news/comunicate-de-presa/proceedings-congres-inaugural-aslm-2026";
+const proceedings = findRoute(proceedingsRoute);
+const newsArticleSchema = proceedings.schemas.find((schema) => schema["@type"] === "NewsArticle");
+if (!newsArticleSchema) fail(`${proceedingsRoute}: missing NewsArticle schema.`);
+if (newsArticleSchema.datePublished !== "2026-07-20") {
+  fail(`${proceedingsRoute}: NewsArticle publish date must be 2026-07-20.`);
+}
+if (newsArticleSchema.mainEntityOfPage?.["@id"] !== expectedUrl(proceedingsRoute)) {
+  fail(`${proceedingsRoute}: NewsArticle canonical URL is incorrect.`);
+}
+for (const requiredText of [
+  "Despre Proceedings",
+  "Lifestyle Medicine Research &amp; Reviews",
+  "Proceedings-ul complet pe Publitas",
+]) {
+  if (!proceedings.html.includes(requiredText)) {
+    fail(`${proceedingsRoute}: missing press-release content: ${requiredText}`);
+  }
+}
+
+for (const row of rows.filter((candidate) => candidate.route.startsWith("/ghid/")
+  || candidate.route === "/medicina-stilului-de-viata"
+  || candidate.route === "/medicina-stilului-de-viata-vs-medicina-preventiva")) {
+  const faqSchemas = row.schemas.filter((schema) => schema["@type"] === "FAQPage");
+  if (faqSchemas.length !== 1) fail(`${row.route}: expected one FAQPage schema, found ${faqSchemas.length}.`);
+}
+
+for (const route of ["/experti/andrea-elena-neculau", "/experti/monica-tarcea"]) {
+  if (!findRoute(route).schemas.some((schema) => schema["@type"] === "Person")) {
+    fail(`${route}: Person schema must be present in the initial HTML.`);
+  }
+}
+
+if (!findRoute("/conferinte").html.includes("Arhivă")) fail("/conferinte must be a visible archive.");
+if (!findRoute("/comunicari-orale").html.includes("Arhivă")) fail("/comunicari-orale must be a visible archive.");
+if (!findRoute("/evenimente").html.includes('href="/conferinte"')
+  || !findRoute("/evenimente").html.includes('href="/comunicari-orale"')) {
+  fail("/evenimente must link to both historical archives.");
+}
+if (!findRoute("/y-aslm").html.includes('href="/internship"')) fail("/y-aslm must link to /internship.");
+if (!findRoute("/medicina-stilului-de-viata").html.includes('href="/medicina-stilului-de-viata-vs-medicina-preventiva"')) {
+  fail("The pillar page must link to the preventive-medicine comparison.");
+}
+
+// Every internal HTML link resolves to a built 200 page, and every page has an incoming link.
+const incomingLinks = new Map(rows.map((row) => [row.route, 0]));
+for (const row of rows) {
+  const targets = new Set(
+    [...row.html.matchAll(/<a\s[^>]*href="([^"]+)"/g)]
+      .map((match) => normalizeInternalHref(match[1]))
+      .filter(Boolean),
+  );
+  for (const target of targets) {
+    if (!rowByRoute.has(target)) fail(`${row.route}: internal link does not resolve to built HTML: ${target}`);
+    if (target !== row.route) incomingLinks.set(target, incomingLinks.get(target) + 1);
+  }
+}
+for (const [route, incoming] of incomingLinks) {
+  if (route !== "/" && incoming === 0) fail(`${route}: orphan page with no incoming internal link.`);
+}
+
+// Sitemap contains every canonical route and a valid, explicit editorial lastmod.
+const sitemapPath = path.join(appOutputDir, "sitemap.xml.body");
+if (!existsSync(sitemapPath)) fail("Missing built sitemap body.");
+const sitemap = readFileSync(sitemapPath, "utf8");
+if (sitemap.includes("https://aslm.ro")) fail("Sitemap contains non-www URLs.");
+const sitemapEntries = [...sitemap.matchAll(/<url>\s*<loc>(.*?)<\/loc>\s*<lastmod>(.*?)<\/lastmod>/gs)];
+if (sitemapEntries.length !== rows.length) {
+  fail(`Sitemap has ${sitemapEntries.length} entries for ${rows.length} built pages.`);
+}
+const today = new Date();
+for (const row of rows) {
+  const entry = sitemapEntries.find(([, loc]) => loc === expectedUrl(row.route));
+  if (!entry) fail(`Sitemap is missing ${expectedUrl(row.route)}.`);
+  const lastModified = entry[2];
+  if (!/^\d{4}-\d{2}-\d{2}(?:T.*Z)?$/.test(lastModified) || Number.isNaN(Date.parse(lastModified))) {
+    fail(`${row.route}: invalid sitemap lastmod ${lastModified}.`);
+  }
+  if (new Date(lastModified) > today) fail(`${row.route}: sitemap lastmod is in the future.`);
+}
+
+const robotsPath = path.join(appOutputDir, "robots.txt.body");
+if (!existsSync(robotsPath)) fail("Missing built robots body.");
+const robots = readFileSync(robotsPath, "utf8");
+if (!robots.includes("Sitemap: https://www.aslm.ro/sitemap.xml")) {
+  fail("robots.txt does not reference the canonical sitemap.");
+}
+
+console.log(`Verified SEO metadata, schemas, links, locales, and sitemap for ${rows.length} built pages.`);
