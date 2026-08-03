@@ -325,7 +325,6 @@ export const generalAssemblyMembers: GeneralAssemblyMember[] = [
   { displayName: "Aida PUIA", city: "Cluj Napoca, România", sortName: "Puia Aida" },
   { displayName: "Nadinne Alexandra ROMAN", city: "Brașov, România", sortName: "Roman Nadinne Alexandra" },
   { displayName: "Horatiu RUS", city: "Brașov, România", sortName: "Rus Horatiu" },
-  { displayName: "Nicoleta Daniela STANCA", city: "București, România", sortName: "Stanca Nicoleta Daniela" },
   { displayName: "Ana Maria Alexandra STANESCU", city: "București, România", sortName: "Stanescu Ana Maria Alexandra" },
   { displayName: "Lucia STOICA", city: "Galați, România", sortName: "Stoica Lucia" },
   { displayName: "Raluca Maria STROIE", city: "București, România", sortName: "Stroie Raluca Maria" },
