@@ -8,9 +8,7 @@ import { ArrowRight, Award, BookOpen, GraduationCap, Users } from "lucide-react"
 import { activeYAslmStudents } from "@/data/y-aslm";
 import {
   executiveCouncilMembers,
-  honoraryPresidents,
-  president,
-  scientificCouncilMembers,
+  scientificCouncilPageMembers,
   sortedGeneralAssemblyMembers,
   textForLocale,
   type GovernancePerson,
@@ -18,11 +16,32 @@ import {
 import { MEMBERSHIP_JOIN_URL, STATUTE_EN_URL, type Locale } from "@/lib/localized-routes";
 import { generateWebPageSchema, getAbsoluteUrl } from "@/lib/structured-data";
 
+const NON_NAME_PREFIXES = new Set([
+  "acad",
+  "prof",
+  "dr",
+  "conf",
+  "șef",
+  "sef",
+  "lucr",
+  "psih",
+  "asist",
+  "univ",
+  "fiziokin",
+]);
+
+const SCIENTIFIC_LEADERSHIP_IDS = new Set([
+  "andrea-elena-neculau",
+  "constantin-ionescu-tirgoviste",
+  "adrian-restian",
+]);
+
 function initials(name: string): string {
   return name
-    .replace("†", "")
-    .split(" ")
-    .filter((part) => part.length > 2)
+    .replaceAll("†", "")
+    .split(/\s+/)
+    .map((part) => part.replace(/[.,]/g, ""))
+    .filter((part) => part && !NON_NAME_PREFIXES.has(part.toLocaleLowerCase("ro-RO")))
     .slice(0, 3)
     .map((part) => part[0])
     .join("")
@@ -44,12 +63,12 @@ function MemberCard({
   const shortBio = member.shortBio?.[locale];
 
   return (
-    <motion.div
+    <motion.article
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.3, delay: index * 0.04 }}
-      className="card overflow-hidden hover:shadow-xl transition-all duration-300"
+      transition={{ duration: 0.3, delay: (index % 5) * 0.04 }}
+      className="card flex h-full flex-col overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
     >
       <div className="aspect-square bg-gradient-to-br from-[var(--color-primary-100)] to-[var(--color-primary-200)] relative overflow-hidden">
         {member.image ? (
@@ -68,8 +87,8 @@ function MemberCard({
           </div>
         )}
       </div>
-      <div className="p-5 text-center bg-white">
-        <h3 className="font-semibold text-[var(--text-primary)] text-lg">{member.displayName}</h3>
+      <div className="flex flex-1 flex-col bg-white p-5 text-center">
+        <h3 className="text-lg font-semibold text-[var(--text-primary)] text-balance">{member.displayName}</h3>
         {role && <p className="text-sm text-[var(--color-primary-600)] font-medium mt-1">{role}</p>}
         {member.orcid && (
           <a
@@ -85,14 +104,14 @@ function MemberCard({
         {member.profilePath && (
           <Link
             href={member.profilePath}
-            className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-[var(--color-primary-700)] hover:underline"
+            className="mx-auto mt-auto inline-flex items-center gap-1 pt-4 text-sm font-semibold text-[var(--color-primary-700)] transition-colors hover:text-[var(--color-primary-900)] hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-primary-600)]"
           >
-            {locale === "ro" ? "Profil expert" : "Expert profile"}
+            {locale === "ro" ? "Profil științific" : "Scientific profile"}
             <ArrowRight className="w-3.5 h-3.5" />
           </Link>
         )}
       </div>
-    </motion.div>
+    </motion.article>
   );
 }
 
@@ -166,30 +185,36 @@ export function ScientificCouncilPageContent({ locale }: { locale: Locale }) {
       overline: "Despre ASLM",
       title: "Consiliu Științific",
       description:
-        "Consiliul Științific al ASLM reunește experți de renume din domeniul medicinei stilului de viață, care ghidează direcțiile de cercetare și asigură excelența academică a activităților societății.",
-      president: "Președinte ASLM",
-      honorary: "Președinți de onoare",
-      members: "Membrii Consiliului Științific",
-      membersDescription:
-        "Echipa de profesori universitari, conferențiari și cercetători care asigură fundamentul științific al activităților ASLM în domeniul medicinei stilului de viață.",
+        "Consiliul Științific național al ASLM reunește specialiști și experți din domeniul medicinei stilului de viață, care ghidează direcțiile de cercetare și asigură fundamentul științific al activităților ASLM în domeniul medicinei stilului de viață, promovând excelența academică în proiectele societății.",
+      collaborationTitle: "Știința avansează prin colaborare",
+      collaborationBody: [
+        "Medicina stilului de viață se dezvoltă rapid la nivel internațional, susținută de o bază de dovezi științifice în continuă creștere privind rolul intervențiilor asupra stilului de viață în prevenirea și managementul bolilor cronice. Prin abordări bazate pe dovezi, orientate spre prevenție și spre utilizarea responsabilă a resurselor, acest domeniu poate contribui semnificativ la construirea unor sisteme de sănătate mai sustenabile și la îmbunătățirea sănătății pe termen lung.",
+        "În acest context, ASLM își propune ca propriul Consiliu Științific să fie nu doar un reper de expertiză academică, ci și o platformă deschisă dialogului, schimbului de idei și colaborării.",
+        "Pentru a facilita inițierea unor proiecte științifice, de cercetare, educaționale și academice, precum și comunicarea cu profesioniști, organizații și persoane interesate de medicina stilului de viață, membrii Consiliului Științific pot avea listate pe această pagină, cu acordul lor, o adresă publică de e-mail și, acolo unde este cazul, canalele profesionale de social media.",
+        "Vă încurajăm să utilizați aceste date de contact pentru propuneri de colaborare, inițiative profesionale sau academice, întrebări legate de medicina stilului de viață ori solicitări de informații și orientare către expertiza și resursele relevante.",
+        "Datele publice de contact nu sunt destinate urgențelor medicale și nu înlocuiesc consultația medicală individuală.",
+      ],
       schemaName: "Consiliu Științific ASLM",
       schemaDescription:
-        "Consiliul Științific ASLM reunește experți în medicina stilului de viață și susține direcția academică a societății.",
+        "Consiliul Științific național al ASLM reunește specialiști și experți în medicina stilului de viață și asigură fundamentul științific al proiectelor societății.",
       breadcrumb: "Consiliu Științific",
     },
     en: {
       overline: "About ASLM",
       title: "Scientific Council",
       description:
-        "The ASLM Scientific Council brings together recognized experts in lifestyle medicine who guide research priorities and support the academic quality of the society's work.",
-      president: "ASLM President",
-      honorary: "Honorary Presidents",
-      members: "Scientific Council Members",
-      membersDescription:
-        "University professors, researchers and senior professionals who support the scientific foundation of ASLM activities in lifestyle medicine.",
+        "ASLM's national Scientific Council brings together specialists and experts in Lifestyle Medicine who guide research priorities, provide the scientific foundation for ASLM's work in the field, and promote academic excellence across the society's projects.",
+      collaborationTitle: "Science advances through collaboration",
+      collaborationBody: [
+        "Lifestyle Medicine is rapidly expanding worldwide, supported by a growing body of scientific evidence on the role of lifestyle interventions in the prevention and management of chronic disease. By promoting evidence-based, prevention-oriented approaches and the responsible use of healthcare resources, the field can make an important contribution to more sustainable healthcare systems and better long-term health outcomes.",
+        "Within this context, ASLM aims for its Scientific Council to serve not only as a source of academic expertise, but also as an open platform for dialogue, exchange and collaboration.",
+        "To encourage scientific, research, educational and academic initiatives, and to facilitate communication with healthcare professionals, organizations and members of the public interested in Lifestyle Medicine, Scientific Council members may, with their consent, have a public email address and, where appropriate, their professional social media channels listed on this page.",
+        "We welcome contact regarding potential collaborations, professional or academic initiatives, questions related to Lifestyle Medicine, and requests for information or guidance towards relevant expertise and resources.",
+        "Public contact channels are not intended for medical emergencies and do not replace an individual medical consultation.",
+      ],
       schemaName: "ASLM Scientific Council",
       schemaDescription:
-        "The ASLM Scientific Council brings together lifestyle medicine experts and supports the academic direction of the society.",
+        "ASLM's national Scientific Council brings together Lifestyle Medicine specialists and experts and provides the scientific foundation for the society's projects.",
       breadcrumb: "Scientific Council",
     },
   }[locale];
@@ -200,76 +225,57 @@ export function ScientificCouncilPageContent({ locale }: { locale: Locale }) {
     <div className="pt-20">
       <Hero overline={copy.overline} title={copy.title} description={copy.description} />
 
-      <section className="section-lg surface-primary">
-        <div className="container-default">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="text-center mb-10"
-          >
-            <h2 className="text-headline text-[var(--text-primary)] mb-4">{copy.president}</h2>
-          </motion.div>
-          <div className="flex justify-center">
-            <div className="w-64">
-              <MemberCard member={president} index={0} locale={locale} showRole />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-16 surface-secondary">
-        <div className="container-default">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="text-center mb-10"
-          >
-            <div className="w-14 h-14 mx-auto mb-4 rounded-2xl bg-[var(--color-primary-100)] flex items-center justify-center">
-              <Award className="w-7 h-7 text-[var(--color-primary-600)]" />
-            </div>
-            <h2 className="text-headline text-[var(--text-primary)] mb-4">{copy.honorary}</h2>
-          </motion.div>
-          <div className="flex flex-col items-center gap-2">
-            {honoraryPresidents.map((member, index) => (
-              <motion.p
-                key={member.id}
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.3, delay: index * 0.1 }}
-                className="text-lg font-semibold text-[var(--text-primary)] text-center"
-              >
-                {member.displayName}
-              </motion.p>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="section-lg surface-primary">
+      <section className="py-14 md:py-20 surface-primary">
         <div className="container-wide">
-          <motion.div
+          <div className="grid grid-cols-2 items-stretch gap-5 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 lg:gap-6">
+            {scientificCouncilPageMembers.map((member, index) => (
+              <MemberCard
+                key={member.id}
+                member={member}
+                index={index}
+                locale={locale}
+                showRole={SCIENTIFIC_LEADERSHIP_IDS.has(member.id)}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="surface-primary pb-20 md:pb-24">
+        <div className="container-default">
+          <motion.article
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-center mb-12"
+            className="relative overflow-hidden rounded-[2rem] border border-[var(--color-primary-200)] bg-white px-6 py-9 shadow-[0_24px_70px_rgba(15,43,29,0.08)] sm:px-10 md:px-14 md:py-12"
+            aria-labelledby={`science-collaboration-title-${locale}`}
           >
-            <div className="w-14 h-14 mx-auto mb-4 rounded-2xl bg-[var(--color-primary-100)] flex items-center justify-center">
-              <GraduationCap className="w-7 h-7 text-[var(--color-primary-600)]" />
+            <div
+              className="absolute inset-y-0 left-0 w-1.5 bg-[var(--color-primary-600)]"
+              aria-hidden="true"
+            />
+            <h2
+              id={`science-collaboration-title-${locale}`}
+              className="max-w-4xl text-headline text-[var(--text-primary)] text-balance"
+            >
+              {copy.collaborationTitle}
+            </h2>
+            <div className="mt-7 max-w-4xl space-y-5 text-[var(--text-secondary)]">
+              {copy.collaborationBody.map((paragraph, index) => (
+                <p
+                  key={paragraph.slice(0, 36)}
+                  className={
+                    index === copy.collaborationBody.length - 1
+                      ? "border-t border-[var(--color-primary-100)] pt-5 font-semibold leading-relaxed text-[var(--text-primary)]"
+                      : "leading-relaxed"
+                  }
+                >
+                  {paragraph}
+                </p>
+              ))}
             </div>
-            <h2 className="text-headline text-[var(--text-primary)] mb-4">{copy.members}</h2>
-            <p className="text-subtitle max-w-3xl mx-auto">{copy.membersDescription}</p>
-          </motion.div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
-            {scientificCouncilMembers.map((member, index) => (
-              <MemberCard key={member.id} member={member} index={index} locale={locale} />
-            ))}
-          </div>
+          </motion.article>
         </div>
       </section>
 

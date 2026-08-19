@@ -26,9 +26,12 @@ export type GeneralAssemblyMember = {
 };
 
 function withProfilePath(person: Omit<GovernancePerson, "profilePath">): GovernancePerson {
+  const profileSlug = person.profileSlug ?? person.id;
+
   return {
     ...person,
-    profilePath: person.profileSlug ? `/experti/${person.profileSlug}` : undefined,
+    profileSlug,
+    profilePath: `/experti/${profileSlug}`,
   };
 }
 
@@ -82,15 +85,22 @@ export const honoraryPresidents: GovernancePerson[] = [
     id: "constantin-ionescu-tirgoviste",
     displayName: "Acad. Constantin Ionescu-Tîrgoviște",
     sortName: "Ionescu Tirgoviste Constantin",
+    role: { ro: "Președinte de onoare", en: "Honorary President" },
+    image: "/images/constantin-ionescu-tirgoviste.webp",
+    affiliation: scientificAffiliation,
   }),
   withProfilePath({
     id: "adrian-restian",
     displayName: "†Prof. Dr. Adrian Restian",
     sortName: "Restian Adrian",
+    role: { ro: "Președinte de onoare", en: "Honorary President" },
+    image: "/images/adrian-restian.webp",
+    affiliation: scientificAffiliation,
   }),
 ];
 
 export const scientificCouncilMembers: GovernancePerson[] = sortPeopleByName([
+  withProfilePath({ id: "ana-maria-alexandra-stanescu", displayName: "Prof. Dr. Ana Maria Alexandra Stănescu", sortName: "Stanescu Ana Maria Alexandra", image: "/images/ana-maria-alexandra-stanescu.webp", affiliation: scientificAffiliation }),
   withProfilePath({ id: "anastasia-abaitancei", displayName: "Dr. Anastasia Abăităncei", sortName: "Abaitancei Anastasia", image: "/images/anastasia-abaitancei.png", affiliation: scientificAffiliation }),
   withProfilePath({ id: "ioana-agache", displayName: "Prof. Dr. Ioana Agache", sortName: "Agache Ioana", image: "/images/ioana-agache.png", affiliation: scientificAffiliation }),
   withProfilePath({ id: "marian-anghel", displayName: "Psih. Marian Anghel", sortName: "Anghel Marian", image: "/images/marian-anghel.png", affiliation: scientificAffiliation }),
@@ -183,6 +193,13 @@ export const scientificCouncilMembers: GovernancePerson[] = sortPeopleByName([
   withProfilePath({ id: "ioana-bianca-tebeica", displayName: "Dr. Ioana Bianca Tebeica", sortName: "Tebeica Ioana Bianca", affiliation: scientificAffiliation }),
   withProfilePath({ id: "doina-carina-voinescu", displayName: "Prof. Dr. Doina Carina Voinescu", sortName: "Voinescu Doina Carina", image: "/images/prof-dr-carina-voinescu.png", affiliation: scientificAffiliation }),
 ]);
+
+export const scientificCouncilPageMembers: GovernancePerson[] = [
+  president,
+  ...honoraryPresidents,
+  ...scientificCouncilMembers.filter((person) => person.id === "ana-maria-alexandra-stanescu"),
+  ...scientificCouncilMembers.filter((person) => person.id !== "ana-maria-alexandra-stanescu"),
+];
 
 const peopleById = new Map(
   [president, ...honoraryPresidents, ...scientificCouncilMembers].map((person) => [person.id, person]),
@@ -339,7 +356,12 @@ export const generalAssemblyMembers: GeneralAssemblyMember[] = [
 
 export const sortedGeneralAssemblyMembers = sortPeopleByName(generalAssemblyMembers);
 
-export const profiledExperts = [president, ...scientificCouncilMembers, ...executiveCouncilMembers]
+export const profiledExperts = [
+  president,
+  ...honoraryPresidents,
+  ...scientificCouncilMembers,
+  ...executiveCouncilMembers,
+]
   .filter((person): person is GovernancePerson & { profileSlug: string; profilePath: string } =>
     Boolean(person.profileSlug && person.profilePath),
   )

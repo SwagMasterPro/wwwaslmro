@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: ExpertPageProps): Promise<Met
 
   return generatePageMetadata(
     expert.name,
-    `${expert.name} - ${expert.role} în cadrul ${expert.affiliation}. Profil expert ASLM pentru medicina stilului de viață.`,
+    `${expert.name} - ${expert.role} în cadrul ${expert.affiliation}. Profil științific ASLM pentru medicina stilului de viață.`,
     expert.profilePath,
     ["expert ASLM", expert.name, "medicina stilului de viață"],
     expert.image ? { url: expert.image, alt: expert.name } : undefined,
@@ -57,7 +57,7 @@ export default async function ExpertPage({ params }: ExpertPageProps) {
             </div>
             <div>
               <p className="text-overline text-[var(--color-primary-300)] mb-3">
-                Expert ASLM
+                Profil științific ASLM
               </p>
               <h1 className="text-display text-white mb-4">{expert.name}</h1>
               <p className="text-lg font-semibold mb-3" style={{ color: "rgba(255,255,255,0.9)" }}>
@@ -79,7 +79,7 @@ export default async function ExpertPage({ params }: ExpertPageProps) {
             </h2>
             <p className="text-[var(--text-secondary)] leading-relaxed mb-6">
               {expert.shortBio?.ro ??
-                "Acest profil susține transparența editorială și semnalele E-E-A-T ale conținutului ASLM. Datele sunt limitate la informațiile publice prezente pe site-ul ASLM și pot fi extinse când organizația aprobă biografii detaliate pentru fiecare expert."}
+                "Acest profil prezintă rolul membrului în cadrul ASLM. Informațiile biografice și datele profesionale de contact sunt publicate și completate numai cu acordul persoanei."}
             </p>
             {expert.orcid && (
               <p className="text-[var(--text-secondary)] leading-relaxed mb-6">
