@@ -82,19 +82,19 @@ export const president = withProfilePath({
 
 export const honoraryPresidents: GovernancePerson[] = [
   withProfilePath({
-    id: "constantin-ionescu-tirgoviste",
-    displayName: "Acad. Constantin Ionescu-Tîrgoviște",
-    sortName: "Ionescu Tirgoviste Constantin",
-    role: { ro: "Președinte de onoare", en: "Honorary President" },
-    image: "/images/constantin-ionescu-tirgoviste.webp",
-    affiliation: scientificAffiliation,
-  }),
-  withProfilePath({
     id: "adrian-restian",
     displayName: "†Prof. Dr. Adrian Restian",
     sortName: "Restian Adrian",
     role: { ro: "Președinte de onoare", en: "Honorary President" },
     image: "/images/adrian-restian.webp",
+    affiliation: scientificAffiliation,
+  }),
+  withProfilePath({
+    id: "constantin-ionescu-tirgoviste",
+    displayName: "Acad. Constantin Ionescu-Tîrgoviște",
+    sortName: "Ionescu Tirgoviste Constantin",
+    role: { ro: "Președinte de onoare", en: "Honorary President" },
+    image: "/images/constantin-ionescu-tirgoviste.webp",
     affiliation: scientificAffiliation,
   }),
 ];
