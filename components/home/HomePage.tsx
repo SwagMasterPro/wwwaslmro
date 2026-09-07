@@ -299,10 +299,10 @@ export function HomePage({ locale = "ro" }: { locale?: HomeLocale }) {
             {!isEnglish ? (
               <div className="hidden lg:flex items-center justify-center">
                 <Image
-                  src="/images/piloni-medicina-stilului-de-viata.png"
+                  src="/images/piloni-msv.png"
                   alt="Cei șase piloni ai medicinei stilului de viață"
                   width={550}
-                  height={486}
+                  height={550}
                   priority
                   sizes="(max-width: 1280px) 42vw, 550px"
                   className="h-auto w-full max-w-[550px] object-contain"

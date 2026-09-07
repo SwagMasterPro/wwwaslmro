@@ -17,6 +17,7 @@ export type GovernancePerson = {
   profilePath?: string;
   orcid?: string;
   shortBio?: Partial<LocalizedText>;
+  bio?: Partial<LocalizedText>;
 };
 
 export type GeneralAssemblyMember = {
@@ -102,10 +103,39 @@ export const honoraryPresidents: GovernancePerson[] = [
 export const scientificCouncilMembers: GovernancePerson[] = sortPeopleByName([
   withProfilePath({ id: "ana-maria-alexandra-stanescu", displayName: "Prof. Dr. Ana Maria Alexandra Stănescu", sortName: "Stanescu Ana Maria Alexandra", image: "/images/council/prof-dr-ana-maria-alexandra-stanescu.png", affiliation: scientificAffiliation }),
   withProfilePath({ id: "anastasia-abaitancei", displayName: "Dr. Anastasia Abăităncei", sortName: "Abaitancei Anastasia", image: "/images/council/dr-anastasia-abaitancei.png", affiliation: scientificAffiliation }),
-  withProfilePath({ id: "ioana-agache", displayName: "Prof. Dr. Ioana Agache", sortName: "Agache Ioana", image: "/images/council/prof-dr-ioana-agache.png", affiliation: scientificAffiliation }),
-  withProfilePath({ id: "marian-anghel", displayName: "Psih. Marian Anghel", sortName: "Anghel Marian", image: "/images/council/marian-anghel.png", affiliation: scientificAffiliation }),
+  withProfilePath({
+    id: "ioana-agache",
+    displayName: "Prof. Dr. Ioana Octavia Agache",
+    sortName: "Agache Ioana Octavia",
+    image: "/images/council/prof-dr-ioana-agache.png",
+    affiliation: scientificAffiliation,
+    profileSlug: "ioana-agache",
+    shortBio: { ro: "Prof. Dr. Ioana Octavia Agache, membră a Consiliului Științific ASLM." },
+  }),
+  withProfilePath({
+    id: "marian-anghel",
+    displayName: "Sociolog Marian Anghel",
+    sortName: "Anghel Marian",
+    image: "/images/council/marian-anghel.png",
+    affiliation: scientificAffiliation,
+    profileSlug: "marian-anghel",
+    shortBio: { ro: "Sociolog Marian Anghel, membru al Consiliului Științific ASLM." },
+  }),
   withProfilePath({ id: "adriana-sorina-antohe", displayName: "Dr. Adriana Sorina Antohe", sortName: "Antohe Adriana Sorina", image: "/images/council/dr-adriana-sorina-antohe.png", affiliation: scientificAffiliation }),
-  withProfilePath({ id: "dana-teodora-anton-paduraru", displayName: "Conf. Dr. Dana-Teodora Anton-Păduraru", sortName: "Anton Paduraru Dana Teodora", image: "/images/council/conf-dr-dana-teodora-anton-paduraru.png", affiliation: scientificAffiliation }),
+  withProfilePath({
+    id: "dana-teodora-anton-paduraru",
+    displayName: "Conf. univ. dr. Dana-Teodora Anton-Păduraru",
+    sortName: "Anton Paduraru Dana Teodora",
+    image: "/images/council/conf-dr-dana-teodora-anton-paduraru.png",
+    affiliation: scientificAffiliation,
+    profileSlug: "dana-teodora-anton-paduraru",
+    shortBio: {
+      ro: "Medic primar pediatru și conferențiar universitar la UMF „Grigore T. Popa” din Iași, cu preocupări în pediatrie, nutriție pediatrică, medicina stilului de viață și tulburări metabolice.",
+    },
+    bio: {
+      ro: "Conf. univ. dr. Dana-Teodora Anton-Păduraru este medic primar pediatru și conferențiar universitar la Universitatea de Medicină și Farmacie „Grigore T. Popa” din Iași. Activitatea sa profesională este concentrată în pediatrie și gastroenterologie pediatrică, cu pregătire în nutriție și dietetică, homeopatie clinică și fitoterapie. Este implicată în proiecte educaționale, cursuri, conferințe și inițiative dedicate nutriției și sănătății copilului, precum și în promovarea medicinei stilului de viață și a comportamentelor sănătoase încă din copilărie.",
+    },
+  }),
   withProfilePath({ id: "laura-atyim", displayName: "Asist. Univ. Laura Atyim", sortName: "Atyim Laura", image: "/images/council/asist-univ-laura-atyim.png", affiliation: scientificAffiliation }),
   withProfilePath({ id: "dana-balta", displayName: "Șef Lucr. Dr. Dana Baltă", sortName: "Balta Dana", image: "/images/council/sef-lucr-dr-dana-balta.png", affiliation: scientificAffiliation }),
   withProfilePath({ id: "alexandra-belibou", displayName: "Conf. Dr. Alexandra Belibou", sortName: "Belibou Alexandra", image: "/images/council/conf-dr-alexandra-belibou.png", affiliation: scientificAffiliation }),
@@ -127,6 +157,12 @@ export const scientificCouncilMembers: GovernancePerson[] = sortPeopleByName([
     image: "/images/council/prof-dr-monica-tarcea.png",
     affiliation: scientificAffiliation,
     profileSlug: "monica-tarcea",
+    shortBio: {
+      ro: "Prof. univ. dr. Monica Tarcea este medic primar Igienă și specialist în nutriție comunitară și sănătate publică la UMFST „George Emil Palade” din Târgu Mureș.",
+    },
+    bio: {
+      ro: "Prof. univ. dr. Monica Tarcea este medic primar Igienă și profesor universitar la Universitatea de Medicină, Farmacie, Științe și Tehnologie „George Emil Palade” din Târgu Mureș. A coordonat activități academice în nutriție comunitară și siguranța alimentelor, este implicată în proiecte naționale și internaționale de sănătate publică și cercetare, iar domeniile sale de interes includ nutriția comunitară, sănătatea publică, siguranța alimentelor și managementul comportamentelor de risc.",
+    },
   }),
   withProfilePath({ id: "vladimir-poroch", displayName: "Prof. Dr. Vladimir Poroch", sortName: "Poroch Vladimir", image: "/images/council/prof-dr-vladimir-poroch.png", affiliation: scientificAffiliation }),
   withProfilePath({ id: "mircea-cinteza", displayName: "Prof. Dr. Mircea Cinteza", sortName: "Cinteza Mircea", image: "/images/council/prof-dr-mircea-cinteza.png", affiliation: scientificAffiliation }),
@@ -158,9 +194,22 @@ export const scientificCouncilMembers: GovernancePerson[] = sortPeopleByName([
   withProfilePath({ id: "andreea-narcisa-iana", displayName: "Asist. Univ. Andreea Narcisa Iana", sortName: "Iana Andreea Narcisa", image: "/images/council/andreea-narcisa-iana.png", affiliation: scientificAffiliation }),
   withProfilePath({ id: "adela-mihaela-iancu", displayName: "Prof. Dr. Adela Mihaela Iancu", sortName: "Iancu Adela Mihaela", image: "/images/council/prof-dr-adela-mihaela-iancu.png", affiliation: scientificAffiliation }),
   withProfilePath({ id: "beatrice-laura-iancu", displayName: "Dr. Beatrice Laura Iancu", sortName: "Iancu Beatrice Laura", affiliation: scientificAffiliation }),
-  withProfilePath({ id: "cristina-isar", displayName: "Dr. Cristina Cornelia Isar", sortName: "Isar Cristina Cornelia", image: "/images/council/dr-cristina-cornelia-isar.png", affiliation: scientificAffiliation }),
-  withProfilePath({ id: "constantin-kamal", displayName: "Conf. Dr. Constantin Kamal", sortName: "Kamal Constantin", image: "/images/council/conf-dr-constantin-kamal.png", affiliation: scientificAffiliation }),
-  withProfilePath({ id: "polliana-mihaela-leru", displayName: "Prof. Dr. Polliana Mihaela Leru", sortName: "Leru Polliana Mihaela", image: "/images/council/prof-dr-polliana-mihaela-leru.png", affiliation: scientificAffiliation }),
+  withProfilePath({ id: "cristina-isar", displayName: "Dr. Cristina Cornelia Isar", sortName: "Isar Cristina Cornelia", image: "/images/dr-cristina-isar.png", affiliation: scientificAffiliation }),
+  withProfilePath({ id: "constantin-kamal", displayName: "Conf. Dr. Constantin Kamal", sortName: "Kamal Constantin", image: "/images/conf-dr-constantin-kamal.png", affiliation: scientificAffiliation }),
+  withProfilePath({
+    id: "polliana-mihaela-leru",
+    displayName: "Prof. univ. dr. Polliana Mihaela Leru",
+    sortName: "Leru Polliana Mihaela",
+    image: "/images/council/prof-dr-polliana-mihaela-leru.png",
+    affiliation: scientificAffiliation,
+    profileSlug: "polliana-mihaela-leru",
+    shortBio: {
+      ro: "Medic primar alergologie și profesor universitar la UMF „Carol Davila” din București, cu interese în alergologie, boli respiratorii, medicina stilului de viață, aerobiologie și sănătate publică.",
+    },
+    bio: {
+      ro: "Prof. univ. dr. Polliana Mihaela Leru este medic primar și profesor universitar la Universitatea de Medicină și Farmacie „Carol Davila” din București. Activitatea sa clinică și de cercetare acoperă medicina internă, alergologia și imunologia clinică, iar domeniile sale de interes includ alergiile respiratorii, astmul, BPOC, medicina stilului de viață, aerobiologia, poluarea aerului, sănătatea publică și educația în asistența medicală primară.",
+    },
+  }),
   withProfilePath({ id: "roxana-miclaus", displayName: "Prof. Dr. Roxana Miclăuș", sortName: "Miclaus Roxana", image: "/images/council/prof-dr-roxana-miclaus.png", affiliation: scientificAffiliation }),
   withProfilePath({
     id: "mihaela-naidin",
@@ -170,14 +219,40 @@ export const scientificCouncilMembers: GovernancePerson[] = sortPeopleByName([
     image: "/images/council/psih-mihaela-gabor-naidin.png",
     affiliation: executiveAffiliation,
     profileSlug: "mihaela-naidin",
+    shortBio: {
+      ro: "Licențiată în Psihologie și trainer-formator în comunicare pentru domeniul sănătății, cu preocupări în managementul stresului, prevenirea burnoutului, reziliență și comunicare conștientă.",
+    },
+    bio: {
+      ro: "Mihaela Gabor Naidin este licențiată în Psihologie, cu master în Management Sanitar și formare în Managementul Calității în Sănătate. În calitate de trainer-formator în comunicare pentru domeniul sănătății, dezvoltă programe pentru profesioniști, rezidenți și studenți, abordând comunicarea cu pacientul, reglarea emoțională, managementul stresului, prevenirea burnoutului și dezvoltarea rezilienței. În cadrul ASLM coordonează aria de Psihologie Aplicată și Managementul Stresului.",
+    },
   }),
-  withProfilePath({ id: "mirela-nedelescu", displayName: "Conf. Dr. Mirela Nedelescu", sortName: "Nedelescu Mirela", image: "/images/council/conf-dr-mirela-nedelescu.png", affiliation: scientificAffiliation }),
+  withProfilePath({
+    id: "mirela-nedelescu",
+    displayName: "Conf. Dr. Mirela Nedelescu",
+    sortName: "Nedelescu Mirela",
+    affiliation: scientificAffiliation,
+    profileSlug: "mirela-nedelescu",
+    shortBio: {
+      ro: "Conferențiar universitar la UMF „Carol Davila” și medic primar Igienă, cu expertiză în nutriție, promovarea alimentației sănătoase, evaluarea statusului nutrițional și recomandări privind activitatea fizică.",
+    },
+    bio: {
+      ro: "Conf. Dr. Mirela Nedelescu este conferențiar universitar la Universitatea de Medicină și Farmacie „Carol Davila” din București și își desfășoară activitatea în cadrul Institutului Național de Sănătate Publică. Este medic primar Igienă și expert al Ministerului Sănătății în grupurile tehnice ale Comisiei Europene în domeniul nutriției, cu interese în nutriție, promovarea alimentației sănătoase, evaluarea statusului nutrițional și recomandări privind activitatea fizică.",
+    },
+  }),
   withProfilePath({ id: "robert-constantin-negoi", displayName: "Dr. Robert Constantin Negoi", sortName: "Negoi Robert Constantin", affiliation: scientificAffiliation }),
   withProfilePath({ id: "dina-olteanu-pascal", displayName: "Dr. Dina Olteanu-Pascal", sortName: "Olteanu Pascal Dina", image: "/images/council/dr-dina-olteanu-pascal.png", affiliation: scientificAffiliation }),
   withProfilePath({ id: "cintia-orsa", displayName: "Dr. Cintia Orsa", sortName: "Orsa Cintia", image: "/images/council/dr-cintia-orsa.png", affiliation: scientificAffiliation }),
   withProfilePath({ id: "catalina-panaitescu", displayName: "Dr. Cătălina Panaitescu", sortName: "Panaitescu Catalina", image: "/images/council/dr-catalina-panaitescu.png", affiliation: scientificAffiliation }),
   withProfilePath({ id: "alina-pascu", displayName: "Prof. Dr. Alina Pascu", sortName: "Pascu Alina", image: "/images/council/prof-univ-dr-alina-pascu.png", affiliation: scientificAffiliation }),
-  withProfilePath({ id: "ionut-poinareanu", displayName: "Șef Lucr. Dr. Ionuț Poinăreanu", sortName: "Poinareanu Ionut", image: "/images/council/sef-lucr-dr-ionut-poinareanu.png", affiliation: scientificAffiliation }),
+  withProfilePath({
+    id: "ionut-poinareanu",
+    displayName: "Șef Lucr. Dr. Ionuț Poinăreanu",
+    sortName: "Poinareanu Ionut",
+    image: "/images/council/sef-lucr-dr-ionut-poinareanu.png",
+    affiliation: scientificAffiliation,
+    profileSlug: "ionut-poinareanu",
+    shortBio: { ro: "Șef Lucr. Dr. Ionuț Poinăreanu, membru al Consiliului Științific ASLM." },
+  }),
   withProfilePath({
     id: "mihai-cristian-popescu",
     displayName: "Dr. Mihai Cristian Popescu",
@@ -188,7 +263,6 @@ export const scientificCouncilMembers: GovernancePerson[] = sortPeopleByName([
     profileSlug: "mihai-cristian-popescu",
   }),
   withProfilePath({ id: "aida-puia", displayName: "Conf. Dr. Aida Puia", sortName: "Puia Aida", image: "/images/council/conf-dr-aida-puia.png", affiliation: scientificAffiliation }),
-  withProfilePath({ id: "daniela-nicoleta-stanca", displayName: "Fiziokin. Dr. Daniela Nicoleta Stanca", sortName: "Stanca Daniela Nicoleta", image: "/images/council/fiziokin-dr-daniela-nicoleta-stanca.png", affiliation: scientificAffiliation }),
   withProfilePath({ id: "razvan-susan", displayName: "Conf. Dr. Răzvan Șusan", sortName: "Susan Razvan", image: "/images/council/conf-dr-razvan-susan.png", affiliation: scientificAffiliation }),
   withProfilePath({ id: "ioana-bianca-tebeica", displayName: "Dr. Ioana Bianca Tebeica", sortName: "Tebeica Ioana Bianca", image: "/images/council/dr-ioana-bianca-tebeica.png", affiliation: scientificAffiliation }),
   withProfilePath({ id: "doina-carina-voinescu", displayName: "Prof. Dr. Doina Carina Voinescu", sortName: "Voinescu Doina Carina", image: "/images/council/prof-dr-doina-carina-voinescu.png", affiliation: scientificAffiliation }),

@@ -13,6 +13,10 @@ export type Expert = {
     ro?: string;
     en?: string;
   };
+  bio?: {
+    ro?: string;
+    en?: string;
+  };
 };
 
 export const experts: Expert[] = profiledExperts.map((person) => ({
@@ -25,6 +29,7 @@ export const experts: Expert[] = profiledExperts.map((person) => ({
   schemaType: "Person",
   orcid: person.orcid,
   shortBio: person.shortBio,
+  bio: person.bio,
 }));
 
 export const scientificReviewBody: Expert = {

@@ -77,10 +77,12 @@ export default async function ExpertPage({ params }: ExpertPageProps) {
             <h2 className="text-title text-[var(--text-primary)] mb-4">
               Rol în ecosistemul ASLM
             </h2>
-            <p className="text-[var(--text-secondary)] leading-relaxed mb-6">
-              {expert.shortBio?.ro ??
-                "Acest profil prezintă rolul membrului în cadrul ASLM. Informațiile biografice și datele profesionale de contact sunt publicate și completate numai cu acordul persoanei."}
-            </p>
+            <div className="space-y-4 text-[var(--text-secondary)] leading-relaxed mb-6">
+              {(expert.bio?.ro ?? expert.shortBio?.ro ??
+                "Acest profil prezintă rolul membrului în cadrul ASLM. Informațiile biografice și datele profesionale de contact sunt publicate și completate numai cu acordul persoanei.")
+                .split(/\n\s*\n/)
+                .map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+            </div>
             {expert.orcid && (
               <p className="text-[var(--text-secondary)] leading-relaxed mb-6">
                 ORCID:{" "}
