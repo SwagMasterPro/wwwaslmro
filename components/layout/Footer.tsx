@@ -4,7 +4,7 @@ import type { CSSProperties, ReactNode } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { ExternalLink, Facebook, Instagram, Mail, MapPin } from "lucide-react";
+import { ExternalLink, Facebook, Instagram, Linkedin, Mail, MapPin } from "lucide-react";
 import { isEnglishPath, MEMBERSHIP_JOIN_URL, STATUTE_EN_URL, type Locale } from "@/lib/localized-routes";
 
 type FooterLink = {
@@ -201,6 +201,28 @@ export default function Footer() {
                 aria-label="Instagram"
               >
                 <Instagram className="w-5 h-5" />
+              </a>
+              <a
+                href="https://www.linkedin.com/company/144958913/admin/dashboard/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-xl flex items-center justify-center transition-colors hover:bg-green-100"
+                style={{ backgroundColor: "#F3F4F6", color: "#374151" }}
+                aria-label="LinkedIn"
+              >
+                <Linkedin className="w-5 h-5" aria-hidden="true" />
+              </a>
+              <a
+                href="https://www.tiktok.com/@aslm.lifestylemedicine"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-xl flex items-center justify-center transition-colors hover:bg-green-100"
+                style={{ backgroundColor: "#F3F4F6", color: "#374151" }}
+                aria-label="TikTok"
+              >
+                <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64c.3 0 .6.05.88.14v-3.5a6.34 6.34 0 0 0-5.11 10.89 6.34 6.34 0 0 0 10.57-4.63V8.68a8.16 8.16 0 0 0 4.77 1.52V6.78c-.34 0-.67-.03-1-.09Z" />
+                </svg>
               </a>
             </div>
           </div>
