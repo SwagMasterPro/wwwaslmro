@@ -60,7 +60,6 @@ function MemberCard({
   showRole?: boolean;
 }) {
   const role = showRole ? textForLocale(member.role, locale) : undefined;
-  const shortBio = member.shortBio?.[locale];
 
   return (
     <motion.article
@@ -100,7 +99,6 @@ function MemberCard({
             ORCID
           </a>
         )}
-        {shortBio && <p className="mt-3 text-sm leading-relaxed text-[var(--text-secondary)]">{shortBio}</p>}
         {member.profilePath && (
           <Link
             href={member.profilePath}

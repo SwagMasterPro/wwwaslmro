@@ -124,7 +124,7 @@ export const scientificCouncilMembers: GovernancePerson[] = sortPeopleByName([
   withProfilePath({ id: "adriana-sorina-antohe", displayName: "Dr. Adriana Sorina Antohe", sortName: "Antohe Adriana Sorina", image: "/images/council/dr-adriana-sorina-antohe.png", affiliation: scientificAffiliation }),
   withProfilePath({
     id: "dana-teodora-anton-paduraru",
-    displayName: "Conf. univ. dr. Dana-Teodora Anton-Păduraru",
+    displayName: "Conf. Dr. Dana-Teodora Anton-Păduraru",
     sortName: "Anton Paduraru Dana Teodora",
     image: "/images/council/conf-dr-dana-teodora-anton-paduraru.png",
     affiliation: scientificAffiliation,
@@ -133,10 +133,10 @@ export const scientificCouncilMembers: GovernancePerson[] = sortPeopleByName([
       ro: "Medic primar pediatru și conferențiar universitar la UMF „Grigore T. Popa” din Iași, cu preocupări în pediatrie, nutriție pediatrică, medicina stilului de viață și tulburări metabolice.",
     },
     bio: {
-      ro: "Conf. univ. dr. Dana-Teodora Anton-Păduraru este medic primar pediatru și conferențiar universitar la Universitatea de Medicină și Farmacie „Grigore T. Popa” din Iași. Activitatea sa profesională este concentrată în pediatrie și gastroenterologie pediatrică, cu pregătire în nutriție și dietetică, homeopatie clinică și fitoterapie. Este implicată în proiecte educaționale, cursuri, conferințe și inițiative dedicate nutriției și sănătății copilului, precum și în promovarea medicinei stilului de viață și a comportamentelor sănătoase încă din copilărie.",
+      ro: "Conf. Dr. Dana-Teodora Anton-Păduraru este medic primar pediatru și conferențiar universitar la Universitatea de Medicină și Farmacie „Grigore T. Popa” din Iași. Activitatea sa profesională este concentrată în pediatrie și gastroenterologie pediatrică, cu pregătire în nutriție și dietetică, homeopatie clinică și fitoterapie. Este implicată în proiecte educaționale, cursuri, conferințe și inițiative dedicate nutriției și sănătății copilului, precum și în promovarea medicinei stilului de viață și a comportamentelor sănătoase încă din copilărie.",
     },
   }),
-  withProfilePath({ id: "laura-atyim", displayName: "Asist. Univ. Laura Atyim", sortName: "Atyim Laura", image: "/images/council/asist-univ-laura-atyim.png", affiliation: scientificAffiliation }),
+  withProfilePath({ id: "laura-atyim", displayName: "Asist. Univ. Dr. Laura Atyim", sortName: "Atyim Laura", image: "/images/council/asist-univ-laura-atyim.png", affiliation: scientificAffiliation }),
   withProfilePath({ id: "dana-balta", displayName: "Șef Lucr. Dr. Dana Baltă", sortName: "Balta Dana", image: "/images/council/sef-lucr-dr-dana-balta.png", affiliation: scientificAffiliation }),
   withProfilePath({ id: "alexandra-belibou", displayName: "Conf. Dr. Alexandra Belibou", sortName: "Belibou Alexandra", image: "/images/council/conf-dr-alexandra-belibou.png", affiliation: scientificAffiliation }),
   withProfilePath({ id: "lucia-bubulac", displayName: "Șef Lucr. Dr. Lucia Bubulac", sortName: "Bubulac Lucia", image: "/images/council/sef-lucr-dr-lucia-bubulac.png", affiliation: scientificAffiliation }),
@@ -158,10 +158,10 @@ export const scientificCouncilMembers: GovernancePerson[] = sortPeopleByName([
     affiliation: scientificAffiliation,
     profileSlug: "monica-tarcea",
     shortBio: {
-      ro: "Prof. univ. dr. Monica Tarcea este medic primar Igienă și specialist în nutriție comunitară și sănătate publică la UMFST „George Emil Palade” din Târgu Mureș.",
+      ro: "Prof. Dr. Monica Tarcea este medic primar Igienă și specialist în nutriție comunitară și sănătate publică la UMFST „George Emil Palade” din Târgu Mureș.",
     },
     bio: {
-      ro: "Prof. univ. dr. Monica Tarcea este medic primar Igienă și profesor universitar la Universitatea de Medicină, Farmacie, Științe și Tehnologie „George Emil Palade” din Târgu Mureș. A coordonat activități academice în nutriție comunitară și siguranța alimentelor, este implicată în proiecte naționale și internaționale de sănătate publică și cercetare, iar domeniile sale de interes includ nutriția comunitară, sănătatea publică, siguranța alimentelor și managementul comportamentelor de risc.",
+      ro: "Prof. Dr. Monica Tarcea este medic primar Igienă și profesor universitar la Universitatea de Medicină, Farmacie, Științe și Tehnologie „George Emil Palade” din Târgu Mureș. A coordonat activități academice în nutriție comunitară și siguranța alimentelor, este implicată în proiecte naționale și internaționale de sănătate publică și cercetare, iar domeniile sale de interes includ nutriția comunitară, sănătatea publică, siguranța alimentelor și managementul comportamentelor de risc.",
     },
   }),
   withProfilePath({ id: "vladimir-poroch", displayName: "Prof. Dr. Vladimir Poroch", sortName: "Poroch Vladimir", image: "/images/council/prof-dr-vladimir-poroch.png", affiliation: scientificAffiliation }),
@@ -193,12 +193,11 @@ export const scientificCouncilMembers: GovernancePerson[] = sortPeopleByName([
   withProfilePath({ id: "felicia-alexandra-hanzu", displayName: "Prof. Dr. Felicia Alexandra Hanzu", sortName: "Hanzu Felicia Alexandra", image: "/images/council/prof-dr-felicia-alexandra-hanzu.png", affiliation: scientificAffiliation }),
   withProfilePath({ id: "andreea-narcisa-iana", displayName: "Asist. Univ. Andreea Narcisa Iana", sortName: "Iana Andreea Narcisa", image: "/images/council/andreea-narcisa-iana.png", affiliation: scientificAffiliation }),
   withProfilePath({ id: "adela-mihaela-iancu", displayName: "Prof. Dr. Adela Mihaela Iancu", sortName: "Iancu Adela Mihaela", image: "/images/council/prof-dr-adela-mihaela-iancu.png", affiliation: scientificAffiliation }),
-  withProfilePath({ id: "beatrice-laura-iancu", displayName: "Dr. Beatrice Laura Iancu", sortName: "Iancu Beatrice Laura", affiliation: scientificAffiliation }),
   withProfilePath({ id: "cristina-isar", displayName: "Dr. Cristina Cornelia Isar", sortName: "Isar Cristina Cornelia", image: "/images/dr-cristina-isar.png", affiliation: scientificAffiliation }),
   withProfilePath({ id: "constantin-kamal", displayName: "Conf. Dr. Constantin Kamal", sortName: "Kamal Constantin", image: "/images/conf-dr-constantin-kamal.png", affiliation: scientificAffiliation }),
   withProfilePath({
     id: "polliana-mihaela-leru",
-    displayName: "Prof. univ. dr. Polliana Mihaela Leru",
+    displayName: "Prof. Dr. Polliana Mihaela Leru",
     sortName: "Leru Polliana Mihaela",
     image: "/images/council/prof-dr-polliana-mihaela-leru.png",
     affiliation: scientificAffiliation,
@@ -207,7 +206,7 @@ export const scientificCouncilMembers: GovernancePerson[] = sortPeopleByName([
       ro: "Medic primar alergologie și profesor universitar la UMF „Carol Davila” din București, cu interese în alergologie, boli respiratorii, medicina stilului de viață, aerobiologie și sănătate publică.",
     },
     bio: {
-      ro: "Prof. univ. dr. Polliana Mihaela Leru este medic primar și profesor universitar la Universitatea de Medicină și Farmacie „Carol Davila” din București. Activitatea sa clinică și de cercetare acoperă medicina internă, alergologia și imunologia clinică, iar domeniile sale de interes includ alergiile respiratorii, astmul, BPOC, medicina stilului de viață, aerobiologia, poluarea aerului, sănătatea publică și educația în asistența medicală primară.",
+      ro: "Prof. Dr. Polliana Mihaela Leru este medic primar și profesor universitar la Universitatea de Medicină și Farmacie „Carol Davila” din București. Activitatea sa clinică și de cercetare acoperă medicina internă, alergologia și imunologia clinică, iar domeniile sale de interes includ alergiile respiratorii, astmul, BPOC, medicina stilului de viață, aerobiologia, poluarea aerului, sănătatea publică și educația în asistența medicală primară.",
     },
   }),
   withProfilePath({ id: "roxana-miclaus", displayName: "Prof. Dr. Roxana Miclăuș", sortName: "Miclaus Roxana", image: "/images/council/prof-dr-roxana-miclaus.png", affiliation: scientificAffiliation }),
