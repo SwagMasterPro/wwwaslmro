@@ -9,25 +9,32 @@
     "optimize:images": "node scripts/optimize-images.mjs",
     "test:seo": "node scripts/verify-seo.mjs",
     "test:images": "node scripts/verify-images.mjs",
+    "test:webinar": "node --conditions=react-server --import tsx --test tests/webinar/*.test.ts",
+    "check:webinar": "node --conditions=react-server --import tsx scripts/check-webinar.ts",
     "score:seo": "node scripts/score-seo.mjs",
     "lint": "eslint"
   },
   "dependencies": {
     "framer-motion": "^12.26.2",
     "lucide-react": "^0.562.0",
-    "next": "16.1.1",
+    "next": "16.3.8",
+    "nodemailer": "10.0.15",
     "react": "19.2.3",
-    "react-dom": "19.2.3"
+    "react-dom": "19.2.3",
+    "server-only": "0.0.1",
+    "zod": "4.6.5"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
+    "@types/nodemailer": "8.0.2",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
-    "eslint-config-next": "16.1.1",
-    "sharp": "^0.34.5",
+    "eslint-config-next": "16.3.8",
+    "sharp": "0.35.5",
     "tailwindcss": "^4",
+    "tsx": "4.23.15",
     "typescript": "^5"
   }
 }

@@ -79,7 +79,8 @@ const htmlFiles = walkHtmlFiles(appOutputDir).filter((filePath) => {
 
 if (htmlFiles.length === 0) fail("No built HTML pages found under .next/server/app.");
 
-const rows = htmlFiles.map((filePath) => {
+// Private receipt pages are deliberately excluded from discovery and sitemap checks.
+const rows = htmlFiles.filter((filePath) => !/<meta name="robots" content="[^"]*noindex/.test(readFileSync(filePath, "utf8"))).map((filePath) => {
   const route = routeFromHtmlFile(filePath);
   const html = readFileSync(filePath, "utf8");
   return {

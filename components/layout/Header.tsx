@@ -62,6 +62,7 @@ function getNavItems(locale: Locale): NavItem[] {
         ],
       },
       { href: "/evenimente", label: "Events" },
+      { href: "/webinar", label: "Webinar" },
       { href: "/y-aslm", label: "Y-ASLM" },
       { href: "/contact", label: "Contact" },
     ];
@@ -100,6 +101,7 @@ function getNavItems(locale: Locale): NavItem[] {
       ],
     },
     { href: "/evenimente", label: "Evenimente" },
+    { href: "/webinar", label: "Webinar" },
     { href: "/y-aslm", label: "Y-ASLM" },
     { href: "/contact", label: "Contact" },
   ];
@@ -124,7 +126,7 @@ export default function Header({ locale }: { locale: Locale }) {
             </div>
           </Link>
 
-          <div className="hidden lg:flex items-center gap-1">
+          <div className="hidden xl:flex items-center gap-1">
             {navItems.map((item) => (
               <div key={item.href} className="relative group">
                 {item.children ? (
@@ -149,12 +151,12 @@ export default function Header({ locale }: { locale: Locale }) {
             ))}
           </div>
 
-          <div className="hidden lg:flex items-center gap-2">
+          <div className="hidden xl:flex items-center gap-2">
             <LanguageSwitch locale={locale} />
             <MembershipButton locale={locale} />
           </div>
 
-          <details className="relative lg:hidden">
+          <details className="relative xl:hidden">
             <summary className="list-none cursor-pointer p-2 rounded-lg text-gray-900" aria-label="Open menu">
               <Menu className="w-6 h-6" />
             </summary>

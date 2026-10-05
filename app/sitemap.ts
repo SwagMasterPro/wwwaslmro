@@ -22,6 +22,7 @@ type RouteConfig = {
 };
 
 const staticRoutes: RouteConfig[] = [
+  { path: "/webinar", lastModified: "2026-10-05", changeFrequency: "weekly", priority: 0.9 },
   { path: "/", lastModified: "2026-07-20", changeFrequency: "weekly", priority: 1 },
   { path: "/despre", lastModified: "2026-07-13", changeFrequency: "monthly", priority: 0.9 },
   { path: "/misiune", lastModified: "2026-06-19", changeFrequency: "monthly", priority: 0.8 },
