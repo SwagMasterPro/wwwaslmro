@@ -24,10 +24,10 @@ export default function WebinarPage() {
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-white/85">De la dovezi științifice la practica medicală: aprofundează medicina stilului de viață, descoperind perspective și instrumente utile pentru o abordare mai complexă a pacientului.</p>
         </div>
         <div className="rounded-2xl border border-white/20 bg-white/10 p-6 md:p-8">
-          <div className="space-y-5 leading-relaxed text-white/90">
-            <p className="flex items-center gap-3"><CalendarDays className="h-5 w-5 shrink-0 text-green-200" aria-hidden="true" />{WEBINAR.displayDates}</p>
-            <p className="flex items-start gap-3"><MonitorPlay className="mt-1 h-5 w-5 shrink-0 text-green-200" aria-hidden="true" />Acces la înregistrări timp de 30 de zile. Vizionezi prezentările când ai timp.</p>
-            <p className="flex items-start gap-3"><Mail className="mt-1 h-5 w-5 shrink-0 text-green-200" aria-hidden="true" />Datele de logare se trimit separat prin e-mail, începând cu 19 octombrie, după confirmarea înscrierii.</p>
+          <div className="space-y-5 leading-relaxed">
+            <p className="flex items-center gap-3 text-white"><CalendarDays className="h-5 w-5 shrink-0 text-green-200" aria-hidden="true" />{WEBINAR.displayDates}</p>
+            <p className="flex items-start gap-3 text-white"><MonitorPlay className="mt-1 h-5 w-5 shrink-0 text-green-200" aria-hidden="true" />Acces la înregistrări timp de 30 de zile. Vizionezi prezentările când ai timp.</p>
+            <p className="flex items-start gap-3 text-white"><Mail className="mt-1 h-5 w-5 shrink-0 text-green-200" aria-hidden="true" />Datele de logare se trimit separat prin e-mail, începând cu 19 octombrie, după confirmarea înscrierii.</p>
           </div>
           <a href="#inscriere" className="mt-8 inline-flex min-h-12 items-center rounded-xl bg-white px-6 py-3 font-semibold text-green-950">Înscrie-te la webinar</a>
           <p className="mt-4 text-sm leading-relaxed text-white/85">Gratuit pentru membrii ASLM confirmați. Nu ești încă membru? <a href={WEBINAR.membershipUrl} className="font-semibold underline">Devino membru ASLM</a>.</p>
