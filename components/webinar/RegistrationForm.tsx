@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import Link from "next/link";
-import { ArrowRight, HeartHandshake, Users } from "lucide-react";
+import { ArrowRight, HeartHandshake, MonitorPlay, Users } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { Input } from "@/components/ui/Input";
 import Button from "@/components/ui/Button";
@@ -46,7 +46,7 @@ export default function RegistrationForm() {
   return (
     <div id="inscriere" className="scroll-mt-28">
       <h2 className="mb-6 text-2xl font-semibold text-[var(--text-primary)]">Participă la Webinar ASLM</h2>
-      <div className="mb-10 grid gap-5 md:grid-cols-2">
+      <div className="mb-10 grid gap-5 lg:grid-cols-3">
         <div className="flex flex-col rounded-2xl border-2 border-green-700 bg-green-50 p-6">
           <Users className="mb-5 h-7 w-7 text-green-800" aria-hidden="true" />
           <h3 className="text-xl font-semibold text-gray-900">Sunt membru ASLM</h3>
@@ -56,10 +56,18 @@ export default function RegistrationForm() {
         </div>
         <div className="flex flex-col rounded-2xl border-2 border-gray-200 bg-white p-6">
           <HeartHandshake className="mb-5 h-7 w-7 text-green-800" aria-hidden="true" />
-          <h3 className="text-xl font-semibold text-gray-900">Nu sunt încă membru ASLM</h3>
+          <h3 className="text-xl font-semibold text-gray-900">Devino membru ASLM</h3>
           <p className="mt-5 text-3xl font-bold tracking-tight text-green-900">Webinar inclus</p>
           <p className="mt-5 leading-relaxed text-gray-700">Devino membru prin formularul ASLM, unde poți achita cotizația anuală a categoriei tale. După înscrierea ca membru, revino aici și solicită accesul la webinar folosind aceeași adresă de e-mail.</p>
           <a href={WEBINAR.membershipUrl} className="mt-6 inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-green-800 px-6 py-3 font-semibold text-white hover:bg-green-900 focus-visible:outline-4 focus-visible:outline-offset-4 focus-visible:outline-green-700">Devino membru ASLM <ArrowRight className="h-5 w-5" aria-hidden="true" /></a>
+        </div>
+        <div className="flex flex-col rounded-2xl border-2 border-gray-200 bg-white p-6">
+          <MonitorPlay className="mb-5 h-7 w-7 text-green-800" aria-hidden="true" />
+          <h3 className="text-xl font-semibold text-gray-900">Particip doar la webinar</h3>
+          <p className="mt-5 text-3xl font-bold tracking-tight text-green-900">100 RON</p>
+          <p className="mt-5 leading-relaxed text-gray-700">Acces la webinar fără înscriere ca membru ASLM. Această opțiune va fi disponibilă pe membership.aslm.ro, unde se va face și plata. Echipa ASLM va confirma plata și va trimite separat datele de acces prin e-mail.</p>
+          <p className="mt-4 text-sm font-medium text-gray-600">Opțiune în pregătire pe site-ul de înscrieri.</p>
+          <a href={WEBINAR.membershipUrl} className="mt-6 inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-green-800 px-6 py-3 font-semibold text-white hover:bg-green-900 focus-visible:outline-4 focus-visible:outline-offset-4 focus-visible:outline-green-700">Vezi opțiunile de înscriere <ArrowRight className="h-5 w-5" aria-hidden="true" /></a>
         </div>
       </div>
 

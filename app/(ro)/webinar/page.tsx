@@ -30,7 +30,7 @@ export default function WebinarPage() {
             <p className="flex items-start gap-3 text-white"><Mail className="mt-1 h-5 w-5 shrink-0 text-green-200" aria-hidden="true" />Datele de logare se trimit separat prin e-mail, începând cu 19 octombrie, după confirmarea înscrierii.</p>
           </div>
           <a href="#inscriere" className="mt-8 inline-flex min-h-12 items-center rounded-xl bg-white px-6 py-3 font-semibold text-green-950">Înscrie-te la webinar</a>
-          <p className="mt-4 text-sm leading-relaxed text-white/85">Gratuit pentru membrii ASLM confirmați. Nu ești încă membru? <a href={WEBINAR.membershipUrl} className="font-semibold underline">Devino membru ASLM</a>.</p>
+          <p className="mt-4 text-sm leading-relaxed text-white/85">Gratuit pentru membrii ASLM confirmați. <a href={WEBINAR.membershipUrl} className="font-semibold text-white underline hover:text-white">Devino membru ASLM</a>. Accesul doar la webinar, fără înscriere ca membru, va fi disponibil pentru 100 RON pe <a href={WEBINAR.membershipUrl} className="font-semibold text-white underline hover:text-white">membership.aslm.ro</a>.</p>
         </div>
       </div>
     </section>
@@ -95,11 +95,12 @@ export default function WebinarPage() {
       <div className="mt-6 space-y-4 leading-relaxed text-gray-700">
         <p>Webinarul se vizionează ca înregistrare pe o platformă externă. Programul detaliat și numele platformei vor fi anunțate de ASLM.</p>
         <p>Accesul este disponibil între 19 octombrie și 17 noiembrie 2026 inclusiv și se încheie pe 18 noiembrie, la ora 00:00, ora României. Înscrierile după 19 octombrie beneficiază de perioada rămasă.</p>
-        <p>Membrii ASLM confirmați participă gratuit. Dacă nu sunteți membru, înscrierea ca membru și plata cotizației anuale se fac prin <a href={WEBINAR.membershipUrl} className="font-semibold text-green-800 underline">formularul de membru ASLM</a>. După completarea acestuia, solicitați accesul la webinar folosind aceeași adresă de e-mail.</p>
-        <p>Echipa ASLM verifică statutul de membru și trimite separat, prin e-mail, datele contului pentru vizionare, începând cu 19 octombrie. Solicitarea trimisă nu înlocuiește confirmarea înscrierii.</p>
+        <p>Membrii ASLM confirmați participă gratuit. Dacă doriți să deveniți membru, înscrierea și plata cotizației anuale se fac prin <a href={WEBINAR.membershipUrl} className="font-semibold text-green-800 underline">formularul de membru ASLM</a>. După completarea acestuia, solicitați accesul la webinar folosind aceeași adresă de e-mail.</p>
+        <p>Pentru participarea doar la webinar, fără înscriere ca membru ASLM, taxa este de 100 RON. Această opțiune va fi disponibilă pe <a href={WEBINAR.membershipUrl} className="font-semibold text-green-800 underline">membership.aslm.ro</a>, unde se va face și plata.</p>
+        <p>Echipa ASLM verifică statutul de membru sau plata taxei de participare și trimite separat, prin e-mail, datele contului pentru vizionare, începând cu 19 octombrie. Solicitarea trimisă nu înlocuiește confirmarea înscrierii.</p>
         <p>Pentru asistență privind înscrierea sau accesul, scrieți la <a href="mailto:contact@aslm.ro" className="font-semibold text-green-800 underline">contact@aslm.ro</a>.</p>
       </div>
     </div></section>
-    <JsonLdScript id="webinar-structured-data" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(generateWebPageSchema("https://www.aslm.ro/webinar", `${WEBINAR.title}: ${WEBINAR.topic}`, "O abordare integrată în îngrijirea pacientului. Gratuit pentru membrii ASLM confirmați. Devino membru prin membership.aslm.ro. Vizionare online între 19 octombrie și 17 noiembrie 2026.", [{ name: "Acasă", path: "/" }, { name: "Webinar", path: "/webinar" }])) }} />
+    <JsonLdScript id="webinar-structured-data" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(generateWebPageSchema("https://www.aslm.ro/webinar", `${WEBINAR.title}: ${WEBINAR.topic}`, "Gratuit pentru membrii ASLM confirmați. Opțiunea de acces doar la webinar, pentru 100 RON, va fi disponibilă pe membership.aslm.ro. Vizionare online între 19 octombrie și 17 noiembrie 2026.", [{ name: "Acasă", path: "/" }, { name: "Webinar", path: "/webinar" }])) }} />
   </div>;
 }

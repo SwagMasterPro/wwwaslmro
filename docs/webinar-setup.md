@@ -1,8 +1,10 @@
 # ASLM Webinar: membership access and Sheet registration
 
-Non-members go directly to [membership.aslm.ro](https://membership.aslm.ro/) to become ASLM members and pay their category's annual fee there. After completing that form, they return to the webinar page and request access with the same email. Existing members submit a free webinar request. ASLM manually verifies membership before sending platform accounts.
+Non-members go directly to [membership.aslm.ro](https://membership.aslm.ro/) to become ASLM members and pay their category's annual fee there. After completing that form, new members return to the webinar page and request access with the same email. Existing members submit a free webinar request. ASLM manually verifies membership before sending platform accounts.
 
-There is no webinar ticket checkout, payment webhook, bank client or cloud database. The private Google Sheet is the only persistent store for webinar requests.
+The landing page also describes the planned **100 RON webinar-only option without membership**. Registration and payment for this option will be handled on membership.aslm.ro. It is marked as being prepared until that external form is updated. ASLM will manually verify those payments and deliver access; webinar-only attendees do not submit the member-only form on this site.
+
+There is no local webinar checkout, payment webhook, bank client or cloud database. The private Google Sheet is the only persistent store for member webinar requests on this site.
 
 Tracker: [Webinar ASLM – înscrieri](https://docs.google.com/spreadsheets/d/1coMLPgIRzwjYT8Cwr3PkeltMbPpJQi7ivz5Q3cNclyg/edit).
 
@@ -44,7 +46,7 @@ Configure `.env.example` values in local/provider environment settings, never Gi
 - Delivery trigger: `CRON_SECRET`, identical in Script Properties.
 - `WEBINAR_REGISTRATION_ENABLED=false` until actual storage and email checks pass.
 
-No merchant credentials or checkout flags are needed. The membership form handles membership payments separately.
+No merchant credentials or checkout flags are needed. The external form handles membership payments and will also handle webinar-only payments after its planned update. That update is separate from this repository.
 
 After securely configuring `.env.local`, run `npm run check:webinar` to verify deployed Script health, schema, terms and cutoff without creating records or printing secrets. It does not verify email delivery.
 
