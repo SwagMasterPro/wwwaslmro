@@ -47,7 +47,7 @@ test("SMTP failure stays in the Sheet queue and a later worker actually resends 
     return Response.json(sheet.post(await req.text()));
   };
   try {
-    sheet.rpc("webinar_register", registrationArgs("join"));
+    sheet.rpc("webinar_register", registrationArgs());
     assert.deepEqual(await runOutbox(), { attempted: 2, delivered: 1 });
     const jobs = sheet.records<{ kind: string; status: string; attempts: number }>("_WebinarQueue");
     assert.equal(jobs.find(j => j.kind === "email-request-attendee")?.status, "pending");
@@ -57,7 +57,7 @@ test("SMTP failure stays in the Sheet queue and a later worker actually resends 
     assert.deepEqual(await runOutbox(), { attempted: 1, delivered: 1 });
     assert.match(accepted[1].recipients.join(), /ana@example.com/);
     assert.equal(sheet.records<{ status: string }>("_WebinarQueue").every(j => j.status === "done"), true);
-    assert.match(accepted[1].data, /membership.aslm.ro/);
+    assert.match(accepted[1].data.replace(/=\r\n/g, ""), /ASLM va verifica statutul de membru/);
     assert.match(accepted[1].data, /17 noiembrie/);
     const ids = accepted.map(mail => mail.data.match(/Message-ID:\s*(<[^>]+>)/i)?.[1]);
     assert.ok(ids[0] && ids[1]); assert.notEqual(ids[0], ids[1]);

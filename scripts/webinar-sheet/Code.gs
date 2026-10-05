@@ -1,4 +1,5 @@
-const WEBINAR_TABS = { registrations: "_WebinarRegistrations", orders: "_WebinarOrders", jobs: "_WebinarQueue", rates: "_WebinarRateLimits", worker: "_WebinarWorker" };
+const WEBINAR_TABS = { registrations: "_WebinarRegistrations", jobs: "_WebinarQueue", rates: "_WebinarRateLimits", worker: "_WebinarWorker" };
+const WEBINAR_TAB_IDS = { registrations: 700000001, jobs: 700000003, rates: 700000004, worker: 700000005 };
 const WEBINAR_HEADERS = ["ID înscriere", "Data înscrierii", "Nume", "E-mail", "Telefon", "Opțiune", "Sumă bilet (RON)", "Status plată / solicitare", "ID comandă", "Verificare membru", "Cont trimis la", "Observații ASLM"];
 
 function webinarConfiguration() {
@@ -30,7 +31,7 @@ function doPost(e) {
     webinarCommit(config.sheetId, snapshot, state);
     return webinarResponse({ ok: true, result });
   } catch (error) {
-    const allowed = ["not_configured", "invalid_envelope", "unauthorized", "invalid_request", "busy", "schema_missing", "schema_mismatch", "duplicate_record", "registration_closed", "invalid_registration", "duplicate_email", "idempotency_conflict", "registration_missing", "order_missing", "ticket_required", "invalid_reference", "invalid_session", "transaction_required", "invalid_payment_time", "invalid_payment_status", "invalid_job_id", "invalid_lease", "invalid_rate_key", "unknown_action", "duplicate_sheet_id", "sheet_row_occupied"];
+    const allowed = ["not_configured", "invalid_envelope", "unauthorized", "invalid_request", "busy", "schema_missing", "schema_mismatch", "duplicate_record", "registration_closed", "invalid_registration", "duplicate_email", "idempotency_conflict", "invalid_lease", "invalid_rate_key", "unknown_action", "duplicate_sheet_id", "sheet_row_occupied"];
     return webinarResponse({ ok: false, error: allowed.includes(error.message) ? error.message : "unavailable" });
   } finally { if (lock?.hasLock()) lock.releaseLock(); }
 }
@@ -38,7 +39,7 @@ function doPost(e) {
 function webinarRead(sheetId) {
   const cache = CacheService.getScriptCache(), cacheKey = `webinar-metadata:${sheetId}`, cached = cache.get(cacheKey);
   const metadata = cached ? JSON.parse(cached) : Sheets.Spreadsheets.get(sheetId, { fields: "sheets(properties,tables(tableId,name,range))" });
-  // Cache only structural metadata. Contacts, payments, jobs and rate counters
+  // Cache only structural metadata. Contacts, jobs and rate counters
   // always come from a fresh Sheet read inside the lock.
   if (!cached) cache.put(cacheKey, JSON.stringify(metadata), 300);
   const tabs = {};
@@ -50,7 +51,7 @@ function webinarRead(sheetId) {
   const data = Sheets.Spreadsheets.Values.batchGet(sheetId, { ranges, valueRenderOption: "UNFORMATTED_VALUE" }).valueRanges;
   const visibleRows = data[0].values || [];
   if (JSON.stringify(visibleRows[0]) !== JSON.stringify(WEBINAR_HEADERS) || !tabs["Înscrieri"].tables?.some(t => t.name === "InscrieriWebinarASLM")) throw new Error("schema_mismatch");
-  const state = { visible: visibleRows.slice(1), registrations: {}, orders: {}, jobs: {}, rates: {}, worker: {} }, indexes = {};
+  const state = { visible: visibleRows.slice(1), registrations: {}, jobs: {}, rates: {}, worker: {} }, indexes = {};
   Object.keys(WEBINAR_TABS).forEach((key, i) => {
     const values = data[i + 1].values || [];
     if (JSON.stringify(values[0]) !== JSON.stringify(["Key", "Record JSON"])) throw new Error("schema_mismatch");
@@ -109,7 +110,7 @@ function webinarCommit(sheetId, snapshot, state) {
       if ((table.range.endRowIndex || 0) < end) structural.push({ updateTable: { table: { tableId: table.tableId, range: { sheetId: tab.properties.sheetId, startRowIndex: 0, endRowIndex: end, startColumnIndex: 0, endColumnIndex: 12 } }, fields: "range" } });
     }
   });
-  // Registration/payment state, visible A:I and notification jobs commit together.
+  // Registration state, visible A:I and notification jobs commit together.
   // No append: IDs and locked positions make retry after an unknown response safe.
   if (structural.length) CacheService.getScriptCache().remove(`webinar-metadata:${sheetId}`);
   if (requests.length) Sheets.Spreadsheets.batchUpdate({ requests: [...structural, ...requests] }, sheetId);
@@ -121,9 +122,9 @@ function setupWebinarStorage() {
     const metadata = Sheets.Spreadsheets.get(config.sheetId, { fields: "sheets(properties)" });
     if (!metadata.sheets.some(s => s.properties.title === "Înscrieri")) throw new Error("schema_missing");
     const requests = [];
-    Object.values(WEBINAR_TABS).forEach((title, i) => {
+    Object.entries(WEBINAR_TABS).forEach(([key, title]) => {
       if (metadata.sheets.some(s => s.properties.title === title)) return;
-      const sheetId = 700000001 + i;
+      const sheetId = WEBINAR_TAB_IDS[key];
       requests.push({ addSheet: { properties: { sheetId, title, hidden: true, gridProperties: { rowCount: 1000, columnCount: 2, frozenRowCount: 1 } } } });
       requests.push({ updateCells: { start: { sheetId, rowIndex: 0, columnIndex: 0 }, rows: [{ values: ["Key", "Record JSON"].map(webinarCell) }], fields: "userEnteredValue" } });
     });
@@ -133,14 +134,14 @@ function setupWebinarStorage() {
     console.log("Webinar Sheet schema verified. Registration flags remain controlled by the site.");
   } finally { lock.releaseLock(); }
 }
-function installWebinarReconciliation() {
+function installWebinarDelivery() {
   const properties = PropertiesService.getScriptProperties();
   if (!properties.getProperty("CRON_SECRET") || !properties.getProperty("WEBINAR_SITE_URL")) throw new Error("not_configured");
-  if (!ScriptApp.getProjectTriggers().some(t => t.getHandlerFunction() === "webinarReconcile")) ScriptApp.newTrigger("webinarReconcile").timeBased().everyMinutes(5).create();
+  if (!ScriptApp.getProjectTriggers().some(t => t.getHandlerFunction() === "webinarDeliver")) ScriptApp.newTrigger("webinarDeliver").timeBased().everyMinutes(5).create();
 }
-function webinarReconcile() {
+function webinarDeliver() {
   const properties = PropertiesService.getScriptProperties(), site = properties.getProperty("WEBINAR_SITE_URL");
   if (!/^https:\/\/(www\.)?aslm\.ro$/.test(site || "") || !properties.getProperty("CRON_SECRET")) throw new Error("not_configured");
   const response = UrlFetchApp.fetch(`${site}/api/webinar/jobs`, { method: "get", headers: { Authorization: `Bearer ${properties.getProperty("CRON_SECRET")}` }, muteHttpExceptions: true });
-  if (response.getResponseCode() !== 200) throw new Error("Webinar reconciliation unavailable");
+  if (response.getResponseCode() !== 200) throw new Error("Webinar email delivery unavailable");
 }

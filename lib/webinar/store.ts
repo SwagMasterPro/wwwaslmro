@@ -1,6 +1,6 @@
 import "server-only";
 import { createHmac, randomUUID } from "node:crypto";
-import { digest, type Order, type Registration } from "./model";
+import { digest, type Registration } from "./model";
 
 export class StoreError extends Error {
   constructor(public readonly code: string) { super(`Webinar storage: ${code}`); }
@@ -28,10 +28,4 @@ export async function loadRegistration(id: string): Promise<Registration> {
 }
 export function authorizedRegistration(id: string, token: string): Promise<Registration | null> {
   return rpc("webinar_authorized_registration", { p_id: id, p_token_hash: digest(token) });
-}
-export function loadOrder(reference: string): Promise<Order | null> {
-  return rpc("webinar_load_order", { p_reference: reference });
-}
-export function latestOrder(id: string): Promise<Order | null> {
-  return rpc("webinar_latest_order", { p_registration_id: id });
 }

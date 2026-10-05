@@ -7,7 +7,7 @@ type Row = (string | number)[];
 type Tab = { properties: { sheetId: number; title: string; hidden?: boolean; gridProperties: { rowCount: number; columnCount: number } }; tables?: { name: string; tableId: string; range: { sheetId: number; endRowIndex: number } }[] };
 type RequestObject = Record<string, { [key: string]: unknown }>;
 export const headers = ["ID înscriere", "Data înscrierii", "Nume", "E-mail", "Telefon", "Opțiune", "Sumă bilet (RON)", "Status plată / solicitare", "ID comandă", "Verificare membru", "Cont trimis la", "Observații ASLM"];
-const names = ["_WebinarRegistrations", "_WebinarOrders", "_WebinarQueue", "_WebinarRateLimits", "_WebinarWorker"];
+const names = ["_WebinarRegistrations", "_WebinarQueue", "_WebinarRateLimits", "_WebinarWorker"];
 const source = ["Store.gs", "Code.gs"].map(name => readFileSync(new URL(`../../scripts/webinar-sheet/${name}`, import.meta.url), "utf8")).join("\n");
 const clone = <T>(value: T): T => JSON.parse(JSON.stringify(value));
 export class SheetFixture {
@@ -87,6 +87,6 @@ export class SheetFixture {
     return this.rows[tab].slice(1).filter(row => row[0]).map(row => JSON.parse(String(row[1])));
   }
 }
-export function registrationArgs(option = "ticket", email = "ana@example.com", id = randomUUID()) {
-  return { p_id: id, p_name: "=Ana Ionescu", p_email: email, p_phone: "+40 700", p_option: option, p_token_hash: "a".repeat(64), p_terms_version: "webinar-2026-10-v1" };
+export function registrationArgs(option = "member", email = "ana@example.com", id = randomUUID()) {
+  return { p_id: id, p_name: "=Ana Ionescu", p_email: email, p_phone: "+40 700", p_option: option, p_token_hash: "a".repeat(64), p_terms_version: "webinar-2026-10-v2" };
 }
