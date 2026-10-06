@@ -12,7 +12,7 @@ export default function WebinarPage() {
   return <div className="pt-20">
     <section className="surface-primary">
       <a href="#inscriere" aria-label="Participă la Webinar ASLM — mergi la opțiunile de înscriere" className="block w-full focus-visible:outline-4 focus-visible:-outline-offset-4 focus-visible:outline-green-700">
-        <Image src="/images/webinar/banner.webp" alt="Webinar ASLM: Medicina Stilului de Viață – Medicina Viitorului. O abordare integrată în îngrijirea pacientului. 19 octombrie 2026, online." width={1672} height={941} sizes="100vw" className="block h-auto w-full" priority />
+        <Image src="/images/webinar/banner.webp" alt="Webinar ASLM: Medicina Stilului de Viață – Medicina Viitorului. O abordare integrată în îngrijirea pacientului. 19 octombrie 2026, online." width={1672} height={941} sizes="100vw" className="block h-auto max-h-[calc(100svh-5rem)] w-full object-contain" priority />
       </a>
     </section>
     <section className="mesh-hero section-lg">
