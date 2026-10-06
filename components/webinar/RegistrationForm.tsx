@@ -65,9 +65,8 @@ export default function RegistrationForm() {
           <MonitorPlay className="mb-5 h-7 w-7 text-green-800" aria-hidden="true" />
           <h3 className="text-xl font-semibold text-gray-900">Particip doar la webinar</h3>
           <p className="mt-5 text-3xl font-bold tracking-tight text-green-900">100 RON</p>
-          <p className="mt-5 leading-relaxed text-gray-700">Acces la webinar fără înscriere ca membru ASLM. Această opțiune va fi disponibilă pe membership.aslm.ro, unde se va face și plata. Echipa ASLM va confirma plata și va trimite separat datele de acces prin e-mail.</p>
-          <p className="mt-4 text-sm font-medium text-gray-600">Opțiune în pregătire pe site-ul de înscrieri.</p>
-          <a href={WEBINAR.membershipUrl} className="mt-6 inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-green-800 px-6 py-3 font-semibold text-white hover:bg-green-900 focus-visible:outline-4 focus-visible:outline-offset-4 focus-visible:outline-green-700">Vezi opțiunile de înscriere <ArrowRight className="h-5 w-5" aria-hidden="true" /></a>
+          <p className="mt-5 leading-relaxed text-gray-700">Acces la webinar fără înscriere ca membru ASLM. Înscrie-te și achită taxa de 100 RON prin formularul dedicat webinarului. Echipa ASLM va confirma plata și va trimite separat datele de acces prin e-mail.</p>
+          <a href={WEBINAR.paymentUrl} className="mt-6 inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-green-800 px-6 py-3 font-semibold text-white hover:bg-green-900 focus-visible:outline-4 focus-visible:outline-offset-4 focus-visible:outline-green-700">Înscriere și plată – 100 RON <ArrowRight className="h-5 w-5" aria-hidden="true" /></a>
         </div>
       </div>
 

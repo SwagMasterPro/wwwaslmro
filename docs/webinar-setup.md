@@ -2,7 +2,7 @@
 
 Non-members go directly to [membership.aslm.ro](https://membership.aslm.ro/) to become ASLM members and pay their category's annual fee there. After completing that form, new members return to the webinar page and request access with the same email. Existing members submit a free webinar request. ASLM manually verifies membership before sending platform accounts.
 
-The landing page also describes the planned **100 RON webinar-only option without membership**. Registration and payment for this option will be handled on membership.aslm.ro. It is marked as being prepared until that external form is updated. ASLM will manually verify those payments and deliver access; webinar-only attendees do not submit the member-only form on this site.
+For **100 RON webinar-only access without membership**, attendees go directly to [the webinar registration and payment form](https://membership.aslm.ro/webinar/). ASLM manually verifies those payments and delivers access; webinar-only attendees do not submit the member-only form on this site. Membership signup continues to use the root membership.aslm.ro form.
 
 There is no local webinar checkout, payment webhook, bank client or cloud database. The private Google Sheet is the only persistent store for member webinar requests on this site.
 
@@ -46,7 +46,7 @@ Configure `.env.example` values in local/provider environment settings, never Gi
 - Delivery trigger: `CRON_SECRET`, identical in Script Properties.
 - `WEBINAR_REGISTRATION_ENABLED=false` until actual storage and email checks pass.
 
-No merchant credentials or checkout flags are needed. The external form handles membership payments and will also handle webinar-only payments after its planned update. That update is separate from this repository.
+No merchant credentials or checkout flags are needed here. Membership payments use the external membership form; webinar-only payments use its dedicated /webinar/ form. Those payment flows are managed separately from this repository.
 
 After securely configuring `.env.local`, run `npm run check:webinar` to verify deployed Script health, schema, terms and cutoff without creating records or printing secrets. It does not verify email delivery.
 
@@ -82,7 +82,7 @@ ASLM manually verifies existing/new membership and payments made through the mem
 1. Deploy the Script against a private sandbox copy; verify signed health, wrong-signature rejection, member requests, simultaneous duplicates and lost-response retries.
 2. Read back saved requests and verify ASLM's J:L edits remain intact.
 3. Verify acknowledgments arrive at the attendee and `contact@aslm.ro`; induce a provider failure and verify retry.
-4. Verify the direct membership link and the existing site's membership/payment path. Local checks do not prove that external payment provider.
+4. Verify the direct membership and webinar-only links and their external payment paths. Local checks do not prove that external payment provider.
 5. Confirm delivery jobs run without browser returns and after closure; verify the Bucharest cutoff.
 6. Check desktop/mobile navigation, keyboard access, focus and form errors in an available browser.
 7. Enable member requests only after storage/email verification.

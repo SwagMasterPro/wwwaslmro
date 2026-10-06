@@ -7,6 +7,7 @@ export const WEBINAR = {
   displayDates: "19 octombrie – 17 noiembrie 2026",
   termsVersion: "webinar-2026-10-v2",
   membershipUrl: "https://membership.aslm.ro/",
+  paymentUrl: "https://membership.aslm.ro/webinar/",
 } as const;
 
 export type WebinarOption = "member";
