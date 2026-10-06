@@ -71,6 +71,17 @@ export default function EvenimentePage() {
         </section>
       )}
 
+      <section className="section-lg surface-primary">
+        <div className="container-wide">
+          <div className="rounded-2xl border border-green-200 bg-green-50 p-8 md:p-10">
+            <p className="text-overline mb-3">Înregistrare online</p>
+            <h2 className="text-3xl font-semibold text-green-950">Webinar ASLM: Medicina Stilului de Viață – Medicina Viitorului</h2>
+            <p className="mt-4 max-w-3xl text-lg leading-relaxed text-gray-700">Vizionare între 19 octombrie și 17 noiembrie 2026. Gratuit pentru membrii ASLM confirmați. Pe membership.aslm.ro poți deveni membru; acolo va fi disponibilă și opțiunea de acces doar la webinar, pentru 100 RON, fără înscriere ca membru.</p>
+            <Link href="/webinar" className="mt-6 inline-flex min-h-12 items-center gap-2 rounded-xl bg-green-800 px-6 py-3 font-semibold text-white hover:bg-green-900">Înscrie-te la webinar <ArrowRight className="h-5 w-5" aria-hidden="true" /></Link>
+          </div>
+        </div>
+      </section>
+
       <section className="section-lg surface-secondary">
         <div className="container-wide">
           <div className="mb-12 text-center">

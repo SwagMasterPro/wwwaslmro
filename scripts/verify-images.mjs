@@ -52,6 +52,9 @@ const technicalAssets = [
   { src: "/images/membership-popup-doctor.webp", width: 1024, height: 1024, maxBytes: 150 * 1024 },
   { src: "/images/promo-video-cover.webp", width: 1024, height: 576, maxBytes: 100 * 1024 },
   { src: "/images/piloni-medicina-stilului-de-viata.png", width: 550, height: 486, maxBytes: 300 * 1024 },
+  { src: "/images/webinar/banner.webp", width: 1672, height: 941, maxBytes: 300 * 1024 },
+  { src: "/images/webinar/register.webp", width: 2103, height: 204, maxBytes: 100 * 1024 },
+  { src: "/images/webinar/membership.webp", width: 2103, height: 204, maxBytes: 100 * 1024 },
 ];
 
 for (const asset of technicalAssets) {
