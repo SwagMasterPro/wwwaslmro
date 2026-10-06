@@ -10,10 +10,10 @@ import { webinarLearning, webinarLecturers, webinarReasons } from "@/data/webina
 export const metadata = generateStaticPageMetadata("/webinar");
 export default function WebinarPage() {
   return <div className="pt-20">
-    <section className="surface-primary pb-12 pt-8 md:pt-12">
-      <div className="container-wide">
-        <Image src="/images/webinar/banner.webp" alt="Webinar ASLM: Medicina Stilului de Viață – Medicina Viitorului. O abordare integrată în îngrijirea pacientului. 19 octombrie 2026, online." width={1672} height={941} sizes="(min-width: 1440px) 1280px, 95vw" className="h-auto w-full rounded-2xl" priority />
-      </div>
+    <section className="surface-primary">
+      <a href="#inscriere" aria-label="Participă la Webinar ASLM — mergi la opțiunile de înscriere" className="block w-full focus-visible:outline-4 focus-visible:-outline-offset-4 focus-visible:outline-green-700">
+        <Image src="/images/webinar/banner.webp" alt="Webinar ASLM: Medicina Stilului de Viață – Medicina Viitorului. O abordare integrată în îngrijirea pacientului. 19 octombrie 2026, online." width={1672} height={941} sizes="100vw" className="block h-auto w-full" priority />
+      </a>
     </section>
     <section className="mesh-hero section-lg">
       <div className="container-wide grid gap-10 lg:grid-cols-[1.3fr_1fr]">
