@@ -103,8 +103,14 @@ const staticPages: Record<string, StaticPageMetadata> = {
   "/membri": {
     title: "Membri ASLM: înscriere, beneficii și categorii",
     description:
-      "Înscrie-te în ASLM ca membru afiliat, asociat, titular sau organizație. Compară beneficiile, cotizațiile și pașii de aderare în medicina stilului de viață.",
+      "Compară pachetele Membri Afiliați, Membri Titulari și Membri Asociați: beneficii, adresabilitate și cotizații de 400 sau 300 RON pe an. Înscrie-te în ASLM.",
     keywords: ["membri ASLM", "înscriere ASLM", "devino membru ASLM", "beneficii membri", "medicina stilului de viață"],
+  },
+  "/parteneri-companii": {
+    title: "Parteneri companii: pachete IMM, Corporate și Media",
+    description:
+      "Descoperă pachetele Parteneri ASLM IMM, Corporate și Media: beneficii, vizibilitate și cotizații de 1.500 RON/an, 3.000 RON/an sau gratuit. Contactează ASLM.",
+    keywords: ["parteneri ASLM", "parteneri companii", "ASLM IMM", "ASLM Corporate", "Parteneri Media"],
   },
   "/en": {
     title: "ASLM in English",

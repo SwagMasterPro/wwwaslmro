@@ -91,10 +91,9 @@ function getFooterLinks(locale: Locale) {
       { href: "/despre#statutul-aslm", label: "Statutul ASLM" },
     ],
     members: [
-      { href: "/membri", label: "Categorii de membri" },
-      { href: "/membri#beneficii", label: "Beneficii membri" },
+      { href: "/membri", label: "Membri ASLM" },
+      { href: "/parteneri-companii", label: "Parteneri companii" },
       { href: "/adunarea-generala", label: "Adunarea Generală" },
-      { href: MEMBERSHIP_JOIN_URL, label: "Înscriere", external: true },
     ],
     resources: [
       { href: "/medicina-stilului-de-viata", label: "Medicina stilului de viață" },

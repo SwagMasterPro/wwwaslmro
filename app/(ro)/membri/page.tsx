@@ -1,5 +1,5 @@
-import MembershipPageContent from "@/components/membership/MembershipPageContent";
+import MembershipPackagesPage from "@/components/membership/MembershipPackagesPage";
 
 export default function MembriPage() {
-  return <MembershipPageContent locale="ro" />;
+  return <MembershipPackagesPage audience="individuals" />;
 }

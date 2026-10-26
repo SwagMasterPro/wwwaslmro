@@ -85,10 +85,9 @@ function getNavItems(locale: Locale): NavItem[] {
       href: "/membri",
       label: "Membri",
       children: [
-        { href: "/membri", label: "Categorii de membri" },
-        { href: "/membri#beneficii", label: "Beneficii" },
+        { href: "/membri", label: "Membri ASLM" },
+        { href: "/parteneri-companii", label: "Parteneri companii" },
         { href: "/adunarea-generala", label: "Adunarea Generală" },
-        { href: MEMBERSHIP_JOIN_URL, label: "Înscrie-te" },
       ],
     },
     { href: "/publicatii", label: "Publicații" },
