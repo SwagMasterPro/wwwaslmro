@@ -1,6 +1,6 @@
 /* Deploy this file together with Code.gs. Tested directly in Node's VM. */
 const WebinarStore = (() => {
-  const event = { id: "aslm-webinar-2026-10", endsAt: "2026-11-18T00:00:00+02:00", terms: "webinar-2026-10-v2" };
+  const event = { id: "aslm-webinar-2026-10", endsAt: "2026-12-01T00:00:00+02:00", terms: "webinar-2026-10-v2" };
   const uuid = /^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$/;
   const fail = (code) => { throw new Error(code); };
   const copy = (value) => JSON.parse(JSON.stringify(value));

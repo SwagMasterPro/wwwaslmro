@@ -58,7 +58,7 @@ test("SMTP failure stays in the Sheet queue and a later worker actually resends 
     assert.match(accepted[1].recipients.join(), /ana@example.com/);
     assert.equal(sheet.records<{ status: string }>("_WebinarQueue").every(j => j.status === "done"), true);
     assert.match(accepted[1].data.replace(/=\r\n/g, ""), /ASLM va verifica statutul de membru/);
-    assert.match(accepted[1].data, /17 noiembrie/);
+    assert.match(accepted[1].data, /30 noiembrie/);
     const ids = accepted.map(mail => mail.data.match(/Message-ID:\s*(<[^>]+>)/i)?.[1]);
     assert.ok(ids[0] && ids[1]); assert.notEqual(ids[0], ids[1]);
     assert.deepEqual(await runOutbox(), { attempted: 0, delivered: 0 });

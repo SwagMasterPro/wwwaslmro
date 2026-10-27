@@ -12,10 +12,10 @@ test("member requests accept minimal contacts and normalize email", () => {
 test("reject invalid contacts, missing consent, honeypot, removed options and supplied prices", () => {
   for (const change of [{ email: "invalid" }, { name: "A" }, { acceptedTerms: false }, { website: "spam" }, { amount: 1 }, { option: "ticket" }, { option: "join" }, { phone: "<script>" }]) assert.equal(registrationSchema.safeParse({ ...sample, ...change }).success, false);
 });
-test("fixed 30 calendar days crosses Bucharest daylight saving", () => {
-  assert.equal((Date.parse(WEBINAR.endsAt) - Date.parse(WEBINAR.startsAt)) / 3_600_000, 721);
-  assert.equal(registrationClosed(new Date("2026-11-17T21:59:59.999Z")), false);
-  assert.equal(registrationClosed(new Date("2026-11-17T22:00:00Z")), true);
+test("registration remains open through November 30 and closes at Bucharest midnight", () => {
+  assert.equal(registrationClosed(new Date("2026-11-17T22:00:00Z")), false);
+  assert.equal(registrationClosed(new Date("2026-11-30T21:59:59.999Z")), false);
+  assert.equal(registrationClosed(new Date("2026-11-30T22:00:00Z")), true);
   const format = new Intl.DateTimeFormat("en-GB", { timeZone: "Europe/Bucharest", hour: "2-digit", minute: "2-digit", hourCycle: "h23" });
   assert.equal(format.format(new Date(WEBINAR.endsAt)), "00:00");
 });
@@ -44,7 +44,7 @@ test("Sheet output preserves the layout without ticket amounts or orders", () =>
 });
 test("acknowledgments explain manual membership verification, separate accounts and the fixed window", () => {
   const email = message(r, "email-request-attendee", "secret", "https://www.aslm.ro");
-  assert.match(email.text, /verifica statutul de membru/); assert.match(email.text, /17 noiembrie/); assert.match(email.text, /separat/);
+  assert.match(email.text, /verifica statutul de membru/); assert.match(email.text, /30 noiembrie/); assert.match(email.text, /separat/);
   assert.doesNotMatch(email.text, /100 RON|bilet|Plata/);
   const admin = message(r, "email-request-admin", "secret", "https://www.aslm.ro");
   assert.equal(admin.admin, true); assert.match(admin.text, /Actualizați trackerul/);

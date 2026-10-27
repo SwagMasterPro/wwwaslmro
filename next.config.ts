@@ -27,6 +27,16 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
+        source: "/Beneficii-membru-aslm",
+        destination: "/membri",
+        permanent: true,
+      },
+      {
+        source: "/Beneficii-membru-aslm/",
+        destination: "/membri",
+        permanent: true,
+      },
+      {
         source: "/blog",
         destination: "/news/articole",
         permanent: true,

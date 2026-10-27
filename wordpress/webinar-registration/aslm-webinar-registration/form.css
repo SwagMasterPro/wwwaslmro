@@ -1,0 +1,35 @@
+body.aslm-webinar-registration{margin:0;background:#f4f8fa;color:#243b4a;font-family:Arial,sans-serif;font-size:17px;line-height:1.6}
+.aslm-webinar-registration *{box-sizing:border-box}
+#aslm-webinar-content{width:min(100% - 32px,960px);margin:36px auto 64px}
+#aslm-webinar-content h1,#aslm-webinar-content h2{color:#185476;line-height:1.2}
+#aslm-webinar-content h1{font-size:clamp(1.9rem,5vw,2.7rem);margin:24px 0 12px}
+#aslm-webinar-content h2{font-size:1.6rem}
+#aslm-webinar-content a{color:#175779;text-decoration:underline;text-underline-offset:3px}
+.aslm-webinar-intro{font-size:1.25rem}
+.aslm-webinar-packages{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin:32px 0}
+.aslm-webinar-package{padding:26px;background:#fff;border:1px solid #cadce5;border-top:5px solid #195b82;border-radius:10px}
+.aslm-webinar-package.aslm-webinar-free{border-top-color:#168276}
+#aslm-webinar-content .aslm-webinar-package h2{font-size:2rem;margin:0 0 10px}
+.aslm-webinar-package p{margin:0 0 14px}
+#inscriere{padding:clamp(18px,4vw,36px);background:#fff;border:1px solid #cadce5;border-radius:10px}
+.aslm-webinar-fields{display:grid;grid-template-columns:1fr 1fr;gap:18px 22px}
+.aslm-webinar-fields>br{display:none}
+.aslm-webinar-wide{grid-column:1/-1}
+.aslm-webinar-fields label{display:block;min-width:0;font-weight:600}
+.aslm-webinar-fields .wpcf7-form-control-wrap{display:block;margin-top:6px}
+#aslm-webinar-content input:not([type=checkbox]):not([type=radio]):not([type=submit]):not([type=hidden]),#aslm-webinar-content select{display:block;width:100%;min-height:48px;padding:10px 12px;border:1px solid #708899;border-radius:5px;background:#fff;color:#243b4a;font:inherit}
+#aslm-webinar-content fieldset{margin:24px 0 16px;padding:16px;border:1px solid #9db6c2;border-radius:5px}
+#aslm-webinar-content legend{padding:0 6px;font-weight:600}
+#aslm-webinar-content input[type=checkbox],#aslm-webinar-content input[type=radio]{width:20px;height:20px;margin-right:8px;vertical-align:middle;accent-color:#175779}
+#aslm-webinar-content .wpcf7-list-item{margin:8px 20px 8px 0;display:inline-block}
+#aslm-webinar-content [data-webinar-payment] .wpcf7-radio .wpcf7-list-item:last-child{display:none}
+.aslm-webinar-consent{margin-top:24px}
+#aslm-webinar-content input[type=submit],#aslm-webinar-content .aslm-webinar-payment{display:inline-block;max-width:100%;min-height:48px;padding:12px 22px;border:0;border-radius:6px;background:#175779;color:#fff;font:inherit;font-weight:700;text-decoration:none;cursor:pointer;white-space:normal}
+#aslm-webinar-content input[type=submit]:disabled{opacity:.55;cursor:not-allowed}
+#aslm-webinar-content :focus-visible{outline:3px solid #b65a00;outline-offset:3px}
+#aslm-webinar-content [hidden]{display:none!important}
+#aslm-webinar-content .wpcf7-not-valid-tip{color:#ad2020;font-size:.95rem;font-weight:400}
+#aslm-webinar-content .wpcf7-response-output{margin:24px 0 0;padding:14px}
+#aslm-webinar-outcome:empty{display:none}
+#aslm-webinar-outcome{margin-top:20px;overflow-wrap:anywhere}
+@media(max-width:600px){.aslm-webinar-packages,.aslm-webinar-fields{grid-template-columns:1fr}#aslm-webinar-content{width:calc(100% - 24px);margin-top:20px}.aslm-webinar-package{padding:22px}.aslm-webinar-wide{grid-column:auto}#aslm-webinar-content .wpcf7-list-item{display:block}}
