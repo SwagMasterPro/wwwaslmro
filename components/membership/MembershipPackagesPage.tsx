@@ -13,7 +13,7 @@ import styles from "./MembershipPackagesPage.module.css";
 export default function MembershipPackagesPage({ audience }: { audience: "individuals" | "companies" }) {
   const isCompany = audience === "companies";
   const packages = isCompany ? companyMembershipPackages : individualMembershipPackages;
-  const title = isCompany ? "Beneficii parteneri companii" : "Beneficii membri ASLM";
+  const title = isCompany ? "Beneficii Parteneri companii" : "Beneficii Membri ASLM";
   const path = isCompany ? "/parteneri-companii" : "/membri";
   const description = isCompany
     ? "Alege pachetul de parteneriat potrivit pentru compania ta. Descoperă oportunitățile de colaborare și vizibilitate oferite de ASLM."
