@@ -294,7 +294,7 @@ function aslm_membership_route() {
     wpcf7_enqueue_scripts();
     wpcf7_enqueue_styles();
     $assets = plugin_dir_url(__FILE__) . 'aslm-individual-membership/';
-    wp_enqueue_style('aslm-membership-embed', $assets . 'form.css', array(), '1.0.0');
+    wp_enqueue_style('aslm-membership-embed', $assets . 'form.css', array(), '1.0.1');
     wp_enqueue_script('aslm-membership-embed', $assets . 'form.js', array('contact-form-7'), '1.0.1', true);
     ?><!doctype html>
 <html lang="ro">

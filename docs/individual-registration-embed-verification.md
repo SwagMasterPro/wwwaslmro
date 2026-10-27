@@ -2,7 +2,7 @@
 
 ## Stare la 27 octombrie 2026
 
-Etapa 1 este publicată. Pagina `https://www.aslm.ro/membri` afișează beneficiile și linkul către formularul WordPress. Încorporarea nu este activată în producție.
+Formularul individual este încorporat în producție la `https://www.aslm.ro/membri#inscriere`, cu link alternativ pentru deschidere directă. PR #4 a fost integrat în commitul `c34202d79441fa05db321be05a548ce266e8bd03`; deploymentul Vercel `dpl_4XqxesWXZCJ2hYrFzj31ZsdVMX9r` a fost confirmat `READY`, cu aliasul `www.aslm.ro`.
 
 Accesul cPanel prin HTTPS funcționează. Instalarea WordPress a fost identificată în `/home/submitme/public_html_membership_aslm`. Autentificarea prin managerul cPanel a declanșat regula Wordfence pentru `/wp-admin/`. Cu aprobarea explicită a utilizatorului, a fost expirată numai blocarea acestei sesiuni, în baza de date și în copia din cache. Wordfence, regulile, conturile și parolele au rămas active și neschimbate. O copie pentru revenire a cache-ului a fost păstrată pe server, în afara directorului public.
 
@@ -46,7 +46,15 @@ reCAPTCHA invizibil a trecut pentru ambele trimiteri. În testul cu cardul, buto
 
 Nu au fost introduse date de card și nu au fost efectuate debitări. Identificatorii de plată și tokenurile nu sunt incluși în acest document.
 
-Primirea emailurilor în inbox nu este încă confirmată. Raportul de livrare cPanel consultat conține numai intrări mai vechi, fără legătură cu aceste teste, deci nu dovedește livrarea lor. Statusul Contact Form 7 `mail_sent` nu confirmă separat acceptarea fiecărui mesaj de către provider sau primirea proformei și notificărilor în inbox.
+Primirea emailurilor în inbox nu este încă confirmată; utilizatorul a precizat că nu poate verifica momentan căsuța. Raportul de livrare cPanel consultat conține numai intrări mai vechi, fără legătură cu aceste teste, deci nu dovedește livrarea lor. Jurnalul de depanare WP Mail SMTP nu conține evenimente în intervalul testelor. Statusul Contact Form 7 `mail_sent` nu confirmă separat acceptarea fiecărui mesaj de către provider sau primirea proformei și notificărilor în inbox.
+
+## Verificarea încorporării publicate
+
+Formularul a fost verificat în pagina principală, pe desktop și la viewporturi de 320/390 px. Nu au fost observate depășiri orizontale. Redimensionarea a ajustat iframe-ul la 2050 px pentru un conținut de 2049,5 px și la 2207 px la lățimea minimă. Tastatura mută focusul între câmpurile etichetate; cele trei categorii sunt disponibile, iar reCAPTCHA se încarcă și în iframe. Nu au apărut erori în consola paginii.
+
+În sesiunea WordPress autentificată, regula pentru bara administratorului adăuga 32 px pe elementul `html`. Corecția CSS dedicată, versiunea 1.0.1, a fost revizuită și publicată prin cPanel; verificarea ulterioară a confirmat margine zero și aceeași înălțime de 1250 px pentru document și iframe. Corecția nu afectează celelalte pagini WordPress.
+
+Meniul mobil păstrează cele trei destinații românești. Pagina `https://www.aslm.ro/parteneri-companii` și formularul său sunt disponibile fără depășire orizontală la 320 px. Diferența Git față de etapa 1 nu modifică paginile engleze, Adunarea Generală, navigarea, datele pachetelor, SMTP-ul sau procesatorul plăților.
 
 ## Limite ale verificării
 
@@ -54,4 +62,4 @@ Testele locale PHP și JavaScript verifică regulile de validare, selecția rute
 
 Rămân neconfirmate primirea proformelor și notificărilor în inbox, o plată finalizată, tratarea unui eșec de plată și confirmarea anulării în procesarea de pe server. Revenirea prin Back cu fragmentul `__hc-action-cancel` dovedește numai navigarea observată, nu un rezultat financiar sau un callback al procesatorului.
 
-Încorporarea pe site-ul principal rămâne inactivă, iar redirecționarea rădăcinii WordPress rămâne dezactivată. Verificarea formularului în iframe-ul public și activarea finală rămân deschise. Nu se efectuează debitări reale pentru QA.
+Încorporarea pe site-ul principal este activă. Cele două trimiteri aprobate au fost executate pe ruta dedicată; nu a fost generată o a treia cerere din iframe. Redirecționarea rădăcinii WordPress rămâne dezactivată până la confirmarea notificărilor și acceptarea finală. Nu se efectuează debitări reale pentru QA.
