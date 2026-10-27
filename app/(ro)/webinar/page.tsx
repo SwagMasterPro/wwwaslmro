@@ -1,106 +1,119 @@
 import Image from "next/image";
-import { CalendarDays, MonitorPlay, Mail, Check } from "lucide-react";
-import RegistrationForm from "@/components/webinar/RegistrationForm";
+import Link from "next/link";
+import { Check } from "lucide-react";
 import JsonLdScript from "@/components/seo/JsonLdScript";
 import { generateStaticPageMetadata } from "@/lib/metadata-helpers";
 import { generateWebPageSchema } from "@/lib/structured-data";
 import { WEBINAR } from "@/lib/webinar/config";
-import { webinarLearning, webinarLecturers, webinarReasons } from "@/data/webinar";
+import { webinarLearning, webinarLecturers, webinarReasons, webinarTopics } from "@/data/webinar";
 
 export const metadata = generateStaticPageMetadata("/webinar");
+
 export default function WebinarPage() {
   return <div className="pt-20">
-    <section className="surface-primary">
-      <a href="#inscriere" aria-label="Participă la Webinar ASLM — mergi la opțiunile de înscriere" className="block w-full focus-visible:outline-4 focus-visible:-outline-offset-4 focus-visible:outline-green-700">
-        <Image src="/images/webinar/banner.webp" alt="Webinar ASLM: Medicina Stilului de Viață – Medicina Viitorului. O abordare integrată în îngrijirea pacientului. 19 octombrie 2026, online." width={1672} height={941} sizes="100vw" className="block h-auto max-h-[calc(100svh-5rem)] w-full object-contain" priority />
-      </a>
-    </section>
-    <section className="mesh-hero section-lg">
-      <div className="container-wide grid gap-10 lg:grid-cols-[1.3fr_1fr]">
-        <div>
-          <p className="text-overline mb-4 text-[var(--color-primary-300)]">O abordare integrată în îngrijirea pacientului</p>
-          <h1 className="text-display text-white">Webinar ASLM</h1>
-          <h2 className="mt-5 text-2xl font-semibold leading-snug text-white md:text-3xl">{WEBINAR.topic}</h2>
-          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-white/85">De la dovezi științifice la practica medicală: aprofundează medicina stilului de viață, descoperind perspective și instrumente utile pentru o abordare mai complexă a pacientului.</p>
-        </div>
-        <div className="rounded-2xl border border-white/20 bg-white/10 p-6 md:p-8">
-          <div className="space-y-5 leading-relaxed">
-            <p className="flex items-center gap-3 text-white"><CalendarDays className="h-5 w-5 shrink-0 text-green-200" aria-hidden="true" />{WEBINAR.displayDates}</p>
-            <p className="flex items-start gap-3 text-white"><MonitorPlay className="mt-1 h-5 w-5 shrink-0 text-green-200" aria-hidden="true" />Acces la înregistrări timp de 30 de zile. Vizionezi prezentările când ai timp.</p>
-            <p className="flex items-start gap-3 text-white"><Mail className="mt-1 h-5 w-5 shrink-0 text-green-200" aria-hidden="true" />Datele de logare se trimit separat prin e-mail, începând cu 19 octombrie, după confirmarea înscrierii.</p>
-          </div>
-          <a href="#inscriere" className="mt-8 inline-flex min-h-12 items-center rounded-xl bg-white px-6 py-3 font-semibold text-green-950">Înscrie-te la webinar</a>
-          <p className="mt-4 text-sm leading-relaxed text-white/85">Gratuit pentru membrii ASLM confirmați. <a href={WEBINAR.membershipUrl} className="font-semibold text-white underline hover:text-white">Devino membru ASLM</a>. Accesul doar la webinar, fără înscriere ca membru, costă 100 RON. <a href={WEBINAR.paymentUrl} className="font-semibold text-white underline hover:text-white">Înscriere și plată</a>.</p>
-        </div>
+    <header className="surface-primary pb-10 pt-6 md:pb-14 md:pt-10">
+      <div className="container-default max-w-5xl">
+        <h1 className="sr-only">Webinar ASLM: {WEBINAR.topic}</h1>
+        <Image
+          src="/images/webinar/banner-2026-10.webp"
+          alt="Webinar ASLM. Medicina Stilului de Viață – Medicina Viitorului. O abordare integrată a pacientului. Online. Acces la lucrări până la 30 noiembrie 2026 inclusiv."
+          width={2048}
+          height={768}
+          sizes="(min-width: 1024px) 976px, 100vw"
+          className="block h-auto w-full"
+          priority
+        />
+        <p className="mt-6 text-center text-base leading-relaxed text-gray-700 md:text-lg">Acces la prezentări până la <strong>30 noiembrie 2026 inclusiv</strong>. Înscrierile ulterioare beneficiază de perioada rămasă până la această dată.</p>
       </div>
-    </section>
-    <section className="section-lg surface-primary">
+    </header>
+
+    <section className="section-lg surface-primary" aria-labelledby="controlul-bolilor">
       <div className="container-default max-w-4xl">
-        <h2 className="text-headline text-[var(--text-primary)]">Controlul bolilor cronice și sănătatea pacientului</h2>
+        <h2 id="controlul-bolilor" className="text-headline text-[var(--text-primary)]">Controlul bolilor cronice și sănătatea pacientului</h2>
         <div className="mt-6 space-y-5 text-lg leading-relaxed text-gray-700">
           <p>Sănătatea este influențată de numeroși factori care acționează împreună, iar prevenția, reducerea factorilor de risc și controlul bolilor cronice sunt componente importante ale îngrijirii pe termen lung a pacientului.</p>
           <p>Medicina stilului de viață completează îngrijirea medicală prin intervenții fundamentate științific asupra unor factori modificabili – alimentație, activitate fizică, somn, gestionarea stresului, evitarea substanțelor nocive și relații sociale – contribuind la o perspectivă mai amplă și integrată asupra sănătății pacientului.</p>
         </div>
       </div>
     </section>
-    <section className="section-lg surface-secondary">
+
+    <section className="section-lg surface-secondary" aria-labelledby="public-webinar">
+      <div className="container-default max-w-4xl">
+        <h2 id="public-webinar" className="text-headline text-[var(--text-primary)]">Cui se adresează acest webinar?</h2>
+        <h3 className="mt-6 text-xl font-semibold text-green-950">Medicilor și altor profesioniști din domeniul sănătății</h3>
+        <p className="mt-4 leading-relaxed text-gray-700">Medici de familie și din alte specialități, kinetoterapeuți, farmaciști, asistenți medicali, nutriționiști-dieteticieni și alți profesioniști interesați de prevenția și controlul bolilor cronice, reducerea factorilor de risc modificabili și integrarea intervențiilor asupra stilului de viață în îngrijirea pacientului.</p>
+        <h3 className="mt-6 text-xl font-semibold text-green-950">Celor interesați de medicina preventivă</h3>
+        <p className="mt-4 leading-relaxed text-gray-700">Profesioniștilor care doresc să aprofundeze rolul factorilor modificabili ai stilului de viață și abordarea interdisciplinară a sănătății.</p>
+      </div>
+    </section>
+
+    <section className="section-lg surface-primary" aria-labelledby="ofera-webinar">
       <div className="container-wide">
-        <h2 className="text-headline text-[var(--text-primary)]">De ce acest webinar?</h2>
+        <h2 id="ofera-webinar" className="text-headline text-[var(--text-primary)]">Ce oferă acest webinar?</h2>
         <div className="mt-8 grid gap-6 md:grid-cols-2">
           {webinarReasons.map(reason => <article key={reason.title} className="card p-6 md:p-8"><h3 className="text-xl font-semibold text-green-950">{reason.title}</h3><p className="mt-4 leading-relaxed text-gray-700">{reason.text}</p></article>)}
         </div>
         <div className="mt-8 rounded-2xl bg-green-100 p-6 md:p-8">
-          <h3 className="text-xl font-semibold text-green-950">Acces timp de 30 de zile – vizionezi prezentările când ai timp</h3>
-          <p className="mt-4 leading-relaxed text-gray-700">Ai acces la înregistrările video ale prezentărilor în platformă între 19 octombrie și 17 noiembrie 2026 inclusiv. Poți urmări prezentările în propriul ritm, în funcție de programul tău. Înscrierile după 19 octombrie beneficiază de perioada rămasă.</p>
+          <h3 className="text-xl font-semibold text-green-950">Vizionezi prezentările în propriul ritm</h3>
+          <p className="mt-4 leading-relaxed text-gray-700">Ai acces la înregistrările video ale prezentărilor în platformă până la 30 noiembrie 2026 inclusiv. Poți urmări prezentările în propriul ritm, în funcție de programul tău.</p>
         </div>
       </div>
     </section>
-    <section className="section-lg surface-primary">
+
+    <section className="section-lg surface-secondary" aria-labelledby="perspective-webinar">
       <div className="container-wide">
-        <h2 className="text-headline text-[var(--text-primary)]">Ce vei învăța din acest webinar?</h2>
+        <h2 id="perspective-webinar" className="text-headline text-[var(--text-primary)]">Perspective și aplicații practice</h2>
         <p className="mt-5 max-w-4xl text-lg leading-relaxed text-gray-700">Webinarul își propune să ofere participanților o perspectivă actuală, bazată pe dovezi, asupra rolului medicinei stilului de viață în prevenirea și controlul bolilor cronice. Vei înțelege mai bine:</p>
         <ul className="mt-8 grid gap-8 md:grid-cols-2">
           {webinarLearning.map(item => <li key={item.title} className="flex gap-4"><Check className="mt-1 h-6 w-6 shrink-0 text-green-800" aria-hidden="true" /><div><h3 className="text-xl font-semibold text-gray-900">{item.title}</h3><p className="mt-3 leading-relaxed text-gray-700">{item.text}</p></div></li>)}
         </ul>
       </div>
     </section>
-    <section className="section-lg surface-secondary">
-      <div className="container-wide grid gap-12 lg:grid-cols-2">
-        <div>
-          <h2 className="text-headline text-[var(--text-primary)]">Cui se adresează webinarul?</h2>
-          <h3 className="mt-6 text-xl font-semibold text-green-950">Medicilor și altor profesioniști din domeniul sănătății</h3>
-          <p className="mt-4 leading-relaxed text-gray-700">Medici de familie și din alte specialități, kinetoterapeuți, farmaciști, asistenți medicali, nutriționiști-dieteticieni și alți profesioniști interesați de prevenția și controlul bolilor cronice, reducerea factorilor de risc modificabili și integrarea intervențiilor asupra stilului de viață în îngrijirea pacientului.</p>
-          <h3 className="mt-6 text-xl font-semibold text-green-950">Celor interesați de medicina preventivă</h3>
-          <p className="mt-4 leading-relaxed text-gray-700">Profesioniștilor care doresc să aprofundeze rolul factorilor modificabili ai stilului de viață și abordarea interdisciplinară a sănătății.</p>
-        </div>
-        <div>
-          <h2 className="text-headline text-[var(--text-primary)]">Lectori</h2>
-          <p className="mt-6 leading-relaxed text-gray-700">În cadrul webinarului vor susține prezentări, printre alții, și lectorii:</p>
-          <ul className="mt-6 space-y-4">{webinarLecturers.map(name => <li key={name} className="rounded-xl border border-green-200 bg-white px-5 py-4 text-lg font-semibold text-green-950">{name}</li>)}</ul>
-        </div>
+
+    <section className="section-lg surface-primary" aria-labelledby="program-webinar">
+      <div className="container-default max-w-5xl">
+        <h2 id="program-webinar" className="text-headline text-[var(--text-primary)]">Program</h2>
+        <ol className="mt-8 divide-y divide-gray-200 border-y border-gray-200">
+          {webinarTopics.map((topic, index) => <li key={topic} className="flex gap-4 py-5 md:gap-6 md:py-6"><span className="shrink-0 text-lg font-semibold tabular-nums text-green-800" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span><p className="text-lg font-medium leading-relaxed text-gray-900">{topic}</p></li>)}
+        </ol>
       </div>
     </section>
-    <section className="section-lg surface-primary">
+
+    <section className="section-lg surface-secondary" aria-labelledby="lectori-webinar">
       <div className="container-wide">
-        <a href="#inscriere" className="mb-10 block rounded-xl focus-visible:outline-4 focus-visible:outline-green-700"><Image src="/images/webinar/register.webp" alt="Înscrie-te la webinar ASLM" width={2103} height={204} sizes="(min-width: 1440px) 1280px, 95vw" className="h-auto w-full rounded-xl" /></a>
-        <RegistrationForm />
-        <div className="mt-10 rounded-2xl border border-green-200 bg-green-50 p-6 md:p-8">
-          <a href={WEBINAR.membershipUrl} className="block rounded-xl focus-visible:outline-4 focus-visible:outline-green-700"><Image src="/images/webinar/membership.webp" alt="Devino membru în ASLM – Societatea Academică de Medicina Stilului de Viață" width={2103} height={204} sizes="(min-width: 1440px) 1200px, 90vw" className="h-auto w-full rounded-xl" /></a>
-          <p className="mt-6 leading-relaxed text-gray-700">Devino membru ASLM și beneficiază de participare gratuită la webinar, alături de celelalte beneficii oferite membrilor Societății Academice de Medicina Stilului de Viață. Completează formularul de pe <a href={WEBINAR.membershipUrl} className="font-semibold text-green-800 underline">membership.aslm.ro</a> și achită acolo cotizația categoriei tale. Apoi revino la formularul de webinar, folosind aceeași adresă de e-mail.</p>
+        <h2 id="lectori-webinar" className="text-headline text-[var(--text-primary)]">Lectori</h2>
+        <ul className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          {webinarLecturers.map(lecturer => <li key={lecturer.name} className="overflow-hidden rounded-2xl border border-gray-200 bg-white">
+            <div className="relative aspect-[4/3] bg-green-100">
+              {lecturer.image && <Image src={lecturer.image} alt="" fill sizes="(min-width: 1280px) 300px, (min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw" className="object-contain object-bottom" />}
+            </div>
+            <h3 className="p-5 text-lg font-semibold leading-snug text-green-950">{lecturer.name}</h3>
+          </li>)}
+        </ul>
+      </div>
+    </section>
+
+    <section id="inscriere" className="section-lg scroll-mt-24 surface-primary" aria-labelledby="inscriere-webinar">
+      <div className="container-default max-w-4xl">
+        <h2 id="inscriere-webinar" className="text-headline text-center text-[var(--text-primary)]">Înscriere</h2>
+        <div className="mt-8 grid gap-6 sm:grid-cols-2">
+          <article className="rounded-2xl border border-green-200 bg-green-50 p-6 text-center md:p-8">
+            <h3 className="text-3xl font-bold text-green-900">Gratuit</h3>
+            <p className="mt-3 text-lg text-gray-800">Pentru membrii ASLM</p>
+            <Link href="/adunarea-generala" className="mt-5 inline-flex min-h-12 items-center rounded-md font-semibold text-green-900 underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-green-800">Vezi lista membri ASLM</Link>
+          </article>
+          <article className="rounded-2xl border border-blue-200 bg-blue-50 p-6 text-center md:p-8">
+            <h3 className="text-3xl font-bold text-blue-900">100 lei</h3>
+            <p className="mt-3 text-lg text-gray-800">Pentru nonmembrii ASLM</p>
+            <Link href="/membri" className="mt-5 inline-flex min-h-12 items-center rounded-md font-semibold text-blue-900 underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-blue-800">Devino membru ASLM</Link>
+          </article>
+        </div>
+        <div className="mt-8 text-center">
+          <a href={WEBINAR.paymentUrl} className="inline-flex min-h-14 items-center justify-center rounded-xl bg-green-800 px-7 py-4 text-lg font-semibold text-white hover:bg-green-900 focus-visible:outline-4 focus-visible:outline-offset-4 focus-visible:outline-green-800">Înscrie-te la webinar</a>
         </div>
       </div>
     </section>
-    <section id="conditii" className="section-lg scroll-mt-24 surface-primary"><div className="container-default max-w-3xl">
-      <h2 className="text-2xl font-semibold text-gray-900">Condiții de participare</h2>
-      <div className="mt-6 space-y-4 leading-relaxed text-gray-700">
-        <p>Webinarul se vizionează ca înregistrare pe o platformă externă. Programul detaliat și numele platformei vor fi anunțate de ASLM.</p>
-        <p>Accesul este disponibil între 19 octombrie și 17 noiembrie 2026 inclusiv și se încheie pe 18 noiembrie, la ora 00:00, ora României. Înscrierile după 19 octombrie beneficiază de perioada rămasă.</p>
-        <p>Membrii ASLM confirmați participă gratuit. Dacă doriți să deveniți membru, înscrierea și plata cotizației anuale se fac prin <a href={WEBINAR.membershipUrl} className="font-semibold text-green-800 underline">formularul de membru ASLM</a>. După completarea acestuia, solicitați accesul la webinar folosind aceeași adresă de e-mail.</p>
-        <p>Pentru participarea doar la webinar, fără înscriere ca membru ASLM, taxa este de 100 RON. Înscrierea și plata se fac prin <a href={WEBINAR.paymentUrl} className="font-semibold text-green-800 underline">formularul dedicat webinarului</a>.</p>
-        <p>Echipa ASLM verifică statutul de membru sau plata taxei de participare și trimite separat, prin e-mail, datele contului pentru vizionare, începând cu 19 octombrie. Solicitarea trimisă nu înlocuiește confirmarea înscrierii.</p>
-        <p>Pentru asistență privind înscrierea sau accesul, scrieți la <a href="mailto:contact@aslm.ro" className="font-semibold text-green-800 underline">contact@aslm.ro</a>.</p>
-      </div>
-    </div></section>
-    <JsonLdScript id="webinar-structured-data" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(generateWebPageSchema("https://www.aslm.ro/webinar", `${WEBINAR.title}: ${WEBINAR.topic}`, `Gratuit pentru membrii ASLM confirmați. Acces doar la webinar, fără calitatea de membru: 100 RON, cu înscriere și plată prin ${WEBINAR.paymentUrl}. Vizionare online între 19 octombrie și 17 noiembrie 2026.`, [{ name: "Acasă", path: "/" }, { name: "Webinar", path: "/webinar" }])) }} />
+
+    <JsonLdScript id="webinar-structured-data" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(generateWebPageSchema("https://www.aslm.ro/webinar", `${WEBINAR.title}: ${WEBINAR.topic}`, `Gratuit pentru membrii ASLM. 100 RON pentru nonmembri. Înscriere pe ${WEBINAR.paymentUrl}. Vizionare online până la 30 noiembrie 2026 inclusiv.`, [{ name: "Acasă", path: "/" }, { name: "Webinar", path: "/webinar" }])) }} />
   </div>;
 }

@@ -38,7 +38,7 @@ export default function Receipt() {
     {status && <>
       <h2 aria-live="polite" className="mt-6 text-xl font-semibold">Solicitarea a fost primită</h2>
       <p className="mt-4 leading-relaxed text-gray-700">Echipa ASLM va verifica statutul de membru și va trimite separat, prin e-mail, datele contului pentru platforma de vizionare, începând cu 19 octombrie, după confirmare.</p>
-      <p className="mt-4 text-gray-600">Vizionare: {WEBINAR.displayDates}. Accesul se încheie la 18 noiembrie, ora 00:00 (ora României). Înscrierile ulterioare datei de 19 octombrie beneficiază de perioada rămasă.</p>
+      <p className="mt-4 text-gray-600">Vizionare: {WEBINAR.displayDates}. Accesul se încheie la 1 decembrie, ora 00:00 (ora României). Înscrierile ulterioare datei de 19 octombrie beneficiază de perioada rămasă.</p>
     </>}
     {error && <p role="alert" className="mt-5 rounded-xl bg-red-50 p-4 text-red-800">{error}</p>}
     {!status && !error && <p className="mt-6" role="status">Se verifică solicitarea…</p>}

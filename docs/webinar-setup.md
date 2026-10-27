@@ -1,17 +1,17 @@
-# ASLM Webinar: membership access and Sheet registration
+# ASLM webinar registration
 
-Non-members go directly to [membership.aslm.ro](https://membership.aslm.ro/) to become ASLM members and pay their category's annual fee there. After completing that form, new members return to the webinar page and request access with the same email. Existing members submit a free webinar request. ASLM manually verifies membership before sending platform accounts.
+The public `/webinar` page sends all attendees to [the WordPress webinar form](https://membership.aslm.ro/webinar/). Members request free access, subject to ASLM verification. Nonmembers pay 100 RON through the existing card or bank-transfer flow. New members can first join at [/membri](https://www.aslm.ro/membri).
 
-For **100 RON webinar-only access without membership**, attendees go directly to [the webinar registration and payment form](https://membership.aslm.ro/webinar/). ASLM manually verifies those payments and delivers access; webinar-only attendees do not submit the member-only form on this site. Membership signup continues to use the root membership.aslm.ro form.
+The 27 October 2026 update uses the supplied banner, 16 topics and 24 lecturers. The WordPress form owns registration and participation conditions. No registration form is embedded on the main webinar page.
 
-There is no local webinar checkout, payment webhook, bank client or cloud database. The private Google Sheet is the only persistent store for member webinar requests on this site.
+The older local member-request API, private receipts and delivery jobs remain available for compatibility. Their Google Sheets service is not activated by this update. The reference below describes that retained infrastructure, not the public registration path.
 
 Tracker: [Webinar ASLM – înscrieri](https://docs.google.com/spreadsheets/d/1coMLPgIRzwjYT8Cwr3PkeltMbPpJQi7ivz5Q3cNclyg/edit).
 
-## Current delivery
+## Retained Sheet infrastructure
 
 - Romanian `/webinar`, desktop/mobile/English navigation, footer and Events promotion.
-- Landing copy, five lecturers and three graphics from Iulia Nistoroiu's 5 October 2026 email, “Landing page - webinar ASLM”.
+- The initial landing copy came from Iulia Nistoroiu's 5 October 2026 email, “Landing page - webinar ASLM”. The 27 October email supersedes its lecturer list, artwork and registration presentation.
 - Direct membership links work independently of the webinar registration configuration.
 - Member requests use Sheet storage, private receipt links and durable acknowledgment jobs for attendees and `contact@aslm.ro`.
 - The private live Sheet was prepared with its original 12-column table and hidden operational headers. No test attendees were added. The unused `_WebinarOrders` tab and old ticket/order columns are preserved; the current service ignores that tab and leaves those columns blank.
@@ -71,11 +71,11 @@ Filter the native table normally. Avoid directly editing, deleting or sorting au
 
 ## Fixed viewing window
 
-Recordings are available **19 October–17 November 2026 inclusive**. Webinar registration closes **18 November 2026 at 00:00 Europe/Bucharest** (`2026-11-17T22:00:00Z`): 30 calendar days / 721 elapsed hours across the daylight-saving change. The website and locked Script both enforce the cutoff.
+Recordings are available until **30 November 2026 inclusive**. Webinar registration closes **1 December 2026 at 00:00 Europe/Bucharest**, equivalent to `2026-11-30T22:00:00Z`. The retained website API and Script source use this fixed cutoff. Updating these sources does not activate or redeploy the Sheet service.
 
 Late registrations receive the remaining window. The external platform must enforce the same viewing cutoff. The membership site remains independently available.
 
-ASLM manually verifies existing/new membership and payments made through the membership form, creates platform accounts and sends details beginning on 19 October after confirmation. The platform and detailed presentation schedule remain pending. The MSC free-access offer is deferred.
+ASLM manually verifies membership and payments, creates platform accounts and sends access details after confirmation. The external viewing platform's cutoff requires separate operator verification. The supplied program contains topics without times or lecturer assignments. The MSC free-access offer is deferred.
 
 ## Activation and validation
 

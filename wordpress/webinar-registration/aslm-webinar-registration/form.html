@@ -1,0 +1,31 @@
+[hidden aslm-webinar-version "1"]
+[hidden your-code]
+[hidden nr-fact]
+[hidden data-bnr]
+[hidden curs-bnr]
+[hidden taxa-eur]
+[hidden pret_ab]
+[hidden link-plata-mail]
+[hidden tip-taxa-mail]
+[hidden Taxa-inregistrare]
+[hidden aslm-webinar-status]
+<div class="aslm-webinar-fields">
+<label>Numele și prenumele * [text* Nume autocomplete:name]</label>
+<label>Specialitatea [text Specialitatea]</label>
+<label>Grad profesional [text grad-prof]</label>
+<label>CUIM [text cnp-cod_parafa]</label>
+<label>Telefon * [tel* telefon autocomplete:tel]</label>
+<label>Email * [email* email_contact autocomplete:email]</label>
+<label>Locul de muncă * [text* Loc_Munca]</label>
+<label>Oraș, județ * [text* Adresa]</label>
+<label class="aslm-webinar-wide">Tipul înregistrării * [select* taxa-ped first_as_label "Selectați tipul înregistrării" "Membru ASLM - Gratuit" "Nonmembru - 100 RON"]</label>
+</div>
+<div data-webinar-member hidden><p>Participarea este gratuită pentru membrii ASLM. ASLM va verifica apartenența înainte de acordarea accesului.</p></div>
+<div data-webinar-payment hidden>
+<div hidden>[text nume_firma][text cif]</div>
+<fieldset><legend>Modalitatea de plată</legend>[radio tip-plata use_label_element default:1 "Card" "Transfer bancar" "Fără plată"]</fieldset>
+<p>Veți primi pe email factura proformă. Dacă achitați prin transfer bancar, trimiteți dovada plății la <a href="mailto:contact@aslm.ro">contact@aslm.ro</a>. Plata cu cardul se înregistrează automat.</p>
+</div>
+<div class="aslm-webinar-consent">[acceptance acceptance-64] Sunt de acord cu <a href="https://www.aslm.ro/terms" target="_blank" rel="noopener">Termenii și condițiile</a>. [/acceptance]</div>
+<p>Prin trimiterea formularului confirmați că datele completate sunt corecte. Accesul la prezentări este disponibil până la 30 noiembrie 2026 inclusiv, indiferent de data înscrierii.</p>
+[submit "Trimite înscrierea"]

@@ -44,9 +44,9 @@ type StaticPageMetadata = {
 const staticPages: Record<string, StaticPageMetadata> = {
   "/webinar": {
     title: "Webinar ASLM: Medicina Stilului de Viață – Medicina Viitorului",
-    description: "Webinar ASLM, 19 octombrie – 17 noiembrie 2026: gratuit pentru membri, 100 RON fără calitatea de membru. Înscriere și plată pe membership.aslm.ro/webinar/.",
+    description: "Webinar ASLM: medicina stilului de viață, 16 teme și 24 de lectori. Acces până la 30 noiembrie 2026 inclusiv. Gratuit pentru membri, 100 RON pentru nonmembri.",
     keywords: ["webinar ASLM", "înscriere webinar", "medicina stilului de viață"],
-    image: { url: "/images/webinar/banner.webp", width: 1672, height: 941, alt: "Webinar ASLM – Medicina Stilului de Viață – Medicina Viitorului, 19 octombrie 2026, online" },
+    image: { url: "/images/webinar/banner-2026-10.webp", width: 2048, height: 768, alt: "Webinar ASLM – Medicina Stilului de Viață – Medicina Viitorului. Online, până la 30 noiembrie 2026 inclusiv." },
   },
   "/webinar/confirmare": {
     title: "Confirmarea înscrierii la Webinar ASLM",
