@@ -1,0 +1,96 @@
+html {
+  min-height: 0;
+  height: auto;
+  margin: 0;
+  background: #fff;
+}
+
+body.aslm-membership-embed {
+  min-height: 0;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  background: #fff;
+  color: #1f2937;
+  font-family: Arial, sans-serif;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+#aslm-membership-content {
+  display: flow-root;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 0;
+  padding: 20px;
+  overflow-wrap: anywhere;
+}
+
+#aslm-membership-content *,
+#aslm-membership-content *::before,
+#aslm-membership-content *::after { box-sizing: border-box; }
+
+#aslm-membership-content table {
+  width: 100% !important;
+  max-width: 100%;
+  table-layout: fixed;
+}
+
+#aslm-membership-content td,
+#aslm-membership-content th { padding: 8px; vertical-align: top; }
+
+#aslm-membership-content input:not([type=checkbox]):not([type=radio]):not([type=hidden]),
+#aslm-membership-content select,
+#aslm-membership-content textarea {
+  width: 100%;
+  max-width: 100%;
+  min-height: 48px;
+  padding: 10px 12px;
+  border: 1px solid #64748b;
+  border-radius: 4px;
+  background: #fff;
+  color: #1f2937;
+  font: inherit;
+}
+
+#aslm-membership-content input[type=checkbox],
+#aslm-membership-content input[type=radio] { width: 20px; height: 20px; margin: 0 8px 0 0; }
+#aslm-membership-content .wpcf7-list-item { display: block; margin: 12px 0; }
+#aslm-membership-content .wpcf7-list-item label { display: inline-flex; gap: 8px; align-items: baseline; }
+#aslm-membership-content .wpcf7-form-control-wrap { display: block; max-width: 100%; }
+#aslm-membership-content .wpcf7-not-valid-tip { color: #991b1b; font-size: 1rem; }
+#aslm-membership-content .wpcf7-response-output { margin: 20px 0; padding: 14px; }
+#aslm-membership-content a { color: #115e59; text-decoration: underline; }
+#aslm-membership-content :focus-visible { outline: 3px solid #115e59; outline-offset: 3px; }
+
+#aslm-membership-content input[type=submit],
+#aslm-membership-content .aslm-membership-payment {
+  display: inline-block;
+  min-height: 48px;
+  padding: 12px 20px;
+  border: 0;
+  border-radius: 4px;
+  background: #115e59;
+  color: #fff;
+  font: inherit;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#aslm-membership-outcome:not(:empty) { margin-top: 20px; }
+
+@media (max-width: 640px) {
+  #aslm-membership-content { padding: 12px; }
+  #aslm-membership-content table,
+  #aslm-membership-content tbody,
+  #aslm-membership-content tr,
+  #aslm-membership-content th,
+  #aslm-membership-content td {
+    display: block;
+    width: 100% !important;
+    max-width: 100%;
+  }
+  #aslm-membership-content td,
+  #aslm-membership-content th { padding: 6px 0; }
+}
