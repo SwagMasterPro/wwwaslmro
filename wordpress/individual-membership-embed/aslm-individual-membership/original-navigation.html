@@ -1,0 +1,22 @@
+<script>
+document.addEventListener( 'wpcf7mailsent', function( event ) {
+var inputs = event.detail.inputs;
+var codepl;
+  for ( var i = 0; i < inputs.length; i++ ) {
+    if ( 'your-code' == inputs[i].name )
+      codepl = inputs[i].value;
+    }
+var rates = document.getElementsByName('tip-plata');
+var red=0;
+  for(var i = 0; i < rates.length; i++){
+  console.log(rates[i].checked+' '+ rates[i].value+' ++ ');
+    if(rates[i].checked && rates[i].value == 'Card'){
+      window.location.href = "https://aslm.medscience.center/?id="+codepl;
+      red=1;
+      break;
+    }
+  }
+if(red==0)
+window.setTimeout(window.location.href = "https://membership.aslm.ro/", 3000);
+}, false );
+</script>
