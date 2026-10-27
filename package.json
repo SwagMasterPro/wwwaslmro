@@ -10,6 +10,7 @@
     "test:seo": "node scripts/verify-seo.mjs",
     "test:images": "node scripts/verify-images.mjs",
     "test:webinar": "node --conditions=react-server --import tsx --test tests/webinar/*.test.ts",
+    "test:companies": "node --conditions=react-server --import tsx --test tests/company-requests/*.test.ts",
     "check:webinar": "node --conditions=react-server --import tsx scripts/check-webinar.ts",
     "score:seo": "node scripts/score-seo.mjs",
     "lint": "eslint"

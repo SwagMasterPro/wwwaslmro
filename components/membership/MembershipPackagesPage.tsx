@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { Suspense } from "react";
+import CompanyRequestForm from "@/components/membership/CompanyRequestForm";
 import { ArrowRight, Check } from "lucide-react";
 import MembershipJoinLink from "@/components/marketing/MembershipJoinLink";
 import MembershipViewTracker from "@/components/membership/MembershipViewTracker";
@@ -62,8 +64,8 @@ export default function MembershipPackagesPage({ audience }: { audience: "indivi
                 </div>
                 <div className={styles.action}>
                   {isCompany ? (
-                    <Link href="/contact" className={actionClass} aria-label={`Contactează ASLM pentru înscriere — ${item.name}`}>
-                      Contactează ASLM pentru înscriere
+                    <Link href={`/parteneri-companii?pachet=${item.id}#inscriere`} className={actionClass} aria-label={`Solicită înscrierea — ${item.name}`}>
+                      Solicită înscrierea
                       <ArrowRight className="h-5 w-5 shrink-0" aria-hidden="true" />
                     </Link>
                   ) : (
@@ -78,8 +80,9 @@ export default function MembershipPackagesPage({ audience }: { audience: "indivi
           </div>
         </section>
         <p className="mt-8 max-w-3xl leading-relaxed text-[var(--text-secondary)]">
-          {isCompany ? "Pentru înscrierea companiei, contactează echipa ASLM și menționează pachetul ales." : "Înscrierea și plata cotizației se fac prin formularul de pe membership.aslm.ro."}
+          {isCompany ? "Trimite solicitarea prin formularul de mai jos. ASLM te va contacta pentru verificare și, dacă este cazul, facturare." : "Înscrierea și plata cotizației se fac prin formularul de pe membership.aslm.ro."}
         </p>
+        {isCompany && <Suspense fallback={<p id="inscriere" className="mt-12">Se încarcă formularul. Pentru înscriere, contactează contact@aslm.ro.</p>}><CompanyRequestForm /></Suspense>}
       </div>
       <JsonLdScript id={`membership-packages-${audience}`} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(generateWebPageSchema(`https://www.aslm.ro${path}`, title, description, [{ name: "Acasă", path: "/" }, { name: title, path }])) }} />
     </div>
