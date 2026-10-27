@@ -1,6 +1,6 @@
 import "server-only";
 import nodemailer from "nodemailer";
-import { companyRequestMessage, type CompanyRequest } from "./model";
+import { companyConfirmationMessage, companyRequestMessage, type CompanyRequest } from "./model";
 
 export function companyRequestsConfigured() {
   return process.env.COMPANY_REQUESTS_ENABLED === "true" &&
@@ -23,5 +23,16 @@ export async function deliverCompanyRequest(request: CompanyRequest) {
       ...companyRequestMessage(request), messageId: `<company-${request.submissionId}@aslm.ro>`,
     });
     if (!result.accepted.some(address => String(address).toLowerCase() === "contact@aslm.ro")) throw new Error("Recipient not accepted");
+    // Once ASLM has accepted the request, a confirmation failure must not invite
+    // a resubmission of the already received application.
+    try {
+      const confirmation = await transport.sendMail({
+        from: process.env.COMPANY_SMTP_FROM, to: request.email, replyTo: "contact@aslm.ro",
+        ...companyConfirmationMessage(request), messageId: `<company-confirmation-${request.submissionId}@aslm.ro>`,
+      });
+      return { confirmationSent: confirmation.accepted.some(address => String(address).toLowerCase() === request.email.toLowerCase()) };
+    } catch {
+      return { confirmationSent: false };
+    }
   } finally { transport.close(); }
 }

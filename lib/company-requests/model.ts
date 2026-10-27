@@ -51,3 +51,22 @@ export function companyRequestMessage(request: CompanyRequest) {
     ].join("\n"),
   };
 }
+
+export function companyConfirmationMessage(request: CompanyRequest) {
+  const selected = companyPackage(request.packageId);
+  return {
+    subject: "Confirmare solicitare de parteneriat ASLM",
+    text: [
+      "Bună ziua,", "",
+      "Solicitarea de înscriere a fost transmisă echipei ASLM.",
+      `Referință: ${request.submissionId}`,
+      `Pachet: ${selected.name}`,
+      `Cotizație: ${selected.annualFeeRon ? `${selected.annualFeeRon} RON / an` : "Gratuit"}`,
+      "Durată: 1 an / 365 zile", "",
+      selected.annualFeeRon ? "Echipa ASLM vă va contacta pentru verificarea datelor și facturare. Nu a fost efectuată o plată online." : "Echipa ASLM vă va contacta pentru verificarea datelor. Pachetul Parteneri Media este gratuit.",
+      "Acest mesaj confirmă trimiterea solicitării, nu activarea parteneriatului.", "",
+      "Pentru întrebări, răspundeți la acest email sau scrieți la contact@aslm.ro, menționând referința solicitării.", "",
+      "Echipa ASLM",
+    ].join("\n"),
+  };
+}

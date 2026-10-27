@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import net from "node:net";
 import nodemailer from "nodemailer";
 import { GET, POST } from "../../app/api/company-requests/route";
-import { companyRequestMessage, companyRequestSchema } from "../../lib/company-requests/model";
+import { companyConfirmationMessage, companyRequestMessage, companyRequestSchema } from "../../lib/company-requests/model";
 import { limitCompanyRequests } from "../../lib/company-requests/http";
 
 const valid = {
@@ -28,6 +28,12 @@ test("all packages retain server prices and all separate company/billing fields"
     for (const key of ["cui", "activity", "locality", "representativeName", "phone", "email", "submissionId"] as const) assert.ok(message.text.includes(valid[key]));
     if (packageId === "media") assert.match(message.text, /nu solicitați plata/);
     else assert.match(message.text, /Nu a fost efectuată o plată online/);
+    const confirmation = companyConfirmationMessage(parsed);
+    assert.match(confirmation.text, new RegExp(fee));
+    assert.ok(confirmation.text.includes(valid.submissionId));
+    assert.match(confirmation.text, /nu activarea parteneriatului/);
+    assert.ok(!confirmation.text.includes(valid.activity));
+    assert.ok(!confirmation.text.includes(valid.billingCui));
   }
 });
 
@@ -59,7 +65,7 @@ test("warm-instance throttle rejects a sixth attempt from the same platform addr
   assert.throws(() => limitCompanyRequests(attempt), /Prea multe/);
 });
 
-test("real SMTP rejection gives no success; retries preserve reference and route every package only to ASLM", async t => {
+test("real SMTP rejection gives no success; every package sends separate ASLM and applicant messages", async t => {
   const accepted: { recipients: string[]; data: string }[] = [];
   const sockets = new Set<net.Socket>();
   let reject = true;
@@ -100,14 +106,15 @@ test("real SMTP rejection gives no success; retries preserve reference and route
     assert.equal(failed.status, 503); assert.equal((await failed.json()).reference, undefined);
     for (const packageId of ["imm", "corporate", "media"]) {
       const result = await POST(request({ ...valid, packageId }));
-      assert.equal(result.status, 200); assert.equal((await result.json()).reference, valid.submissionId);
+      assert.equal(result.status, 200); assert.deepEqual(await result.json(), { reference: valid.submissionId, confirmationSent: true });
       assert.equal(result.headers.get("cache-control"), "no-store");
     }
-    assert.equal(accepted.length, 3);
-    for (const mail of accepted) {
-      assert.deepEqual(mail.recipients, ["RCPT TO:<contact@aslm.ro>"]);
-      assert.match(mail.data, /Reply-To: ana@example.com/);
-      assert.match(mail.data, /Message-ID: <company-12345678-1234-4234-8234-123456789abc@aslm.ro>/);
+    assert.equal(accepted.length, 6);
+    for (const [index, mail] of accepted.entries()) {
+      const admin = index % 2 === 0;
+      assert.deepEqual(mail.recipients, [admin ? "RCPT TO:<contact@aslm.ro>" : "RCPT TO:<ana@example.com>"]);
+      assert.match(mail.data, admin ? /Reply-To: ana@example.com/ : /Reply-To: contact@aslm.ro/);
+      assert.match(mail.data, admin ? /Message-ID:\s+<company-12345678-1234-4234-8234-123456789abc@aslm.ro>/ : /Message-ID:\s+<company-confirmation-12345678-1234-4234-8234-123456789abc@aslm.ro>/);
     }
   } finally {
     t.mock.restoreAll();
@@ -115,5 +122,34 @@ test("real SMTP rejection gives no success; retries preserve reference and route
     Object.assign(process.env, previous);
     sockets.forEach(socket => socket.destroy());
     await new Promise<void>(resolve => server.close(() => resolve()));
+  }
+});
+
+test("confirmation failure preserves the accepted application without retrying or claiming confirmation", async t => {
+  const previous = { ...process.env };
+  Object.assign(process.env, { COMPANY_REQUESTS_ENABLED: "true", COMPANY_SMTP_HOST: "smtp.aslm.test", COMPANY_SMTP_PORT: "465", COMPANY_SMTP_USER: "test", COMPANY_SMTP_PASS: "test", COMPANY_SMTP_FROM: "ASLM <test@aslm.test>" });
+  const recipients: string[] = [];
+  let mode = "throw", closed = 0;
+  t.mock.method(nodemailer, "createTransport", () => ({
+    sendMail: async (mail: { to: string }) => {
+      recipients.push(mail.to);
+      if (mail.to === "contact@aslm.ro") return { accepted: [mail.to] };
+      if (mode === "throw") throw new Error("Confirmation rejected");
+      return { accepted: [], rejected: [mail.to] };
+    },
+    close: () => { closed++; },
+  }));
+  try {
+    for (mode of ["throw", "rejected"]) {
+      const response = await POST(request(valid));
+      assert.equal(response.status, 200);
+      assert.deepEqual(await response.json(), { reference: valid.submissionId, confirmationSent: false });
+    }
+    assert.deepEqual(recipients, ["contact@aslm.ro", valid.email, "contact@aslm.ro", valid.email]);
+    assert.equal(closed, 2);
+  } finally {
+    t.mock.restoreAll();
+    for (const key of Object.keys(process.env)) if (!(key in previous)) delete process.env[key];
+    Object.assign(process.env, previous);
   }
 });

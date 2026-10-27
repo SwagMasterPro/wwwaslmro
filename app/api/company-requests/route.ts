@@ -4,7 +4,7 @@ import { CompanyRequestError, json, limitCompanyRequests, readCompanyRequest, un
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
-export const maxDuration = 30;
+export const maxDuration = 60;
 
 export function GET() { return json({ available: companyRequestsConfigured() }); }
 
@@ -18,8 +18,8 @@ export async function POST(request: Request) {
       const fields = Object.fromEntries(parsed.error.issues.map(issue => [issue.path[0], issue.message]));
       return json({ error: "Verifică datele introduse.", fields }, 400);
     }
-    await deliverCompanyRequest(parsed.data);
-    return json({ reference: parsed.data.submissionId });
+    const delivery = await deliverCompanyRequest(parsed.data);
+    return json({ reference: parsed.data.submissionId, confirmationSent: delivery.confirmationSent });
   } catch (error) {
     if (error instanceof CompanyRequestError) return json({ error: error.message }, error.status);
     return json({ error: unavailableMessage }, 503);

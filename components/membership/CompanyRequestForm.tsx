@@ -19,6 +19,7 @@ export default function CompanyRequestForm() {
   const [failure, setFailure] = useState("");
   const [reference, setReference] = useState("");
   const [submittedPackage, setSubmittedPackage] = useState("");
+  const [confirmationSent, setConfirmationSent] = useState(false);
   const submissionId = useRef("");
   const statusRef = useRef<HTMLDivElement>(null);
 
@@ -50,7 +51,7 @@ export default function CompanyRequestForm() {
     setPending(true);
     try {
       const response = await fetch("/api/company-requests", {
-        method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(parsed.data), signal: AbortSignal.timeout(35_000),
+        method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(parsed.data), signal: AbortSignal.timeout(65_000),
       });
       const result = await response.json();
       if (!response.ok || !result.reference) {
@@ -58,6 +59,7 @@ export default function CompanyRequestForm() {
         throw new Error(result.error || "Nu am putut confirma primirea solicitării. Contactează ASLM la contact@aslm.ro.");
       }
       setSubmittedPackage(packageId);
+      setConfirmationSent(result.confirmationSent === true);
       setReference(result.reference);
     } catch (error) {
       setFailure(error instanceof Error && error.name === "Error" ? error.message : "Nu am putut confirma primirea solicitării. Datele sunt păstrate în formular. Reîncearcă sau contactează contact@aslm.ro.");
@@ -78,6 +80,7 @@ export default function CompanyRequestForm() {
         {reference && <div role="status" className="mt-6 rounded-lg border border-green-300 bg-green-50 p-5">
           <h3 className="text-xl font-semibold">Solicitarea a fost transmisă către ASLM.</h3>
           <p className="mt-2">Echipa ASLM te va contacta pentru verificare{submittedPackage === "media" ? ". Pachetul Media este gratuit." : " și facturare. Nu a fost efectuată o plată online."}</p>
+          <p className="mt-2">{confirmationSent ? "Ți-am trimis și un email de confirmare. Verifică inboxul și folderul Spam." : "Solicitarea a fost transmisă către ASLM, dar nu am putut confirma trimiterea emailului către tine. Nu este nevoie să completezi formularul din nou. Păstrează referința de mai jos; pentru întrebări, scrie la contact@aslm.ro."}</p>
           <p className="mt-3 break-all text-sm">Referință: {reference}</p>
         </div>}
         {failure && <p role="alert" className="mt-6 rounded-lg border border-red-300 bg-red-50 p-4">{failure}</p>}
