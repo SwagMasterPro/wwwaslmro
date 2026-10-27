@@ -2,16 +2,19 @@ import Image from "next/image";
 import Link from "next/link";
 import { Suspense } from "react";
 import CompanyRequestForm from "@/components/membership/CompanyRequestForm";
+import IndividualMembershipForm from "@/components/membership/IndividualMembershipForm";
 import { ArrowRight, Check } from "lucide-react";
 import MembershipJoinLink from "@/components/marketing/MembershipJoinLink";
 import MembershipViewTracker from "@/components/membership/MembershipViewTracker";
 import JsonLdScript from "@/components/seo/JsonLdScript";
 import { companyMembershipPackages, individualMembershipPackages, membershipDuration } from "@/data/membership-packages";
 import { generateWebPageSchema } from "@/lib/structured-data";
+import { resolveMembershipFormConfig } from "@/lib/membership-embed";
 import styles from "./MembershipPackagesPage.module.css";
 
 export default function MembershipPackagesPage({ audience }: { audience: "individuals" | "companies" }) {
   const isCompany = audience === "companies";
+  const membershipForm = isCompany ? null : resolveMembershipFormConfig(process.env.MEMBERSHIP_FORM_URL, process.env.MEMBERSHIP_FORM_EMBED_ENABLED);
   const packages = isCompany ? companyMembershipPackages : individualMembershipPackages;
   const title = isCompany ? "Beneficii parteneri companii" : "Beneficii membri ASLM";
   const path = isCompany ? "/parteneri-companii" : "/membri";
@@ -98,11 +101,17 @@ export default function MembershipPackagesPage({ audience }: { audience: "indivi
               <p>Dacă achitați prin transfer bancar (OP), copia dovezii plății împreună cu datele dvs. trebuie trimisă prin email la adresa: <a href="mailto:contact@aslm.ro">contact@aslm.ro</a>.</p>
               <p>Dacă achitați cu cardul, nu este necesară trimiterea dovezii plății, aceasta este înregistrată automat.</p>
             </div>
-            <MembershipJoinLink source="membership_registration" className={styles.joinLink}>
-              Completează formularul de înscriere
-              <ArrowRight className="h-5 w-5 shrink-0" aria-hidden="true" />
-            </MembershipJoinLink>
-            <p className={styles.externalNote}>Formularul se deschide pe membership.aslm.ro într-o filă nouă.</p>
+            {membershipForm && membershipForm.mode !== "legacy" ? (
+              <IndividualMembershipForm url={membershipForm.url} embedded={membershipForm.mode === "embedded"} />
+            ) : (
+              <>
+                <MembershipJoinLink source="membership_registration" className={styles.joinLink}>
+                  Completează formularul de înscriere
+                  <ArrowRight className="h-5 w-5 shrink-0" aria-hidden="true" />
+                </MembershipJoinLink>
+                <p className={styles.externalNote}>Formularul se deschide pe membership.aslm.ro într-o filă nouă.</p>
+              </>
+            )}
           </section>
         )}
       </div>
