@@ -10,7 +10,7 @@ Acest document păstrează tabelele exacte pentru operatorul WordPress. Instruc�
 
 ## Membri ASLM
 
-Înlocuiți tabelul existent de pe https://membership.aslm.ro/ cu datele de mai jos, păstrând formularul și integrarea existentă de înregistrare/plată. Nu modificați ruta separată /webinar/.
+Actualizare conform feedbackului din 27 octombrie: tabelele de beneficii se păstrează pe site-ul principal. Pregătiți formularul WordPress pentru încorporare urmând [brief-ul pentru formularul individual](individual-registration-embed-handoff.md). Nu eliminați pagina veche înainte de validarea integrării și nu modificați ruta separată /webinar/. Tabelul de mai jos rămâne referința exactă de conținut, nu o solicitare de a publica încă o copie.
 
 | Categorie | Membri Afiliați | Membri Titulari | Membri Asociați |
 | --- | --- | --- | --- |

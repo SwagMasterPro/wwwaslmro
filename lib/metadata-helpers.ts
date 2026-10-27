@@ -101,15 +101,15 @@ const staticPages: Record<string, StaticPageMetadata> = {
     keywords: ["Adunarea Generală ASLM", "membri ASLM", "lista membri ASLM"],
   },
   "/membri": {
-    title: "Membri ASLM: înscriere, beneficii și categorii",
+    title: "Beneficii membri ASLM: pachete și înscriere",
     description:
       "Compară pachetele Membri Afiliați, Membri Titulari și Membri Asociați: beneficii, adresabilitate și cotizații de 400 sau 300 RON pe an. Înscrie-te în ASLM.",
     keywords: ["membri ASLM", "înscriere ASLM", "devino membru ASLM", "beneficii membri", "medicina stilului de viață"],
   },
   "/parteneri-companii": {
-    title: "Parteneri companii: pachete IMM, Corporate și Media",
+    title: "Beneficii parteneri companii: IMM, Corporate și Media",
     description:
-      "Descoperă pachetele Parteneri ASLM IMM, Corporate și Media: beneficii, vizibilitate și cotizații de 1.500 RON/an, 3.000 RON/an sau gratuit. Contactează ASLM.",
+      "Descoperă pachetele Parteneri ASLM IMM, Corporate și Media: beneficii, vizibilitate și cotizații de 1.500 RON/an, 3.000 RON/an sau gratuit. Solicită înscrierea.",
     keywords: ["parteneri ASLM", "parteneri companii", "ASLM IMM", "ASLM Corporate", "Parteneri Media"],
   },
   "/en": {

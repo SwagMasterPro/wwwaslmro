@@ -48,6 +48,8 @@ for (const [, src, alt] of pressReleaseImages) {
 }
 
 const technicalAssets = [
+  { src: "/images/membership/membri-aslm.webp", width: 2164, height: 333, maxBytes: 200 * 1024 },
+  { src: "/images/membership/parteneri-aslm.webp", width: 2160, height: 336, maxBytes: 200 * 1024 },
   { src: "/images/aslm-og.png", width: 1200, height: 630, maxBytes: 200 * 1024 },
   { src: "/images/membership-popup-doctor.webp", width: 1024, height: 1024, maxBytes: 150 * 1024 },
   { src: "/images/promo-video-cover.webp", width: 1024, height: 576, maxBytes: 100 * 1024 },
