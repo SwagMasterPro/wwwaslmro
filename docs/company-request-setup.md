@@ -17,9 +17,18 @@ Introduceți secretele direct în proiectul Vercel `wwwaslmro`, nu în Git, emai
 
 Destinatarul notificării interne este fix: `contact@aslm.ro`. George a confirmat că adresa este un alias către Mihai și Iulia; nu este inboxul operatorului site-ului. Adresa introdusă în formular devine Reply-To pentru notificarea internă. După acceptarea notificării interne de către SMTP, formularul trimite solicitantului un email separat cu pachetul, cotizația și referința. Acesta are Reply-To `contact@aslm.ro` și precizează că parteneriatul nu este încă activat. Nu include descrierea liberă sau datele fiscale. Configurați SPF/DKIM conform serviciului ASLM existent; nu schimbați înregistrările MX pentru acest formular.
 
-Datele furnizate de George au fost salvate ca secrete Production în Vercel. TLS și autentificarea SMTP au fost verificate. Un email marcat TEST a fost acceptat de SMTP; George a indicat expedierea către destinatarii aliasului, dar nu a identificat conținutul. Confirmarea în inbox pentru fluxul complet rămâne de verificat. Nu păstrați parola în acest document.
+Datele furnizate de George au fost salvate ca secrete Production în Vercel. TLS și autentificarea SMTP au fost verificate. Nu păstrați parola în acest document.
 
-Păstrați activarea dezactivată în producție până la verificarea într-un deployment preview. Variabilele Vercel se aplică la un deployment nou. `GET /api/company-requests` trebuie să răspundă cu `available: true` numai când configurarea necesară este prezentă și activarea explicită este setată. Acesta este un control de configurare, nu o probă de livrare SMTP. Fără configurare, pagina afișează formularul, butonul de trimitere este dezactivat și contactul direct ASLM rămâne disponibil.
+## Verificare și activare — 27 octombrie 2026
+
+- Test autorizat prin endpointul real `/api/company-requests`, într-un deployment Vercel Production pregătit fără mutarea domeniilor: `dpl_HSYYPRmYPQ2qiXk6g61kc1gbrBPD`, sursă echivalentă commitului `a839814`.
+- O singură solicitare Media, cu nume și descriere marcate TEST / NU PROCESAȚI / NU FACTURAȚI; referință `253164ae-57a6-41b0-ac49-aab5ba6d6120`. Răspuns HTTP 200, `confirmationSent: true`. Au fost generate notificarea către aliasul ASLM și confirmarea separată către solicitant.
+- Confirmarea a fost citită în Gmail, etichetată INBOX, cu referința corectă, cotizație Gratuit, Reply-To `contact@aslm.ro` și SPF/DKIM/DMARC toate PASS. Acesta este testul real de livrare; celelalte pachete și eșecurile sunt acoperite de testele automate locale.
+- Pentru notificarea către ASLM, avem acceptarea SMTP; inboxurile finale ale lui Mihai și Iulia nu sunt accesibile pentru verificare directă. Confirmarea lor rămâne o verificare operațională distinctă.
+- Regula Vercel Firewall `ASLM company requests rate limit` este publicată: maximum cinci POST-uri per IP în 600 secunde pentru acest endpoint. Cererile de verificare cu payload gol au primit HTTP 429 de la platformă la atingerea limitei, fără trimitere de emailuri.
+- `COMPANY_REQUESTS_ENABLED=true` este salvat în Production. Deploymentul testat a fost promovat pe domeniile publice; formularul este activ. Testul nu a creat conturi, plăți sau înscrieri reale.
+
+Pentru schimbări viitoare de configurare, verificați într-un deployment fără domeniile publice înainte de promovare. Variabilele Vercel se aplică la un deployment nou. `GET /api/company-requests` trebuie să răspundă cu `available: true` numai când configurarea necesară este prezentă și activarea explicită este setată. Acesta este un control de configurare, nu o probă de livrare SMTP. Fără configurare, pagina afișează formularul, butonul de trimitere este dezactivat și contactul direct ASLM rămâne disponibil.
 
 ## Verificare înainte de activarea producției
 
@@ -34,4 +43,4 @@ Inboxul ASLM este evidența solicitărilor; acest flux nu creează o bază de da
 
 Nu există coadă persistentă în aplicație sau garanție de procesare o singură dată. Un timeout după acceptarea SMTP poate produce o retrimitere; browserul păstrează aceeași referință și Message-ID la reîncercare în formularul deschis. Operatorul trebuie să deduplice după referință. Dacă notificarea internă este acceptată, dar confirmarea solicitantului eșuează, răspunsul rămâne de succes pentru solicitare, cu `confirmationSent: false`: pagina explică să nu se retrimită formularul. Nu există reîncercare automată a confirmării. Reîncărcarea paginii pornește o solicitare nouă. Nu se păstrează date personale în localStorage sau în loguri.
 
-Testele automate folosesc un server SMTP local: respingere, reîncercare, toate cele trei pachete, destinatari separați, câmpuri separate și lipsa unei plăți. Sunt verificate și erorile confirmării după acceptarea solicitării interne. Ele nu confirmă livrarea prin serviciul ASLM. Activarea rămâne dependentă de verificarea fluxului complet și a inboxurilor.
+Testele automate folosesc un server SMTP local: respingere, reîncercare, toate cele trei pachete, destinatari separați, câmpuri separate și lipsa unei plăți. Sunt verificate și erorile confirmării după acceptarea solicitării interne. Ele nu confirmă livrarea prin serviciul ASLM; dovada testului real este în secțiunea de verificare de mai sus.
