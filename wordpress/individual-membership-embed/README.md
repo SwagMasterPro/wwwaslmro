@@ -19,7 +19,7 @@ Get-ChildItem tests/wp-membership-embed/*.test.php | ForEach-Object {
 
 The local runner uses PHP 7.4.33 through the existing WordPress Playground runtime. It is a host test helper, not part of the upload. With a native PHP 7.4 installation, run each PHP test file directly with `php`.
 
-These tests isolate the plugin from WordPress. They cover fee normalization, CFDB serialization and persistence checks, route handling, navigation replacement, payment links, labels, and resize messages. They do not establish live provider delivery or payment success.
+These tests isolate the plugin from WordPress. They cover profile normalization, Unicode limits, fee normalization, CFDB serialization and persistence checks, route handling, form and notification overrides, payment links, labels, and resize messages. They do not establish live provider delivery or payment success.
 
 ## Install the reviewed files
 
@@ -31,21 +31,28 @@ Upload the loader and its asset directory as siblings.
 wp-content/mu-plugins/
   aslm-individual-membership.php
   aslm-individual-membership/
+    form.html
     original-navigation.html
     form.js
     form.css
+    profile.php
 ```
 
 WordPress loads the PHP file from the top level of `mu-plugins`. Uploading this entire repository folder one level below `mu-plugins` does not activate the loader.
 
 Activation affects these paths and submissions.
 
-- `/formular-inscriere/` serves the existing form 149 on GET and HEAD. The route requires CF7, CFDB, the PHP shortcode handler, and an exact match for the old navigation script.
+- `/formular-inscriere/` serves form 149 on GET and HEAD. The route requires CF7, CFDB, the PHP shortcode handler, and the versioned form template.
+- Form 149 uses `form.html` during rendering and submission validation. The stored CF7 form remains intact. Mail overrides replace only the profile rows in the two existing notification bodies. Recipients, headers, billing rows, and transport settings remain intact.
+- `Nume_familie` and `Prenume` are required and saved separately. The server builds legacy `Nume` for the invoice. `Studii` is optional; `Loc_Munca` remains required and is displayed as Domeniu de activitate. Both allow up to 1,000 Unicode characters.
+- New submissions require `aslm-membership-profile=2`. Preloaded old forms receive an instruction to reload before saving or sending notifications. Historical records are unchanged.
 - Every submission of form 149 receives server-authoritative category and fee values. Other forms retain their existing processing.
 - Dedicated submissions receive a new server token. The plugin verifies the saved CFDB row before allowing confirmation or a payment continuation link.
 - The dedicated response adds framing permission for `https://www.aslm.ro`. The actual server or firewall can still impose a stricter policy.
 
-Keep `original-navigation.html` byte-for-byte intact. Its SHA-256 is `d5689bf4b912c774a4a8cb729bb9c36d5344678f0db76c36785317e0c931cdd1`. If the stored navigation script changes, review the replacement before updating the fixture and hash.
+Upload the asset directory first and the loader last. Keep the original plugin and CF7 form/mail backups outside the public web root. Restore the previous loader first during rollback, then its assets. Preserve `original-navigation.html` byte-for-byte with SHA-256 `d5689bf4b912c774a4a8cb729bb9c36d5344678f0db76c36785317e0c931cdd1`.
+
+The legacy root page remains redirected for eligible requests. Non-dedicated renderings retain their original navigation script and do not receive the embed marker, so excluded root queries retain their existing payment continuation. They use the same updated profile fields. Dedicated submissions keep their posted embed marker even though the REST form template uses the non-dedicated variant.
 
 ## Complete the live checks before enabling the iframe
 

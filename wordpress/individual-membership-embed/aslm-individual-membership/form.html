@@ -1,0 +1,141 @@
+<div style="display: none;">
+[php snippet=2]
+[php snippet=4]
+<script>
+function myFunction() {
+var total = 0;
+    var curs_bnr = document.getElementById("cursbnr").value;
+    var data_bnr = document.getElementById("databnr").value;
+    var taxa_pret = document.getElementById("taxa_eur").value;
+    var thenum = taxa_pret.replace(/[^0-9.]+/g, '');
+    taxa_pret = parseFloat(thenum);
+    taxa_pret = taxa_pret.toFixed(2);
+    document.getElementById("taxa").value = taxa_pret;
+    var roundlei = 0;
+    var pretab = 0;
+    pretab = taxa_pret;
+    pretab = Math.floor(pretab);
+    document.getElementById("pret-ab").value = pretab+".00";
+    document.getElementById("data_bnr").value = document.getElementById("databnr").value;
+    document.getElementById("cursul_bnr").value = document.getElementById("cursbnr").value;
+    document.getElementById("taxa-inreg").value = document.getElementById("taxa_eur").value;
+    var n_fact = document.getElementById("nrfactura").value;
+    n_fact = parseInt(n_fact)+200;
+    document.getElementById("nr_factura").value = n_fact;
+var your_code = document.getElementById("your-code").value;
+document.getElementById("link_plata_mail").value = "https://aslm.medscience.center/?id="+your_code;
+document.getElementById("tip_taxa_mail").value = document.getElementById("taxa_eur").value;
+if (pretab == "0") {
+document.getElementById("link_plata_mail").value = "";
+document.getElementById("tip_taxa_mail").value = "Student";
+document.getElementById("taxa").value = 0;
+document.getElementById("pret-ab").value = 0;
+ }
+}
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+jQuery(document).ready(function($) {
+	if ( $( ".wpcf7-form" ).length ) {
+		myFunction();
+		$("body").on("change",".wpcf7 input,.wpcf7 select,.wpcf7 textarea",function(e){
+			myFunction();
+		});
+$("#taxa_eur").on("change", function(e){
+		myFunction();
+        var taxa_pretj = $("#taxa_eur").val().replace(/[^0-9]+/g, '');
+        taxa_pretj = parseInt(taxa_pretj);
+        var radioCard = $("input[name='tip-plata'][value='Card']");
+        var radioTransfer = $("input[name='tip-plata'][value='Transfer bancar']");
+        if (taxa_pretj === 0) {
+            radioTransfer.prop("checked", true);
+            radioTransfer.prop("disabled", false);
+            radioCard.prop("disabled", true);
+            radioCard.prop("checked", false);
+        } else {
+            radioCard.prop("disabled", false);
+            radioTransfer.prop("disabled", false);
+            radioTransfer.prop("checked", false);
+            radioCard.prop("checked", true);
+        }
+              });   
+	}
+});
+</script>
+[hidden aslm-membership-embed "1"]
+[hidden aslm-membership-profile "2"]
+[hidden Nume]
+[text data-bnr id:data_bnr "0"]
+[text curs-bnr id:cursul_bnr "0"]
+[text taxa-eur id:taxa "0"]
+[text pret_ab id:pret-ab "0"]
+[text nr-fact id:nr_factura "0"]
+[text link-plata-mail id:link_plata_mail ""]
+[text tip-taxa-mail id:tip_taxa_mail "0"]
+[php snippet=8]
+</div>
+<table width="100%" style="padding:3px; margin:3px; border-bottom:2px;" class="tabele tabele1">
+  <tr id="ins">
+    <td width="33%" id="ins">Nume:</td>
+    <td width="67%" id="ins">[text* Nume_familie autocomplete:family-name]</td>
+  </tr>
+  <tr id="ins">
+    <td id="ins">Prenume:</td>
+    <td id="ins">[text* Prenume autocomplete:given-name]</td>
+  </tr>
+  <tr id="ins">
+    <td id="ins">Studii:</td>
+    <td id="ins">[text Studii maxlength:1000]</td>
+  </tr>
+  <tr id="ins">
+    <td id="ins">Domeniu de activitate:</td>
+    <td id="ins">[text* Loc_Munca maxlength:1000]</td>
+  </tr>
+  <tr id="ins">
+    <td id="ins">Telefon:</td>
+    <td id="ins">[text* telefon]</td>
+  </tr>
+  <tr id="ins">
+    <td id="ins">E-mail:</td>
+    <td id="ins">[email* email_contact]</td>
+  </tr>
+<tr id="ins">
+    <td id="ins">Oras, judet:</td>
+    <td id="ins">[text* Adresa]</td>
+  </tr>
+  <tr id="ins">
+    <td id="ins">Taxa înregistrare</td>
+    <td id="ins"><select name="taxa-ped" id="taxa_eur" onblur="myFunction()">
+  <option value="">Selectați tipul înregistrării</option>
+[php snippet=9]
+</select>
+[text* Taxa-inregistrare id:taxa-inreg value:""]</td>
+  </tr>
+<tr id="ins" style="display: none;">
+    <td id="ins"><span style="color:#906;">NUME FIRMĂ/CMI:</span></td>
+    <td id="ins"><span style="color:#906;">[text nume_firma]</span></td>
+  </tr>
+<tr id="ins" style="display: none;">
+    <td id="ins"><span style="color:#906;">CUI/CIF:</span></td>
+    <td id="ins"><span style="color:#906;">[text cif]</span></td>
+  </tr>
+
+
+  
+</table>
+<label class="aslm-membership-consent">[acceptance acceptance-64 id:acceptance-64] <span style="color: #a61818;">Confirmați că sunteți de acord cu <a href="https://www.aslm.ro/terms" target="_blank">Termenii și condițiile</a></span></label>
+<div style="color:#906; font-size: 14px; font-weight: 400; padding: 15px;border: 1px solid #CCCCCC;width: fit-content;border-radius: 9px;margin-top: 19px; margin-left: auto;margin-right: auto;">Tip plata: [radio tip-plata id:tip-plata default:1 "Card" "Transfer bancar"]</div>
+<table width="100%" style="border:0px !important; margin-top:9px;">
+<tr style="border:0px !important;">
+<td>[submit "TRIMITE"]</td>
+<td>Prin apăsarea butonului confirmați că datele trimise sunt corecte. Veți primi pe emailul furnizat <em>Factura Proformă</em>.</td>
+</tr>
+<tr style="border:0px !important;">
+<td colspan="2">
+<div style="line-height: 1.3em;">
+Dacă achitați prin transfer bancar (OP), copia dovezii plății împreună cu datele dvs. trebuie  trimisă prin email la adresa: <a href="mailto:contact@aslm.ro">contact@aslm.ro</a>
+Dacă achitați cu cardul, nu este necesară trimiterea dovezii plății, aceasta este înregistrată automat.
+</div>
+</td>
+</tr>
+</table>

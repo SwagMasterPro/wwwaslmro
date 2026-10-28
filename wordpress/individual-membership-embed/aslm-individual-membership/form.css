@@ -59,6 +59,10 @@ body.aslm-membership-embed {
 #aslm-membership-content .wpcf7-list-item { display: block; margin: 12px 0; }
 #aslm-membership-content .wpcf7-list-item label { display: inline-flex; gap: 8px; align-items: baseline; }
 #aslm-membership-content .wpcf7-form-control-wrap { display: block; max-width: 100%; }
+#aslm-membership-content .aslm-membership-consent { display: flex; align-items: flex-start; gap: 10px; }
+#aslm-membership-content .aslm-membership-consent .wpcf7-form-control-wrap { flex: 0 0 20px; width: 20px; margin-top: 4px; }
+#aslm-membership-content .aslm-membership-consent input[type=checkbox] { display: block; margin: 0; }
+#aslm-membership-content .aslm-membership-consent .wpcf7-list-item { margin: 0; }
 #aslm-membership-content .wpcf7-not-valid-tip { color: #991b1b; font-size: 1rem; }
 #aslm-membership-content .wpcf7-response-output { margin: 20px 0; padding: 14px; }
 #aslm-membership-content a { color: #115e59; text-decoration: underline; }

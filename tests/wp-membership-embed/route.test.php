@@ -46,9 +46,9 @@ class WPCF7_ContactForm {
     function form_html() {
         $first = $this->get_properties();
         $second = $this->get_properties();
-        if ($first !== $second || $first['form'] !== '[hidden aslm-membership-embed "1"]') throw new RuntimeException('Repeated render reads must match.');
+        if ($first !== $second || strpos($first['form'], '[hidden aslm-membership-profile "2"]') === false) throw new RuntimeException('Repeated render reads must match.');
         if (strpos($this->properties['form'], 'document.addEventListener') === false) throw new RuntimeException('Stored form was changed.');
-        return '<form><input name="aslm-membership-embed" value="1"><input name="your-code" value="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"><input type="hidden" name="nrfact" id="nrfactura">[exchange_rate]</form>';
+        return '<form><input name="aslm-membership-embed" value="1"><input name="aslm-membership-profile" value="2"><input name="Nume_familie"><input name="Prenume"><input name="Studii"><input name="Loc_Munca"><input name="your-code" value="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"><input type="hidden" name="nrfact" id="nrfactura">[exchange_rate]</form>';
     }
 }
 function do_shortcode($shortcode) {

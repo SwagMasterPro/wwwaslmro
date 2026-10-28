@@ -5,6 +5,7 @@
  */
 
 defined('ABSPATH') || exit;
+require_once __DIR__ . '/aslm-individual-membership/profile.php';
 
 if (!defined('ASLM_MEMBERSHIP_LEGACY_ROOT_REDIRECT_ENABLED')) {
     define('ASLM_MEMBERSHIP_LEGACY_ROOT_REDIRECT_ENABLED', false);
@@ -67,6 +68,13 @@ function aslm_membership_normalize($data) {
     $raw_payment = isset($_POST['tip-plata']) ? $_POST['tip-plata'] : null;
     if (is_array($payment) && count($payment) === 1) $payment = reset($payment);
     $errors = array();
+    $profile = aslm_membership_profile($data);
+    $data = array_merge($data, $profile['values']);
+    $errors = $profile['errors'];
+    if (!isset($data['aslm-membership-profile']) || $data['aslm-membership-profile'] !== '2') {
+        $errors['Taxa-inregistrare'] = 'Formularul a fost actualizat. Reîncărcați pagina și completați noul formular.';
+    }
+    unset($data['Specialitatea'], $data['grad-prof'], $data['cnp-cod_parafa']);
     if (!is_string($category) || !isset($packages[$category])) $errors['Taxa-inregistrare'] = 'Selectați o categorie de membru validă.';
     if (!is_string($raw_payment) || !is_string($payment) || $raw_payment !== $payment || !in_array($payment, array('Card', 'Transfer bancar'), true)) {
         $errors['tip-plata'] = 'Selectați o modalitate de plată validă.';
@@ -99,13 +107,14 @@ function aslm_membership_normalize($data) {
 
     $expected = array();
     if ($dedicated) {
-        foreach (array('Nume', 'telefon', 'email_contact', 'Loc_Munca', 'Adresa', 'nr-fact', 'your-code', 'taxa-ped', 'pret_ab', 'taxa-eur', 'Taxa-inregistrare', 'tip-taxa-mail', 'link-plata-mail') as $field) {
+        foreach (array('Nume', 'Nume_familie', 'Prenume', 'telefon', 'email_contact', 'Loc_Munca', 'Adresa', 'nr-fact', 'your-code', 'taxa-ped', 'pret_ab', 'taxa-eur', 'Taxa-inregistrare', 'tip-taxa-mail', 'link-plata-mail') as $field) {
             if (!isset($data[$field]) || !is_string($data[$field]) || trim($data[$field]) === '') {
                 $errors['Taxa-inregistrare'] = 'Datele formularului sunt incomplete. Reîncărcați formularul și încercați din nou.';
             } else {
                 $expected[$field] = stripslashes($data[$field]);
             }
         }
+        if ($data['Studii'] !== '') $expected['Studii'] = stripslashes($data['Studii']);
         if (is_string($payment)) $expected['tip-plata'] = $payment;
     }
 
@@ -192,18 +201,47 @@ function aslm_membership_response($response, $result) {
 add_filter('wpcf7_ajax_json_echo', 'aslm_membership_response', 20, 2);
 
 function aslm_membership_form_properties($properties, $form) {
-    if (empty($GLOBALS['aslm_membership_rendering']) || (int) $form->id() !== 149) return $properties;
-    $original = file_get_contents(__DIR__ . '/aslm-individual-membership/original-navigation.html');
-    if (!is_string($original) || hash('sha256', $original) !== 'd5689bf4b912c774a4a8cb729bb9c36d5344678f0db76c36785317e0c931cdd1') {
-        throw new RuntimeException('Membership navigation fixture is unavailable.');
+    if ((int) $form->id() !== 149 || empty($properties['form'])) return $properties;
+    $template = file_get_contents(__DIR__ . '/aslm-individual-membership/form.html');
+    if (!is_string($template) || strpos($template, '[hidden aslm-membership-profile "2"]') === false || substr_count($template, '[hidden aslm-membership-embed "1"]') !== 1) {
+        throw new RuntimeException('Membership profile template is unavailable.');
     }
-    if (!isset($properties['form']) || substr_count($properties['form'], $original) !== 1) {
-        throw new RuntimeException('Membership navigation script has changed.');
+    if (empty($GLOBALS['aslm_membership_rendering'])) {
+        $navigation = file_get_contents(__DIR__ . '/aslm-individual-membership/original-navigation.html');
+        if (!is_string($navigation) || hash('sha256', $navigation) !== 'd5689bf4b912c774a4a8cb729bb9c36d5344678f0db76c36785317e0c931cdd1') {
+            throw new RuntimeException('Membership navigation fixture is unavailable.');
+        }
+        $template = str_replace('[hidden aslm-membership-embed "1"]', $navigation, $template);
     }
-    $properties['form'] = str_replace($original, '[hidden aslm-membership-embed "1"]', $properties['form']);
+    $properties['form'] = $template;
+    foreach (array('mail', 'mail_2') as $key) {
+        if (isset($properties[$key]['body'])) {
+            $properties[$key]['body'] = aslm_membership_profile_mail($properties[$key]['body']);
+        }
+    }
     return $properties;
 }
 add_filter('wpcf7_contact_form_properties', 'aslm_membership_form_properties', 20, 2);
+
+function aslm_membership_profile_mail($body) {
+    if (!is_string($body)) throw new RuntimeException('Membership profile mail has changed.');
+    foreach (array('', '&bull; ') as $prefix) {
+        $old = $prefix . '<strong>Nume</strong>: [Nume]<br />' . "\n"
+            . $prefix . '<strong>Specialitatea</strong>: [Specialitatea]<br />' . "\n"
+            . $prefix . '<strong>Grad profesional</strong>: [grad-prof]<br />' . "\n"
+            . $prefix . '<strong>CUIM</strong>: [cnp-cod_parafa]<br />';
+        $new = $prefix . '<strong>Nume</strong>: [Nume_familie]<br />' . "\n"
+            . $prefix . '<strong>Prenume</strong>: [Prenume]<br />' . "\n"
+            . $prefix . '<strong>Studii</strong>: [Studii]<br />' . "\n"
+            . $prefix . '<strong>Domeniu de activitate</strong>: [Loc_Munca]<br />';
+        if (substr_count($body, $new) === 1) return $body;
+        $old_work = $prefix . '<strong>Loc munca</strong>: [Loc_Munca]<br />' . "\n";
+        if (substr_count($body, $old) === 1 && substr_count($body, $old_work) === 1) {
+            return str_replace(array($old, $old_work), array($new, ''), $body);
+        }
+    }
+    throw new RuntimeException('Membership profile mail has changed.');
+}
 
 function aslm_membership_diagnostic_code($error) {
     $known = array(
@@ -215,6 +253,8 @@ function aslm_membership_diagnostic_code($error) {
         'Membership style loader is unavailable.' => 'missing-style-loader',
         'Membership navigation fixture is unavailable.' => 'navigation-fixture',
         'Membership navigation script has changed.' => 'navigation-mismatch',
+        'Membership profile template is unavailable.' => 'profile-template',
+        'Membership profile mail has changed.' => 'profile-mail-mismatch',
         'Membership form is unavailable.' => 'missing-form',
         'Membership form did not render completely.' => 'incomplete-markup',
     );
@@ -228,6 +268,9 @@ function aslm_membership_diagnostic_message($error) {
 
 function aslm_membership_markup_complete($markup) {
     if (!is_string($markup) || strpos($markup, 'name="aslm-membership-embed"') === false || strpos($markup, 'name="your-code"') === false) return false;
+    foreach (array('aslm-membership-profile', 'Nume_familie', 'Prenume', 'Studii', 'Loc_Munca') as $name) {
+        if (strpos($markup, 'name="' . $name . '"') === false) return false;
+    }
     if (preg_match('/\[(?:php|exchange_rate|contact-form-7)\b/i', $markup)) return false;
     preg_match_all('/<input\b[^>]*>/i', $markup, $inputs);
     foreach (array('cursbnr' => 'curs', 'databnr' => 'data', 'nrfactura' => 'nrfact') as $id => $name) {
@@ -294,8 +337,8 @@ function aslm_membership_route() {
     wpcf7_enqueue_scripts();
     wpcf7_enqueue_styles();
     $assets = plugin_dir_url(__FILE__) . 'aslm-individual-membership/';
-    wp_enqueue_style('aslm-membership-embed', $assets . 'form.css', array(), '1.0.1');
-    wp_enqueue_script('aslm-membership-embed', $assets . 'form.js', array('contact-form-7'), '1.0.1', true);
+    wp_enqueue_style('aslm-membership-embed', $assets . 'form.css', array(), '1.1.0');
+    wp_enqueue_script('aslm-membership-embed', $assets . 'form.js', array('contact-form-7'), '1.1.0', true);
     ?><!doctype html>
 <html lang="ro">
 <head>
