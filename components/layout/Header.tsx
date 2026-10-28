@@ -71,9 +71,9 @@ function getNavItems(locale: Locale): NavItem[] {
   return [
     {
       href: "/despre",
-      label: "Despre ASLM",
+      label: "ASLM Romania",
       children: [
-        { href: "/despre", label: "Ce este ASLM" },
+        { href: "/despre", label: "Societatea" },
         { href: "/medicina-stilului-de-viata", label: "Medicina stilului de viață" },
         { href: "/misiune", label: "Misiune & Viziune" },
         { href: "/consiliu-stiintific", label: "Consiliu Științific" },
@@ -85,9 +85,10 @@ function getNavItems(locale: Locale): NavItem[] {
       href: "/membri",
       label: "Membri",
       children: [
-        { href: "/membri", label: "Beneficii membri ASLM" },
-        { href: "/parteneri-companii", label: "Beneficii parteneri companii" },
         { href: "/adunarea-generala", label: "Adunarea Generală" },
+        { href: "/y-aslm", label: "Young ASLM" },
+        { href: "/membri", label: "Membri ASLM" },
+        { href: "/parteneri-companii", label: "Parteneri companii" },
       ],
     },
     { href: "/publicatii", label: "Publicații" },
@@ -101,7 +102,6 @@ function getNavItems(locale: Locale): NavItem[] {
     },
     { href: "/evenimente", label: "Evenimente" },
     { href: "/webinar", label: "Webinar" },
-    { href: "/y-aslm", label: "Y-ASLM" },
     { href: "/contact", label: "Contact" },
   ];
 }
@@ -142,7 +142,7 @@ export default function Header({ locale }: { locale: Locale }) {
                     </div>
                   </>
                 ) : (
-                  <HeaderAnchor href={item.href} className="px-2.5 py-2 text-sm font-semibold rounded-lg flex items-center text-gray-700 hover:text-green-800 hover:bg-green-50">
+                  <HeaderAnchor href={item.href} className={`px-2.5 py-2 text-sm font-semibold rounded-lg flex items-center ${locale === "ro" && item.href === "/webinar" ? "bg-green-800 text-white hover:bg-green-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-800" : "text-gray-700 hover:text-green-800 hover:bg-green-50"}`}>
                     {item.label}
                   </HeaderAnchor>
                 )}
@@ -162,7 +162,7 @@ export default function Header({ locale }: { locale: Locale }) {
             <div className="absolute right-0 top-full mt-3 w-[min(90vw,24rem)] max-h-[75vh] overflow-y-auto rounded-xl border border-gray-200 bg-white p-4 shadow-xl">
               {navItems.map((item) => (
                 <div key={item.href} className="border-b border-gray-100 py-2 last:border-0">
-                  <HeaderAnchor href={item.href} className="block px-3 py-2 font-semibold text-gray-800">{item.label}</HeaderAnchor>
+                  <HeaderAnchor href={item.href} className={`block px-3 py-2 font-semibold ${locale === "ro" && item.href === "/webinar" ? "rounded-lg bg-green-800 text-white hover:bg-green-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-800" : "text-gray-800"}`}>{item.label}</HeaderAnchor>
                   {item.children?.map((child) => (
                     <HeaderAnchor key={child.href} href={child.href} className="block px-6 py-2 text-sm text-gray-600">
                       {child.label}

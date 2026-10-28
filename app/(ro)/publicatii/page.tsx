@@ -159,6 +159,29 @@ export default function PublicatiiPage() {
         </div>
       </section>
 
+      <section aria-labelledby="esentialul-msv-title" className="section-lg surface-primary">
+        <div className="container-default">
+          <div className="max-w-3xl">
+            <p className="text-overline mb-3 text-[var(--color-primary-600)]">Ediție în limba română</p>
+            <h2 id="esentialul-msv-title" className="text-headline mb-6 text-[var(--text-primary)]">
+              Esențialul în Medicina Stilului de Viață
+            </h2>
+            <p className="text-body mb-6">
+              Esențialul în Medicina Stilului de Viață este disponibil în limba română, într-o ediție elaborată sub egida Societății Academice de Medicina Stilului de Viață. Volumul oferă profesioniștilor din sănătate o introducere practică în principiile medicinei stilului de viață și în aplicarea lor pentru prevenirea și controlul bolilor cronice.
+            </p>
+            <a
+              href="https://www.amaltea.ro/esentialul-in-medicina-stilului-de-viata"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-xl bg-green-800 px-6 py-3 font-semibold text-white hover:bg-green-900 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-green-800"
+            >
+              Vezi cartea la Editura Amaltea
+              <ExternalLink className="h-5 w-5 shrink-0" aria-hidden="true" />
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* Resources */}
       <section className="section-lg surface-secondary">
         <div className="container-wide">
