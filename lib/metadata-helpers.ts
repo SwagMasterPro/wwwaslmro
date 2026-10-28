@@ -101,13 +101,13 @@ const staticPages: Record<string, StaticPageMetadata> = {
     keywords: ["Adunarea Generală ASLM", "membri ASLM", "lista membri ASLM"],
   },
   "/membri": {
-    title: "Beneficii membri ASLM: pachete și înscriere",
+    title: "Membri ASLM: pachete și înscriere",
     description:
       "Compară pachetele Membri Afiliați, Membri Titulari și Membri Asociați: beneficii, adresabilitate și cotizații de 400 sau 300 RON pe an. Înscrie-te în ASLM.",
     keywords: ["membri ASLM", "înscriere ASLM", "devino membru ASLM", "beneficii membri", "medicina stilului de viață"],
   },
   "/parteneri-companii": {
-    title: "Beneficii parteneri companii: IMM, Corporate și Media",
+    title: "Parteneri companii: IMM, Corporate și Media",
     description:
       "Descoperă pachetele Parteneri ASLM IMM, Corporate și Media: beneficii, vizibilitate și cotizații de 1.500 RON/an, 3.000 RON/an sau gratuit. Solicită înscrierea.",
     keywords: ["parteneri ASLM", "parteneri companii", "ASLM IMM", "ASLM Corporate", "Parteneri Media"],
@@ -263,10 +263,10 @@ const staticPages: Record<string, StaticPageMetadata> = {
     keywords: ["termeni și condiții", "ASLM"],
   },
   "/y-aslm": {
-    title: "Y-ASLM",
+    title: "Young ASLM",
     description:
       "Departamentul Studențesc ASLM pentru studenți interesați de prevenție, sănătate și medicina stilului de viață.",
-    keywords: ["Y-ASLM", "departament studențesc", "studenți", "prevenție"],
+    keywords: ["Young ASLM", "departament studențesc", "studenți", "prevenție"],
   },
 };
 

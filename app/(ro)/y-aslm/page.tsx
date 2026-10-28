@@ -95,9 +95,8 @@ export default function YAslmPage() {
               <span className="text-sm font-semibold text-white">Departamentul Studențesc</span>
             </div>
             <h1 className="font-heading text-4xl md:text-5xl font-bold text-white mb-4">
-              Y-ASLM
+              Young ASLM
             </h1>
-            <p className="text-xl text-white/80 mb-2">Young ASLM</p>
             <p className="text-lg text-white/70">
               Departamentul Studențesc ASLM
             </p>
@@ -117,7 +116,7 @@ export default function YAslmPage() {
           >
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--color-primary-50)] text-[var(--color-primary-700)] mb-4">
               <Users className="w-5 h-5" />
-              <span className="text-sm font-semibold">Y-ASLM</span>
+              <span className="text-sm font-semibold">Young ASLM</span>
             </div>
             <h2 className="text-headline text-[var(--text-primary)]">
               Studenți implicați în promovarea medicinei stilului de viață

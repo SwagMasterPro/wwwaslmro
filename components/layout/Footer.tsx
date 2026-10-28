@@ -84,21 +84,22 @@ function getFooterLinks(locale: Locale) {
 
   return {
     about: [
-      { href: "/despre", label: "Ce este ASLM" },
+      { href: "/despre", label: "Societatea" },
       { href: "/misiune", label: "Misiune & Viziune" },
       { href: "/consiliu-stiintific", label: "Consiliu Științific" },
       { href: "/consiliu-executiv", label: "Consiliu Executiv" },
       { href: "/despre#statutul-aslm", label: "Statutul ASLM" },
     ],
     members: [
-      { href: "/membri", label: "Beneficii membri ASLM" },
-      { href: "/parteneri-companii", label: "Beneficii parteneri companii" },
       { href: "/adunarea-generala", label: "Adunarea Generală" },
+      { href: "/y-aslm", label: "Young ASLM" },
+      { href: "/membri", label: "Membri ASLM" },
+      { href: "/parteneri-companii", label: "Parteneri companii" },
     ],
     resources: [
       { href: "/medicina-stilului-de-viata", label: "Medicina stilului de viață" },
       { href: "/news", label: "News ASLM" },
-      { href: "/membri", label: "Beneficii membri ASLM" },
+      { href: "/membri", label: "Membri ASLM" },
       { href: "/publicatii", label: "Publicații" },
       { href: "/evenimente", label: "Evenimente" },
       { href: "/webinar", label: "Webinar" },
@@ -230,7 +231,7 @@ export default function Footer() {
 
           <div>
             <h3 className="font-bold text-sm mb-5 uppercase tracking-wider" style={{ color: "#166534" }}>
-              {locale === "ro" ? "Despre ASLM" : "About ASLM"}
+              {locale === "ro" ? "ASLM Romania" : "About ASLM"}
             </h3>
             <LinkList links={links.about} />
 

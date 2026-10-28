@@ -16,7 +16,7 @@ export default function MembershipPackagesPage({ audience }: { audience: "indivi
   const isCompany = audience === "companies";
   const membershipForm = isCompany ? null : resolveMembershipFormConfig(process.env.MEMBERSHIP_FORM_URL, process.env.MEMBERSHIP_FORM_EMBED_ENABLED);
   const packages = isCompany ? companyMembershipPackages : individualMembershipPackages;
-  const title = isCompany ? "Beneficii parteneri companii" : "Beneficii membri ASLM";
+  const title = isCompany ? "Parteneri companii" : "Membri ASLM";
   const path = isCompany ? "/parteneri-companii" : "/membri";
   const description = isCompany
     ? "Alege pachetul de parteneriat potrivit pentru compania ta. Descoperă oportunitățile de colaborare și vizibilitate oferite de ASLM."
@@ -37,7 +37,7 @@ export default function MembershipPackagesPage({ audience }: { audience: "indivi
         />
         <header className="max-w-4xl pb-8 md:pb-10">
           <h1 className="font-heading text-3xl font-bold tracking-tight text-green-950 sm:text-4xl md:text-5xl">{title}</h1>
-          <p className="mt-5 text-lg leading-relaxed text-[var(--text-secondary)]">{description}</p>
+          <p className="mt-2 text-lg leading-relaxed text-[var(--text-secondary)]">{description}</p>
           <Link href={isCompany ? "/membri" : "/parteneri-companii"} className="mt-5 inline-flex min-h-11 items-center gap-2 font-semibold text-green-900 underline decoration-green-300 underline-offset-4 hover:decoration-green-900 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-green-900">
             {isCompany ? "Vezi pachetele pentru membri ASLM" : "Reprezinți o companie? Vezi pachetele de parteneriat"}
             <ArrowRight className="h-4 w-4 shrink-0" aria-hidden="true" />
@@ -49,8 +49,8 @@ export default function MembershipPackagesPage({ audience }: { audience: "indivi
             <div className={styles.rowLabels} aria-hidden="true">
               <div className={styles.categoryLabel}>Categorie</div>
               <div className={styles.rowLabel}>Adresabilitate</div>
-              <div className={styles.rowLabel}>Cotizație</div>
               <div className={styles.rowLabel}>Beneficii</div>
+              <div className={styles.rowLabel}>Cotizație</div>
             </div>
             {packages.map((item) => (
               <article key={item.id} aria-labelledby={`package-${item.id}`} className={styles.package}>
@@ -64,13 +64,6 @@ export default function MembershipPackagesPage({ audience }: { audience: "indivi
                   <h3 className={styles.label}>Adresabilitate</h3>
                   <p className={styles.audience}>{item.audience}</p>
                 </div>
-                <div className={`${styles.cell} ${styles.feeCell}`}>
-                  <h3 className={styles.label}>Cotizație</h3>
-                  <p className={styles.fee}>
-                    {item.annualFeeRon === 0 ? "Gratuit" : <>{item.annualFeeRon.toLocaleString("ro-RO")} <span>RON / an</span></>}
-                  </p>
-                  <p className={styles.duration}>{membershipDuration}</p>
-                </div>
                 <div className={styles.cell}>
                   <h3 className={styles.label}>Beneficii</h3>
                   <ul className={styles.benefits}>
@@ -81,6 +74,13 @@ export default function MembershipPackagesPage({ audience }: { audience: "indivi
                       </li>
                     ))}
                   </ul>
+                </div>
+                <div className={`${styles.cell} ${styles.feeCell}`}>
+                  <h3 className={styles.label}>Cotizație</h3>
+                  <p className={styles.fee}>
+                    {item.annualFeeRon === 0 ? "Gratuit" : <>{item.annualFeeRon.toLocaleString("ro-RO")} <span>RON / an</span></>}
+                  </p>
+                  <p className={styles.duration}>{membershipDuration}</p>
                 </div>
               </article>
             ))}

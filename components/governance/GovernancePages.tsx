@@ -305,7 +305,7 @@ export function ExecutiveCouncilPageContent({ locale }: { locale: Locale }) {
       members: "Membrii Consiliului Executiv",
       membersDescription:
         "Echipa de conducere a ASLM, responsabilă de implementarea strategiei și coordonarea activităților societății.",
-      studentTeam: "Echipa Y-ASLM",
+      studentTeam: "Echipa Young ASLM",
       studentTeamDescription:
         "Studenții implicați în promovarea medicinei stilului de viață și în dezvoltarea comunității ASLM.",
       studentTeamAriaLabel: "Studenții implicați în promovarea medicinei stilului de viață",
