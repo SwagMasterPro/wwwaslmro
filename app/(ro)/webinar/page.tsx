@@ -29,13 +29,13 @@ export default function WebinarPage() {
 
     <section className="py-8 md:py-12 surface-secondary" aria-labelledby="lectori-webinar">
       <div className="container-wide">
-        <h2 id="lectori-webinar" className="text-headline text-[var(--text-primary)]">Lectori</h2>
-        <ul className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          {webinarLecturers.map(lecturer => <li key={lecturer.name} className="flex items-center gap-4 rounded-xl border border-gray-200 bg-white p-4">
-            {lecturer.image && <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-lg bg-green-50">
-              <Image src={lecturer.image} alt="" fill sizes="64px" className="object-contain object-bottom" />
+        <h2 id="lectori-webinar" className="text-headline text-center text-[var(--text-primary)]">Keynote Speakers</h2>
+        <ul className="mt-6 grid gap-4 md:grid-cols-2 md:gap-6">
+          {webinarLecturers.map(lecturer => <li key={lecturer.name} className="flex items-center gap-4 rounded-xl border border-gray-200 bg-white p-5 md:gap-6 md:p-6">
+            {lecturer.image && <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-lg bg-green-50 md:h-28 md:w-28">
+              <Image src={lecturer.image} alt="" fill sizes="(min-width: 768px) 112px, 80px" className="object-contain object-bottom" />
             </div>}
-            <h3 className="min-w-0 text-base font-semibold leading-snug text-green-950">{lecturer.name}</h3>
+            <h3 className="min-w-0 text-lg font-semibold leading-snug text-green-950">{lecturer.name}</h3>
           </li>)}
         </ul>
       </div>
