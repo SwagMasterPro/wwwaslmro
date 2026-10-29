@@ -97,7 +97,7 @@ export default function MembershipPackagesPage({ audience }: { audience: "indivi
             <p className={styles.registrationSubtitle}>Societatea Academică de Medicina Stilului de Viață</p>
             <div className={styles.paymentNotes}>
               <p>Calitatea de membru ASLM este activă un an de zile din momentul aderării ca membru.</p>
-              <p><strong>Taxa de membru</strong> se achită conform facturii proforme primite prin e-mail după completarea formularului.</p>
+              <p><strong>Cotizația de membru</strong> se achită conform facturii proforme primite prin e-mail după completarea formularului.</p>
               <p>Dacă achitați prin transfer bancar (OP), copia dovezii plății împreună cu datele dvs. trebuie trimisă prin email la adresa: <a href="mailto:contact@aslm.ro">contact@aslm.ro</a>.</p>
               <p>Dacă achitați cu cardul, nu este necesară trimiterea dovezii plății, aceasta este înregistrată automat.</p>
             </div>
