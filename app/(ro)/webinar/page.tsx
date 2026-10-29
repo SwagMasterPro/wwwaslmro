@@ -24,6 +24,11 @@ export default function WebinarPage() {
           priority
         />
         <p className="mt-6 text-center text-base leading-relaxed text-gray-700 md:text-lg">Acces la prezentări până la <strong>30 noiembrie 2026 inclusiv</strong>. Înscrierile ulterioare beneficiază de perioada rămasă până la această dată.</p>
+        <div className="mt-6 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:flex-wrap sm:items-center">
+          <a href={WEBINAR.paymentUrl} className="inline-flex min-h-14 items-center justify-center rounded-xl bg-green-800 px-6 py-3 text-center text-lg font-semibold text-white hover:bg-green-900 focus-visible:outline-4 focus-visible:outline-offset-4 focus-visible:outline-green-800">Înscrie-te la webinar</a>
+          <Link href="/adunarea-generala" className="inline-flex min-h-12 items-center justify-center rounded-xl border border-green-800 px-5 py-3 text-center font-semibold text-green-900 hover:bg-green-50 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-green-800">Vezi lista membri ASLM</Link>
+          <Link href="/membri" className="inline-flex min-h-12 items-center justify-center rounded-xl border border-blue-800 px-5 py-3 text-center font-semibold text-blue-900 hover:bg-blue-50 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-blue-800">Devino membru ASLM</Link>
+        </div>
       </div>
     </header>
 
