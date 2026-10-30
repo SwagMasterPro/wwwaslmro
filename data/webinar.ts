@@ -21,7 +21,7 @@ export const webinarLecturers: readonly WebinarLecturer[] = [
   { name: "Dr. Felicia Carmen Andrei", image: "/images/webinar/dr-felicia-carmen-andrei.png" },
   { name: "Dr. Sorina Adriana Antohe", image: "/images/council/dr-adriana-sorina-antohe.png" },
   { name: "Asist. univ. dr. Laura Atyim", image: "/images/council/asist-univ-laura-atyim.png" },
-  { name: "Șef Lucr. dr. Mihaela Daniela Baltă", image: "/images/webinar/sef-lucr-dr-mihaela-daniela-balta.png" },
+  { name: "Șef lucr. dr. Mihaela Daniela Baltă", image: "/images/webinar/sef-lucr-dr-mihaela-daniela-balta.png" },
   { name: "Dr. Roxana Barbu", image: "/images/webinar/dr-roxana-barbu.png" },
   { name: "Dr. Andreea Ciubotaru", image: "/images/council/dr-andreea-ciubotaru.png" },
   { name: "Conf. dr. Elena Adorata Coman", image: "/images/council/conf-dr-adorata-elena-coman.png" },
