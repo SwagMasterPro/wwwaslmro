@@ -4,6 +4,7 @@ import Image from "next/image";
 import { ChevronDown, Menu } from "lucide-react";
 import { MEMBERSHIP_JOIN_URL, STATUTE_EN_URL, type Locale } from "@/lib/localized-routes";
 import LanguageSwitch from "@/components/layout/LanguageSwitch";
+import MembershipButton from "@/components/marketing/MembershipButton";
 import CongressNavigation from "@/components/layout/CongressNavigation";
 
 type NavItem = {
@@ -11,6 +12,14 @@ type NavItem = {
   label: string;
   children?: NavItem[];
 };
+
+function Congress2027Button({ locale, className = "" }: { locale: Locale; className?: string }) {
+  return (
+    <a href="https://congres.aslm.ro" className={`inline-flex items-center justify-center whitespace-nowrap rounded-xl bg-green-700 px-3 py-2.5 text-sm font-bold text-white shadow-sm hover:bg-green-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-800 ${className}`}>
+      {locale === "ro" ? "Congres 2027" : "Congress 2027"}
+    </a>
+  );
+}
 
 function isExternalHref(href: string) {
   return href.startsWith("http") || href.startsWith("mailto:");
@@ -113,7 +122,7 @@ export default function Header({ locale }: { locale: Locale }) {
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 bg-white py-3 shadow-sm">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
         <nav className="flex items-center justify-between gap-4" aria-label="Navigație principală">
           <Link href={locale === "en" ? "/en" : "/"} className="flex items-center gap-3 shrink-0">
             <div className="relative w-12 h-12 sm:w-14 sm:h-14">
@@ -121,18 +130,18 @@ export default function Header({ locale }: { locale: Locale }) {
             </div>
             <div className="flex flex-col">
               <span className="font-heading text-lg sm:text-xl font-bold leading-tight text-gray-900">ASLM</span>
-              <span className="text-xs sm:text-sm font-medium leading-tight hidden sm:block text-gray-500">
+              <span className="text-xs sm:text-sm font-medium leading-tight hidden sm:block xl:hidden 2xl:block text-gray-500">
                 {locale === "ro" ? "Medicina Stilului de Viață" : "Lifestyle Medicine"}
               </span>
             </div>
           </Link>
 
-          <div className="hidden xl:flex items-center gap-1">
+          <div className="hidden xl:flex items-center gap-0 2xl:gap-1">
             {navItems.map((item) => (
               <div key={item.href} className="relative group">
                 {item.href === "https://congres.aslm.ro/" ? <CongressNavigation locale={locale} /> : item.children ? (
                   <>
-                    <button type="button" className="px-2.5 py-2 text-sm font-semibold rounded-lg flex items-center gap-1 text-gray-700 hover:text-green-800 hover:bg-green-50">
+                    <button type="button" className="px-2 2xl:px-2.5 py-2 text-sm font-semibold rounded-lg flex items-center gap-1 text-gray-700 hover:text-green-800 hover:bg-green-50">
                       {item.label}<ChevronDown className="w-4 h-4" />
                     </button>
                     <div className="absolute invisible opacity-0 translate-y-2 group-hover:visible group-hover:opacity-100 group-hover:translate-y-0 group-focus-within:visible group-focus-within:opacity-100 group-focus-within:translate-y-0 top-full left-0 mt-1 w-56 py-2 bg-white rounded-xl shadow-lg border border-gray-100 transition-all">
@@ -144,7 +153,7 @@ export default function Header({ locale }: { locale: Locale }) {
                     </div>
                   </>
                 ) : (
-                  <HeaderAnchor href={item.href} className={`px-2.5 py-2 text-sm font-semibold rounded-lg flex items-center ${locale === "ro" && item.href === "/webinar" ? "bg-green-800 text-white hover:bg-green-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-800" : "text-gray-700 hover:text-green-800 hover:bg-green-50"}`}>
+                  <HeaderAnchor href={item.href} className={`px-2 2xl:px-2.5 py-2 text-sm font-semibold rounded-lg flex items-center ${locale === "ro" && item.href === "/webinar" ? "bg-green-800 text-white hover:bg-green-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-800" : "text-gray-700 hover:text-green-800 hover:bg-green-50"}`}>
                     {item.label}
                   </HeaderAnchor>
                 )}
@@ -154,6 +163,8 @@ export default function Header({ locale }: { locale: Locale }) {
 
           <div className="hidden xl:flex items-center gap-2">
             <LanguageSwitch locale={locale} />
+            <MembershipButton locale={locale} />
+            <Congress2027Button locale={locale} />
           </div>
 
           <details className="relative xl:hidden">
@@ -173,8 +184,12 @@ export default function Header({ locale }: { locale: Locale }) {
                   </>}
                 </div>
               ))}
-              <div className="flex pt-4">
+              <div className="space-y-3 pt-4">
                 <LanguageSwitch locale={locale} />
+                <div className="grid grid-cols-2 gap-2">
+                  <MembershipButton locale={locale} className="w-full justify-center" />
+                  <Congress2027Button locale={locale} className="w-full" />
+                </div>
               </div>
             </div>
           </details>
