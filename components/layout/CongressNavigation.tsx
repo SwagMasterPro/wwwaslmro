@@ -34,7 +34,7 @@ export default function CongressNavigation({ locale, mobile = false }: { locale:
       }}
     >
       <div className="flex items-stretch rounded-lg bg-[#174b75] text-white">
-        <a href="https://congres.aslm.ro/" target="_blank" rel="noopener noreferrer" className={`flex-1 rounded-l-lg py-2 font-semibold text-white hover:text-white hover:bg-[#123b5c] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#174b75] ${mobile ? "px-3" : "px-2 2xl:px-2.5 text-sm"}`}>
+        <a href="https://congres.aslm.ro/" target="_blank" rel="noopener noreferrer" className={`shrink-0 rounded-l-lg py-2 font-semibold text-white hover:text-white hover:bg-[#123b5c] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#174b75] ${mobile ? "pl-3" : "pl-2 2xl:pl-2.5 text-sm"}`}>
           {label}
         </a>
         <button
@@ -51,7 +51,7 @@ export default function CongressNavigation({ locale, mobile = false }: { locale:
               requestAnimationFrame(() => root.current?.querySelector<HTMLAnchorElement>("[data-editions] a")?.focus());
             }
           }}
-          className="rounded-r-lg border-l border-white/25 px-2 hover:bg-[#123b5c] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#174b75]"
+          className={`flex flex-1 items-center rounded-r-lg pl-1 hover:bg-[#123b5c] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#174b75] ${mobile ? "pr-3" : "pr-2 2xl:pr-2.5"}`}
         >
           <ChevronDown aria-hidden="true" className={`h-4 w-4 transition-transform ${open ? "rotate-180" : ""}`} />
         </button>
