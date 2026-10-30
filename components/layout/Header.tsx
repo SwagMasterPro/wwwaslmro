@@ -13,6 +13,14 @@ type NavItem = {
   children?: NavItem[];
 };
 
+function Congress2027Button({ locale, className = "" }: { locale: Locale; className?: string }) {
+  return (
+    <a href="https://congres.aslm.ro" className={`inline-flex items-center justify-center whitespace-nowrap rounded-xl bg-green-700 px-3 py-2.5 text-sm font-bold text-white shadow-sm hover:bg-green-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-800 ${className}`}>
+      {locale === "ro" ? "Congres 2027" : "Congress 2027"}
+    </a>
+  );
+}
+
 function isExternalHref(href: string) {
   return href.startsWith("http") || href.startsWith("mailto:");
 }
@@ -114,7 +122,7 @@ export default function Header({ locale }: { locale: Locale }) {
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 bg-white py-3 shadow-sm">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
         <nav className="flex items-center justify-between gap-4" aria-label="Navigație principală">
           <Link href={locale === "en" ? "/en" : "/"} className="flex items-center gap-3 shrink-0">
             <div className="relative w-12 h-12 sm:w-14 sm:h-14">
@@ -122,7 +130,7 @@ export default function Header({ locale }: { locale: Locale }) {
             </div>
             <div className="flex flex-col">
               <span className="font-heading text-lg sm:text-xl font-bold leading-tight text-gray-900">ASLM</span>
-              <span className="text-xs sm:text-sm font-medium leading-tight hidden sm:block text-gray-500">
+              <span className="text-xs sm:text-sm font-medium leading-tight hidden sm:block xl:hidden 2xl:block text-gray-500">
                 {locale === "ro" ? "Medicina Stilului de Viață" : "Lifestyle Medicine"}
               </span>
             </div>
@@ -156,6 +164,7 @@ export default function Header({ locale }: { locale: Locale }) {
           <div className="hidden xl:flex items-center gap-2">
             <LanguageSwitch locale={locale} />
             <MembershipButton locale={locale} />
+            <Congress2027Button locale={locale} />
           </div>
 
           <details className="relative xl:hidden">
@@ -175,9 +184,12 @@ export default function Header({ locale }: { locale: Locale }) {
                   </>}
                 </div>
               ))}
-              <div className="grid grid-cols-[auto_1fr] gap-3 pt-4">
+              <div className="space-y-3 pt-4">
                 <LanguageSwitch locale={locale} />
-                <MembershipButton locale={locale} className="w-full justify-center" />
+                <div className="grid grid-cols-2 gap-2">
+                  <MembershipButton locale={locale} className="w-full justify-center" />
+                  <Congress2027Button locale={locale} className="w-full" />
+                </div>
               </div>
             </div>
           </details>
