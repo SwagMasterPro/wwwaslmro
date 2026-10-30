@@ -136,12 +136,12 @@ export default function Header({ locale }: { locale: Locale }) {
             </div>
           </Link>
 
-          <div className="hidden xl:flex items-center gap-1">
+          <div className="hidden xl:flex items-center gap-0 2xl:gap-1">
             {navItems.map((item) => (
               <div key={item.href} className="relative group">
                 {item.href === "https://congres.aslm.ro/" ? <CongressNavigation locale={locale} /> : item.children ? (
                   <>
-                    <button type="button" className="px-2.5 py-2 text-sm font-semibold rounded-lg flex items-center gap-1 text-gray-700 hover:text-green-800 hover:bg-green-50">
+                    <button type="button" className="px-2 2xl:px-2.5 py-2 text-sm font-semibold rounded-lg flex items-center gap-1 text-gray-700 hover:text-green-800 hover:bg-green-50">
                       {item.label}<ChevronDown className="w-4 h-4" />
                     </button>
                     <div className="absolute invisible opacity-0 translate-y-2 group-hover:visible group-hover:opacity-100 group-hover:translate-y-0 group-focus-within:visible group-focus-within:opacity-100 group-focus-within:translate-y-0 top-full left-0 mt-1 w-56 py-2 bg-white rounded-xl shadow-lg border border-gray-100 transition-all">
@@ -153,7 +153,7 @@ export default function Header({ locale }: { locale: Locale }) {
                     </div>
                   </>
                 ) : (
-                  <HeaderAnchor href={item.href} className={`px-2.5 py-2 text-sm font-semibold rounded-lg flex items-center ${locale === "ro" && item.href === "/webinar" ? "bg-green-800 text-white hover:bg-green-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-800" : "text-gray-700 hover:text-green-800 hover:bg-green-50"}`}>
+                  <HeaderAnchor href={item.href} className={`px-2 2xl:px-2.5 py-2 text-sm font-semibold rounded-lg flex items-center ${locale === "ro" && item.href === "/webinar" ? "bg-green-800 text-white hover:bg-green-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-800" : "text-gray-700 hover:text-green-800 hover:bg-green-50"}`}>
                     {item.label}
                   </HeaderAnchor>
                 )}
