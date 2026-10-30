@@ -25,9 +25,9 @@ export default function WebinarPage() {
         />
         <p className="mt-6 text-center text-base leading-relaxed text-gray-700 md:text-lg">Acces la prezentări până la <strong>30 noiembrie 2026 inclusiv</strong>. Înscrierile ulterioare beneficiază de perioada rămasă până la această dată.</p>
         <div className="mt-6 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:flex-wrap sm:items-center">
-          <a href={WEBINAR.paymentUrl} className="inline-flex min-h-14 items-center justify-center rounded-xl bg-green-800 px-6 py-3 text-center text-lg font-semibold text-white hover:bg-green-900 focus-visible:outline-4 focus-visible:outline-offset-4 focus-visible:outline-green-800">Înscrie-te la webinar</a>
-          <Link href="/adunarea-generala" className="inline-flex min-h-12 items-center justify-center rounded-xl border border-green-800 px-5 py-3 text-center font-semibold text-green-900 hover:bg-green-50 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-green-800">Vezi lista membri ASLM</Link>
-          <Link href="/membri" className="inline-flex min-h-12 items-center justify-center rounded-xl border border-blue-800 px-5 py-3 text-center font-semibold text-blue-900 hover:bg-blue-50 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-blue-800">Devino membru ASLM</Link>
+          <a href={WEBINAR.paymentUrl} className="inline-flex min-h-14 items-center justify-center rounded-xl bg-green-800 px-6 py-3 text-center text-lg font-bold text-white shadow-md shadow-green-900/20 hover:bg-green-900 focus-visible:outline-4 focus-visible:outline-offset-4 focus-visible:outline-green-800">Înscrie-te la webinar</a>
+          <Link href="/adunarea-generala" className="inline-flex min-h-14 items-center justify-center rounded-xl border-2 border-green-800 bg-white px-5 py-3 text-center text-lg font-bold text-green-900 shadow-sm hover:bg-green-50 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-green-800">Vezi lista membri ASLM</Link>
+          <Link href="/membri" className="inline-flex min-h-14 items-center justify-center rounded-xl border-2 border-blue-800 bg-white px-5 py-3 text-center text-lg font-bold text-blue-900 shadow-sm hover:bg-blue-50 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-blue-800">Devino membru ASLM</Link>
         </div>
       </div>
     </header>
@@ -105,16 +105,16 @@ export default function WebinarPage() {
           <article className="rounded-2xl border border-green-200 bg-green-50 p-5 text-center md:p-6">
             <h3 className="text-3xl font-bold text-green-900">Gratuit</h3>
             <p className="mt-3 text-lg text-gray-800">Pentru membrii ASLM</p>
-            <Link href="/adunarea-generala" className="mt-3 inline-flex min-h-12 items-center rounded-md font-semibold text-green-900 underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-green-800">Vezi lista membri ASLM</Link>
+            <Link href="/adunarea-generala" className="mt-4 inline-flex min-h-12 items-center justify-center rounded-xl border-2 border-green-800 bg-white px-4 py-3 font-bold text-green-900 underline decoration-2 underline-offset-4 shadow-sm hover:bg-green-50 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-green-800">Vezi lista membri ASLM</Link>
           </article>
           <article className="rounded-2xl border border-blue-200 bg-blue-50 p-5 text-center md:p-6">
             <h3 className="text-3xl font-bold text-blue-900">100 lei</h3>
             <p className="mt-3 text-lg text-gray-800">Pentru nonmembrii ASLM</p>
-            <Link href="/membri" className="mt-3 inline-flex min-h-12 items-center rounded-md font-semibold text-blue-900 underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-blue-800">Devino membru ASLM</Link>
+            <Link href="/membri" className="mt-4 inline-flex min-h-12 items-center justify-center rounded-xl border-2 border-blue-800 bg-white px-4 py-3 font-bold text-blue-900 underline decoration-2 underline-offset-4 shadow-sm hover:bg-blue-50 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-blue-800">Devino membru ASLM</Link>
           </article>
         </div>
         <div className="mt-6 text-center">
-          <a href={WEBINAR.paymentUrl} className="inline-flex min-h-14 items-center justify-center rounded-xl bg-green-800 px-7 py-4 text-lg font-semibold text-white hover:bg-green-900 focus-visible:outline-4 focus-visible:outline-offset-4 focus-visible:outline-green-800">Înscrie-te la webinar</a>
+          <a href={WEBINAR.paymentUrl} className="inline-flex min-h-14 items-center justify-center rounded-xl bg-green-800 px-7 py-4 text-lg font-bold text-white shadow-md shadow-green-900/20 hover:bg-green-900 focus-visible:outline-4 focus-visible:outline-offset-4 focus-visible:outline-green-800">Înscrie-te la webinar</a>
         </div>
       </div>
     </section>
