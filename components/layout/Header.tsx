@@ -153,7 +153,7 @@ export default function Header({ locale }: { locale: Locale }) {
                     </div>
                   </>
                 ) : (
-                  <HeaderAnchor href={item.href} className={`px-2 2xl:px-2.5 py-2 text-sm font-semibold rounded-lg flex items-center ${locale === "ro" && item.href === "/webinar" ? "bg-green-800 text-white hover:bg-green-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-800" : "text-gray-700 hover:text-green-800 hover:bg-green-50"}`}>
+                  <HeaderAnchor href={item.href} className="px-2 2xl:px-2.5 py-2 text-sm font-semibold rounded-lg flex items-center text-gray-700 hover:text-green-800 hover:bg-green-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-800">
                     {item.label}
                   </HeaderAnchor>
                 )}
@@ -175,7 +175,7 @@ export default function Header({ locale }: { locale: Locale }) {
               {navItems.map((item) => (
                 <div key={item.href} className="border-b border-gray-100 py-2 last:border-0">
                   {item.href === "https://congres.aslm.ro/" ? <CongressNavigation locale={locale} mobile /> : <>
-                  <HeaderAnchor href={item.href} className={`block px-3 py-2 font-semibold ${locale === "ro" && item.href === "/webinar" ? "rounded-lg bg-green-800 text-white hover:bg-green-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-800" : "text-gray-800"}`}>{item.label}</HeaderAnchor>
+                  <HeaderAnchor href={item.href} className="block px-3 py-2 font-semibold text-gray-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-800">{item.label}</HeaderAnchor>
                   {item.children?.map((child) => (
                     <HeaderAnchor key={child.href} href={child.href} className="block px-6 py-2 text-sm text-gray-600">
                       {child.label}
