@@ -3,7 +3,6 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import AnalyticsConsentBanner from "@/components/analytics/AnalyticsConsentBanner";
 import GoogleAnalytics from "@/components/analytics/GoogleAnalytics";
-import MembershipPopupLoader from "@/components/marketing/MembershipPopupLoader";
 import StructuredData from "@/components/seo/StructuredData";
 import { generateOrganizationSchema, generateWebSiteSchema } from "@/lib/structured-data";
 
@@ -41,7 +40,6 @@ export default function SiteDocument({
         <Header locale={lang} />
         <main className="flex-1 w-full overflow-x-hidden">{children}</main>
         <Footer />
-        <MembershipPopupLoader />
         <AnalyticsConsentBanner />
         <GoogleAnalytics />
       </body>

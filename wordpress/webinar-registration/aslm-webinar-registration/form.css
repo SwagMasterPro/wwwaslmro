@@ -11,6 +11,7 @@ body.aslm-webinar-registration{margin:0;background:#f4f8fa;color:#243b4a;font-fa
 .aslm-webinar-package.aslm-webinar-free{border-top-color:#168276}
 #aslm-webinar-content .aslm-webinar-package h2{font-size:2rem;margin:0 0 10px}
 .aslm-webinar-package p{margin:0 0 14px}
+#aslm-webinar-content .aslm-webinar-package a{font-weight:700}
 #inscriere{padding:clamp(18px,4vw,36px);background:#fff;border:1px solid #cadce5;border-radius:10px}
 .aslm-webinar-fields{display:grid;grid-template-columns:1fr 1fr;gap:18px 22px}
 .aslm-webinar-fields>br{display:none}

@@ -259,7 +259,7 @@ function aslm_webinar_route() {
     wpcf7_enqueue_scripts();
     wpcf7_enqueue_styles();
     $assets = plugin_dir_url(__FILE__) . 'aslm-webinar-registration/';
-    wp_enqueue_style('aslm-webinar-registration', $assets . 'form.css', array(), '1.0.1');
+    wp_enqueue_style('aslm-webinar-registration', $assets . 'form.css', array(), '1.0.2');
     wp_enqueue_script('aslm-webinar-registration', $assets . 'form.js', array('contact-form-7'), '1.0.0', true);
     require __DIR__ . '/aslm-webinar-registration/page.php';
     exit;
