@@ -4,6 +4,7 @@ import Image from "next/image";
 import { ChevronDown, Menu } from "lucide-react";
 import { MEMBERSHIP_JOIN_URL, STATUTE_EN_URL, type Locale } from "@/lib/localized-routes";
 import LanguageSwitch from "@/components/layout/LanguageSwitch";
+import MembershipButton from "@/components/marketing/MembershipButton";
 import CongressNavigation from "@/components/layout/CongressNavigation";
 
 type NavItem = {
@@ -154,6 +155,7 @@ export default function Header({ locale }: { locale: Locale }) {
 
           <div className="hidden xl:flex items-center gap-2">
             <LanguageSwitch locale={locale} />
+            <MembershipButton locale={locale} />
           </div>
 
           <details className="relative xl:hidden">
@@ -173,8 +175,9 @@ export default function Header({ locale }: { locale: Locale }) {
                   </>}
                 </div>
               ))}
-              <div className="flex pt-4">
+              <div className="grid grid-cols-[auto_1fr] gap-3 pt-4">
                 <LanguageSwitch locale={locale} />
+                <MembershipButton locale={locale} className="w-full justify-center" />
               </div>
             </div>
           </details>
