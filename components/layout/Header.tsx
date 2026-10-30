@@ -13,14 +13,6 @@ type NavItem = {
   children?: NavItem[];
 };
 
-function Congress2027Button({ locale, className = "" }: { locale: Locale; className?: string }) {
-  return (
-    <a href="https://congres.aslm.ro" className={`inline-flex items-center justify-center whitespace-nowrap rounded-xl bg-green-700 px-3 py-2.5 text-sm font-bold text-white shadow-sm hover:bg-green-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-800 ${className}`}>
-      {locale === "ro" ? "Congres 2027" : "Congress 2027"}
-    </a>
-  );
-}
-
 function isExternalHref(href: string) {
   return href.startsWith("http") || href.startsWith("mailto:");
 }
@@ -153,7 +145,7 @@ export default function Header({ locale }: { locale: Locale }) {
                     </div>
                   </>
                 ) : (
-                  <HeaderAnchor href={item.href} className="px-2 2xl:px-2.5 py-2 text-sm font-semibold rounded-lg flex items-center text-gray-700 hover:text-green-800 hover:bg-green-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-800">
+                  <HeaderAnchor href={item.href} className={`px-2 2xl:px-2.5 py-2 text-sm font-semibold rounded-lg flex items-center focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-800 ${item.href === "/webinar" ? "bg-green-800 text-white hover:bg-green-900 hover:text-white" : "text-gray-700 hover:text-green-800 hover:bg-green-50"}`}>
                     {item.label}
                   </HeaderAnchor>
                 )}
@@ -164,7 +156,6 @@ export default function Header({ locale }: { locale: Locale }) {
           <div className="hidden xl:flex items-center gap-2">
             <LanguageSwitch locale={locale} />
             <MembershipButton locale={locale} />
-            <Congress2027Button locale={locale} />
           </div>
 
           <details className="relative xl:hidden">
@@ -175,7 +166,7 @@ export default function Header({ locale }: { locale: Locale }) {
               {navItems.map((item) => (
                 <div key={item.href} className="border-b border-gray-100 py-2 last:border-0">
                   {item.href === "https://congres.aslm.ro/" ? <CongressNavigation locale={locale} mobile /> : <>
-                  <HeaderAnchor href={item.href} className="block px-3 py-2 font-semibold text-gray-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-800">{item.label}</HeaderAnchor>
+                  <HeaderAnchor href={item.href} className={`block rounded-lg px-3 py-2 font-semibold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-800 ${item.href === "/webinar" ? "bg-green-800 text-white hover:bg-green-900 hover:text-white" : "text-gray-800"}`}>{item.label}</HeaderAnchor>
                   {item.children?.map((child) => (
                     <HeaderAnchor key={child.href} href={child.href} className="block px-6 py-2 text-sm text-gray-600">
                       {child.label}
@@ -184,12 +175,9 @@ export default function Header({ locale }: { locale: Locale }) {
                   </>}
                 </div>
               ))}
-              <div className="space-y-3 pt-4">
+              <div className="grid grid-cols-[auto_1fr] items-center gap-3 pt-4">
                 <LanguageSwitch locale={locale} />
-                <div className="grid grid-cols-2 gap-2">
-                  <MembershipButton locale={locale} className="w-full justify-center" />
-                  <Congress2027Button locale={locale} className="w-full" />
-                </div>
+                <MembershipButton locale={locale} className="w-full justify-center" />
               </div>
             </div>
           </details>

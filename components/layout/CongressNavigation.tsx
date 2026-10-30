@@ -33,8 +33,8 @@ export default function CongressNavigation({ locale, mobile = false }: { locale:
         }
       }}
     >
-      <div className="flex items-stretch rounded-lg text-gray-700 hover:bg-green-50">
-        <a href="https://congres.aslm.ro/" target="_blank" rel="noopener noreferrer" className={`flex-1 rounded-l-lg py-2 font-semibold hover:text-green-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-800 ${mobile ? "px-3 text-gray-800" : "px-2 2xl:px-2.5 text-sm text-gray-700"}`}>
+      <div className="flex items-stretch rounded-lg bg-[#174b75] text-white">
+        <a href="https://congres.aslm.ro/" target="_blank" rel="noopener noreferrer" className={`flex-1 rounded-l-lg py-2 font-semibold text-white hover:text-white hover:bg-[#123b5c] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#174b75] ${mobile ? "px-3" : "px-2 2xl:px-2.5 text-sm"}`}>
           {label}
         </a>
         <button
@@ -51,14 +51,14 @@ export default function CongressNavigation({ locale, mobile = false }: { locale:
               requestAnimationFrame(() => root.current?.querySelector<HTMLAnchorElement>("[data-editions] a")?.focus());
             }
           }}
-          className="rounded-r-lg px-2 hover:text-green-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-800"
+          className="rounded-r-lg border-l border-white/25 px-2 hover:bg-[#123b5c] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#174b75]"
         >
           <ChevronDown aria-hidden="true" className={`h-4 w-4 transition-transform ${open ? "rotate-180" : ""}`} />
         </button>
       </div>
       <div id={panelId} data-editions hidden={!open} className={mobile ? "pt-2" : "absolute left-0 top-full z-10 mt-1 w-40 rounded-xl border border-gray-100 bg-white py-2 shadow-lg"}>
-        <a href="https://congres.aslm.ro/" target="_blank" rel="noopener noreferrer" onClick={() => setOpen(false)} className="block px-4 py-2 text-sm text-gray-700 hover:bg-green-50 focus-visible:outline-2 focus-visible:outline-green-800">2027</a>
-        <a href="https://congres2026.aslm.ro/" target="_blank" rel="noopener noreferrer" onClick={() => setOpen(false)} className="block px-4 py-2 text-sm text-gray-700 hover:bg-green-50 focus-visible:outline-2 focus-visible:outline-green-800">2026</a>
+        <a href="https://congres.aslm.ro/" target="_blank" rel="noopener noreferrer" onClick={() => setOpen(false)} className="block px-4 py-2 text-sm text-gray-700 hover:bg-green-50 focus-visible:outline-2 focus-visible:outline-green-800">{label} 2027</a>
+        <a href="https://congres2026.aslm.ro/" target="_blank" rel="noopener noreferrer" onClick={() => setOpen(false)} className="block px-4 py-2 text-sm text-gray-700 hover:bg-green-50 focus-visible:outline-2 focus-visible:outline-green-800">{label} 2026</a>
       </div>
     </div>
   );
