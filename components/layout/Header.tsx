@@ -4,6 +4,7 @@ import Image from "next/image";
 import { ChevronDown, Menu } from "lucide-react";
 import { MEMBERSHIP_JOIN_URL, STATUTE_EN_URL, type Locale } from "@/lib/localized-routes";
 import LanguageSwitch from "@/components/layout/LanguageSwitch";
+import CongressNavigation from "@/components/layout/CongressNavigation";
 
 type NavItem = {
   href: string;
@@ -61,6 +62,7 @@ function getNavItems(locale: Locale): NavItem[] {
         ],
       },
       { href: "/evenimente", label: "Events" },
+      { href: "https://congres.aslm.ro/", label: "Congress" },
       { href: "/webinar", label: "Webinar" },
       { href: "/y-aslm", label: "Y-ASLM" },
       { href: "/contact", label: "Contact" },
@@ -100,6 +102,7 @@ function getNavItems(locale: Locale): NavItem[] {
       ],
     },
     { href: "/evenimente", label: "Evenimente" },
+    { href: "https://congres.aslm.ro/", label: "Congres" },
     { href: "/webinar", label: "Webinar" },
     { href: "/contact", label: "Contact" },
   ];
@@ -127,7 +130,7 @@ export default function Header({ locale }: { locale: Locale }) {
           <div className="hidden xl:flex items-center gap-1">
             {navItems.map((item) => (
               <div key={item.href} className="relative group">
-                {item.children ? (
+                {item.href === "https://congres.aslm.ro/" ? <CongressNavigation locale={locale} /> : item.children ? (
                   <>
                     <button type="button" className="px-2.5 py-2 text-sm font-semibold rounded-lg flex items-center gap-1 text-gray-700 hover:text-green-800 hover:bg-green-50">
                       {item.label}<ChevronDown className="w-4 h-4" />
@@ -160,12 +163,14 @@ export default function Header({ locale }: { locale: Locale }) {
             <div className="absolute right-0 top-full mt-3 w-[min(90vw,24rem)] max-h-[75vh] overflow-y-auto rounded-xl border border-gray-200 bg-white p-4 shadow-xl">
               {navItems.map((item) => (
                 <div key={item.href} className="border-b border-gray-100 py-2 last:border-0">
+                  {item.href === "https://congres.aslm.ro/" ? <CongressNavigation locale={locale} mobile /> : <>
                   <HeaderAnchor href={item.href} className={`block px-3 py-2 font-semibold ${locale === "ro" && item.href === "/webinar" ? "rounded-lg bg-green-800 text-white hover:bg-green-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-800" : "text-gray-800"}`}>{item.label}</HeaderAnchor>
                   {item.children?.map((child) => (
                     <HeaderAnchor key={child.href} href={child.href} className="block px-6 py-2 text-sm text-gray-600">
                       {child.label}
                     </HeaderAnchor>
                   ))}
+                  </>}
                 </div>
               ))}
               <div className="flex pt-4">
