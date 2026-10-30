@@ -137,7 +137,7 @@ export const scientificCouncilMembers: GovernancePerson[] = sortPeopleByName([
     },
   }),
   withProfilePath({ id: "laura-atyim", displayName: "Asist. Univ. Dr. Laura Atyim", sortName: "Atyim Laura", image: "/images/council/asist-univ-laura-atyim.png", affiliation: scientificAffiliation }),
-  withProfilePath({ id: "dana-balta", displayName: "Șef Lucr. Dr. Dana Baltă", sortName: "Balta Dana", image: "/images/council/sef-lucr-dr-dana-balta.png", affiliation: scientificAffiliation }),
+  withProfilePath({ id: "dana-balta", displayName: "Șef Lucr. Dr. Mihaela Daniela Baltă", sortName: "Balta Mihaela Daniela", image: "/images/council/sef-lucr-dr-dana-balta.png", affiliation: scientificAffiliation }),
   withProfilePath({ id: "alexandra-belibou", displayName: "Conf. Dr. Alexandra Belibou", sortName: "Belibou Alexandra", image: "/images/council/conf-dr-alexandra-belibou.png", affiliation: scientificAffiliation }),
   withProfilePath({ id: "lucia-bubulac", displayName: "Șef Lucr. Dr. Lucia Bubulac", sortName: "Bubulac Lucia", image: "/images/council/sef-lucr-dr-lucia-bubulac.png", affiliation: scientificAffiliation }),
   withProfilePath({
@@ -167,7 +167,7 @@ export const scientificCouncilMembers: GovernancePerson[] = sortPeopleByName([
   withProfilePath({ id: "vladimir-poroch", displayName: "Prof. Dr. Vladimir Poroch", sortName: "Poroch Vladimir", image: "/images/council/prof-dr-vladimir-poroch.png", affiliation: scientificAffiliation }),
   withProfilePath({ id: "mircea-cinteza", displayName: "Prof. Dr. Mircea Cinteza", sortName: "Cinteza Mircea", image: "/images/council/prof-dr-mircea-cinteza.png", affiliation: scientificAffiliation }),
   withProfilePath({ id: "adriana-lavinia-cioca", displayName: "Șef Lucr. Dr. Adriana Lavinia Cioca", sortName: "Cioca Adriana Lavinia", image: "/images/council/sef-lucr-dr-adriana-lavinia-cioca.png", affiliation: scientificAffiliation }),
-  withProfilePath({ id: "andreea-ciubotaru", displayName: "Dr. Andreea Ciubotaru", sortName: "Ciubotaru Andreea", affiliation: scientificAffiliation }),
+  withProfilePath({ id: "andreea-ciubotaru", displayName: "Dr. Andreea Ciubotaru", sortName: "Ciubotaru Andreea", image: "/images/council/dr-andreea-ciubotaru.png", affiliation: scientificAffiliation }),
   withProfilePath({ id: "maria-elena-cocuz", displayName: "Conf. Dr. Maria Elena Cocuz", sortName: "Cocuz Maria Elena", image: "/images/council/conf-dr-maria-elena-cocuz.png", affiliation: scientificAffiliation }),
   withProfilePath({ id: "adorata-elena-coman", displayName: "Conf. Dr. Adorata Elena Coman", sortName: "Coman Adorata Elena", image: "/images/council/conf-dr-adorata-elena-coman.png", affiliation: scientificAffiliation }),
   withProfilePath({ id: "laura-maria-condur", displayName: "Șef Lucr. Dr. Laura Maria Condur", sortName: "Condur Laura Maria", image: "/images/council/sef-lucr-dr-laura-maria-condur.png", affiliation: scientificAffiliation }),
@@ -229,6 +229,7 @@ export const scientificCouncilMembers: GovernancePerson[] = sortPeopleByName([
     id: "mirela-nedelescu",
     displayName: "Conf. Dr. Mirela Nedelescu",
     sortName: "Nedelescu Mirela",
+    image: "/images/council/conf-dr-mirela-nedelescu-2026.png",
     affiliation: scientificAffiliation,
     profileSlug: "mirela-nedelescu",
     shortBio: {

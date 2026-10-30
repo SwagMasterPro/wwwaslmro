@@ -38,7 +38,7 @@ export default function WebinarPage() {
         <ul className="mt-6 grid gap-4 md:grid-cols-2 md:gap-6">
           {webinarLecturers.map(lecturer => <li key={lecturer.name} className="flex items-center gap-4 rounded-xl border border-gray-200 bg-white p-5 md:gap-6 md:p-6">
             {lecturer.image && <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-lg bg-green-50 md:h-28 md:w-28">
-              <Image src={lecturer.image} alt="" fill sizes="(min-width: 768px) 112px, 80px" className="object-contain object-bottom" />
+              <Image src={lecturer.image} alt={lecturer.name} fill sizes="(min-width: 768px) 112px, 80px" className="object-contain object-bottom" />
             </div>}
             <h3 className="min-w-0 text-lg font-semibold leading-snug text-green-950">{lecturer.name}</h3>
           </li>)}
