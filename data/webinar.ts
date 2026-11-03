@@ -18,8 +18,10 @@ export type WebinarLecturer = {
 };
 
 export const webinarLecturers: readonly WebinarLecturer[] = [
+  { name: "Prof. dr. Monica Tarcea", image: "/images/council/prof-dr-monica-tarcea.png" },
   { name: "Dr. Felicia Carmen Andrei", image: "/images/webinar/dr-felicia-carmen-andrei.png" },
   { name: "Dr. Sorina Adriana Antohe", image: "/images/council/dr-adriana-sorina-antohe.png" },
+  { name: "Conf. dr. Dana Anton-Paduraru", image: "/images/council/conf-dr-dana-teodora-anton-paduraru.png" },
   { name: "Asist. univ. dr. Laura Atyim", image: "/images/council/asist-univ-laura-atyim.png" },
   { name: "Șef lucr. dr. Mihaela Daniela Baltă", image: "/images/webinar/sef-lucr-dr-mihaela-daniela-balta.png" },
   { name: "Dr. Roxana Barbu", image: "/images/webinar/dr-roxana-barbu.png" },
@@ -33,13 +35,12 @@ export const webinarLecturers: readonly WebinarLecturer[] = [
   { name: "Asist. univ. dr. Andreea-Narcisa Iana", image: "/images/council/andreea-narcisa-iana.png" },
   { name: "Prof. dr. Andrea Elena Neculau", image: "/images/council/prof-dr-andrea-elena-neculau.png" },
   { name: "Conf. dr. Mirela Nedelescu", image: "/images/council/conf-dr-mirela-nedelescu-2026.png" },
-  { name: "Conf. dr. Dana Anton-Paduraru", image: "/images/council/conf-dr-dana-teodora-anton-paduraru.png" },
+  { name: "Iulia Nistoroiu", image: "/images/webinar/iulia-nistoroiu-2026.png" },
   { name: "Paul Paraschiv", image: "/images/webinar/paul-paraschiv.png" },
   { name: "Șef lucr. dr. Ionuț Poinăreanu", image: "/images/council/sef-lucr-dr-ionut-poinareanu.png" },
   { name: "Dr. Elena Popa", image: "/images/webinar/dr-elena-popa.png" },
   { name: "Asist. univ. dr. Mihaela Poroch", image: "/images/webinar/dr-mihaela-poroch.png" },
   { name: "Conf. dr. Răzvan Șusan", image: "/images/council/conf-dr-razvan-susan.png" },
-  { name: "Prof. dr. Monica Tarcea", image: "/images/council/prof-dr-monica-tarcea.png" },
   { name: "Prof. dr. Doina Todea", image: "/images/council/prof-dr-doina-adina-todea.png" },
   { name: "Dr. Monica Ungureanu" },
 ];
@@ -61,4 +62,5 @@ export const webinarTopics: readonly string[] = [
   "Omul în centrul medicinei: de la dovezi științifice la îngrijire personalizată și integrativă",
   "Dincolo de restricții: alimentația sustenabilă în preobezitate și obezitate",
   "De la obiceiuri zilnice la micro genomică: microbiomul intestinal",
+  "Comunicarea medic-pacient: de la recomandări la schimbări durabile",
 ];
