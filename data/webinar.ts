@@ -15,6 +15,7 @@ export const webinarLearning = [
 export type WebinarLecturer = {
   name: string;
   image?: string;
+  mirrorPortrait?: boolean;
 };
 
 export const webinarLecturers: readonly WebinarLecturer[] = [
@@ -35,7 +36,7 @@ export const webinarLecturers: readonly WebinarLecturer[] = [
   { name: "Asist. univ. dr. Andreea-Narcisa Iana", image: "/images/council/andreea-narcisa-iana.png" },
   { name: "Prof. dr. Andrea Elena Neculau", image: "/images/council/prof-dr-andrea-elena-neculau.png" },
   { name: "Conf. dr. Mirela Nedelescu", image: "/images/council/conf-dr-mirela-nedelescu-2026.png" },
-  { name: "Iulia Nistoroiu", image: "/images/webinar/iulia-nistoroiu-2026.png" },
+  { name: "Iulia Nistoroiu", image: "/images/webinar/iulia-nistoroiu-2026.png", mirrorPortrait: true },
   { name: "Paul Paraschiv", image: "/images/webinar/paul-paraschiv.png" },
   { name: "Șef lucr. dr. Ionuț Poinăreanu", image: "/images/council/sef-lucr-dr-ionut-poinareanu.png" },
   { name: "Dr. Elena Popa", image: "/images/webinar/dr-elena-popa.png" },
