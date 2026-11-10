@@ -11,7 +11,7 @@ export const metadata = generateStaticPageMetadata("/webinar");
 
 export default function WebinarPage() {
   return <div className="pt-20">
-    <header className="surface-primary pb-6 pt-4 md:pb-8 md:pt-6">
+    <header className="surface-primary pb-4 pt-4 md:pb-5 md:pt-6">
       <div className="container-default max-w-5xl">
         <h1 className="sr-only">Webinar ASLM: {WEBINAR.topic}</h1>
         <Image
@@ -23,18 +23,18 @@ export default function WebinarPage() {
           className="block h-auto w-full"
           priority
         />
-        <p className="mt-6 text-center text-base leading-relaxed text-gray-700 md:text-lg">Acces la prezentări până la <strong>30 noiembrie 2026 inclusiv</strong>. Înscrierile ulterioare beneficiază de perioada rămasă până la această dată.</p>
-        <div className="mt-6 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:flex-wrap sm:items-center">
-          <a href={WEBINAR.paymentUrl} className="inline-flex min-h-14 items-center justify-center rounded-xl bg-green-800 px-6 py-3 text-center text-lg font-bold text-white shadow-md shadow-green-900/20 hover:bg-green-900 focus-visible:outline-4 focus-visible:outline-offset-4 focus-visible:outline-green-800">Înscrie-te la webinar</a>
-          <Link href="/adunarea-generala" className="inline-flex min-h-14 items-center justify-center rounded-xl border-2 border-green-800 bg-white px-5 py-3 text-center text-lg font-bold text-green-900 shadow-sm hover:bg-green-50 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-green-800">Vezi lista membri ASLM</Link>
-          <Link href="/membri" className="inline-flex min-h-14 items-center justify-center rounded-xl border-2 border-blue-800 bg-white px-5 py-3 text-center text-lg font-bold text-blue-900 shadow-sm hover:bg-blue-50 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-blue-800">Devino membru ASLM</Link>
+        <div className="mt-4 flex flex-col items-stretch justify-center gap-2 sm:flex-row sm:flex-wrap sm:items-center">
+          <a href={WEBINAR.paymentUrl} className="inline-flex min-h-12 items-center justify-center rounded-xl bg-green-800 px-4 py-2 text-center text-base font-bold text-white shadow-md shadow-green-900/20 hover:bg-green-900 focus-visible:outline-4 focus-visible:outline-offset-4 focus-visible:outline-green-800">Înscrie-te la webinar</a>
+          <Link href="/adunarea-generala" className="inline-flex min-h-12 items-center justify-center rounded-xl border-2 border-green-800 bg-white px-4 py-2 text-center text-base font-bold text-green-900 shadow-sm hover:bg-green-50 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-green-800">Vezi lista membri ASLM</Link>
+          <Link href="/membri" className="inline-flex min-h-12 items-center justify-center rounded-xl border-2 border-blue-800 bg-white px-4 py-2 text-center text-base font-bold text-blue-900 shadow-sm hover:bg-blue-50 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-blue-800">Devino membru ASLM</Link>
+          <a href={WEBINAR.accessUrl} className="inline-flex min-h-12 items-center justify-center rounded-xl bg-lime-700 px-4 py-2 text-center text-base font-bold text-white shadow-md shadow-lime-900/20 hover:bg-lime-800 focus-visible:outline-4 focus-visible:outline-offset-4 focus-visible:outline-lime-800">Acces webinar</a>
         </div>
       </div>
     </header>
 
-    <section className="py-8 md:py-12 surface-secondary" aria-labelledby="lectori-webinar">
+    <section className="pb-8 pt-5 md:pb-12 md:pt-6 surface-secondary" aria-labelledby="lectori-webinar">
       <div className="container-wide">
-        <h2 id="lectori-webinar" className="text-headline text-center text-[var(--text-primary)]">Keynote Speakers</h2>
+        <h2 id="lectori-webinar" className="font-heading text-[1.75rem] font-semibold leading-tight tracking-tight text-center text-[var(--text-primary)] md:text-[2rem]">Keynote Speakers</h2>
         <ul className="mt-6 grid gap-4 md:grid-cols-2 md:gap-6">
           {webinarLecturers.map(lecturer => <li key={lecturer.name} className="flex items-center gap-4 rounded-xl border border-gray-200 bg-white p-5 md:gap-6 md:p-6">
             {lecturer.image && <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-lg bg-green-50 md:h-28 md:w-28">
