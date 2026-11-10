@@ -8,6 +8,7 @@ export const WEBINAR = {
   termsVersion: "webinar-2026-10-v2",
   membershipUrl: "https://membership.aslm.ro/",
   paymentUrl: "https://membership.aslm.ro/webinar/",
+  accessUrl: "https://online.aslm.ro",
 } as const;
 
 export type WebinarOption = "member";
