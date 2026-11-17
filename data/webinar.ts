@@ -27,11 +27,11 @@ export const webinarLecturers: readonly WebinarLecturer[] = [
   { name: "Șef lucr. dr. Mihaela Daniela Baltă", image: "/images/webinar/sef-lucr-dr-mihaela-daniela-balta.png" },
   { name: "Dr. Roxana Barbu", image: "/images/webinar/dr-roxana-barbu.png" },
   { name: "Dr. Andreea Ciubotaru", image: "/images/council/dr-andreea-ciubotaru.png" },
-  { name: "Conf. dr. Elena Adorata Coman", image: "/images/council/conf-dr-adorata-elena-coman.png" },
+  { name: "Conf. univ. dr. Elena Adorata Coman", image: "/images/council/conf-dr-adorata-elena-coman.png" },
   { name: "Conf. dr. Irina Eremia", image: "/images/council/conf-dr-irina-eremia.png" },
-  { name: "Șef lucr. dr. Szuzsanna Farkas-Pal", image: "/images/council/sef-lucr-dr-zsuzsanna-farkas-pall.png" },
+  { name: "Șef lucr. dr. Zsuzsanna Farkas-Pall", image: "/images/council/sef-lucr-dr-zsuzsanna-farkas-pall.png" },
   { name: "Prof. dr. Roxana Folescu", image: "/images/council/prof-dr-roxana-folescu.png" },
-  { name: "Conf. dr. Daniela Gurgus", image: "/images/council/conf-dr-daniela-gurgus.png" },
+  { name: "Conf. dr. Daniela Gurguș", image: "/images/council/conf-dr-daniela-gurgus.png" },
   { name: "Asist. univ. dr. Ivona Mihaela Hum", image: "/images/webinar/ivona-mihaela-hum.png" },
   { name: "Asist. univ. dr. Andreea-Narcisa Iana", image: "/images/council/andreea-narcisa-iana.png" },
   { name: "Prof. dr. Andrea Elena Neculau", image: "/images/council/prof-dr-andrea-elena-neculau.png" },
@@ -46,22 +46,91 @@ export const webinarLecturers: readonly WebinarLecturer[] = [
   { name: "Dr. Monica Ungureanu" },
 ];
 
-export const webinarTopics: readonly string[] = [
-  "Metode de determinare a grăsimii corporale și evaluarea obezității",
-  "Ce punem în farfurie atunci când doare? Rolul alimentației în managementul endometriozei",
-  "Dieta antiinflamatorie-algoritm clinic de intervenție",
-  "Rolul activității fizice în managementul bolilor netransmisibile",
-  "Contracția musculară, una dintre cifrele esențiale ale stării de sănătate",
-  "SOMNUL, STRESUL ȘI METABOLISMUL - Triunghiul ascuns al medicinei stilului de viață",
-  "Somnul - pilonul principal al unui stil de viață sănătos",
-  "Impactul dietelor în sarcină asupra sănătății a două generații",
-  "Era agoniștilor GLP-1: o nouă provocare pentru exercițiul fizic?",
-  "Când ritmul devine terapie: stimularea auditivă ritmică în recuperarea motorie post-AVC",
-  "Nutriția în cadrul consultației de medicină de familie",
-  "Când e momentul să începem educația despre sănătate",
-  "Creierul copilului și al adolescentului în era scroll-ului: Ce este real, ce este mit și ce facem în cabinet?",
-  "Omul în centrul medicinei: de la dovezi științifice la îngrijire personalizată și integrativă",
-  "Dincolo de restricții: alimentația sustenabilă în preobezitate și obezitate",
-  "De la obiceiuri zilnice la micro genomică: microbiomul intestinal",
-  "Comunicarea medic-pacient: de la recomandări la schimbări durabile",
+export type WebinarProgramItem = {
+  title: string;
+  speakers: readonly string[];
+};
+
+export const webinarProgram: readonly WebinarProgramItem[] = [
+  {
+    title: "Metode de determinare a grăsimii corporale și evaluarea obezității",
+    speakers: ["Șef lucr. dr. Mihaela Daniela Baltă"],
+  },
+  {
+    title: "Ce punem în farfurie atunci când doare? Rolul alimentației în managementul endometriozei",
+    speakers: ["Dr. Andreea Ciubotaru"],
+  },
+  {
+    title: "Dieta antiinflamatorie-algoritm clinic de intervenție",
+    speakers: ["Prof. dr. Monica Tarcea"],
+  },
+  {
+    title: "Rolul activității fizice în managementul bolilor netransmisibile",
+    speakers: ["Conf. dr. Mirela Nedelescu"],
+  },
+  {
+    title: "Contracția musculară, una dintre cifrele esențiale ale stării de sănătate",
+    speakers: ["Dr. Sorina Adriana Antohe"],
+  },
+  {
+    title: "SOMNUL, STRESUL ȘI METABOLISMUL - Triunghiul ascuns al medicinei stilului de viață",
+    speakers: ["Conf. dr. Irina Eremia"],
+  },
+  {
+    title: "Somnul - pilonul principal al unui stil de viață sănătos",
+    speakers: ["Prof. dr. Doina Todea"],
+  },
+  {
+    title: "Impactul dietelor în sarcină asupra sănătății a două generații",
+    speakers: ["Conf. dr. Dana Anton-Paduraru"],
+  },
+  {
+    title: "Era agoniștilor GLP-1: o nouă provocare pentru exercițiul fizic?",
+    speakers: ["Conf. dr. Răzvan Șusan"],
+  },
+  {
+    title: "Când ritmul devine terapie: stimularea auditivă ritmică în recuperarea motorie post-AVC",
+    speakers: ["Șef lucr. dr. Ionuț Poinăreanu"],
+  },
+  {
+    title: "Noțiuni fundamentale despre macronutrienți și micronutrienți – Elemente de bază ale nutriției pentru practica clinică",
+    speakers: ["Șef lucr. dr. Zsuzsanna Farkas-Pall"],
+  },
+  {
+    title: "Când e momentul să începem educația despre sănătate?",
+    speakers: ["Paul Paraschiv"],
+  },
+  {
+    title: "Creierul copilului și al adolescentului în era scroll-ului: Ce este real, ce este mit și ce facem în cabinet?",
+    speakers: ["Conf. dr. Daniela Gurguș"],
+  },
+  {
+    title: "Omul în centrul medicinei: de la dovezi științifice la îngrijire personalizată și integrativă",
+    speakers: [
+      "Asist. univ. dr. Laura Atyim",
+      "Dr. Felicia Carmen Andrei",
+      "Asist. univ. dr. Andreea-Narcisa Iana",
+      "Asist. univ. dr. Ivona Mihaela Hum",
+      "Conf. Dr. Daniela Gurgus",
+      "Prof. Dr. Roxana Folescu",
+    ],
+  },
+  {
+    title: "Dincolo de restricții: alimentația sustenabilă în preobezitate și obezitate",
+    speakers: ["Prof. dr. Roxana Folescu"],
+  },
+  {
+    title: "De la obiceiuri zilnice la genetică: microbiomul intestinal",
+    speakers: [
+      "Conf. univ. dr. Elena Adorata Coman",
+      "Asist. univ. dr. Mihaela Poroch",
+      "Dr. Monica Ungureanu",
+      "Dr. Roxana Barbu",
+      "Dr. Elena Popa",
+    ],
+  },
+  {
+    title: "Comunicarea medic-pacient: de la recomandări la schimbări durabile",
+    speakers: ["Iulia Nistoroiu"],
+  },
 ];

@@ -5,7 +5,7 @@ import JsonLdScript from "@/components/seo/JsonLdScript";
 import { generateStaticPageMetadata } from "@/lib/metadata-helpers";
 import { generateWebPageSchema } from "@/lib/structured-data";
 import { WEBINAR } from "@/lib/webinar/config";
-import { webinarLearning, webinarLecturers, webinarReasons, webinarTopics } from "@/data/webinar";
+import { webinarLearning, webinarLecturers, webinarProgram, webinarReasons } from "@/data/webinar";
 
 export const metadata = generateStaticPageMetadata("/webinar");
 
@@ -93,7 +93,15 @@ export default function WebinarPage() {
       <div className="container-default max-w-5xl">
         <h2 id="program-webinar" className="text-headline text-[var(--text-primary)]">Program</h2>
         <ol className="mt-6 divide-y divide-gray-200 border-y border-gray-200">
-          {webinarTopics.map((topic, index) => <li key={topic} className="flex gap-4 py-4 md:gap-6"><span className="shrink-0 text-lg font-semibold tabular-nums text-green-800" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span><p className="text-lg font-medium leading-relaxed text-gray-900">{topic}</p></li>)}
+          {webinarProgram.map((item, index) => (
+            <li key={item.title} className="flex gap-4 py-4 md:gap-6">
+              <span className="shrink-0 text-lg font-semibold tabular-nums text-green-800" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
+              <div className="min-w-0">
+                <h3 className="text-lg font-medium leading-relaxed text-gray-900">{item.title}</h3>
+                <p className="mt-2 leading-relaxed text-gray-700">{item.speakers.join(", ")}</p>
+              </div>
+            </li>
+          ))}
         </ol>
       </div>
     </section>
