@@ -27,7 +27,7 @@ export const webinarLecturers: readonly WebinarLecturer[] = [
   { name: "Șef lucr. dr. Mihaela Daniela Baltă", image: "/images/webinar/sef-lucr-dr-mihaela-daniela-balta.png" },
   { name: "Dr. Roxana Barbu", image: "/images/webinar/dr-roxana-barbu.png" },
   { name: "Dr. Andreea Ciubotaru", image: "/images/council/dr-andreea-ciubotaru.png" },
-  { name: "Conf. univ. dr. Elena Adorata Coman", image: "/images/council/conf-dr-adorata-elena-coman.png" },
+  { name: "Conf. dr. Elena Adorata Coman", image: "/images/council/conf-dr-adorata-elena-coman.png" },
   { name: "Conf. dr. Irina Eremia", image: "/images/council/conf-dr-irina-eremia.png" },
   { name: "Șef lucr. dr. Zsuzsanna Farkas-Pall", image: "/images/council/sef-lucr-dr-zsuzsanna-farkas-pall.png" },
   { name: "Prof. dr. Roxana Folescu", image: "/images/council/prof-dr-roxana-folescu.png" },
@@ -122,7 +122,7 @@ export const webinarProgram: readonly WebinarProgramItem[] = [
   {
     title: "De la obiceiuri zilnice la genetică: microbiomul intestinal",
     speakers: [
-      "Conf. univ. dr. Elena Adorata Coman",
+      "Conf. dr. Elena Adorata Coman",
       "Asist. univ. dr. Mihaela Poroch",
       "Dr. Monica Ungureanu",
       "Dr. Roxana Barbu",
