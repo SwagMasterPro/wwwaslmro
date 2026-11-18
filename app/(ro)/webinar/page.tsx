@@ -97,7 +97,7 @@ export default function WebinarPage() {
             <li key={item.title} className="flex gap-4 py-4 md:gap-6">
               <span className="shrink-0 text-lg font-semibold tabular-nums text-green-800" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
               <div className="min-w-0">
-                <h3 className="text-lg font-medium leading-relaxed text-gray-900">{item.title}</h3>
+                <h3 className="text-lg font-bold leading-relaxed text-gray-900">{item.title}</h3>
                 <p className="mt-2 leading-relaxed text-gray-700">{item.speakers.join(", ")}</p>
               </div>
             </li>
