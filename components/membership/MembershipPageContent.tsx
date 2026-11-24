@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Script from "@/components/seo/JsonLdScript";
+import HonoraryMembers from "./HonoraryMembers";
 import { motion } from "framer-motion";
 import { useEffect } from "react";
 import {
@@ -198,8 +199,8 @@ const categories: MembershipCategory[] = [
       en: ["All full member benefits", "Voting and eligibility rights", "Official ASLM recognition", "Special event invitations", "Mention on the official site", "Exempt from annual fee"],
     },
     note: {
-      ro: "Acordat prin invitație exclusivă din partea Consiliului Executiv.",
-      en: "Granted by invitation from the Executive Council.",
+      ro: "Acordat prin invitație exclusivă din partea Comitetului Executiv.",
+      en: "Granted by invitation from the Executive Committee.",
     },
     color: "gold",
   },
@@ -340,7 +341,7 @@ export default function MembershipPageContent({ locale }: { locale: Locale }) {
   const copy = {
     ro: {
       overline: "Alătură-te comunității",
-      title: "Membri ASLM: înscriere și beneficii",
+      title: "Membership ASLM: înscriere și beneficii",
       description: "Alege categoria potrivită, compară cotizațiile și beneficiile și înscrie-te în comunitatea ASLM dedicată medicinei stilului de viață.",
       benefitsOverline: "Avantaje",
       benefitsTitle: "Beneficiile Membrilor ASLM",
@@ -360,7 +361,7 @@ export default function MembershipPageContent({ locale }: { locale: Locale }) {
       finalBody: "Completează formularul de înscriere și devino parte din comunitatea ASLM.",
       join: "Înscrie-te",
       path: "/membri",
-      schemaName: "Membri ASLM: înscriere, categorii și beneficii",
+      schemaName: "Membership ASLM: înscriere, categorii și beneficii",
       schemaDescription: "Descoperă categoriile de membri ASLM, cotizațiile, beneficiile și procesul de înscriere.",
     },
     en: {
@@ -459,6 +460,7 @@ export default function MembershipPageContent({ locale }: { locale: Locale }) {
               <CategoryCard key={category.id} category={category} locale={locale} index={index} compact />
             ))}
           </div>
+          <HonoraryMembers locale={locale} />
         </div>
       </section>
 

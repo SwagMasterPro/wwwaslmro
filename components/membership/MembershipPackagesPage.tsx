@@ -1,4 +1,5 @@
 import Image from "next/image";
+import HonoraryMembers from "./HonoraryMembers";
 import Link from "next/link";
 import { Suspense } from "react";
 import CompanyRequestForm from "@/components/membership/CompanyRequestForm";
@@ -16,7 +17,7 @@ export default function MembershipPackagesPage({ audience }: { audience: "indivi
   const isCompany = audience === "companies";
   const membershipForm = isCompany ? null : resolveMembershipFormConfig(process.env.MEMBERSHIP_FORM_URL, process.env.MEMBERSHIP_FORM_EMBED_ENABLED);
   const packages = isCompany ? companyMembershipPackages : individualMembershipPackages;
-  const title = isCompany ? "Parteneri companii" : "Membri ASLM";
+  const title = isCompany ? "Parteneri companii" : "Membership ASLM";
   const path = isCompany ? "/parteneri-companii" : "/membri";
   const description = isCompany
     ? "Alege pachetul de parteneriat potrivit pentru compania ta. Descoperă oportunitățile de colaborare și vizibilitate oferite de ASLM."
@@ -26,15 +27,17 @@ export default function MembershipPackagesPage({ audience }: { audience: "indivi
     <div className="pt-24 pb-20 md:pt-32">
       {!isCompany && <MembershipViewTracker />}
       <div className="container-default">
-        <Image
-          src={`/images/membership/${isCompany ? "parteneri-aslm" : "membri-aslm"}.webp`}
-          alt={`Academic Society of Lifestyle Medicine — ${isCompany ? "Parteneri ASLM Companii" : "Membri ASLM"}`}
-          width={isCompany ? 2160 : 2164}
-          height={isCompany ? 336 : 333}
-          sizes="(max-width: 1280px) 100vw, 1280px"
-          preload
-          className={styles.banner}
-        />
+        <div className={styles.banner}>
+          <Image
+            src={`/images/membership/${isCompany ? "parteneri-aslm" : "membri-aslm"}.webp`}
+            alt={isCompany ? "Academic Society of Lifestyle Medicine — Parteneri ASLM Companii" : "Academic Society of Lifestyle Medicine"}
+            width={isCompany ? 2160 : 2164}
+            height={isCompany ? 336 : 333}
+            sizes="(max-width: 1280px) 100vw, 1280px"
+            preload
+          />
+          {!isCompany && <span aria-hidden="true" className={styles.bannerTitle}>{title}</span>}
+        </div>
         <header className="max-w-4xl pb-8 md:pb-10">
           <h1 className="font-heading text-3xl font-bold tracking-tight text-green-950 sm:text-4xl md:text-5xl">{title}</h1>
           <p className="mt-2 text-lg leading-relaxed text-[var(--text-secondary)]">{description}</p>
@@ -86,6 +89,7 @@ export default function MembershipPackagesPage({ audience }: { audience: "indivi
             ))}
           </div>
         </section>
+        {!isCompany && <HonoraryMembers locale="ro" />}
         {isCompany ? (
           <>
             <p className="mt-8 max-w-3xl leading-relaxed text-[var(--text-secondary)]">Trimite solicitarea prin formularul de mai jos. ASLM te va contacta pentru verificare și, dacă este cazul, facturare.</p>
