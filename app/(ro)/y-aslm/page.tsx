@@ -12,14 +12,14 @@ import {
   Target,
   Lightbulb,
 } from "lucide-react";
-import { activeYAslmStudents } from "@/data/y-aslm";
+import YoungMemberList from "@/components/governance/YoungMemberList";
 import Link from "next/link";
 
 const involvementItems = [
   "Familiarizarea cu principiile medicinei stilului de viață (resursele științifice vor fi puse la dispoziție în limba română de către echipa ASLM)",
   "Promovarea responsabilă a informațiilor științifice și a inițiativelor ASLM",
   "Implicarea în comunicarea proiectelor educaționale și a evenimentelor",
-  "Participarea la dezvoltarea comunității studențești ASLM",
+  "Participarea la dezvoltarea comunității Young ASLM",
 ];
 
 const benefits = [
@@ -41,7 +41,7 @@ const benefits = [
   {
     icon: Users,
     title: "Networking",
-    description: "Networking cu lectori de top și profesioniști din domeniul sănătății, precum și cu alți studenți interesați de prevenția bolilor",
+    description: "Networking cu lectori de top și profesioniști din domeniul sănătății, precum și cu alți tineri interesați de prevenția bolilor",
   },
   {
     icon: Lightbulb,
@@ -51,7 +51,7 @@ const benefits = [
   {
     icon: Target,
     title: "Oportunități de coordonare",
-    description: "Oportunitatea de a fi selectat ulterior pentru roluri de coordonare în cadrul departamentului studențesc și de a accesa beneficii suplimentare",
+    description: "Oportunitatea de a fi selectat ulterior pentru roluri de coordonare în cadrul Departamentului Tineri și de a accesa beneficii suplimentare",
   },
 ];
 
@@ -59,7 +59,7 @@ const registrationSteps = [
   {
     step: 1,
     title: "Trimite email",
-    description: "Pentru a face parte din Departamentul Studențesc ASLM, te invităm să ne trimiți un email la adresa: contact@aslm.ro",
+    description: "Pentru a face parte din Departamentul Tineri ASLM, te invităm să ne trimiți un email la adresa: contact@aslm.ro",
   },
   {
     step: 2,
@@ -92,13 +92,13 @@ export default function YAslmPage() {
           >
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 mb-6">
               <GraduationCap className="w-5 h-5 text-white" />
-              <span className="text-sm font-semibold text-white">Departamentul Studențesc</span>
+              <span className="text-sm font-semibold text-white">Departamentul Tineri</span>
             </div>
             <h1 className="font-heading text-4xl md:text-5xl font-bold text-white mb-4">
               Young ASLM
             </h1>
             <p className="text-lg text-white/70">
-              Departamentul Studențesc ASLM
+              Departamentul Tineri ASLM
             </p>
           </motion.div>
         </div>
@@ -119,27 +119,11 @@ export default function YAslmPage() {
               <span className="text-sm font-semibold">Young ASLM</span>
             </div>
             <h2 className="text-headline text-[var(--text-primary)]">
-              Studenți implicați în promovarea medicinei stilului de viață
+              Tineri implicați în promovarea medicinei stilului de viață
             </h2>
           </motion.div>
 
-          <ul
-            className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 max-w-5xl mx-auto"
-            aria-label="Studenți implicați în promovarea medicinei stilului de viață"
-          >
-            {activeYAslmStudents.map((student, index) => (
-              <motion.li
-                key={student}
-                initial={{ opacity: 0, y: 12 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.3, delay: Math.min(index * 0.03, 0.24) }}
-                className="card-elevated px-5 py-4 text-body text-[var(--text-primary)]"
-              >
-                {student}
-              </motion.li>
-            ))}
-          </ul>
+          <YoungMemberList locale="ro" label="Tineri implicați în promovarea medicinei stilului de viață" />
         </div>
       </section>
 
@@ -157,12 +141,12 @@ export default function YAslmPage() {
               Implică-te activ în medicina stilului de viață
             </h2>
             <p className="text-body text-[var(--text-secondary)] leading-relaxed">
-              Societatea Academică de Medicina Stilului de Viață lansează Departamentul Studențesc ASLM,
-              o inițiativă dedicată studenților care își doresc să se implice activ în promovarea prevenției și a
+              Societatea Academică de Medicina Stilului de Viață lansează Departamentul Tineri ASLM,
+              o inițiativă dedicată tinerilor care își doresc să se implice activ în promovarea prevenției și a
               unui model modern de medicină, centrat pe prevenție și medicina stilului de viață.
             </p>
             <p className="text-body text-[var(--text-secondary)] leading-relaxed mt-4">
-              Ne adresăm studenților motivați, interesați de educație medicală, prevenție și dezvoltare
+              Ne adresăm tinerilor motivați, interesați de educație medicală, prevenție și dezvoltare
               profesională, care își doresc să facă parte dintr-o comunitate academică în formare.
             </p>
           </motion.div>
@@ -213,8 +197,8 @@ export default function YAslmPage() {
                 </h3>
               </div>
               <p className="text-body text-[var(--text-secondary)] leading-relaxed">
-                În funcție de nivelul de implicare și consecvență, studenții activi pot fi selectați pentru
-                roluri de coordonare în cadrul Departamentului Studențesc și vor accesa beneficii
+                În funcție de nivelul de implicare și consecvență, membrii activi pot fi selectați pentru
+                roluri de coordonare în cadrul Departamentului Tineri și vor accesa beneficii
                 suplimentare.
               </p>
               <div className="mt-6 p-4 rounded-xl bg-[var(--color-accent-50)] border border-[var(--color-accent-100)]">
@@ -238,10 +222,10 @@ export default function YAslmPage() {
             className="text-center mb-12"
           >
             <h2 className="text-headline text-[var(--text-primary)] mb-4">
-              Beneficii pentru studenți
+              Beneficii pentru tineri
             </h2>
             <p className="text-body text-[var(--text-secondary)] max-w-2xl mx-auto">
-              Alătură-te departamentului studențesc și accesează oportunități unice de dezvoltare
+              Alătură-te Departamentului Tineri și accesează oportunități unice de dezvoltare
             </p>
           </motion.div>
 
@@ -284,7 +268,7 @@ export default function YAslmPage() {
               Cum te poți înscrie
             </h2>
             <p className="text-body text-[var(--text-secondary)] max-w-2xl mx-auto">
-              Urmează acești pași simpli pentru a face parte din Departamentul Studențesc ASLM
+              Urmează acești pași simpli pentru a face parte din Departamentul Tineri ASLM
             </p>
           </motion.div>
 
@@ -323,7 +307,7 @@ export default function YAslmPage() {
               className="mt-12 text-center"
             >
               <a
-                href="mailto:contact@aslm.ro?subject=Inscriere Departamentul Studentesc ASLM"
+                href="mailto:contact@aslm.ro?subject=Inscriere Departamentul Tineri ASLM"
                 className="inline-flex items-center gap-2 px-8 py-4 font-semibold rounded-xl transition-all duration-200 shadow-sm hover:shadow-md"
                 style={{
                   backgroundColor: '#166534',
@@ -366,11 +350,11 @@ export default function YAslmPage() {
               Fii parte din generația tânără care contribuie la dezvoltarea medicinei stilului de viață în România
             </h2>
             <p className="text-body text-[var(--text-secondary)] mb-8">
-              Alătură-te Departamentului Studențesc ASLM și începe călătoria ta în medicina stilului de viață
+              Alătură-te Departamentului Tineri ASLM și începe călătoria ta în medicina stilului de viață
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <a
-                href="mailto:contact@aslm.ro?subject=Inscriere Departamentul Studentesc ASLM"
+                href="mailto:contact@aslm.ro?subject=Inscriere Departamentul Tineri ASLM"
                 className="inline-flex items-center gap-2 px-6 py-3 font-semibold rounded-xl transition-all duration-200"
                 style={{
                   backgroundColor: '#166534',

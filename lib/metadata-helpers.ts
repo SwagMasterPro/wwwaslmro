@@ -89,10 +89,10 @@ const staticPages: Record<string, StaticPageMetadata> = {
     keywords: ["consiliu științific ASLM", "experți medicina stilului de viață"],
   },
   "/consiliu-executiv": {
-    title: "Consiliu Executiv",
+    title: "Comitet Executiv",
     description:
       "Află cine coordonează activitatea ASLM și inițiativele societății pentru educație, cercetare și colaborare medicală.",
-    keywords: ["consiliu executiv ASLM", "conducere ASLM"],
+    keywords: ["comitet executiv ASLM", "conducere ASLM"],
   },
   "/adunarea-generala": {
     title: "Adunarea Generală",
@@ -101,7 +101,7 @@ const staticPages: Record<string, StaticPageMetadata> = {
     keywords: ["Adunarea Generală ASLM", "membri ASLM", "lista membri ASLM"],
   },
   "/membri": {
-    title: "Membri ASLM: pachete și înscriere",
+    title: "Membership ASLM: pachete și înscriere",
     description:
       "Compară pachetele Membri Afiliați, Membri Titulari și Membri Asociați: beneficii, adresabilitate și cotizații de 400 sau 300 RON pe an. Înscrie-te în ASLM.",
     keywords: ["membri ASLM", "înscriere ASLM", "devino membru ASLM", "beneficii membri", "medicina stilului de viață"],
@@ -125,10 +125,10 @@ const staticPages: Record<string, StaticPageMetadata> = {
     keywords: ["ASLM Scientific Council", "lifestyle medicine experts Romania"],
   },
   "/en/executive-council": {
-    title: "Executive Council",
+    title: "Executive Committee",
     description:
-      "Meet the ASLM Executive Council coordinating the society's operational and strategic projects.",
-    keywords: ["ASLM Executive Council", "ASLM leadership"],
+      "Meet the ASLM Executive Committee coordinating the society's operational and strategic projects.",
+    keywords: ["ASLM Executive Committee", "ASLM leadership"],
   },
   "/en/membership": {
     title: "Membership",
@@ -265,8 +265,8 @@ const staticPages: Record<string, StaticPageMetadata> = {
   "/y-aslm": {
     title: "Young ASLM",
     description:
-      "Departamentul Studențesc ASLM pentru studenți interesați de prevenție, sănătate și medicina stilului de viață.",
-    keywords: ["Young ASLM", "departament studențesc", "studenți", "prevenție"],
+      "Departamentul Tineri ASLM pentru tinerii interesați de prevenție, sănătate și medicina stilului de viață.",
+    keywords: ["Young ASLM", "Departamentul Tineri ASLM", "studenți", "prevenție"],
   },
 };
 

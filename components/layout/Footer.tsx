@@ -47,7 +47,7 @@ function getFooterLinks(locale: Locale) {
       about: [
         { href: "/en", label: "ASLM in English" },
         { href: "/en/scientific-council", label: "Scientific Council" },
-        { href: "/en/executive-council", label: "Executive Council" },
+        { href: "/en/executive-council", label: "Executive Committee" },
         { href: STATUTE_EN_URL, label: "ASLM Statute", external: true },
       ],
       members: [
@@ -87,19 +87,19 @@ function getFooterLinks(locale: Locale) {
       { href: "/despre", label: "Societatea" },
       { href: "/misiune", label: "Misiune & Viziune" },
       { href: "/consiliu-stiintific", label: "Consiliu Științific" },
-      { href: "/consiliu-executiv", label: "Consiliu Executiv" },
+      { href: "/consiliu-executiv", label: "Comitet Executiv" },
       { href: "/despre#statutul-aslm", label: "Statutul ASLM" },
     ],
     members: [
       { href: "/adunarea-generala", label: "Adunarea Generală" },
       { href: "/y-aslm", label: "Young ASLM" },
-      { href: "/membri", label: "Membri ASLM" },
+      { href: "/membri", label: "Membership ASLM" },
       { href: "/parteneri-companii", label: "Parteneri companii" },
     ],
     resources: [
       { href: "/medicina-stilului-de-viata", label: "Medicina stilului de viață" },
       { href: "/news", label: "News ASLM" },
-      { href: "/membri", label: "Membri ASLM" },
+      { href: "/membri", label: "Membership ASLM" },
       { href: "/publicatii", label: "Publicații" },
       { href: "/evenimente", label: "Evenimente" },
       { href: "/webinar", label: "Webinar" },

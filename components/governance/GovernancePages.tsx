@@ -5,7 +5,8 @@ import Link from "next/link";
 import Script from "next/script";
 import { motion } from "framer-motion";
 import { ArrowRight, Award, BookOpen, GraduationCap, Users } from "lucide-react";
-import { activeYAslmStudents } from "@/data/y-aslm";
+import RosterProfile from "./RosterProfile";
+import YoungMemberList from "@/components/governance/YoungMemberList";
 import {
   executiveCouncilMembers,
   scientificCouncilPageMembers,
@@ -299,37 +300,37 @@ export function ExecutiveCouncilPageContent({ locale }: { locale: Locale }) {
   const copy = {
     ro: {
       overline: "Despre ASLM",
-      title: "Consiliu Executiv",
+      title: "Comitet Executiv",
       description:
-        "Consiliul Executiv al ASLM asigură conducerea operațională a societății, coordonând activitățile și proiectele strategice ale organizației.",
-      members: "Membrii Consiliului Executiv",
+        "Comitetul Executiv al ASLM asigură conducerea operațională a societății, coordonând activitățile și proiectele strategice ale organizației.",
+      members: "Membrii Comitetului Executiv",
       membersDescription:
         "Echipa de conducere a ASLM, responsabilă de implementarea strategiei și coordonarea activităților societății.",
       studentTeam: "Echipa Young ASLM",
       studentTeamDescription:
-        "Studenții implicați în promovarea medicinei stilului de viață și în dezvoltarea comunității ASLM.",
-      studentTeamAriaLabel: "Studenții implicați în promovarea medicinei stilului de viață",
-      schemaName: "Consiliu Executiv ASLM",
+        "Tinerii implicați în promovarea medicinei stilului de viață și în dezvoltarea comunității ASLM.",
+      studentTeamAriaLabel: "Tinerii implicați în promovarea medicinei stilului de viață",
+      schemaName: "Comitet Executiv ASLM",
       schemaDescription:
-        "Consiliul Executiv ASLM coordonează activitățile operaționale și proiectele strategice ale societății.",
-      breadcrumb: "Consiliu Executiv",
+        "Comitetul Executiv ASLM coordonează activitățile operaționale și proiectele strategice ale societății.",
+      breadcrumb: "Comitet Executiv",
     },
     en: {
       overline: "About ASLM",
-      title: "Executive Council",
+      title: "Executive Committee",
       description:
-        "The ASLM Executive Council provides operational leadership for the society, coordinating activities and strategic projects.",
-      members: "Executive Council Members",
+        "The ASLM Executive Committee provides operational leadership for the society, coordinating activities and strategic projects.",
+      members: "Executive Committee Members",
       membersDescription:
         "The ASLM leadership team responsible for strategy implementation and coordination of the society's work.",
-      studentTeam: "Y-ASLM Student Team",
+      studentTeam: "Young ASLM Team",
       studentTeamDescription:
-        "Students involved in promoting lifestyle medicine and developing the ASLM community.",
-      studentTeamAriaLabel: "Students involved in promoting lifestyle medicine",
-      schemaName: "ASLM Executive Council",
+        "Young people involved in promoting lifestyle medicine and developing the ASLM community.",
+      studentTeamAriaLabel: "Young people involved in promoting lifestyle medicine",
+      schemaName: "ASLM Executive Committee",
       schemaDescription:
-        "The ASLM Executive Council coordinates the society's operations and strategic projects.",
-      breadcrumb: "Executive Council",
+        "The ASLM Executive Committee coordinates the society's operations and strategic projects.",
+      breadcrumb: "Executive Committee",
     },
   }[locale];
 
@@ -377,23 +378,7 @@ export function ExecutiveCouncilPageContent({ locale }: { locale: Locale }) {
             </h2>
             <p className="text-subtitle max-w-3xl mx-auto">{copy.studentTeamDescription}</p>
           </motion.div>
-          <ul
-            className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 max-w-5xl mx-auto"
-            aria-label={copy.studentTeamAriaLabel}
-          >
-            {activeYAslmStudents.map((student, index) => (
-              <motion.li
-                key={student}
-                initial={{ opacity: 0, y: 12 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.3, delay: Math.min(index * 0.03, 0.24) }}
-                className="card-elevated px-5 py-4 text-body text-[var(--text-primary)]"
-              >
-                {student}
-              </motion.li>
-            ))}
-          </ul>
+          <YoungMemberList locale={locale} label={copy.studentTeamAriaLabel} />
         </div>
       </section>
       <MembershipCta locale={locale} />
@@ -477,20 +462,28 @@ export function GeneralAssemblyPageContent({ locale }: { locale: Locale }) {
 
           {sortedGeneralAssemblyMembers.length > 0 ? (
             <div className="overflow-x-auto card-elevated">
-              <table className="w-full min-w-[620px]">
+              <table className="w-full">
                 <thead>
                   <tr className="border-b border-[var(--border-primary)]">
-                    <th className="w-20 text-left py-4 px-5 font-semibold text-[var(--text-primary)]">{copy.number}</th>
+                    <th className="hidden w-20 sm:table-cell text-left py-4 px-5 font-semibold text-[var(--text-primary)]">{copy.number}</th>
                     <th className="text-left py-4 px-5 font-semibold text-[var(--text-primary)]">{copy.name}</th>
-                    <th className="text-left py-4 px-5 font-semibold text-[var(--text-primary)]">{copy.city}</th>
+                    <th className="hidden sm:table-cell text-left py-4 px-5 font-semibold text-[var(--text-primary)]">{copy.city}</th>
                   </tr>
                 </thead>
                 <tbody>
                   {sortedGeneralAssemblyMembers.map((member, index) => (
                     <tr key={`${member.displayName}-${member.city}`} className="border-b border-[var(--border-primary)] last:border-0">
-                      <td className="w-20 py-4 px-5 text-[var(--text-primary)] tabular-nums">{index + 1}</td>
-                      <td className="py-4 px-5 text-[var(--text-primary)] font-medium">{member.displayName}</td>
-                      <td className="py-4 px-5 text-[var(--text-primary)]">{member.city}</td>
+                      <td className="hidden sm:table-cell w-20 py-4 px-5 text-[var(--text-primary)] tabular-nums">{index + 1}</td>
+                      <td className="px-5 py-4">
+                        <RosterProfile
+                          name={member.displayName}
+                          image={member.image ?? member.profile?.image}
+                          href={member.profile?.profilePath}
+                          bio={member.profile?.shortBio?.[locale] ?? member.shortBio?.[locale] ?? member.profile?.role?.[locale] ?? member.profile?.affiliation?.[locale]}
+                        />
+                        <p className="mt-1 text-sm text-[var(--text-secondary)] sm:hidden">{member.city}</p>
+                      </td>
+                      <td className="hidden sm:table-cell py-4 px-5 text-[var(--text-primary)]">{member.city}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -542,7 +535,7 @@ export function EnglishIndexPageContent() {
     },
     {
       href: "/en/executive-council",
-      title: "Executive Council",
+      title: "Executive Committee",
       description: "See the leadership team coordinating ASLM operations and strategic projects.",
       icon: BookOpen,
     },

@@ -21,6 +21,9 @@ export type GovernancePerson = {
 };
 
 export type GeneralAssemblyMember = {
+  profileId?: string;
+  image?: string;
+  shortBio?: Partial<LocalizedText>;
   displayName: string;
   city: string;
   sortName?: string;
@@ -67,8 +70,8 @@ const scientificAffiliation: LocalizedText = {
 };
 
 const executiveAffiliation: LocalizedText = {
-  ro: "Consiliul Executiv ASLM",
-  en: "ASLM Executive Council",
+  ro: "Comitetul Executiv ASLM",
+  en: "ASLM Executive Committee",
 };
 
 export const president = withProfilePath({
@@ -110,7 +113,10 @@ export const scientificCouncilMembers: GovernancePerson[] = sortPeopleByName([
     image: "/images/council/prof-dr-ioana-agache.png",
     affiliation: scientificAffiliation,
     profileSlug: "ioana-agache",
-    shortBio: { ro: "Prof. Dr. Ioana Octavia Agache, membră a Consiliului Științific ASLM." },
+    shortBio: {
+      ro: "Medic primar în alergologie și imunologie clinică. La congresul inaugural ASLM a abordat intervențiile bazate pe natură în bolile cronice.",
+      en: "A specialist in allergy and clinical immunology, she contributed to the inaugural ASLM congress on nature-based interventions in chronic disease.",
+    },
   }),
   withProfilePath({
     id: "marian-anghel",
@@ -119,7 +125,10 @@ export const scientificCouncilMembers: GovernancePerson[] = sortPeopleByName([
     image: "/images/council/marian-anghel.png",
     affiliation: scientificAffiliation,
     profileSlug: "marian-anghel",
-    shortBio: { ro: "Sociolog Marian Anghel, membru al Consiliului Științific ASLM." },
+    shortBio: {
+      ro: "Sociolog și instructor acreditat de mers nordic, a contribuit la congresul inaugural ASLM cu un atelier de Nordic Walking.",
+      en: "A sociologist and accredited Nordic walking instructor, he contributed a Nordic walking workshop to ASLM’s inaugural congress.",
+    },
   }),
   withProfilePath({ id: "adriana-sorina-antohe", displayName: "Dr. Adriana Sorina Antohe", sortName: "Antohe Adriana Sorina", image: "/images/council/dr-adriana-sorina-antohe.png", affiliation: scientificAffiliation }),
   withProfilePath({
@@ -131,6 +140,7 @@ export const scientificCouncilMembers: GovernancePerson[] = sortPeopleByName([
     profileSlug: "dana-teodora-anton-paduraru",
     shortBio: {
       ro: "Medic primar pediatru și conferențiar universitar la UMF „Grigore T. Popa” din Iași, cu preocupări în pediatrie, nutriție pediatrică, medicina stilului de viață și tulburări metabolice.",
+      en: "A senior paediatrician and associate professor at Grigore T. Popa University in Iași, her work includes paediatric nutrition and metabolic disorders.",
     },
     bio: {
       ro: "Conf. Dr. Dana-Teodora Anton-Păduraru este medic primar pediatru și conferențiar universitar la Universitatea de Medicină și Farmacie „Grigore T. Popa” din Iași. Activitatea sa profesională este concentrată în pediatrie și gastroenterologie pediatrică, cu pregătire în nutriție și dietetică, homeopatie clinică și fitoterapie. Este implicată în proiecte educaționale, cursuri, conferințe și inițiative dedicate nutriției și sănătății copilului, precum și în promovarea medicinei stilului de viață și a comportamentelor sănătoase încă din copilărie.",
@@ -159,6 +169,7 @@ export const scientificCouncilMembers: GovernancePerson[] = sortPeopleByName([
     profileSlug: "monica-tarcea",
     shortBio: {
       ro: "Prof. Dr. Monica Tarcea este medic primar Igienă și specialist în nutriție comunitară și sănătate publică la UMFST „George Emil Palade” din Târgu Mureș.",
+      en: "A physician specialising in hygiene, she works in community nutrition and public health at George Emil Palade University in Târgu Mureș.",
     },
     bio: {
       ro: "Prof. Dr. Monica Tarcea este medic primar Igienă și profesor universitar la Universitatea de Medicină, Farmacie, Științe și Tehnologie „George Emil Palade” din Târgu Mureș. A coordonat activități academice în nutriție comunitară și siguranța alimentelor, este implicată în proiecte naționale și internaționale de sănătate publică și cercetare, iar domeniile sale de interes includ nutriția comunitară, sănătatea publică, siguranța alimentelor și managementul comportamentelor de risc.",
@@ -204,6 +215,7 @@ export const scientificCouncilMembers: GovernancePerson[] = sortPeopleByName([
     profileSlug: "polliana-mihaela-leru",
     shortBio: {
       ro: "Medic primar alergologie și profesor universitar la UMF „Carol Davila” din București, cu interese în alergologie, boli respiratorii, medicina stilului de viață, aerobiologie și sănătate publică.",
+      en: "A senior allergist and professor at Carol Davila University in Bucharest, her work covers respiratory disease, aerobiology and public health.",
     },
     bio: {
       ro: "Prof. Dr. Polliana Mihaela Leru este medic primar și profesor universitar la Universitatea de Medicină și Farmacie „Carol Davila” din București. Activitatea sa clinică și de cercetare acoperă medicina internă, alergologia și imunologia clinică, iar domeniile sale de interes includ alergiile respiratorii, astmul, BPOC, medicina stilului de viață, aerobiologia, poluarea aerului, sănătatea publică și educația în asistența medicală primară.",
@@ -220,6 +232,7 @@ export const scientificCouncilMembers: GovernancePerson[] = sortPeopleByName([
     profileSlug: "mihaela-naidin",
     shortBio: {
       ro: "Licențiată în Psihologie și trainer-formator în comunicare pentru domeniul sănătății, cu preocupări în managementul stresului, prevenirea burnoutului, reziliență și comunicare conștientă.",
+      en: "With a degree in psychology, she trains healthcare professionals in communication, stress management, burnout prevention and resilience.",
     },
     bio: {
       ro: "Mihaela Gabor Naidin este licențiată în Psihologie, cu master în Management Sanitar și formare în Managementul Calității în Sănătate. În calitate de trainer-formator în comunicare pentru domeniul sănătății, dezvoltă programe pentru profesioniști, rezidenți și studenți, abordând comunicarea cu pacientul, reglarea emoțională, managementul stresului, prevenirea burnoutului și dezvoltarea rezilienței. În cadrul ASLM coordonează aria de Psihologie Aplicată și Managementul Stresului.",
@@ -234,6 +247,7 @@ export const scientificCouncilMembers: GovernancePerson[] = sortPeopleByName([
     profileSlug: "mirela-nedelescu",
     shortBio: {
       ro: "Conferențiar universitar la UMF „Carol Davila” și medic primar Igienă, cu expertiză în nutriție, promovarea alimentației sănătoase, evaluarea statusului nutrițional și recomandări privind activitatea fizică.",
+      en: "A senior physician in hygiene and an associate professor at Carol Davila University, she works on nutrition, dietary assessment and physical activity.",
     },
     bio: {
       ro: "Conf. Dr. Mirela Nedelescu este conferențiar universitar la Universitatea de Medicină și Farmacie „Carol Davila” din București și își desfășoară activitatea în cadrul Institutului Național de Sănătate Publică. Este medic primar Igienă și expert al Ministerului Sănătății în grupurile tehnice ale Comisiei Europene în domeniul nutriției, cu interese în nutriție, promovarea alimentației sănătoase, evaluarea statusului nutrițional și recomandări privind activitatea fizică.",
@@ -251,7 +265,10 @@ export const scientificCouncilMembers: GovernancePerson[] = sortPeopleByName([
     image: "/images/council/sef-lucr-dr-ionut-poinareanu.png",
     affiliation: scientificAffiliation,
     profileSlug: "ionut-poinareanu",
-    shortBio: { ro: "Șef Lucr. Dr. Ionuț Poinăreanu, membru al Consiliului Științific ASLM." },
+    shortBio: {
+      ro: "Predă anatomie patologică la Universitatea „Ovidius” din Constanța. La congresul inaugural ASLM a prezentat rezultate ale unui studiu de meloterapie activă.",
+      en: "He teaches pathology at Ovidius University of Constanța and presented a study on active music therapy at ASLM’s inaugural congress.",
+    },
   }),
   withProfilePath({
     id: "mihai-cristian-popescu",
@@ -349,89 +366,329 @@ export const executiveCouncilMembers: GovernancePerson[] = [
   }),
 ];
 
+// Congress contributions are credited in the official programme of the inaugural ASLM congress (May 2026).
 export const generalAssemblyMembers: GeneralAssemblyMember[] = [
-  { displayName: "Anastasia ABĂITĂNCEI", city: "Brașov, România", sortName: "Abaitancei Anastasia" },
-  { displayName: "Ioana AGACHE", city: "Brașov, România", sortName: "Agache Ioana" },
-  { displayName: "Marian ANGHEL", city: "Brașov, România", sortName: "Anghel Marian" },
-  { displayName: "Adriana Sorina ANTOHE", city: "Brașov, România", sortName: "Antohe Adriana Sorina" },
-  { displayName: "Dana-Teodora ANTON-PĂDURARU", city: "Iași, România", sortName: "Anton Paduraru Dana Teodora" },
+  {
+    displayName: "Anastasia ABĂITĂNCEI", city: "Brașov, România", sortName: "Abaitancei Anastasia", profileId: "anastasia-abaitancei",
+    shortBio: {
+      ro: "A contribuit la congresul inaugural ASLM cu o prezentare despre rolul alimentației în inflamația din dermatita atopică.",
+      en: "Contributed to ASLM’s inaugural congress with a presentation on diet and inflammation in atopic dermatitis.",
+    },
+  },
+  { displayName: "Ioana AGACHE", city: "Brașov, România", sortName: "Agache Ioana", profileId: "ioana-agache" },
+  { displayName: "Marian ANGHEL", city: "Brașov, România", sortName: "Anghel Marian", profileId: "marian-anghel" },
+  {
+    displayName: "Adriana Sorina ANTOHE", city: "Brașov, România", sortName: "Antohe Adriana Sorina", profileId: "adriana-sorina-antohe",
+    shortBio: {
+      ro: "A contribuit la congresul inaugural ASLM cu o prezentare despre activitatea fizică și sănătatea.",
+      en: "Contributed to ASLM’s inaugural congress with a presentation on physical activity and health.",
+    },
+  },
+  { displayName: "Dana-Teodora ANTON-PĂDURARU", city: "Iași, România", sortName: "Anton Paduraru Dana Teodora", profileId: "dana-teodora-anton-paduraru" },
   { displayName: "Sorina AURELIAN", city: "București, România", sortName: "Aurelian Sorina" },
-  { displayName: "Laura ATYIM", city: "Timișoara, România", sortName: "Atyim Laura" },
-  { displayName: "Mihaela Daniela BALTĂ", city: "București, România", sortName: "Balta Mihaela Daniela" },
-  { displayName: "Florin BĂLAN", city: "Brașov, România", sortName: "Balan Florin" },
-  { displayName: "Alexandra BELIBOU", city: "Brașov, România", sortName: "Belibou Alexandra" },
-  { displayName: "Lucia BUBULAC", city: "București, România", sortName: "Bubulac Lucia" },
+  {
+    displayName: "Laura ATYIM", city: "Timișoara, România", sortName: "Atyim Laura", profileId: "laura-atyim",
+    shortBio: {
+      ro: "A contribuit la congresul inaugural ASLM cu o prezentare despre formarea obiceiurilor sănătoase în copilărie.",
+      en: "Contributed to ASLM’s inaugural congress with a presentation on developing healthy habits in childhood.",
+    },
+  },
+  {
+    displayName: "Mihaela Daniela BALTĂ", city: "București, România", sortName: "Balta Mihaela Daniela", profileId: "dana-balta",
+    shortBio: {
+      ro: "A contribuit la congresul inaugural ASLM cu o prezentare despre prescripția socială și legătura dintre pacient și comunitate.",
+      en: "Contributed to ASLM’s inaugural congress with a presentation on social prescribing and the links between patients and their communities.",
+    },
+  },
+  {
+    displayName: "Florin BĂLAN", city: "Brașov, România", sortName: "Balan Florin",
+    shortBio: {
+      ro: "A contribuit la congresul inaugural ASLM cu o prezentare despre folosirea meloterapiei active în recuperarea pacienților.",
+      en: "Contributed to ASLM’s inaugural congress with a presentation on active music therapy in rehabilitation.",
+    },
+  },
+  {
+    displayName: "Alexandra BELIBOU", city: "Brașov, România", sortName: "Belibou Alexandra", profileId: "alexandra-belibou",
+    shortBio: {
+      ro: "A contribuit la congresul inaugural ASLM cu o prezentare despre integrarea meloterapiei neurologice în echipele de neuroreabilitare.",
+      en: "Contributed to ASLM’s inaugural congress with a presentation on the use of neurologic music therapy in rehabilitation teams.",
+    },
+  },
+  {
+    displayName: "Lucia BUBULAC", city: "București, România", sortName: "Bubulac Lucia", profileId: "lucia-bubulac",
+    shortBio: {
+      ro: "A contribuit la congresul inaugural ASLM cu o prezentare despre gestionarea stresului și percepția asupra realității.",
+      en: "Contributed to ASLM’s inaugural congress with a presentation on stress management and perception.",
+    },
+  },
   { displayName: "Venera - Margareta BUCUR", city: "Timișoara, România", sortName: "Bucur Venera Margareta" },
   { displayName: "Nadia-Maria BUTUM", city: "Brașov, România", sortName: "Butum Nadia Maria" },
   { displayName: "Lucia CALUSER", city: "Deva, România", sortName: "Caluser Lucia" },
-  { displayName: "Adriana Lavinia CIOCA", city: "Sibiu, România", sortName: "Cioca Adriana Lavinia" },
-  { displayName: "Andreea CIUBOTARU", city: "Brașov, România", sortName: "Ciubotaru Andreea" },
-  { displayName: "Maria Elena COCUZ", city: "Brașov, România", sortName: "Cocuz Maria Elena" },
-  { displayName: "Elena Adorata COMAN", city: "Iași, România", sortName: "Coman Elena Adorata" },
-  { displayName: "Laura Maria CONDUR", city: "Constanța, România", sortName: "Condur Laura Maria" },
-  { displayName: "Dan CONSTANTIN", city: "Brașov, România", sortName: "Constantin Dan" },
+  {
+    displayName: "Adriana Lavinia CIOCA", city: "Sibiu, România", sortName: "Cioca Adriana Lavinia", profileId: "adriana-lavinia-cioca",
+    shortBio: {
+      ro: "A contribuit la congresul inaugural ASLM cu o prezentare despre consilierea nutrițională a pacienților cu diabet în medicina de familie.",
+      en: "Contributed to ASLM’s inaugural congress with a presentation on dietary counselling for people with diabetes in family practice.",
+    },
+  },
+  {
+    displayName: "Andreea CIUBOTARU", city: "Brașov, România", sortName: "Ciubotaru Andreea", profileId: "andreea-ciubotaru",
+    shortBio: {
+      ro: "A contribuit la congresul inaugural ASLM cu o prezentare despre stilul de viață și sănătatea metabolică la menopauză.",
+      en: "Contributed to ASLM’s inaugural congress with a presentation on lifestyle and metabolic health during menopause.",
+    },
+  },
+  {
+    displayName: "Maria Elena COCUZ", city: "Brașov, România", sortName: "Cocuz Maria Elena", profileId: "maria-elena-cocuz",
+    shortBio: {
+      ro: "A contribuit la congresul inaugural ASLM cu o prezentare despre microbiomul intestinal în hepatitele virale cronice.",
+      en: "Contributed to ASLM’s inaugural congress with a presentation on the gut microbiome in chronic viral hepatitis.",
+    },
+  },
+  {
+    displayName: "Elena Adorata COMAN", city: "Iași, România", sortName: "Coman Elena Adorata", profileId: "adorata-elena-coman",
+    shortBio: {
+      ro: "A contribuit la congresul inaugural ASLM cu o prezentare despre educația pentru un stil de viață sănătos în condiții de incertitudine economică.",
+      en: "Contributed to ASLM’s inaugural congress with a presentation on healthy lifestyle education in the face of economic uncertainty.",
+    },
+  },
+  {
+    displayName: "Laura Maria CONDUR", city: "Constanța, România", sortName: "Condur Laura Maria", profileId: "laura-maria-condur",
+    shortBio: {
+      ro: "A contribuit la congresul inaugural ASLM cu o prezentare despre rolul medicinei stilului de viață în îngrijirea geriatrică.",
+      en: "Contributed to ASLM’s inaugural congress with a presentation on the role of lifestyle medicine in geriatric care.",
+    },
+  },
+  {
+    displayName: "Dan CONSTANTIN", city: "Brașov, România", sortName: "Constantin Dan", profileId: "dan-constantin",
+    shortBio: {
+      ro: "A contribuit la congresul inaugural ASLM cu o prezentare despre stimularea magnetică transcraniană în tratamentul dependenței de nicotină.",
+      en: "Contributed to ASLM’s inaugural congress with a presentation on transcranial magnetic stimulation in the treatment of nicotine dependence.",
+    },
+  },
   { displayName: "Ana Georgiana CORNEA COSMA", city: "Brașov, România", sortName: "Cornea Cosma Ana Georgiana" },
-  { displayName: "Adriana COTEL", city: "București, România", sortName: "Cotel Adriana" },
+  {
+    displayName: "Adriana COTEL", city: "București, România", sortName: "Cotel Adriana", profileId: "adriana-cotel",
+    shortBio: {
+      ro: "A contribuit la congresul inaugural ASLM cu o prezentare despre burnout și starea de bine a profesioniștilor din sănătate.",
+      en: "Contributed to ASLM’s inaugural congress with a presentation on burnout and wellbeing among healthcare professionals.",
+    },
+  },
   { displayName: "Roxana Paraschiva COVALIU", city: "București, România", sortName: "Covaliu Roxana Paraschiva" },
-  { displayName: "Mihai CRAIU", city: "București, România", sortName: "Craiu Mihai" },
+  {
+    displayName: "Mihai CRAIU", city: "București, România", sortName: "Craiu Mihai", profileId: "mihai-craiu",
+    shortBio: {
+      ro: "A contribuit la congresul inaugural ASLM cu o prezentare despre efectele obezității infantile asupra aparatului respirator.",
+      en: "Contributed to ASLM’s inaugural congress with a presentation on the respiratory effects of childhood obesity.",
+    },
+  },
   { displayName: "Cristina Anca DASCALESCU", city: "Brașov, România", sortName: "Dascalescu Cristina Anca" },
-  { displayName: "Simina Maria DIACONU", city: "Brașov, România", sortName: "Diaconu Simina Maria" },
-  { displayName: "Lorena DIMA", city: "Brașov, România", sortName: "Dima Lorena" },
+  { displayName: "Simina Maria DIACONU", city: "Brașov, România", sortName: "Diaconu Simina Maria", profileId: "simina-maria-diaconu" },
+  {
+    displayName: "Lorena DIMA", city: "Brașov, România", sortName: "Dima Lorena", profileId: "lorena-dima",
+    shortBio: {
+      ro: "A contribuit la congresul inaugural ASLM cu o prezentare despre revizuirea tratamentului pacienților cu boli cronice când își schimbă stilul de viață.",
+      en: "Contributed to ASLM’s inaugural congress with a presentation on reviewing treatment when patients with chronic conditions make lifestyle changes.",
+    },
+  },
   { displayName: "Livia DIMA", city: "Iași, România", sortName: "Dima Livia" },
-  { displayName: "Gindrovel DUMITRA", city: "Craiova, România", sortName: "Dumitra Gindrovel" },
-  { displayName: "Irina EREMIA", city: "București, România", sortName: "Eremia Irina" },
-  { displayName: "Szuzsanna FARKAS-PAL", city: "Oradea, România", sortName: "Farkas Pal Szuzsanna" },
-  { displayName: "Roxana FOLESCU", city: "Timișoara, România", sortName: "Folescu Roxana" },
-  { displayName: "Claudia Mihaela GAVRIȘ", city: "Brașov, România", sortName: "Gavris Claudia Mihaela" },
-  { displayName: "Alexandra Victoria GHEMENT", city: "București, România", sortName: "Ghement Alexandra Victoria" },
+  {
+    displayName: "Gindrovel DUMITRA", city: "Craiova, România", sortName: "Dumitra Gindrovel", profileId: "gheorghe-gindrovel-dumitra",
+    shortBio: {
+      ro: "A contribuit la congresul inaugural ASLM cu o prezentare despre continuitatea îngrijirii în medicina stilului de viață.",
+      en: "Contributed to ASLM’s inaugural congress with a presentation on continuity of care in lifestyle medicine.",
+    },
+  },
+  {
+    displayName: "Irina EREMIA", city: "București, România", sortName: "Eremia Irina", profileId: "irina-eremia",
+    shortBio: {
+      ro: "A contribuit la congresul inaugural ASLM cu o prezentare despre abordarea interdisciplinară a stilului de viață în medicina de familie.",
+      en: "Contributed to ASLM’s inaugural congress with a presentation on interdisciplinary approaches to lifestyle in family practice.",
+    },
+  },
+  {
+    displayName: "Szuzsanna FARKAS-PAL", city: "Oradea, România", sortName: "Farkas Pal Szuzsanna", profileId: "zsuzsanna-farkas-pall",
+    shortBio: {
+      ro: "A contribuit la congresul inaugural ASLM cu o prezentare despre intervențiile preventive asupra stilului de viață în medicina de familie.",
+      en: "Contributed to ASLM’s inaugural congress with a presentation on preventive lifestyle interventions in family practice.",
+    },
+  },
+  {
+    displayName: "Roxana FOLESCU", city: "Timișoara, România", sortName: "Folescu Roxana", profileId: "roxana-folescu",
+    shortBio: {
+      ro: "A contribuit la congresul inaugural ASLM cu o prezentare despre prevenirea adicțiilor în asistența medicală primară.",
+      en: "Contributed to ASLM’s inaugural congress with a presentation on addiction prevention in primary care.",
+    },
+  },
+  {
+    displayName: "Claudia Mihaela GAVRIȘ", city: "Brașov, România", sortName: "Gavris Claudia Mihaela",
+    shortBio: {
+      ro: "A contribuit la congresul inaugural ASLM cu o prezentare despre nutriția de precizie în medicina stilului de viață.",
+      en: "Contributed to ASLM’s inaugural congress with a presentation on precision nutrition in lifestyle medicine.",
+    },
+  },
+  {
+    displayName: "Alexandra Victoria GHEMENT", city: "București, România", sortName: "Ghement Alexandra Victoria", profileId: "alexandra-ghement",
+    shortBio: {
+      ro: "A contribuit la congresul inaugural ASLM cu o prezentare despre medicina convențională și cea tradițională în contextul stilului de viață.",
+      en: "Contributed to ASLM’s inaugural congress with a presentation on conventional and traditional medicine in the context of lifestyle care.",
+    },
+  },
   { displayName: "Mihaela Andreea GHEORGHIU", city: "Prahova, România", sortName: "Gheorghiu Mihaela Andreea" },
   { displayName: "Iulia GONTIA", city: "Brașov, România", sortName: "Gontia Iulia" },
   { displayName: "Emese GRECU", city: "Deva, România", sortName: "Grecu Emese" },
-  { displayName: "Daniela GURGUȘ", city: "Timișoara, România", sortName: "Gurgus Daniela" },
-  { displayName: "Felicia Alexandra HANZU", city: "Barcelona, Spania", sortName: "Hanzu Felicia Alexandra" },
-  { displayName: "Andreea Narcisa IANA", city: "Timișoara, România", sortName: "Iana Andreea Narcisa" },
-  { displayName: "Beatrice Laura IANCU", city: "Timișoara, România", sortName: "Iancu Beatrice Laura" },
-  { displayName: "Mihaela Adela IANCU", city: "Timișoara, România", sortName: "Iancu Mihaela Adela" },
-  { displayName: "Ștefan IONESCU", city: "București, România", sortName: "Ionescu Stefan" },
-  { displayName: "Cristina Cornelia ISAR", city: "Brașov, România", sortName: "Isar Cristina Cornelia" },
+  {
+    displayName: "Daniela GURGUȘ", city: "Timișoara, România", sortName: "Gurgus Daniela", profileId: "daniela-gurgus",
+    shortBio: {
+      ro: "A contribuit la congresul inaugural ASLM cu o prezentare despre deciziile de sănătate ale tinerilor și diferența dintre informare și obiceiurile zilnice.",
+      en: "Contributed to ASLM’s inaugural congress with a presentation on the gap between young people's health knowledge and their daily choices.",
+    },
+  },
+  {
+    displayName: "Felicia Alexandra HANZU", city: "Barcelona, Spania", sortName: "Hanzu Felicia Alexandra", profileId: "felicia-alexandra-hanzu",
+    shortBio: {
+      ro: "A contribuit la congresul inaugural ASLM cu o prezentare despre efectul adaptogenilor asupra axului hipotalamo-hipofizo-adrenal.",
+      en: "Contributed to ASLM’s inaugural congress with a presentation on the effects of adaptogens on the hypothalamic–pituitary–adrenal axis.",
+    },
+  },
+  {
+    displayName: "Andreea Narcisa IANA", city: "Timișoara, România", sortName: "Iana Andreea Narcisa", profileId: "andreea-narcisa-iana",
+    shortBio: {
+      ro: "A contribuit la congresul inaugural ASLM cu o prezentare despre activitatea fizică moderată și indicele gleznă-braț în medicina de familie.",
+      en: "Contributed to ASLM’s inaugural congress with a presentation on moderate physical activity and the ankle–brachial index in family practice.",
+    },
+  },
+  {
+    displayName: "Beatrice Laura IANCU", city: "Timișoara, România", sortName: "Iancu Beatrice Laura",
+    shortBio: {
+      ro: "A contribuit la congresul inaugural ASLM cu o prezentare despre echilibrul metabolic și sănătatea pe termen lung.",
+      en: "Contributed to ASLM’s inaugural congress with a presentation on metabolic balance and long-term health.",
+    },
+  },
+  {
+    displayName: "Mihaela Adela IANCU", city: "Timișoara, România", sortName: "Iancu Mihaela Adela", profileId: "adela-mihaela-iancu",
+    shortBio: {
+      ro: "A contribuit la congresul inaugural ASLM cu o prezentare despre factorii comportamentali implicați în obezitatea infantilă.",
+      en: "Contributed to ASLM’s inaugural congress with a presentation on behavioural factors in childhood obesity.",
+    },
+  },
+  { displayName: "Ștefan IONESCU", city: "București, România", sortName: "Ionescu Stefan", profileId: "stefan-ionescu" },
+  {
+    displayName: "Cristina Cornelia ISAR", city: "Brașov, România", sortName: "Isar Cristina Cornelia", profileId: "cristina-isar",
+    shortBio: {
+      ro: "A contribuit la congresul inaugural ASLM cu o prezentare despre aplicarea dovezilor științifice în alimentație.",
+      en: "Contributed to ASLM’s inaugural congress with a presentation on using research evidence to guide dietary choices.",
+    },
+  },
   { displayName: "Agachii IURIE", city: "Covasna, România", sortName: "Iurie Agachii" },
   { displayName: "Luminita Anca IVAN", city: "București, România", sortName: "Ivan Luminita Anca" },
-  { displayName: "Constantin KAMAL", city: "Craiova, România", sortName: "Kamal Constantin" },
-  { displayName: "Poliana LERU", city: "București, România", sortName: "Leru Poliana" },
+  {
+    displayName: "Constantin KAMAL", city: "Craiova, România", sortName: "Kamal Constantin", profileId: "constantin-kamal",
+    shortBio: {
+      ro: "A contribuit la congresul inaugural ASLM cu o prezentare despre efectele rețelelor sociale asupra sănătății populației.",
+      en: "Contributed to ASLM’s inaugural congress with a presentation on the effects of social media on population health.",
+    },
+  },
+  { displayName: "Poliana LERU", city: "București, România", sortName: "Leru Poliana", profileId: "polliana-mihaela-leru" },
   { displayName: "Cristina - Mădălina LUNGU", city: "Constanța, România", sortName: "Lungu Cristina Madalina" },
   { displayName: "Mihaela MIHALCEA", city: "Bacău, România", sortName: "Mihalcea Mihaela" },
-  { displayName: "Mihaela Gabor NAIDIN", city: "Brașov, România", sortName: "Naidin Mihaela Gabor" },
-  { displayName: "Andrea Elena NECULAU", city: "Brașov, România", sortName: "Neculau Andrea Elena" },
-  { displayName: "Mirela - Maria NEDELESCU", city: "București, România", sortName: "Nedelescu Mirela Maria" },
-  { displayName: "Robert Constantin NEGOI", city: "Brașov, România", sortName: "Negoi Robert Constantin" },
+  { displayName: "Mihaela Gabor NAIDIN", city: "Brașov, România", sortName: "Naidin Mihaela Gabor", profileId: "mihaela-naidin" },
+  { displayName: "Andrea Elena NECULAU", city: "Brașov, România", sortName: "Neculau Andrea Elena", profileId: "andrea-elena-neculau" },
+  { displayName: "Mirela - Maria NEDELESCU", city: "București, România", sortName: "Nedelescu Mirela Maria", profileId: "mirela-nedelescu" },
+  { displayName: "Robert Constantin NEGOI", city: "Brașov, România", sortName: "Negoi Robert Constantin", profileId: "robert-constantin-negoi" },
   { displayName: "Diana Mirela NICOLAE", city: "Brașov, România", sortName: "Nicolae Diana Mirela" },
-  { displayName: "Elena Iuliana NISTOROIU", city: "București, România", sortName: "Nistoroiu Elena Iuliana" },
+  {
+    displayName: "Elena Iuliana NISTOROIU", city: "București, România", sortName: "Nistoroiu Elena Iuliana", profileId: "elena-iuliana-nistoroiu",
+    shortBio: {
+      ro: "A contribuit la congresul inaugural ASLM cu o prezentare despre interviul motivațional în comunicarea dintre medic și pacient.",
+      en: "Contributed to ASLM’s inaugural congress with a presentation on motivational interviewing in doctor–patient communication.",
+    },
+  },
   { displayName: "Liliana NITA", city: "Brăila, România", sortName: "Nita Liliana" },
   { displayName: "Corina OANCEA", city: "București, România", sortName: "Oancea Corina" },
-  { displayName: "Dina OLTEANU-PASCAL", city: "Brașov, România", sortName: "Olteanu Pascal Dina" },
-  { displayName: "Cintia ORSA", city: "Brașov, România", sortName: "Orsa Cintia" },
-  { displayName: "Cătălina PANAITESCU", city: "București, România", sortName: "Panaitescu Catalina" },
-  { displayName: "Alina Mihaela PASCU", city: "Brașov, România", sortName: "Pascu Alina Mihaela" },
-  { displayName: "Cristina Steliana PÎNDICHI", city: "Constanța, România", sortName: "Pindichi Cristina Steliana" },
-  { displayName: "Ionuț POINĂREANU", city: "Constanța, România", sortName: "Poinareanu Ionut" },
-  { displayName: "Mihai-Cristian POPESCU", city: "București, România", sortName: "Popescu Mihai Cristian" },
-  { displayName: "Armand-Gabriel POPESCU", city: "București, România", sortName: "Popescu Armand Gabriel" },
+  {
+    displayName: "Dina OLTEANU-PASCAL", city: "Brașov, România", sortName: "Olteanu Pascal Dina", profileId: "dina-olteanu-pascal",
+    shortBio: {
+      ro: "A contribuit la congresul inaugural ASLM cu o prezentare despre stilul de viață digital al copiilor ca factor de risc modificabil.",
+      en: "Contributed to ASLM’s inaugural congress with a presentation on children's digital habits as a modifiable health risk.",
+    },
+  },
+  {
+    displayName: "Cintia ORSA", city: "Brașov, România", sortName: "Orsa Cintia", profileId: "cintia-orsa",
+    shortBio: {
+      ro: "A contribuit la congresul inaugural ASLM cu o prezentare despre practica tai-chi în contextul sănătății.",
+      en: "Contributed to ASLM’s inaugural congress with a presentation on tai chi in health practice.",
+    },
+  },
+  {
+    displayName: "Cătălina PANAITESCU", city: "București, România", sortName: "Panaitescu Catalina", profileId: "catalina-panaitescu",
+    shortBio: {
+      ro: "A contribuit la congresul inaugural ASLM cu o prezentare despre tulburările de somn ca problemă de sănătate publică.",
+      en: "Contributed to ASLM’s inaugural congress with a presentation on sleep disorders as a public health concern.",
+    },
+  },
+  {
+    displayName: "Alina Mihaela PASCU", city: "Brașov, România", sortName: "Pascu Alina Mihaela", profileId: "alina-pascu",
+    shortBio: {
+      ro: "A contribuit la congresul inaugural ASLM cu o prezentare despre nutriția de precizie în medicina stilului de viață.",
+      en: "Contributed to ASLM’s inaugural congress with a presentation on precision nutrition in lifestyle medicine.",
+    },
+  },
+  {
+    displayName: "Cristina Steliana PÎNDICHI", city: "Constanța, România", sortName: "Pindichi Cristina Steliana",
+    image: "/images/members/cristina-steliana-pindichi.webp",
+    shortBio: {
+      ro: "A contribuit la congresul inaugural ASLM cu o prezentare despre medicina stilului de viață în îngrijirea persoanelor vârstnice.",
+      en: "Contributed to ASLM’s inaugural congress with a presentation on lifestyle medicine in the care of older adults.",
+    },
+  },
+  { displayName: "Ionuț POINĂREANU", city: "Constanța, România", sortName: "Poinareanu Ionut", profileId: "ionut-poinareanu" },
+  {
+    displayName: "Mihai-Cristian POPESCU", city: "București, România", sortName: "Popescu Mihai Cristian", profileId: "mihai-cristian-popescu",
+    shortBio: {
+      ro: "A contribuit la congresul inaugural ASLM cu o prezentare despre magneziul și mecanismele celulare ale îmbătrânirii.",
+      en: "Contributed to ASLM’s inaugural congress with a presentation on magnesium and the cellular mechanisms of ageing.",
+    },
+  },
+  { displayName: "Armand-Gabriel POPESCU", city: "București, România", sortName: "Popescu Armand Gabriel", profileId: "armand-gabriel-popescu" },
   { displayName: "Valentina Claudia POPESCU", city: "București, România", sortName: "Popescu Valentina Claudia" },
-  { displayName: "Aida PUIA", city: "Cluj Napoca, România", sortName: "Puia Aida" },
-  { displayName: "Nadinne Alexandra ROMAN", city: "Brașov, România", sortName: "Roman Nadinne Alexandra" },
+  {
+    displayName: "Aida PUIA", city: "Cluj Napoca, România", sortName: "Puia Aida", profileId: "aida-puia",
+    shortBio: {
+      ro: "A contribuit la congresul inaugural ASLM cu o prezentare despre somnul ca determinant al stării de sănătate.",
+      en: "Contributed to ASLM’s inaugural congress with a presentation on sleep as a determinant of health.",
+    },
+  },
+  {
+    displayName: "Nadinne Alexandra ROMAN", city: "Brașov, România", sortName: "Roman Nadinne Alexandra",
+    shortBio: {
+      ro: "A contribuit la congresul inaugural ASLM cu o prezentare despre rolul exercițiului fizic în prevenirea accidentului vascular cerebral.",
+      en: "Contributed to ASLM’s inaugural congress with a presentation on the role of exercise in stroke prevention.",
+    },
+  },
   { displayName: "Horatiu RUS", city: "Brașov, România", sortName: "Rus Horatiu" },
-  { displayName: "Ana Maria Alexandra STANESCU", city: "București, România", sortName: "Stanescu Ana Maria Alexandra" },
+  { displayName: "Ana Maria Alexandra STANESCU", city: "București, România", sortName: "Stanescu Ana Maria Alexandra", profileId: "ana-maria-alexandra-stanescu" },
   { displayName: "Lucia STOICA", city: "Galați, România", sortName: "Stoica Lucia" },
   { displayName: "Raluca Maria STROIE", city: "București, România", sortName: "Stroie Raluca Maria" },
-  { displayName: "Răzvan ȘUSAN", city: "Timișoara, România", sortName: "Susan Razvan" },
-  { displayName: "Monica TARCEA", city: "Târgu Mureș, România", sortName: "Tarcea Monica" },
-  { displayName: "Ioana Bianca TEBEICA", city: "Brașov, România", sortName: "Tebeica Ioana Bianca" },
-  { displayName: "Bogdan TIMAR", city: "Timișoara, România", sortName: "Timar Bogdan" },
-  { displayName: "Doina Adina TODEA", city: "Cluj Napoca, România", sortName: "Todea Doina Adina" },
+  {
+    displayName: "Răzvan ȘUSAN", city: "Timișoara, România", sortName: "Susan Razvan", profileId: "razvan-susan",
+    shortBio: {
+      ro: "A contribuit la congresul inaugural ASLM cu o prezentare despre relația dintre stresul psihologic și microbiomul intestinal.",
+      en: "Contributed to ASLM’s inaugural congress with a presentation on the relationship between psychological stress and the gut microbiome.",
+    },
+  },
+  { displayName: "Monica TARCEA", city: "Târgu Mureș, România", sortName: "Tarcea Monica", profileId: "monica-tarcea" },
+  { displayName: "Ioana Bianca TEBEICA", city: "Brașov, România", sortName: "Tebeica Ioana Bianca", profileId: "ioana-bianca-tebeica" },
+  {
+    displayName: "Bogdan TIMAR", city: "Timișoara, România", sortName: "Timar Bogdan",
+    shortBio: {
+      ro: "A contribuit la congresul inaugural ASLM cu o prezentare despre factorii biologici și comportamentali care contribuie la obezitate.",
+      en: "Contributed to ASLM’s inaugural congress with a presentation on biological and behavioural factors in obesity.",
+    },
+  },
+  { displayName: "Doina Adina TODEA", city: "Cluj Napoca, România", sortName: "Todea Doina Adina", profileId: "doina-todea" },
   { displayName: "Constantin VOICU", city: "Vrancea, România", sortName: "Voicu Constantin" },
 ];
-
-export const sortedGeneralAssemblyMembers = sortPeopleByName(generalAssemblyMembers);
 
 export const profiledExperts = [
   president,
@@ -443,3 +700,10 @@ export const profiledExperts = [
     Boolean(person.profileSlug && person.profilePath),
   )
   .filter((person, index, people) => people.findIndex((candidate) => candidate.profileSlug === person.profileSlug) === index);
+
+const profilesById = new Map(profiledExperts.map((profile) => [profile.id, profile]));
+
+export const sortedGeneralAssemblyMembers = sortPeopleByName(generalAssemblyMembers).map((member) => ({
+  ...member,
+  profile: member.profileId ? profilesById.get(member.profileId) : undefined,
+}));
