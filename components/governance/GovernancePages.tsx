@@ -479,9 +479,9 @@ export function GeneralAssemblyPageContent({ locale }: { locale: Locale }) {
                           name={member.displayName}
                           image={member.image ?? member.profile?.image}
                           href={member.profile?.profilePath}
-                          bio={member.profile?.shortBio?.[locale] ?? member.shortBio?.[locale] ?? member.profile?.role?.[locale] ?? member.profile?.affiliation?.[locale]}
+                          bio={member.shortBio?.[locale] ?? member.profile?.shortBio?.[locale] ?? member.profile?.role?.[locale] ?? member.profile?.affiliation?.[locale]}
                         />
-                        <p className="mt-1 text-sm text-[var(--text-secondary)] sm:hidden">{member.city}</p>
+                        {member.city && <p className="mt-1 text-sm text-[var(--text-secondary)] sm:hidden">{member.city}</p>}
                       </td>
                       <td className="hidden sm:table-cell py-4 px-5 text-[var(--text-primary)]">{member.city}</td>
                     </tr>
