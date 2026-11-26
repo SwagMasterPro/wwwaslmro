@@ -25,7 +25,7 @@ export type GeneralAssemblyMember = {
   image?: string;
   shortBio?: Partial<LocalizedText>;
   displayName: string;
-  city: string;
+  city?: string;
   sortName?: string;
 };
 
@@ -366,6 +366,9 @@ export const executiveCouncilMembers: GovernancePerson[] = [
   }),
 ];
 
+const genericFemalePortrait = "/images/members/assembly/portret-generic-feminin.webp";
+const genericMalePortrait = "/images/members/assembly/portret-generic-masculin.webp";
+
 // Congress contributions are credited in the official programme of the inaugural ASLM congress (May 2026).
 export const generalAssemblyMembers: GeneralAssemblyMember[] = [
   {
@@ -385,7 +388,16 @@ export const generalAssemblyMembers: GeneralAssemblyMember[] = [
     },
   },
   { displayName: "Dana-Teodora ANTON-PĂDURARU", city: "Iași, România", sortName: "Anton Paduraru Dana Teodora", profileId: "dana-teodora-anton-paduraru" },
-  { displayName: "Sorina AURELIAN", city: "București, România", sortName: "Aurelian Sorina" },
+  {
+    displayName: "Sorina AURELIAN",
+    city: "București, România",
+    sortName: "Aurelian Sorina",
+    image: "/images/members/assembly/dr-sorina-maria-aurelian.webp",
+    shortBio: {
+      ro: "Medic primar în geriatrie și gerontologie, cu preocupări în domeniul medicinei stilului de viață și al îmbătrânirii sănătoase.",
+      en: "Senior physician in geriatrics and gerontology with an interest in lifestyle medicine and healthy ageing.",
+    },
+  },
   {
     displayName: "Laura ATYIM", city: "Timișoara, România", sortName: "Atyim Laura", profileId: "laura-atyim",
     shortBio: {
@@ -401,7 +413,10 @@ export const generalAssemblyMembers: GeneralAssemblyMember[] = [
     },
   },
   {
-    displayName: "Florin BĂLAN", city: "Brașov, România", sortName: "Balan Florin",
+    displayName: "Florin BĂLAN",
+    city: "Brașov, România",
+    sortName: "Balan Florin",
+    image: "/images/members/assembly/florin-balan.webp",
     shortBio: {
       ro: "A contribuit la congresul inaugural ASLM cu o prezentare despre folosirea meloterapiei active în recuperarea pacienților.",
       en: "Contributed to ASLM’s inaugural congress with a presentation on active music therapy in rehabilitation.",
@@ -421,9 +436,54 @@ export const generalAssemblyMembers: GeneralAssemblyMember[] = [
       en: "Contributed to ASLM’s inaugural congress with a presentation on stress management and perception.",
     },
   },
-  { displayName: "Venera - Margareta BUCUR", city: "Timișoara, România", sortName: "Bucur Venera Margareta" },
-  { displayName: "Nadia-Maria BUTUM", city: "Brașov, România", sortName: "Butum Nadia Maria" },
-  { displayName: "Lucia CALUSER", city: "Deva, România", sortName: "Caluser Lucia" },
+  {
+    displayName: "Venera - Margareta BUCUR",
+    city: "Timișoara, România",
+    sortName: "Bucur Venera Margareta",
+    image: genericFemalePortrait,
+    shortBio: {
+      ro: "Medic de medicină generală, cu interes pentru medicina stilului de viață, prevenția bolilor cronice și promovarea sănătății.",
+      en: "General practitioner interested in lifestyle medicine, chronic disease prevention and health promotion.",
+    },
+  },
+  {
+    displayName: "Nadia-Maria BUTUM",
+    city: "Brașov, România",
+    sortName: "Butum Nadia Maria",
+    image: genericFemalePortrait,
+    shortBio: {
+      ro: "Medic de familie, cu interes pentru integrarea principiilor medicinei stilului de viață în practica medicală, prevenția bolilor cronice și promovarea obiceiurilor sănătoase.",
+      en: "Family physician interested in integrating lifestyle medicine into clinical practice, preventing chronic disease and promoting healthy habits.",
+    },
+  },
+  {
+    displayName: "Lucia CALUSER",
+    city: "Deva, România",
+    sortName: "Caluser Lucia",
+    image: genericFemalePortrait,
+    shortBio: {
+      ro: "Medic de familie și pediatru, cu interes pentru medicina stilului de viață, prevenția bolilor și formarea obiceiurilor sănătoase încă din copilărie.",
+      en: "Family physician and paediatrician interested in lifestyle medicine, disease prevention and helping children develop healthy habits from an early age.",
+    },
+  },
+  {
+    displayName: "Cristian CÂRSTOIU",
+    sortName: "Carstoiu Cristian",
+    image: "/images/members/assembly/dr-cristian-carstoiu.webp",
+    shortBio: {
+      ro: "Antreprenor și autor, implicat în proiecte la intersecția dintre creativitate, tehnologie și antreprenoriat, cu interes pentru medicina stilului de viață și promovarea sănătății.",
+      en: "Entrepreneur and author whose projects bring together creativity, technology and entrepreneurship, with an interest in lifestyle medicine and health promotion.",
+    },
+  },
+  {
+    displayName: "Andreea CHIHAIA",
+    sortName: "Chihaia Andreea",
+    image: "/images/members/assembly/andreea-chihaia.webp",
+    shortBio: {
+      ro: "Specialist în nutriție și dietetică, cu interes pentru medicina stilului de viață, educația nutrițională și promovarea unor obiceiuri alimentare sănătoase și sustenabile.",
+      en: "Nutrition and dietetics specialist interested in lifestyle medicine, nutrition education and promoting healthy, sustainable eating habits.",
+    },
+  },
   {
     displayName: "Adriana Lavinia CIOCA", city: "Sibiu, România", sortName: "Cioca Adriana Lavinia", profileId: "adriana-lavinia-cioca",
     shortBio: {
@@ -466,7 +526,16 @@ export const generalAssemblyMembers: GeneralAssemblyMember[] = [
       en: "Contributed to ASLM’s inaugural congress with a presentation on transcranial magnetic stimulation in the treatment of nicotine dependence.",
     },
   },
-  { displayName: "Ana Georgiana CORNEA COSMA", city: "Brașov, România", sortName: "Cornea Cosma Ana Georgiana" },
+  {
+    displayName: "Ana Georgiana CORNEA COSMA",
+    city: "Brașov, România",
+    sortName: "Cornea Cosma Ana Georgiana",
+    image: genericFemalePortrait,
+    shortBio: {
+      ro: "Medic specialist în psihiatrie, cu interes pentru medicina stilului de viață, promovarea sănătății mintale și integrarea obiceiurilor sănătoase în prevenția și managementul tulburărilor psihice.",
+      en: "Psychiatrist interested in lifestyle medicine, mental health promotion and the role of healthy habits in preventing and managing mental disorders.",
+    },
+  },
   {
     displayName: "Adriana COTEL", city: "București, România", sortName: "Cotel Adriana", profileId: "adriana-cotel",
     shortBio: {
@@ -474,7 +543,16 @@ export const generalAssemblyMembers: GeneralAssemblyMember[] = [
       en: "Contributed to ASLM’s inaugural congress with a presentation on burnout and wellbeing among healthcare professionals.",
     },
   },
-  { displayName: "Roxana Paraschiva COVALIU", city: "București, România", sortName: "Covaliu Roxana Paraschiva" },
+  {
+    displayName: "Roxana Paraschiva COVALIU",
+    city: "București, România",
+    sortName: "Covaliu Roxana Paraschiva",
+    image: "/images/members/assembly/dr-roxana-paraschiva-covaliu.webp",
+    shortBio: {
+      ro: "Medic de familie, cu interes pentru medicina stilului de viață, prevenția bolilor cronice și educația pacienților în vederea adoptării unui stil de viață sănătos.",
+      en: "Family physician interested in lifestyle medicine, chronic disease prevention and helping patients adopt a healthy lifestyle through education.",
+    },
+  },
   {
     displayName: "Mihai CRAIU", city: "București, România", sortName: "Craiu Mihai", profileId: "mihai-craiu",
     shortBio: {
@@ -482,7 +560,21 @@ export const generalAssemblyMembers: GeneralAssemblyMember[] = [
       en: "Contributed to ASLM’s inaugural congress with a presentation on the respiratory effects of childhood obesity.",
     },
   },
-  { displayName: "Cristina Anca DASCALESCU", city: "Brașov, România", sortName: "Dascalescu Cristina Anca" },
+  {
+    displayName: "Carmen CROITORU",
+    sortName: "Croitoru Carmen",
+    image: genericFemalePortrait,
+    shortBio: {
+      ro: "Medic de familie, cu interes pentru medicina stilului de viață, prevenția bolilor cronice și susținerea pacienților în adoptarea și menținerea unor obiceiuri sănătoase.",
+      en: "Family physician interested in lifestyle medicine, chronic disease prevention and helping patients adopt and maintain healthy habits.",
+    },
+  },
+  {
+    displayName: "Cristina Anca DASCALESCU",
+    city: "Brașov, România",
+    sortName: "Dascalescu Cristina Anca",
+    image: genericFemalePortrait,
+  },
   { displayName: "Simina Maria DIACONU", city: "Brașov, România", sortName: "Diaconu Simina Maria", profileId: "simina-maria-diaconu" },
   {
     displayName: "Lorena DIMA", city: "Brașov, România", sortName: "Dima Lorena", profileId: "lorena-dima",
@@ -491,7 +583,16 @@ export const generalAssemblyMembers: GeneralAssemblyMember[] = [
       en: "Contributed to ASLM’s inaugural congress with a presentation on reviewing treatment when patients with chronic conditions make lifestyle changes.",
     },
   },
-  { displayName: "Livia DIMA", city: "Iași, România", sortName: "Dima Livia" },
+  {
+    displayName: "Livia DIMA",
+    city: "Iași, România",
+    sortName: "Dima Livia",
+    image: genericFemalePortrait,
+    shortBio: {
+      ro: "Medic de medicină de urgență, cu interes pentru medicina stilului de viață, prevenția afecțiunilor acute și cronice și reducerea factorilor de risc prin promovarea unui stil de viață sănătos.",
+      en: "Emergency physician interested in lifestyle medicine, the prevention of acute and chronic conditions, and reducing risk factors by promoting healthy living.",
+    },
+  },
   {
     displayName: "Gindrovel DUMITRA", city: "Craiova, România", sortName: "Dumitra Gindrovel", profileId: "gheorghe-gindrovel-dumitra",
     shortBio: {
@@ -521,10 +622,13 @@ export const generalAssemblyMembers: GeneralAssemblyMember[] = [
     },
   },
   {
-    displayName: "Claudia Mihaela GAVRIȘ", city: "Brașov, România", sortName: "Gavris Claudia Mihaela",
+    displayName: "Claudia Mihaela GAVRIȘ",
+    city: "Brașov, România",
+    sortName: "Gavris Claudia Mihaela",
+    image: "/images/members/assembly/dr-claudia-gavris.webp",
     shortBio: {
-      ro: "A contribuit la congresul inaugural ASLM cu o prezentare despre nutriția de precizie în medicina stilului de viață.",
-      en: "Contributed to ASLM’s inaugural congress with a presentation on precision nutrition in lifestyle medicine.",
+      ro: "Medic de medicină internă, cu interes pentru integrarea principiilor medicinei stilului de viață în prevenția și managementul bolilor cronice, printr-o abordare integrată a pacientului.",
+      en: "Internal medicine physician interested in taking a comprehensive approach to patient care by integrating lifestyle medicine into the prevention and management of chronic disease.",
     },
   },
   {
@@ -534,9 +638,36 @@ export const generalAssemblyMembers: GeneralAssemblyMember[] = [
       en: "Contributed to ASLM’s inaugural congress with a presentation on conventional and traditional medicine in the context of lifestyle care.",
     },
   },
-  { displayName: "Mihaela Andreea GHEORGHIU", city: "Prahova, România", sortName: "Gheorghiu Mihaela Andreea" },
-  { displayName: "Iulia GONTIA", city: "Brașov, România", sortName: "Gontia Iulia" },
-  { displayName: "Emese GRECU", city: "Deva, România", sortName: "Grecu Emese" },
+  {
+    displayName: "Mihaela Andreea GHEORGHIU",
+    city: "Prahova, România",
+    sortName: "Gheorghiu Mihaela Andreea",
+    image: genericFemalePortrait,
+    shortBio: {
+      ro: "Medic de familie, cu interes pentru medicina stilului de viață și prevenția bolilor cronice prin adoptarea unor comportamente sănătoase.",
+      en: "Family physician interested in lifestyle medicine and the prevention of chronic disease through healthy behaviours.",
+    },
+  },
+  {
+    displayName: "Iulia GONTIA",
+    city: "Brașov, România",
+    sortName: "Gontia Iulia",
+    image: genericFemalePortrait,
+    shortBio: {
+      ro: "Medic de familie, cu interes pentru medicina stilului de viață, educația pentru sănătate și susținerea pacienților în adoptarea unor schimbări comportamentale durabile.",
+      en: "Family physician interested in lifestyle medicine, health education and supporting patients as they make lasting changes to their behaviour.",
+    },
+  },
+  {
+    displayName: "Emese GRECU",
+    city: "Deva, România",
+    sortName: "Grecu Emese",
+    image: genericFemalePortrait,
+    shortBio: {
+      ro: "Medic de familie, cu interes pentru medicina stilului de viață, prevenția bolilor cronice și îmbunătățirea calității vieții pacienților prin promovarea obiceiurilor sănătoase.",
+      en: "Family physician interested in lifestyle medicine, disease prevention and improving patients’ quality of life by promoting healthy habits.",
+    },
+  },
   {
     displayName: "Daniela GURGUȘ", city: "Timișoara, România", sortName: "Gurgus Daniela", profileId: "daniela-gurgus",
     shortBio: {
@@ -559,7 +690,10 @@ export const generalAssemblyMembers: GeneralAssemblyMember[] = [
     },
   },
   {
-    displayName: "Beatrice Laura IANCU", city: "Timișoara, România", sortName: "Iancu Beatrice Laura",
+    displayName: "Beatrice Laura IANCU",
+    city: "Timișoara, România",
+    sortName: "Iancu Beatrice Laura",
+    image: genericFemalePortrait,
     shortBio: {
       ro: "A contribuit la congresul inaugural ASLM cu o prezentare despre echilibrul metabolic și sănătatea pe termen lung.",
       en: "Contributed to ASLM’s inaugural congress with a presentation on metabolic balance and long-term health.",
@@ -580,8 +714,35 @@ export const generalAssemblyMembers: GeneralAssemblyMember[] = [
       en: "Contributed to ASLM’s inaugural congress with a presentation on using research evidence to guide dietary choices.",
     },
   },
-  { displayName: "Agachii IURIE", city: "Covasna, România", sortName: "Iurie Agachii" },
-  { displayName: "Luminita Anca IVAN", city: "București, România", sortName: "Ivan Luminita Anca" },
+  {
+    displayName: "Sorina ISPAS",
+    sortName: "Ispas Sorina",
+    image: "/images/members/assembly/dr-sorina-ispas.webp",
+    shortBio: {
+      ro: "Medic cu specialitatea diabet zaharat, nutriție și boli metabolice, cu interes pentru medicina stilului de viață, intervențiile nutriționale, optimizarea sănătății metabolice și prevenția complicațiilor asociate.",
+      en: "Physician specialising in diabetes, nutrition and metabolic diseases, with an interest in lifestyle medicine, nutritional interventions, improving metabolic health and preventing associated complications.",
+    },
+  },
+  {
+    displayName: "Agachii IURIE",
+    city: "Covasna, România",
+    sortName: "Iurie Agachii",
+    image: genericMalePortrait,
+    shortBio: {
+      ro: "Medic de familie, cu interes pentru medicina stilului de viață, abordarea preventivă a sănătății și susținerea pacienților în adoptarea unui stil de viață echilibrat.",
+      en: "Family physician interested in lifestyle medicine, preventive care and helping patients adopt a balanced lifestyle.",
+    },
+  },
+  {
+    displayName: "Luminita Anca IVAN",
+    city: "București, România",
+    sortName: "Ivan Luminita Anca",
+    image: genericFemalePortrait,
+    shortBio: {
+      ro: "Medic de familie, cu interes pentru integrarea principiilor medicinei stilului de viață în îngrijirea pacienților, promovarea sănătății și prevenția bolilor cronice.",
+      en: "Family physician interested in integrating lifestyle medicine into patient care, promoting health and supporting patients in making healthy lifestyle changes.",
+    },
+  },
   {
     displayName: "Constantin KAMAL", city: "Craiova, România", sortName: "Kamal Constantin", profileId: "constantin-kamal",
     shortBio: {
@@ -590,22 +751,89 @@ export const generalAssemblyMembers: GeneralAssemblyMember[] = [
     },
   },
   { displayName: "Poliana LERU", city: "București, România", sortName: "Leru Poliana", profileId: "polliana-mihaela-leru" },
-  { displayName: "Cristina - Mădălina LUNGU", city: "Constanța, România", sortName: "Lungu Cristina Madalina" },
-  { displayName: "Mihaela MIHALCEA", city: "Bacău, România", sortName: "Mihalcea Mihaela" },
-  { displayName: "Mihaela Gabor NAIDIN", city: "Brașov, România", sortName: "Naidin Mihaela Gabor", profileId: "mihaela-naidin" },
-  { displayName: "Andrea Elena NECULAU", city: "Brașov, România", sortName: "Neculau Andrea Elena", profileId: "andrea-elena-neculau" },
-  { displayName: "Mirela - Maria NEDELESCU", city: "București, România", sortName: "Nedelescu Mirela Maria", profileId: "mirela-nedelescu" },
-  { displayName: "Robert Constantin NEGOI", city: "Brașov, România", sortName: "Negoi Robert Constantin", profileId: "robert-constantin-negoi" },
-  { displayName: "Diana Mirela NICOLAE", city: "Brașov, România", sortName: "Nicolae Diana Mirela" },
   {
-    displayName: "Elena Iuliana NISTOROIU", city: "București, România", sortName: "Nistoroiu Elena Iuliana", profileId: "elena-iuliana-nistoroiu",
+    displayName: "Cristina Mădălina LUNGU",
+    city: "Constanța, România",
+    sortName: "Lungu Cristina Madalina",
+    image: "/images/members/assembly/cristina-madalina-lungu.webp",
     shortBio: {
-      ro: "A contribuit la congresul inaugural ASLM cu o prezentare despre interviul motivațional în comunicarea dintre medic și pacient.",
-      en: "Contributed to ASLM’s inaugural congress with a presentation on motivational interviewing in doctor–patient communication.",
+      ro: "Medic cu specialitatea medicină fizică și de reabilitare, cu preocupări în domeniul nutriției și al medicinei stilului de viață, cu accent pe recuperarea funcțională și îmbunătățirea calității vieții pacienților.",
+      en: "Physician specialising in physical and rehabilitation medicine, with an interest in nutrition and lifestyle medicine and a focus on functional recovery and improving patients’ quality of life.",
     },
   },
-  { displayName: "Liliana NITA", city: "Brăila, România", sortName: "Nita Liliana" },
-  { displayName: "Corina OANCEA", city: "București, România", sortName: "Oancea Corina" },
+  {
+    displayName: "Mihaela MIHALCEA",
+    city: "Bacău, România",
+    sortName: "Mihalcea Mihaela",
+    image: "/images/members/assembly/mihaela-mihalcea.webp",
+    shortBio: {
+      ro: "Specialist în nutriție și dietetică, cu competențe în kinetoterapie și interes pentru medicina stilului de viață, promovează alimentația echilibrată și activitatea fizică în vederea menținerii sănătății și îmbunătățirii calității vieții.",
+      en: "A specialist in nutrition and dietetics with training in physiotherapy, she promotes a balanced diet and physical activity to maintain health and improve quality of life. Her interests include lifestyle medicine.",
+    },
+  },
+  { displayName: "Mihaela Gabor NAIDIN", city: "Brașov, România", sortName: "Naidin Mihaela Gabor", profileId: "mihaela-naidin" },
+  {
+    displayName: "Andrea Elena NECULAU",
+    city: "Brașov, România",
+    sortName: "Neculau Andrea Elena",
+    profileId: "andrea-elena-neculau",
+    shortBio: {
+      ro: "Președinte al Societății Academice de Medicina Stilului de Viață",
+      en: "President of the Academic Society of Lifestyle Medicine",
+    },
+  },
+  { displayName: "Mirela - Maria NEDELESCU", city: "București, România", sortName: "Nedelescu Mirela Maria", profileId: "mirela-nedelescu" },
+  {
+    displayName: "Robert Constantin NEGOI",
+    city: "Brașov, România",
+    sortName: "Negoi Robert Constantin",
+    profileId: "robert-constantin-negoi",
+    image: genericFemalePortrait,
+    shortBio: {
+      ro: "Medic de familie, cu interes pentru medicina stilului de viață, prevenția bolilor cronice și promovarea unei abordări personalizate a sănătății, centrate pe nevoile pacientului.",
+      en: "Family physician interested in lifestyle medicine, chronic disease prevention and personalised care centred on patients’ needs.",
+    },
+  },
+  {
+    displayName: "Diana Mirela NICOLAE",
+    city: "Brașov, România",
+    sortName: "Nicolae Diana Mirela",
+    image: genericFemalePortrait,
+    shortBio: {
+      ro: "Medic de familie, cu interes pentru medicina stilului de viață, prevenția bolilor cronice și dezvoltarea unor strategii personalizate pentru menținerea sănătății și îmbunătățirea calității vieții pacienților.",
+      en: "Family physician interested in lifestyle medicine, chronic disease prevention and developing individual strategies to maintain patients’ health.",
+    },
+  },
+  {
+    displayName: "Elena Iuliana NISTOROIU",
+    city: "București, România",
+    sortName: "Nistoroiu Elena Iuliana",
+    profileId: "elena-iuliana-nistoroiu",
+    shortBio: {
+      ro: "Coordonator Strategie, Dezvoltare și Comunicare; a contribuit la congresul inaugural ASLM cu o prezentare despre interviul motivațional în comunicarea dintre medic și pacient.",
+      en: "Strategy, Development and Communication Coordinator. She gave a presentation on motivational interviewing in doctor–patient communication at the inaugural ASLM congress.",
+    },
+  },
+  {
+    displayName: "Liliana NITA",
+    city: "Brăila, România",
+    sortName: "Nita Liliana",
+    image: genericFemalePortrait,
+    shortBio: {
+      ro: "Medic cu specialitatea chirurgie generală, cu interes pentru medicina stilului de viață și pentru rolul nutriției, al activității fizice și al obiceiurilor sănătoase în pregătirea preoperatorie și recuperarea postoperatorie a pacienților.",
+      en: "General surgeon interested in lifestyle medicine and the role of nutrition, physical activity and healthy habits in preparing patients for surgery and supporting their recovery.",
+    },
+  },
+  {
+    displayName: "Corina OANCEA",
+    city: "București, România",
+    sortName: "Oancea Corina",
+    image: "/images/members/assembly/dr-corina-oancea.webp",
+    shortBio: {
+      ro: "Medic cu specialitatea medicină internă, cu interes pentru medicina stilului de viață, prevenția și managementul bolilor cronice, printr-o abordare integrată și personalizată a pacientului.",
+      en: "Internal medicine physician interested in lifestyle medicine and in taking an integrated, personalised approach to preventing and managing chronic disease.",
+    },
+  },
   {
     displayName: "Dina OLTEANU-PASCAL", city: "Brașov, România", sortName: "Olteanu Pascal Dina", profileId: "dina-olteanu-pascal",
     shortBio: {
@@ -651,7 +879,16 @@ export const generalAssemblyMembers: GeneralAssemblyMember[] = [
     },
   },
   { displayName: "Armand-Gabriel POPESCU", city: "București, România", sortName: "Popescu Armand Gabriel", profileId: "armand-gabriel-popescu" },
-  { displayName: "Valentina Claudia POPESCU", city: "București, România", sortName: "Popescu Valentina Claudia" },
+  {
+    displayName: "Valentina Claudia POPESCU",
+    city: "București, România",
+    sortName: "Popescu Valentina Claudia",
+    image: "/images/members/assembly/dr-valentina-claudia-popescu.webp",
+    shortBio: {
+      ro: "Medic de familie, cu interes pentru medicina stilului de viață, educația pentru sănătate și promovarea intervențiilor preventive adaptate nevoilor individuale ale pacienților.",
+      en: "Family physician interested in lifestyle medicine, health education and preventive interventions tailored to each patient’s needs.",
+    },
+  },
   {
     displayName: "Aida PUIA", city: "Cluj Napoca, România", sortName: "Puia Aida", profileId: "aida-puia",
     shortBio: {
@@ -660,16 +897,46 @@ export const generalAssemblyMembers: GeneralAssemblyMember[] = [
     },
   },
   {
-    displayName: "Nadinne Alexandra ROMAN", city: "Brașov, România", sortName: "Roman Nadinne Alexandra",
+    displayName: "Nadinne Alexandra ROMAN",
+    city: "Brașov, România",
+    sortName: "Roman Nadinne Alexandra",
+    image: "/images/members/assembly/dr-nadinne-alexandra-roman.webp",
     shortBio: {
-      ro: "A contribuit la congresul inaugural ASLM cu o prezentare despre rolul exercițiului fizic în prevenirea accidentului vascular cerebral.",
-      en: "Contributed to ASLM’s inaugural congress with a presentation on the role of exercise in stroke prevention.",
+      ro: "Fiziokinetoterapeut, cu competență în recuperarea neuropsihomotorie și interes pentru medicina stilului de viață și rolul activității fizice în recuperarea funcțională.",
+      en: "Physiotherapist trained in neuropsychomotor rehabilitation, with an interest in lifestyle medicine and the role of physical activity in functional recovery.",
     },
   },
-  { displayName: "Horatiu RUS", city: "Brașov, România", sortName: "Rus Horatiu" },
+  {
+    displayName: "Horatiu RUS",
+    city: "Brașov, România",
+    sortName: "Rus Horatiu",
+    image: "/images/members/assembly/dr-horatiu-rus.webp",
+    shortBio: {
+      ro: "Medic cardiolog, cu interes pentru medicina stilului de viață, prevenția bolilor cardiovasculare și reducerea factorilor de risc prin promovarea obiceiurilor sănătoase.",
+      en: "Cardiologist interested in lifestyle medicine, cardiovascular disease prevention and reducing risk factors by promoting healthy habits.",
+    },
+  },
   { displayName: "Ana Maria Alexandra STANESCU", city: "București, România", sortName: "Stanescu Ana Maria Alexandra", profileId: "ana-maria-alexandra-stanescu" },
-  { displayName: "Lucia STOICA", city: "Galați, România", sortName: "Stoica Lucia" },
-  { displayName: "Raluca Maria STROIE", city: "București, România", sortName: "Stroie Raluca Maria" },
+  {
+    displayName: "Lucia STOICA",
+    city: "Galați, România",
+    sortName: "Stoica Lucia",
+    image: genericFemalePortrait,
+    shortBio: {
+      ro: "Medic cu specialitatea medicină internă, cu interes pentru medicina stilului de viață, reducerea factorilor de risc și integrarea intervențiilor asupra stilului de viață în managementul bolilor cronice.",
+      en: "Internal medicine physician interested in lifestyle medicine, reducing risk factors and incorporating lifestyle interventions into the management of chronic disease.",
+    },
+  },
+  {
+    displayName: "Raluca Maria STROIE",
+    city: "București, România",
+    sortName: "Stroie Raluca Maria",
+    image: "/images/members/assembly/raluca-stroie.webp",
+    shortBio: {
+      ro: "Specialist în tehnologia informației, analiza datelor și managementul soluțiilor digitale, cu interes pentru medicina stilului de viață și promovarea unui stil de viață sănătos.",
+      en: "Specialist in information technology, data analysis and digital solutions management, with an interest in lifestyle medicine and promoting healthy living.",
+    },
+  },
   {
     displayName: "Răzvan ȘUSAN", city: "Timișoara, România", sortName: "Susan Razvan", profileId: "razvan-susan",
     shortBio: {
@@ -680,14 +947,25 @@ export const generalAssemblyMembers: GeneralAssemblyMember[] = [
   { displayName: "Monica TARCEA", city: "Târgu Mureș, România", sortName: "Tarcea Monica", profileId: "monica-tarcea" },
   { displayName: "Ioana Bianca TEBEICA", city: "Brașov, România", sortName: "Tebeica Ioana Bianca", profileId: "ioana-bianca-tebeica" },
   {
-    displayName: "Bogdan TIMAR", city: "Timișoara, România", sortName: "Timar Bogdan",
+    displayName: "Doina Adina TODEA",
+    city: "Cluj Napoca, România",
+    sortName: "Todea Doina Adina",
+    profileId: "doina-todea",
     shortBio: {
-      ro: "A contribuit la congresul inaugural ASLM cu o prezentare despre factorii biologici și comportamentali care contribuie la obezitate.",
-      en: "Contributed to ASLM’s inaugural congress with a presentation on biological and behavioural factors in obesity.",
+      ro: "Profesor universitar, medic pneumolog, cu competență în somnologie și preocupări în domeniul medicinei stilului de viață, cu accent pe rolul somnului în menținerea sănătății și prevenția bolilor cronice.",
+      en: "University professor and pulmonologist trained in sleep medicine, with an interest in lifestyle medicine and a focus on the role of sleep in maintaining health and preventing chronic disease.",
     },
   },
-  { displayName: "Doina Adina TODEA", city: "Cluj Napoca, România", sortName: "Todea Doina Adina", profileId: "doina-todea" },
-  { displayName: "Constantin VOICU", city: "Vrancea, România", sortName: "Voicu Constantin" },
+  {
+    displayName: "Constantin VOICU",
+    city: "Vrancea, România",
+    sortName: "Voicu Constantin",
+    image: "/images/members/assembly/dr-constantin-voicu.webp",
+    shortBio: {
+      ro: "Medic de familie, cu interes pentru medicina stilului de viață, prevenția bolilor cronice și promovarea sănătății prin intervenții personalizate asupra stilului de viață.",
+      en: "Family physician interested in lifestyle medicine, disease prevention and promoting health through personalised lifestyle interventions.",
+    },
+  },
 ];
 
 export const profiledExperts = [
