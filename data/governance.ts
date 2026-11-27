@@ -440,7 +440,7 @@ export const generalAssemblyMembers: GeneralAssemblyMember[] = [
     displayName: "Venera - Margareta BUCUR",
     city: "Timișoara, România",
     sortName: "Bucur Venera Margareta",
-    image: genericFemalePortrait,
+    image: "/images/members/assembly/dr-venera-margareta-bucur.webp",
     shortBio: {
       ro: "Medic de medicină generală, cu interes pentru medicina stilului de viață, prevenția bolilor cronice și promovarea sănătății.",
       en: "General practitioner interested in lifestyle medicine, chronic disease prevention and health promotion.",
@@ -798,7 +798,7 @@ export const generalAssemblyMembers: GeneralAssemblyMember[] = [
     displayName: "Diana Mirela NICOLAE",
     city: "Brașov, România",
     sortName: "Nicolae Diana Mirela",
-    image: genericFemalePortrait,
+    image: "/images/members/assembly/diana-mirela-nicolae.webp",
     shortBio: {
       ro: "Medic de familie, cu interes pentru medicina stilului de viață, prevenția bolilor cronice și dezvoltarea unor strategii personalizate pentru menținerea sănătății și îmbunătățirea calității vieții pacienților.",
       en: "Family physician interested in lifestyle medicine, chronic disease prevention and developing individual strategies to maintain patients’ health.",
