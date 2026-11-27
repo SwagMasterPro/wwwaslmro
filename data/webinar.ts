@@ -44,6 +44,7 @@ export const webinarLecturers: readonly WebinarLecturer[] = [
   { name: "Conf. dr. Răzvan Șusan", image: "/images/council/conf-dr-razvan-susan.png" },
   { name: "Prof. dr. Doina Todea", image: "/images/council/prof-dr-doina-adina-todea.png" },
   { name: "Dr. Monica Ungureanu" },
+  { name: "Conf. Dr. Corneliu Zeană", image: "/images/webinar/conf-dr-corneliu-zeana.png" },
 ];
 
 export type WebinarProgramItem = {
@@ -132,5 +133,9 @@ export const webinarProgram: readonly WebinarProgramItem[] = [
   {
     title: "Comunicarea medic-pacient: de la recomandări la schimbări durabile",
     speakers: ["Iulia Nistoroiu"],
+  },
+  {
+    title: "În jurul magneziului: de la cercetare la practica medicală",
+    speakers: ["Conf. Dr. Corneliu Zeană"],
   },
 ];
